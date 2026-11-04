@@ -839,3 +839,9 @@ button { font: inherit; color: inherit; }
 .pf-plan table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .pf-plan th { text-align: left; font-weight: 500; color: var(--ink-3); padding: 4px 0; border-bottom: 1px solid var(--line); }
 .pf-plan td { padding: 6px 0; } .pf-plan td:last-child, .pf-plan th:last-child { text-align: right; }
+/* Phones: all five context tabs visible, wrapping onto two rows instead of scrolling sideways */
+@media (max-width: 899px) {
+  .ct-tabs { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; gap: 8px; }
+  .ct-tab { padding: 9px 16px; min-height: 44px; }
+  .ct-tab-name { font-size: 15px; }
+}

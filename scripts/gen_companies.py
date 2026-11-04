@@ -193,9 +193,9 @@ def build(slug, s):
     # Use case 4: Everyday in Microsoft 365
     tabs = d['everyday']['tabs']
     em, dk = tabs[0], tabs[1]
-    em['before']['body'][1] = f"We've been heads-down on the {prod} launch and there's a lot going on, so I wanted to share where things stand." if slug not in ('gap', 'sephora') else f"We've been heads-down on the {prod} and there's a lot going on, so I wanted to share where things stand."
-    em['after']['subject'] = f"Review the {s['short']} launch plan by Thursday" if slug not in ('gap', 'sephora') else f"Review the {s['short']} plan by Thursday"
-    em['after']['body'][0] = f"Hi team, can you review the {s['short']} launch plan by Thursday?" if slug not in ('gap', 'sephora') else f"Hi team, can you review the {s['short']} plan by Thursday?"
+    em['before']['body'][1] = f"We've been heads-down on the {prod} launch and there's a lot going on, so I wanted to share where things stand." if slug not in ('gap', 'sephora') else f"We've been heads-down on {'the ' if slug == 'gap' else ''}{prod} and there's a lot going on, so I wanted to share where things stand."
+    em['after']['subject'] = f"Review the {s['short']} launch plan by Thursday" if slug not in ('gap', 'sephora') else f"Review the {s['short'].lower() if slug == 'gap' else s['short']} plan by Thursday"
+    em['after']['body'][0] = f"Hi team, can you review the {s['short']} launch plan by Thursday?" if slug not in ('gap', 'sephora') else f"Hi team, can you review the {s['short'].lower() if slug == 'gap' else s['short']} plan by Thursday?"
     em['after']['sig'] = 'Sam Lee · Marketing'
     dk['before']['title'] = f"Q3 results and some thoughts on where we go next with {prod}"
     dk['after']['title'] = f"{s['short']}: Q3 results"

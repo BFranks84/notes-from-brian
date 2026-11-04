@@ -1,10 +1,10 @@
 // Lightweight local versions of a few Fondue components (SegmentedControl, Button, Badge).
 // They follow Fondue's own styles and tokens, without shipping the whole component library to phones.
 
-export function Segmented({ value, onChange, options, labelledBy }) {
+export function Segmented({ value, onChange, options, labelledBy, className = '', ariaLabel }) {
   const idx = Math.max(0, options.findIndex((o) => o.value === value));
   return (
-    <div className="seg" role="radiogroup" aria-labelledby={labelledBy} style={{ '--n': options.length, '--i': idx }}>
+    <div className={`seg ${className}`} role="radiogroup" aria-labelledby={labelledBy} aria-label={ariaLabel} style={{ '--n': options.length, '--i': idx }}>
       {options.map((o) => (
         <button
           key={o.value}
@@ -12,7 +12,7 @@ export function Segmented({ value, onChange, options, labelledBy }) {
           role="radio"
           aria-checked={o.value === value}
           className="seg-item"
-          onClick={() => onChange(o.value)}
+          onClick={(e) => onChange(o.value, e)}
           onKeyDown={(e) => {
             if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
               const d = e.key === 'ArrowRight' ? 1 : -1;

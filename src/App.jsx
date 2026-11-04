@@ -41,6 +41,7 @@ function Home() {
 function Portal({ company: c }) {
   const [view, setViewRaw] = useState('person');
   const [theme, setThemeRaw] = useState('frontify');
+  const [hinted, setHinted] = useState(false);
   const [pickId, setPickId] = useState(c.ideas[0]?.id);
   const pageUrl = `${SITE.origin}/${c.slug}`;
   const shareUrl = `${pageUrl}?src=share`;
@@ -67,23 +68,11 @@ function Portal({ company: c }) {
     document.startViewTransition(go);
   };
   const toggleTheme = (e) => {
+    setHinted(true);
     const r = e?.currentTarget?.getBoundingClientRect?.();
     setTheme(theme === 'frontify' ? 'company' : 'frontify', r ? { x: r.left + r.width / 2, y: r.top + r.height / 2 } : null);
   };
   const pick = c.ideas.find((i) => i.id === pickId);
-  const [pillOn, setPillOn] = useState(false);
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY; const vh = window.innerHeight;
-      const talk = document.getElementById('talk-title');
-      const nearEnd = talk && talk.getBoundingClientRect().top < vh * 0.9;
-      const lad = document.querySelector('.ladder')?.getBoundingClientRect();
-      const inLadder = lad && lad.top < vh * 0.5 && lad.bottom > vh * 0.5;
-      setPillOn(y > vh * 0.9 && !nearEnd && !inLadder);
-    };
-    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [view]);
 
   return (
     <div className={`portal view-${view} theme-${theme}`}>
@@ -94,8 +83,21 @@ function Portal({ company: c }) {
           <span className="appbar-crumb">Sample for {c.name}</span>
         </div>
         <div className="appbar-right">
+          {ct && (
+            <Segmented
+              className={`seg-theme ${hinted ? '' : 'is-hint'}`}
+              ariaLabel="Theme"
+              value={theme}
+              onChange={(v, e) => {
+                setHinted(true);
+                const r = e?.currentTarget?.getBoundingClientRect?.();
+                setTheme(v, r ? { x: r.left + r.width / 2, y: r.top + r.height / 2 } : null);
+              }}
+              options={[{ value: 'frontify', label: 'Frontify' }, { value: 'company', label: c.name }]}
+            />
+          )}
           <span className="appbar-viewas" id="viewas">View as</span>
-          <Segmented labelledBy="viewas" value={view} onChange={setView} options={[{ value: 'person', label: 'Person' }, { value: 'agent', label: 'Agent' }]} />
+          <Segmented className="seg-view" labelledBy="viewas" value={view} onChange={setView} options={[{ value: 'person', label: 'Person' }, { value: 'agent', label: 'Agent' }]} />
         </div>
       </header>
 
@@ -185,12 +187,6 @@ function Portal({ company: c }) {
         </main>
       )}
 
-      {view === 'person' && (
-        <button className={`theme-pill press ${pillOn ? 'is-shown' : ''}`} onClick={toggleTheme} tabIndex={pillOn ? 0 : -1} aria-label={`Switch theme, currently ${theme === 'frontify' ? 'Frontify' : c.name}`}>
-          <span className={`tp-opt ${theme === 'frontify' ? 'is-on' : ''}`}>Frontify</span>
-          <span className={`tp-opt ${theme === 'company' ? 'is-on' : ''}`}>{c.name}</span>
-        </button>
-      )}
     </div>
   );
 }

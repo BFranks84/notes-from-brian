@@ -486,3 +486,23 @@ button { font: inherit; color: inherit; }
 .chat-play::after { content: ''; position: absolute; left: 13px; top: 10px; border-left: 11px solid var(--accent-ink); border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
 .bring-ctas { display: flex; flex-wrap: wrap; gap: 10px; }
 .foot a { color: var(--ink-2); }
+
+/* Theme switch lives in the app bar so it is always one tap away */
+.appbar-right { gap: 8px; }
+.seg-theme .seg-item[aria-checked='true'] { color: var(--accent-ink); }
+.seg-theme .seg-indicator::before { background: var(--accent); box-shadow: none; transition: background-color 400ms var(--ease); }
+.seg-theme.is-hint .seg-item:last-of-type { position: relative; }
+@media (prefers-reduced-motion: no-preference) {
+  .seg-theme.is-hint .seg-item:last-of-type::after { content: ''; position: absolute; top: 5px; right: 5px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: hintPulse 1.6s var(--ease) infinite; }
+}
+@keyframes hintPulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 100% { box-shadow: 0 0 0 8px transparent; } }
+@media (max-width: 600px) {
+  .appbar { padding: 0 12px; }
+  .fy-mark { display: none; }
+  .appbar-left { display: none; }
+  .appbar { justify-content: space-between; }
+  .appbar-right { width: 100%; justify-content: space-between; }
+  .seg { height: 34px; }
+  .seg-item { padding: 0 10px; font-size: 13px; }
+}
+@media (max-width: 360px) { .seg-item { padding: 0 7px; font-size: 12px; } }

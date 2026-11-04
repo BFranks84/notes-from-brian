@@ -31,162 +31,29 @@
   },
   "ideas": [
     {
-      "id": "agent-context",
-      "title": "Brand context inside the AI tools your team already uses",
-      "summary": "People ask Claude, ChatGPT or Copilot. Frontify quietly supplies the brand rules, messaging and approved assets.",
-      "why": {
-        "text": "Atlassian's Team '26 Europe update framed AI as multiplayer work, where agents join teams with clear identity and scoped access.",
-        "source": "Atlassian blog",
-        "url": "https://www.atlassian.com/blog/company-news/team26-europe-ai-platform"
-      },
-      "looksLike": [
-        "Guidelines, approved assets and messaging live in one place, structured for people and readable by AI.",
-        "Frontify's MCP server lets tools like Claude, ChatGPT and Cursor look up brand rules and approved assets. It's read-only by default, and an admin decides when to turn it on.",
-        "An agent drafting a page pulls from the same source your brand team already maintains."
-      ],
-      "pieces": [
-        {
-          "label": "Frontify MCP",
-          "url": "https://help.frontify.com/en/articles/14787214-frontify-mcp"
-        },
-        {
-          "label": "Brand assistant",
-          "url": "https://help.frontify.com/en/articles/14718123-brand-assistant"
-        }
-      ],
-      "question": "When an agent drafts marketing content today, where does it get your brand rules?",
-      "preview": "agent",
-      "demo": {
-        "q": "What tone should a launch post use?",
-        "a": "Bold, optimistic and practical, with a wink. Use plain language and skip the jargon.",
-        "cite": "Voice and tone",
-        "note": "Answer drawn from Atlassian's public voice and tone guidance, for illustration."
-      }
+      "id": "context",
+      "title": "A system of context for every AI tool",
+      "summary": "Frontify gives Claude, ChatGPT and Copilot the brand, creative, product and event context they need, so answers come out on brand."
     },
     {
-      "id": "approved-messaging",
-      "title": "Approved messaging at the start of the brief",
-      "summary": "Your tools run the work. Frontify can hold the brand context the work starts from.",
-      "why": {
-        "text": "Atlassian's own marketing post says more AI tools alone won't fix coordination, and that work should start from the right brief and approved messaging.",
-        "source": "Atlassian blog",
-        "url": "https://www.atlassian.com/blog/company-news/gartner-marketing-work-management-2026"
-      },
-      "looksLike": [
-        "Messaging, guidelines and approved assets sit in a living brand portal that teams link to from their briefs.",
-        "Creative reviews run as approval requests with clear reviewers and deadlines.",
-        "Frontify connects to Jira Cloud, so brand work and the tickets around it stay linked."
-      ],
-      "pieces": [
-        {
-          "label": "Brand guidelines",
-          "url": "https://www.frontify.com/en/brand-guidelines"
-        },
-        {
-          "label": "Approvals",
-          "url": "https://help.frontify.com/en/articles/4111876-feedback-and-approval-process"
-        },
-        {
-          "label": "Jira Cloud integration",
-          "url": "https://www.frontify.com/en/integrations/jira-cloud"
-        }
-      ],
-      "question": "Where does approved messaging live today, and who keeps it current?",
-      "preview": "approvals",
-      "demo": {
-        "asset": "Q1 launch brief",
-        "steps": [
-          "Brief",
-          "Brand review",
-          "Approved"
-        ],
-        "who": [
-          "Brand",
-          "Product marketing"
-        ]
-      }
+      "id": "contexts",
+      "title": "What context lives in Frontify",
+      "summary": "Brand, creative, product, event and Everyday guidance live as guideline pages that people read and AI tools answer from."
     },
     {
-      "id": "app-family",
-      "title": "One current home for a family of app brands",
-      "summary": "Jira, Confluence, Loom, Rovo and more, each with its own logo and rules.",
-      "why": {
-        "text": "Atlassian's public design system documents a shared logo system across its apps, plus separate rules for Marketplace partners.",
-        "source": "Atlassian Design System",
-        "url": "https://atlassian.design/foundations/logos"
-      },
-      "looksLike": [
-        "A brand hub with a page per app, all inheriting the parent brand.",
-        "Internal-only logo sets stay internal through permissions, while partners get a view made for them.",
-        "Update a logo once and every portal shows the current version."
-      ],
-      "pieces": [
-        {
-          "label": "Multi-brand architecture",
-          "url": "https://www.frontify.com/en/guide/multi-brand-architecture"
-        },
-        {
-          "label": "Sharing and access",
-          "url": "https://help.frontify.com/en/articles/4895189-sharing-capabilities-assets-collections-and-folders"
-        }
-      ],
-      "question": "When a team or partner needs the current Loom or Rovo logo, where do they go?",
-      "preview": "brandfamily",
-      "demo": {
-        "parent": "Atlassian",
-        "children": [
-          "Jira",
-          "Confluence",
-          "Loom",
-          "Rovo",
-          "Trello"
-        ],
-        "event": "Logo update published"
-      }
+      "id": "check",
+      "title": "Brand Check before anything goes live",
+      "summary": "Brand Check (beta) reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
     },
     {
-      "id": "event-templates",
-      "title": "Event content without the request queue",
-      "summary": "Two Team '26 events this year means a lot of speaker cards, slides and signage.",
-      "why": {
-        "text": "Atlassian ran Team '26 in the US in May and Team '26 Europe in Amsterdam on Oct 6 to 8.",
-        "source": "Atlassian Events",
-        "url": "https://events.atlassian.com/teameurope"
-      },
-      "looksLike": [
-        "Designers build the template once, with the event name, dates and logo locked.",
-        "Event and field teams fill in the talk title, speaker and photo from a browser, then export.",
-        "Your creative team spends its time on the work only it can do."
-      ],
-      "pieces": [
-        {
-          "label": "Templates",
-          "url": "https://www.frontify.com/en/templates"
-        },
-        {
-          "label": "Figma Buzz plug-in",
-          "url": "https://www.frontify.com/en/integrations/figma-buzz"
-        }
-      ],
-      "question": "How many event assets does your team still build by hand for a Team event?",
-      "preview": "templates",
-      "demo": {
-        "name": "Team speaker card",
-        "locked": "Team '26 Europe · Amsterdam",
-        "fields": [
-          [
-            "Talk title",
-            "Planning with Rovo",
-            "Talk title"
-          ],
-          [
-            "Speaker",
-            "Your name, your role",
-            "Speaker name"
-          ]
-        ],
-        "image": "Speaker photo"
-      }
+      "id": "everyday",
+      "title": "Everyday guidelines inside Outlook and PowerPoint",
+      "summary": "Claude in Microsoft 365, connected to Frontify, checks emails and decks against short Everyday guidelines before they go out."
+    },
+    {
+      "id": "partners",
+      "title": "Partner and agency files, in the right place",
+      "summary": "Partners submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
     }
   ],
   "theme": {
@@ -237,7 +104,7 @@
     "disclaimer": "Illustrative draft written for this sample, using Atlassian's public brand personality guidance. Not Atlassian content."
   },
   "check": {
-    "eyebrow": "Use case 2 · Brand Check (beta)",
+    "eyebrow": "Use case 3 · Brand Check (beta)",
     "title": "Then it checks the work",
     "sub": "Before anything goes live, Brand Check reviews it against {name}'s guidelines, flags potential issues, and shows which guideline informed each finding.",
     "note": "Brand Check is in beta. The asset, findings and guidelines here are samples built from Atlassian's public design system, not Atlassian's own.",
@@ -299,7 +166,7 @@
     ]
   },
   "contexts": {
-    "eyebrow": "Use case 1 · A system of context",
+    "eyebrow": "Use case 2 · What context lives in Frontify",
     "title": "Every kind of context, in one place",
     "sub": "Brand, creative, product and event guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from Atlassian's public design system and product names. Not Atlassian's own guidelines.",
@@ -408,7 +275,7 @@
       {
         "id": "everyday",
         "label": "Everyday",
-        "desc": "Bite-size rules for every employee",
+        "desc": "Short rules for email, decks and docs",
         "kind": "writing",
         "chapter": "Everyday",
         "section": "Email tone of voice",
@@ -437,8 +304,161 @@
         "askLabel": "Before sending, in Outlook with Copilot",
         "ask": "Check this email against our writing guidelines.",
         "answer": "Two fixes before you send: **put the ask in the first line**, and **use the standard signature**.",
-        "from": "Condensed from Brand › Tone of voice"
+        "from": "Condensed from Brand › Tone of voice",
+        "deck": {
+          "title": "Presentations",
+          "rules": [
+            [
+              "Template",
+              "Start from the company template."
+            ],
+            [
+              "Titles",
+              "Six words or fewer."
+            ],
+            [
+              "Bullets",
+              "Three per slide, at most."
+            ]
+          ]
+        }
       }
+    ]
+  },
+  "everyday": {
+    "eyebrow": "Use case 4 · Everyday guidelines, inside Microsoft 365",
+    "title": "The right tone in every email and deck",
+    "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude inside Outlook and PowerPoint reads the Everyday guidelines and checks the work before it goes out.",
+    "note": "Claude for Microsoft 365 reads Frontify through the Frontify connector (MCP) once it's set up in your Claude workspace. Sample email, deck and guidelines.",
+    "tabs": [
+      {
+        "id": "outlook",
+        "label": "Email in Outlook",
+        "kind": "email",
+        "guideline": "Email tone of voice",
+        "to": "Field marketing team",
+        "ask": "Check this email against our email tone of voice before I send it.",
+        "intro": "Three fixes based on **Everyday › Email tone of voice**:",
+        "before": {
+          "subject": "Following up",
+          "body": [
+            "Hi team, just circling back on the below!!",
+            "We've been heads-down on the Rovo launch and there's a lot going on, so I wanted to share where things stand.",
+            "Can you review the launch plan by Thursday?"
+          ],
+          "sig": "Cheers!! ✨ \"Dream big, ship bigger\""
+        },
+        "after": {
+          "subject": "Review the Rovo launch plan by Thursday",
+          "body": [
+            "Hi team, can you review the Rovo launch plan by Thursday?",
+            "It covers the messaging, launch assets and timeline. Comments in the doc are perfect."
+          ],
+          "sig": "Sam Lee · Product Marketing"
+        },
+        "fixes": [
+          {
+            "target": "subject",
+            "label": "Subject:",
+            "note": "say what you need. \"Following up\" doesn't."
+          },
+          {
+            "target": "p0",
+            "label": "Opening:",
+            "note": "lead with the ask. It's in the last line right now."
+          },
+          {
+            "target": "sig",
+            "label": "Sign-off:",
+            "note": "use the standard signature, with no quotes."
+          }
+        ],
+        "done": "Updated. The draft matches the email tone of voice and is ready to send."
+      },
+      {
+        "id": "powerpoint",
+        "label": "Deck in PowerPoint",
+        "kind": "deck",
+        "guideline": "Presentations",
+        "ask": "Is this slide built the way our presentation guidelines say?",
+        "intro": "Three fixes based on **Everyday › Presentations**:",
+        "before": {
+          "title": "Q3 results and some thoughts on where we go next with the Rovo launch",
+          "bullets": [
+            "Pipeline grew in every region",
+            "Trials doubled after the keynote",
+            "Partners asked for more co-marketing",
+            "We should talk about pricing",
+            "Support tickets went down",
+            "Next steps TBD"
+          ]
+        },
+        "after": {
+          "title": "Rovo launch: Q3 results",
+          "bullets": [
+            "Pipeline grew in every region",
+            "Trials doubled after the keynote",
+            "Partners want more co-marketing"
+          ],
+          "footer": "2026 template"
+        },
+        "fixes": [
+          {
+            "target": "template",
+            "label": "Template:",
+            "note": "this slide isn't on the company template."
+          },
+          {
+            "target": "title",
+            "label": "Title:",
+            "note": "14 words. Keep titles to six or fewer."
+          },
+          {
+            "target": "bullets",
+            "label": "Bullets:",
+            "note": "six on one slide. Keep it to three."
+          }
+        ],
+        "done": "Updated. Slide 2 now uses the company template and follows the presentation guidelines."
+      }
+    ]
+  },
+  "partners": {
+    "eyebrow": "Use case 5 · Partner and agency files",
+    "title": "Partner files land in the right place",
+    "sub": "Agencies and Marketplace partners submit work straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
+    "note": "Sample files, partner and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "page": "Partners › Submit an asset",
+    "submitter": "Northwind Creative · partner agency",
+    "library": "Partner submissions",
+    "files": [
+      {
+        "name": "jira-partner-webinar-banner.png",
+        "size": "2.1 MB",
+        "title": "Partner webinar"
+      },
+      {
+        "name": "jira-partner-social-1080.png",
+        "size": "840 KB",
+        "title": "Jira for teams"
+      }
+    ],
+    "existing": [
+      "Confluence launch",
+      "Loom how-to",
+      "Team 26 recap",
+      "Rovo social"
+    ],
+    "ask": "Tag these Jira and Cleared for external use, and set them to expire Dec 31, 2026.",
+    "plan": "I'll add the tags Jira and Cleared for external use, and set Available until to Dec 31, 2026, on the 2 selected assets. Say yes and I'll apply it.",
+    "tags": [
+      "Jira",
+      "Cleared for external use"
+    ],
+    "expires": "Dec 31, 2026",
+    "actions": [
+      "Add tags",
+      "Set expiry date"
     ]
   }
 }

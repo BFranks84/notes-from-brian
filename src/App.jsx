@@ -9,6 +9,8 @@ import { ShareTemplate } from './ShareTemplate.jsx';
 import { RotatingWord, ChatDemo } from './Hero.jsx';
 import { BrandCheck } from './BrandCheck.jsx';
 import { ContextTypes } from './ContextTypes.jsx';
+import { EverydayDemo } from './EverydayDemo.jsx';
+import { PartnerFiles } from './PartnerFiles.jsx';
 import { FRONTIFY, companyTheme, applyTheme, preloadFont } from './theme.js';
 
 function useRoute() {
@@ -48,7 +50,6 @@ function Portal({ company: c }) {
   const pageUrl = `${SITE.origin}/${c.slug}`;
   const shareUrl = `${pageUrl}?src=share`;
   const doc = useMemo(() => agentDoc(c, SITE), [c]);
-  const tour = c.ideas.slice(1);
 
   const ct = useMemo(() => companyTheme(c.slug), [c.slug]);
   useEffect(() => { applyTheme(theme === 'company' && ct ? ct : FRONTIFY); }, [theme, ct]);
@@ -115,7 +116,7 @@ function Portal({ company: c }) {
               </h1>
               <p className="hero-sub">{c.hero.sub}</p>
               <div className="hero-ctas">
-                <a className="btn-link is-strong press" href="#tour"><IconArrowDown size={16} /> See how it works</a>
+                <a className="btn-link is-strong press" href="#uc1"><IconArrowDown size={16} /> See how it works</a>
                 <a className="btn-link press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Talk to Brian</a>
               </div>
             </div>
@@ -151,7 +152,29 @@ function Portal({ company: c }) {
           )}
 
 
-          <Tour company={c} ideas={tour} />
+          {c.everyday && (
+            <section className="wrap block ev-block" aria-labelledby="ev-title">
+              <div className="block-head">
+                <p className="bc-eyebrow-tag">{c.everyday.eyebrow}</p>
+                <h2 id="ev-title">{c.everyday.title}</h2>
+                <p>{c.everyday.sub.replace('{name}', c.name)}</p>
+              </div>
+              <EverydayDemo demo={c.everyday} theme={ct || FRONTIFY} company={c.name} />
+              <p className="bc-note">{c.everyday.note}</p>
+            </section>
+          )}
+
+          {c.partners && (
+            <section className="wrap block pf-block" aria-labelledby="pf-title">
+              <div className="block-head">
+                <p className="bc-eyebrow-tag">{c.partners.eyebrow}</p>
+                <h2 id="pf-title">{c.partners.title}</h2>
+                <p>{c.partners.sub.replace('{name}', c.name)}</p>
+              </div>
+              <PartnerFiles demo={c.partners} theme={ct || FRONTIFY} company={c.name} />
+              <p className="bc-note">{c.partners.note}</p>
+            </section>
+          )}
 
           <section className="band theme-band" aria-labelledby="theme-title">
             <div className="wrap theme-grid">
@@ -256,9 +279,10 @@ function Ladder({ company }) {
   const open = focus ?? n - 1;
   const toggle = (i) => { if (i < n) setFocus(i === open ? (i === n - 1 ? null : n - 1) : i); };
   return (
-    <section ref={ref} className={`ladder ${on ? 'is-on' : ''} ${done ? 'is-done' : ''}`} aria-labelledby="ladder-title" style={{ '--n': n }}>
+    <section id="uc1" ref={ref} className={`ladder ${on ? 'is-on' : ''} ${done ? 'is-done' : ''}`} aria-labelledby="ladder-title" style={{ '--n': n }}>
       <div className="ladder-pin">
         <div className="wrap">
+          <p className="bc-eyebrow-tag">Use case 1 · A system of context</p>
           <h2 id="ladder-title">Context is the missing layer</h2>
           <p className="ladder-sub">
             Each system builds on the one before it. {company} already has the first three. Agents need the fourth before they can act well.

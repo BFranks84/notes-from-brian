@@ -141,6 +141,12 @@ function Preview({ it }) {
         <dl>
           {it.rules.map(([a, b], i) => (<div key={a} className="s" style={{ '--i': 3 + i }}><dt>{a}</dt><dd>{b}</dd></div>))}
         </dl>
+        {it.deck && (
+          <div className="mini-deck s" style={{ '--i': 5 + it.rules.length }}>
+            <p className="mini-sub">{it.deck.title}</p>
+            <dl>{it.deck.rules.map(([a, b]) => (<div key={a}><dt>{a}</dt><dd>{b}</dd></div>))}</dl>
+          </div>
+        )}
         <div className="mini-phr">
           <p className="is-do s" style={{ '--i': 3 + it.rules.length }}><strong><IconCheck size={13} />Do</strong>"{it.do}"</p>
           <p className="is-dont s" style={{ '--i': 4 + it.rules.length }}><strong><IconCross size={11} />Don't</strong>"{it.dont}"</p>

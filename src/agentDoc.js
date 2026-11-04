@@ -14,32 +14,41 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push(c.hero.sub);
   lines.push('Frontify connects to AI tools like Claude, ChatGPT and Microsoft Copilot through the Frontify MCP server.');
   lines.push('');
+  const uc = (e) => e.replace(/^Use case \d+ · /, '');
+  lines.push('## Use cases');
+  lines.push('');
+  lines.push('### 1. A system of context');
+  lines.push(`Effective AI depends on an effective context layer. Frontify holds ${c.name}'s brand, creative, product and event knowledge so AI tools stop guessing.`);
+  lines.push('');
   if (c.contexts) {
-    lines.push(`## ${c.contexts.eyebrow.replace(/^Use case 1 · /, '')}`);
+    lines.push(`### 2. ${uc(c.contexts.eyebrow)}`);
     lines.push(c.contexts.sub.replace('{name}', c.name));
     c.contexts.items.forEach((k) => lines.push(`- ${k.label}: ${k.desc}. Example: "${k.ask}" → ${k.answer.replace(/\*\*/g, '')} (source: ${k.chapter} - ${k.section})`));
     lines.push('');
   }
   if (c.check) {
     const f = c.check.findings[0];
-    lines.push('## Brand Check (beta)');
+    lines.push(`### 3. ${uc(c.check.eyebrow)}`);
     lines.push(c.check.sub.replace('{name}', c.name));
     lines.push(`- checks: ${c.check.categories.map((k) => k.label.toLowerCase()).join(', ')}`);
-    if (f) lines.push(`- example finding: ${f.text} Recommendation: ${f.recommendation} Source: ${f.sources.map((s) => s.label).join('; ')}`);
+    if (f) lines.push(`- example finding: ${f.text} Recommendation: ${f.recommendation} Source: ${f.sources.map((x) => x.label).join('; ')}`);
     lines.push(`- note: ${c.check.note}`);
     lines.push('');
   }
-  lines.push("## Ideas");
-  c.ideas.forEach((i, n) => {
+  if (c.everyday) {
+    lines.push(`### 4. ${uc(c.everyday.eyebrow)}`);
+    lines.push(c.everyday.sub.replace('{name}', c.name));
+    c.everyday.tabs.forEach((x) => lines.push(`- ${x.label}: "${x.ask}" → ${x.fixes.map((f) => `${f.label} ${f.note}`).join(' ')} (source: Everyday - ${x.guideline})`));
+    lines.push(`- note: ${c.everyday.note}`);
     lines.push('');
-    lines.push(`### ${n + 1}. ${i.title}`);
-    lines.push(i.summary);
-    lines.push(`- why: ${i.why.text} (source: ${i.why.source}, ${i.why.url})`);
-    i.looksLike.forEach((l) => lines.push(`- could look like: ${l}`));
-    lines.push(`- frontify pieces: ${i.pieces.map((p) => `${p.label} (${p.url})`).join('; ')}`);
-    lines.push(`- open question: ${i.question}`);
-  });
-  lines.push('');
+  }
+  if (c.partners) {
+    lines.push(`### 5. ${uc(c.partners.eyebrow)}`);
+    lines.push(c.partners.sub.replace('{name}', c.name));
+    lines.push(`- example: a partner submits ${c.partners.files.length} files to ${c.partners.library}; then "${c.partners.ask}"`);
+    lines.push(`- note: ${c.partners.note}`);
+    lines.push('');
+  }
   lines.push('## Next step');
   lines.push(`Pick any idea above and book time with ${sender.name.split(' ')[0]}: ${booking}`);
   lines.push('No fixed agenda. Expect peer examples, setup patterns and an honest read on fit.');

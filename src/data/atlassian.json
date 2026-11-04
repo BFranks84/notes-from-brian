@@ -236,10 +236,10 @@
     "disclaimer": "Illustrative draft written for this sample, using Atlassian's public brand personality guidance. Not Atlassian content."
   },
   "check": {
-    "eyebrow": "Brand check · Beta",
+    "eyebrow": "Use case 2 · Brand Check (beta)",
     "title": "Then it checks the work",
-    "sub": "Before a draft goes out, Frontify can check it against {name}'s guidelines rule by rule, and point to the exact guideline behind anything it flags.",
-    "note": "Brand compliance checking is in beta. The asset and guideline here are samples built from Atlassian's public design system, not Atlassian's own.",
+    "sub": "Before anything goes live, Brand Check reviews it against {name}'s guidelines, flags potential issues, and shows which guideline informed each finding.",
+    "note": "Brand Check is in beta. The asset, findings and guidelines here are samples built from Atlassian's public design system, not Atlassian's own.",
     "asset": {
       "kind": "LinkedIn post",
       "file": "rovo-launch-social-v3.png",
@@ -247,52 +247,57 @@
       "eyebrow": "New in Rovo",
       "headline": "Less busywork. More teamwork.",
       "body": "See how teams plan, write and ship with AI that knows their work.",
-      "cta": "Watch the demo"
+      "cta": {
+        "text": "Watch the demo",
+        "color": "#0052CC"
+      }
     },
-    "checks": [
+    "categories": [
       {
-        "id": "layout",
-        "area": "frame",
-        "label": "Layout and safe area",
-        "pass": true,
-        "note": "Copy and artwork sit inside the safe area for a LinkedIn image."
-      },
-      {
-        "id": "type",
-        "area": "headline",
-        "label": "Typography",
-        "pass": true,
-        "note": "The headline uses the brand typeface at an approved weight and size."
-      },
-      {
-        "id": "voice",
-        "area": "body",
-        "label": "Tone of voice",
-        "pass": true,
-        "note": "Reads as bold, optimistic and practical, matching the voice guidelines."
+        "id": "logo",
+        "label": "Logo",
+        "status": "skip"
       },
       {
         "id": "color",
+        "label": "Color"
+      },
+      {
+        "id": "typography",
+        "label": "Typography"
+      },
+      {
+        "id": "layout",
+        "label": "Layout"
+      },
+      {
+        "id": "writing",
+        "label": "Writing"
+      },
+      {
+        "id": "imagery",
+        "label": "Imagery"
+      }
+    ],
+    "findings": [
+      {
+        "cat": "color",
         "area": "cta",
-        "label": "Color",
-        "pass": false,
+        "text": "The button uses #0052CC, which isn't in the current brand palette.",
         "found": "#0052CC",
         "expected": "#1868DB",
         "expectedName": "Brand blue",
-        "note": "The button uses #0052CC, which isn't in the current brand palette.",
-        "path": "Guidelines › Color › Brand",
-        "rule": "Primary actions use Brand blue, #1868DB. Older blues shouldn't appear in new work.",
-        "source": {
-          "label": "Based on the Atlassian Design System, color",
-          "url": "https://atlassian.design/foundations/color"
-        }
-      },
-      {
-        "id": "contrast",
-        "area": "eyebrow",
-        "label": "Contrast",
-        "pass": true,
-        "note": "All text meets WCAG AA contrast on its background."
+        "recommendation": "Change the button to Brand blue, #1868DB, the color for primary actions.",
+        "sources": [
+          {
+            "label": "Brand - Color - Primary colors",
+            "url": "https://atlassian.design/foundations/color"
+          },
+          {
+            "label": "Design system - Button",
+            "url": "https://atlassian.design/components/button"
+          }
+        ]
       }
     ]
   },
@@ -331,7 +336,7 @@
         ],
         "rule": "Use Brand blue for primary actions and links only.",
         "ask": "What blue do I use for a button?",
-        "answer": "Brand blue, #1868DB, from Color › Primary colors."
+        "answer": "Use **Brand blue, #1868DB**, for primary buttons and links."
       },
       {
         "id": "creative",
@@ -351,7 +356,7 @@
           "note": "No staged handshakes or stock smiles."
         },
         "ask": "Can I use a stock photo of a handshake?",
-        "answer": "Better not. Photography › Do and don't asks for candid teamwork."
+        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
       },
       {
         "id": "product",
@@ -369,7 +374,7 @@
         ],
         "rule": "Always write Rovo, never \"the Rovo AI.\"",
         "ask": "Write a one-line pitch for Rovo.",
-        "answer": "Drafted from the approved positioning in Product launch › Rovo."
+        "answer": "**Rovo is AI that works across the apps your team already uses, with the context of your work.** Drafted from the approved positioning."
       },
       {
         "id": "event",
@@ -401,7 +406,7 @@
           }
         ],
         "ask": "I need a speaker slide for our session.",
-        "answer": "Opened the Speaker slide template. Layout and logo stay locked."
+        "answer": "I opened the **Speaker slide** template. Add your talk title, name and session; **the layout and logo stay locked**."
       },
       {
         "id": "everyday",
@@ -434,7 +439,7 @@
         "dont": "Just circling back on the below!!",
         "askLabel": "Before sending, in Outlook with Copilot",
         "ask": "Check this email against our writing guidelines.",
-        "answer": "Two fixes: put the ask in the first line, and use the standard signature. From Everyday › Email tone of voice.",
+        "answer": "Two fixes before you send: **put the ask in the first line**, and **use the standard signature**.",
         "from": "Condensed from Brand › Tone of voice"
       }
     ]

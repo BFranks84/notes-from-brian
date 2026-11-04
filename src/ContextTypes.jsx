@@ -66,12 +66,18 @@ export function ContextTypes({ items, theme, company }) {
         </div>
         <div className="ct-ai" key={`ai-${it.id}`}>
           <p className="ct-q"><span>{it.askLabel || 'Someone asks their AI'}</span>{it.ask}</p>
-          <p className="ct-a"><IconSparkle size={14} /><span>{it.answer}</span></p>
+          <div className="ct-a">
+            <p><IconSparkle size={14} /><span>{rich(it.answer)}</span></p>
+            <p className="ct-src">Based on 1 source: <span>{it.chapter} - {it.section}</span></p>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+// **bold** spans, the way the Brand assistant emphasizes key details in its answers.
+const rich = (t) => t.split(/(\*\*[^*]+\*\*)/).map((p, i) => (p.startsWith('**') ? <strong key={i}>{p.slice(2, -2)}</strong> : p));
 
 function Preview({ it }) {
   if (it.kind === 'color') {

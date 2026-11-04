@@ -17,15 +17,15 @@ export function agentDoc(c, { origin, booking, sender }) {
   if (c.contexts) {
     lines.push(`## ${c.contexts.eyebrow.replace(/^Use case 1 · /, '')}`);
     lines.push(c.contexts.sub.replace('{name}', c.name));
-    c.contexts.items.forEach((k) => lines.push(`- ${k.label}: ${k.desc}. Example: "${k.ask}" → ${k.answer}`));
+    c.contexts.items.forEach((k) => lines.push(`- ${k.label}: ${k.desc}. Example: "${k.ask}" → ${k.answer.replace(/\*\*/g, '')} (source: ${k.chapter} - ${k.section})`));
     lines.push('');
   }
   if (c.check) {
-    const f = c.check.checks.find((k) => !k.pass);
-    lines.push('## Brand check (beta)');
+    const f = c.check.findings[0];
+    lines.push('## Brand Check (beta)');
     lines.push(c.check.sub.replace('{name}', c.name));
-    lines.push(`- sample: a ${c.check.asset.kind} checked on ${c.check.checks.map((k) => k.label.toLowerCase()).join(', ')}`);
-    if (f) lines.push(`- example flag: ${f.note} Guideline: ${f.rule} (${f.source.url})`);
+    lines.push(`- checks: ${c.check.categories.map((k) => k.label.toLowerCase()).join(', ')}`);
+    if (f) lines.push(`- example finding: ${f.text} Recommendation: ${f.recommendation} Sources: ${f.sources.map((s) => `${s.label} (${s.url})`).join('; ')}`);
     lines.push(`- note: ${c.check.note}`);
     lines.push('');
   }

@@ -1,38 +1,50 @@
-import { useEffect, useRef, useState } from 'react';
-import { IconCheck, IconCross, IconArrowOutExternal, IconArrowRoundAntiClockwise, IconSparkle } from './icons.jsx';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { IconArrowOutExternal, IconArrowRoundAntiClockwise, IconSparkle } from './icons.jsx';
 
 const reduce = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+const RUN_MS = 3400;
+const SPEEDS = [1.25, 1.6, 1.15, 1.9, 1.35, 1.7]; // each category finishes at its own pace, like the real checker
 
-// A "live" brand check: a sample asset in the company's own colors is scanned rule by rule.
-// Most checks pass, one fails with the guideline it came from, and the visitor can apply the fix.
+// Mirrors the Frontify Brand checker flow: run, six categories check in parallel, results, then a finding
+// detail (recommendation + the guideline sources behind it, tied to the spot on the asset).
 export function BrandCheck({ check, theme, company }) {
-  const n = check.checks.length;
-  const [i, setI] = useState(reduce() ? n : -1); // index being checked; n = finished
-  const [fixed, setFixed] = useState(false);
-  const [open, setOpen] = useState(null);
-  const ref = useRef(null);
+  const cats = check.categories;
+  const findings = check.findings;
+  const [phase, setPhase] = useState(reduce() ? 'detail' : 'idle'); // idle | run | results | detail
+  const [prog, setProg] = useState(cats.map(() => (reduce() ? 1 : 0)));
+  const [cur, setCur] = useState(0);
+  const rootRef = useRef(null);
   const run = useRef(0);
   const started = useRef(false);
 
   const play = async () => {
     const id = ++run.current;
-    setFixed(false); setOpen(null);
-    if (reduce()) { setI(n); setOpen(failIdx); return; }
-    setI(-1);
-    await wait(350);
-    for (let k = 0; k <= n; k++) {
-      if (id !== run.current) return;
-      setI(k);
-      await wait(k < n ? 900 : 0);
-    }
-    if (id === run.current) setOpen(failIdx);
+    const alive = () => id === run.current;
+    setCur(0);
+    if (reduce()) { setPhase('detail'); setProg(cats.map(() => 1)); return; }
+    setPhase('idle'); setProg(cats.map(() => 0));
+    await wait(900); if (!alive()) return;
+    setPhase('run');
+    const t0 = performance.now();
+    await new Promise((done) => {
+      const tick = (now) => {
+        if (!alive()) return done();
+        const t = Math.min(1, (now - t0) / RUN_MS);
+        const e = 1 - Math.pow(1 - t, 2);
+        setProg(cats.map((_, i) => Math.min(1, e * SPEEDS[i % SPEEDS.length])));
+        if (t < 1) requestAnimationFrame(tick); else done();
+      };
+      requestAnimationFrame(tick);
+    });
+    if (!alive()) return;
+    setPhase('results');
+    await wait(1700); if (!alive()) return;
+    setPhase('detail');
   };
 
-  const failIdx = check.checks.findIndex((c) => !c.pass);
-
   useEffect(() => {
-    const el = ref.current;
+    const el = rootRef.current;
     if (!el) return;
     const io = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !started.current) { started.current = true; play(); }
@@ -41,99 +53,142 @@ export function BrandCheck({ check, theme, company }) {
     return () => { io.disconnect(); run.current++; };
   }, []);
 
-  const done = i >= n;
-  const state = (k) => (k < i || done ? (check.checks[k].pass || fixed ? 'pass' : 'fail') : k === i ? 'run' : 'wait');
-  const passed = check.checks.filter((c, k) => state(k) === 'pass').length;
-  const area = done ? (fixed ? null : check.checks[failIdx]?.area) : check.checks[i]?.area;
-  const fail = check.checks[failIdx];
+  const done = phase === 'results' || phase === 'detail';
+  const f = findings[cur];
+  const overall = prog.reduce((x, y) => x + y, 0) / cats.length;
+  const count = (id) => findings.filter((x) => x.cat === id).length;
+  const status = (c) => (c.status === 'skip' ? 'Not checked' : count(c.id) ? `${count(c.id)} issue${count(c.id) > 1 ? 's' : ''}` : 'Looking good');
 
-  const pins = (where) => check.checks.map((c, k) => (c.area !== where ? null : (
-    <span key={c.id} className={`bc-pin is-${state(k)}`} aria-hidden="true">{state(k) === 'pass' ? <IconCheck size={12} /> : state(k) === 'fail' ? '!' : k + 1}</span>
-  )));
   const a = check.asset;
   const t = theme || {};
-  const cta = fixed ? fail.expected : fail.found;
   const assetStyle = {
-    '--a-bg': a.bg || t.hl || '#F2F2F2',
-    '--a-ink': a.ink || t.ink || '#111',
-    '--a-ink2': t.ink2 || t.ink || '#333',
-    '--a-cta': cta,
-    '--a-accent': t.accent,
-    '--a-cta-ink': a.ctaInk || t.accentInk || '#fff',
-    '--a-font': t.family,
-    '--a-weight': t.displayWeight,
-    '--a-r': t.radiusBtn,
+    '--a-bg': a.bg || t.hl || '#F2F2F2', '--a-ink': a.ink || t.ink || '#111', '--a-ink2': t.ink2 || t.ink || '#333',
+    '--a-cta': a.cta.color, '--a-cta-ink': t.accentInk || '#fff', '--a-accent': t.accent,
+    '--a-font': t.family, '--a-weight': t.displayWeight, '--a-r': t.radiusBtn,
   };
+  const pins = (area) => (done ? findings.map((x, i) => (x.area !== area ? null : (
+    <span key={i} className={`bc-pin ${phase === 'detail' && i === cur ? 'is-on' : ''}`} aria-hidden="true">{i + 1}</span>
+  ))) : null);
+  const focus = phase === 'detail' ? f.area : '';
+
+  // Connector line from the open finding to the highlighted spot on the asset (wide screens only).
+  const [path, setPath] = useState('');
+  useLayoutEffect(() => {
+    const draw = () => {
+      const root = rootRef.current;
+      if (!root || phase !== 'detail' || window.innerWidth < 900) { setPath(''); return; }
+      const tgt = root.querySelector(`.bc-asset [data-a='${f.area}']`);
+      const card = root.querySelector('.bc-fcard');
+      if (!tgt || !card) { setPath(''); return; }
+      const R = root.getBoundingClientRect(); const T = tgt.getBoundingClientRect(); const C = card.getBoundingClientRect();
+      const x1 = T.right - R.left + 6; const y1 = T.top + T.height / 2 - R.top;
+      const x2 = C.left - R.left; const y2 = C.top + Math.min(60, C.height / 2) - R.top;
+      const mx = (x1 + x2) / 2;
+      setPath(`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`);
+    };
+    draw();
+    const t1 = setTimeout(draw, 360);
+    window.addEventListener('resize', draw);
+    return () => { clearTimeout(t1); window.removeEventListener('resize', draw); };
+  }, [phase, cur]);
 
   return (
-    <div ref={ref} className={`bc ${done ? 'is-done' : ''} ${fixed ? 'is-fixed' : ''}`}>
-      <div className="bc-stage">
-        <div className="bc-bar">
-          <span className="bc-dots" aria-hidden="true"><i /><i /><i /></span>
-          <span className="bc-file">{a.file}</span>
-          <button className="bc-replay" onClick={play} aria-label="Replay brand check"><IconArrowRoundAntiClockwise size={16} /></button>
-        </div>
-        <div className="bc-canvas">
-          <figure className={`bc-asset ${i >= 0 && !done ? 'is-scanning' : ''}`} style={assetStyle} aria-label={`Sample ${a.kind} for ${company}`} data-area={area || ''}>
-            <div className="bc-art" aria-hidden="true">
-              <span /><span /><span />
-            </div>
+    <div ref={rootRef} className={`bc is-${phase}`}>
+      <div className="bc-head">
+        <span className="bc-title"><IconSparkle size={16} /> Brand checker <span className="bc-beta">Beta</span></span>
+        <button className="bc-replay" onClick={play} aria-label="Replay the brand check"><IconArrowRoundAntiClockwise size={16} /></button>
+      </div>
+      <div className="bc-grid">
+        <div className="bc-stage">
+          <figure className={`bc-asset ${phase === 'run' ? 'is-scanning' : ''}`} style={assetStyle} data-focus={focus} aria-label={`Sample ${a.kind} for ${company}`}>
+            <div className="bc-art" aria-hidden="true"><span /><span /><span /></div>
             <div className="bc-copy">
               <p className="bc-eyebrow" data-a="eyebrow">{a.eyebrow}{pins('eyebrow')}</p>
-              <p className="bc-head" data-a="headline">{a.headline}{pins('headline')}</p>
+              <p className="bc-head-t" data-a="headline">{a.headline}{pins('headline')}</p>
               <p className="bc-body" data-a="body">{a.body}{pins('body')}</p>
-              <span className="bc-cta" data-a="cta">{a.cta}{pins('cta')}</span>
+              <span className="bc-cta" data-a="cta">{a.cta.text}{pins('cta')}</span>
             </div>
-            {pins('frame')}
             <span className="bc-scan" aria-hidden="true" />
           </figure>
-          <figcaption className="bc-cap">Sample {a.kind} · {a.by}</figcaption>
+          <p className="bc-cap">Sample {a.kind} · {a.by}</p>
         </div>
-      </div>
 
-      <div className="bc-panel">
-        <div className="bc-score" aria-live="polite">
-          <span className="bc-score-n"><strong>{passed}</strong>/{n}</span>
-          <span className="bc-score-t">
-            {!done ? (<><IconSparkle size={14} /> <span className="shimmer">Checking against {company}'s guidelines</span></>) : fixed ? 'All checks passed. Ready to share.' : `${n - passed} thing to fix before this ships`}
-          </span>
-          <span className="bc-meter" aria-hidden="true"><span style={{ width: `${(passed / n) * 100}%` }} /></span>
-        </div>
-        <ol className="bc-list">
-          {check.checks.map((c, k) => {
-            const s = state(k);
-            const isOpen = open === k && s !== 'wait' && s !== 'run';
-            return (
-              <li key={c.id} className={`bc-item is-${s} ${isOpen ? 'is-open' : ''}`}>
-                <button className="bc-row" onClick={() => (s === 'pass' || s === 'fail') && setOpen(isOpen ? null : k)} aria-expanded={isOpen} disabled={s === 'wait' || s === 'run'}>
-                  <span className="bc-ico" aria-hidden="true">{s === 'pass' ? <IconCheck size={14} /> : s === 'fail' ? <IconCross size={12} /> : s === 'run' ? <i className="bc-spin" /> : k + 1}</span>
-                  <span className="bc-label">{c.label}</span>
-                  <span className="bc-state">{s === 'pass' ? (c.pass ? 'Pass' : 'Fixed') : s === 'fail' ? 'Needs a fix' : s === 'run' ? 'Checking' : ''}</span>
-                </button>
-                <div className="bc-detail" hidden={!isOpen}>
-                  {c.pass || fixed ? (
-                    <p>{c.pass ? c.note : `Updated to ${c.expectedName}, ${c.expected}.`}</p>
-                  ) : (
-                    <>
-                      <p className="bc-why">{c.note}</p>
-                      <div className="bc-swatches">
-                        <span><i style={{ background: c.found }} />Found <code>{c.found}</code></span>
-                        <span><i style={{ background: c.expected }} />{c.expectedName} <code>{c.expected}</code></span>
-                      </div>
-                      <blockquote className="bc-rule">
-                        <span className="bc-path">{c.path}</span>
-                        <p>{c.rule}</p>
-                        <a href={c.source.url} target="_blank" rel="noopener">{c.source.label} <IconArrowOutExternal size={12} /></a>
-                      </blockquote>
-                      <button className="btn-link is-accent press bc-fix" onClick={() => { setFixed(true); setOpen(k); }}>Apply the fix</button>
-                    </>
-                  )}
+        <div className="bc-panel" aria-live="polite">
+          {phase === 'idle' && (
+            <div className="bc-idle">
+              <p>The brand checker runs checks on your asset.</p>
+              <span className="bc-run"><IconSparkle size={14} /> Run brand checker</span>
+            </div>
+          )}
+
+          {(phase === 'run' || phase === 'results') && (
+            <>
+              <div className="bc-card">
+                <div className="bc-card-h">
+                  <strong>{phase === 'run' ? 'Checking your asset' : 'Brand check results'}</strong>
+                  {phase === 'results' && <span className={`bc-pill ${findings.length ? 'is-warn' : 'is-ok'}`}>{findings.length ? 'Issues found' : 'Looking good'}</span>}
                 </div>
-              </li>
-            );
-          })}
-        </ol>
+                {phase === 'run' && <span className="bc-bar-all"><i style={{ width: `${overall * 100}%` }} /></span>}
+                <ul className="bc-cats">
+                  {cats.map((c, i) => (
+                    <li key={c.id} className={phase === 'results' && count(c.id) ? 'has-issue' : ''}>
+                      <span className={`bc-dot ${phase === 'results' ? 'is-done' : ''}`} aria-hidden="true" />
+                      <span className="bc-cat">{c.label}</span>
+                      {phase === 'run' ? <span className="bc-mini"><i style={{ width: `${prog[i] * 100}%` }} /></span> : <span className="bc-status">{status(c)}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className="bc-ai">Generated by AI. Review before making changes.</p>
+              {phase === 'run' ? (
+                <div className="bc-skel" aria-hidden="true"><i /><b /><b /></div>
+              ) : (
+                cats.filter((c) => count(c.id)).map((c) => (
+                  <div key={c.id} className="bc-group">
+                    <p className="bc-group-h">{c.label}</p>
+                    {findings.map((x, i) => (x.cat !== c.id ? null : (
+                      <button key={i} className="bc-frow" onClick={() => { run.current++; setCur(i); setPhase('detail'); }}>
+                        <span className="bc-num">{i + 1}</span><span>{x.text}</span><span className="bc-chev" aria-hidden="true">›</span>
+                      </button>
+                    )))}
+                  </div>
+                ))
+              )}
+            </>
+          )}
+
+          {phase === 'detail' && (
+            <div className="bc-detail">
+              <div className="bc-nav">
+                <button className="bc-back" onClick={() => { run.current++; setPhase('results'); }}>← Back to overview</button>
+                {findings.length > 1 && (
+                  <span className="bc-pager">{cur + 1}/{findings.length}
+                    <button onClick={() => setCur((cur - 1 + findings.length) % findings.length)} aria-label="Previous finding">‹</button>
+                    <button onClick={() => setCur((cur + 1) % findings.length)} aria-label="Next finding">›</button>
+                  </span>
+                )}
+              </div>
+              <div className="bc-fcard" key={cur}>
+                <p className="bc-ftext"><span className="bc-num is-on">{cur + 1}</span><span>{f.text}</span></p>
+                {f.found && (
+                  <div className="bc-swatches">
+                    <span><i style={{ background: f.found }} />Found <code>{f.found}</code></span>
+                    <span><i style={{ background: f.expected }} />{f.expectedName} <code>{f.expected}</code></span>
+                  </div>
+                )}
+                <p className="bc-k">Recommendation</p>
+                <p className="bc-v">{f.recommendation}</p>
+                <p className="bc-k">Sources</p>
+                <ul className="bc-sources">
+                  {f.sources.map((s) => (<li key={s.label}><a href={s.url} target="_blank" rel="noopener">{s.label} <IconArrowOutExternal size={11} /></a></li>))}
+                </ul>
+              </div>
+              <p className="bc-ai">Generated by AI. Review before making changes.</p>
+            </div>
+          )}
+        </div>
       </div>
+      {path && <svg className="bc-link" aria-hidden="true"><path d={path} /></svg>}
     </div>
   );
 }

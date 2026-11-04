@@ -228,6 +228,7 @@ function Portal({ company: c }) {
                   <a className="btn-link press" href="https://www.frontify.com/en" target="_blank" rel="noopener">Explore frontify.com <IconArrowOutExternal size={14} /></a>
                 </div>
               </div>
+              <ContactCard s={SITE.sender} />
             </div>
           </section>
 
@@ -237,6 +238,33 @@ function Portal({ company: c }) {
         </main>
       )}
 
+    </div>
+  );
+}
+
+// Who the visitor is talking to: photo, title, direct lines, and a contact card they can save on their phone.
+function ContactCard({ s }) {
+  const vcf = ['BEGIN:VCARD', 'VERSION:3.0', `N:Franke;Brian;;;`, `FN:${s.name}`, `ORG:${s.company}`, `TITLE:${s.title}`, `EMAIL;TYPE=WORK:${s.email}`, `TEL;TYPE=CELL:${s.tel}`, 'URL:https://www.frontify.com/en', 'END:VCARD'].join('\r\n');
+  const initials = s.name.split(' ').map((w) => w[0]).join('');
+  return (
+    <div className="contact">
+      <div className="contact-who">
+        {s.photo ? <img className="contact-photo" src={s.photo} alt={s.name} width="88" height="88" /> : <span className="contact-photo is-initials" aria-hidden="true">{initials}</span>}
+        <div>
+          <p className="contact-name">{s.name}</p>
+          <p className="contact-title">{s.title}, {s.company}</p>
+        </div>
+      </div>
+      <ul className="contact-lines">
+        <li><span>Email</span><a href={`mailto:${s.email}`}>{s.email}</a></li>
+        <li><span>Cell</span><a href={`tel:${s.tel}`}>{s.phone}</a></li>
+        <li><span>Web</span><a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></li>
+      </ul>
+      <div className="contact-ctas">
+        <a className="btn-link press" href={`mailto:${s.email}`}>Email Brian</a>
+        <a className="btn-link press" href={`sms:${s.tel}`}>Text Brian</a>
+        <a className="btn-link press" href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcf)}`} download="Brian-Franke.vcf">Save contact</a>
+      </div>
     </div>
   );
 }

@@ -107,7 +107,7 @@
     "eyebrow": "Use case 3 · Brand Check (beta)",
     "title": "Then it checks the work",
     "sub": "Before anything goes live, Brand Check reviews it against {name}'s guidelines, flags potential issues, and shows which guideline informed each finding.",
-    "note": "Brand Check is in beta. The asset, findings and guidelines here are samples built from Atlassian's public design system, not Atlassian's own.",
+    "note": "Brand Check runs on the context you already keep in Frontify. It's more than a prompt: it's a service built into Frontify, available in the portal and through the API. Brand Check is in beta, and the asset and findings shown here are samples.",
     "asset": {
       "kind": "LinkedIn post",
       "file": "rovo-launch-social-v3.png",

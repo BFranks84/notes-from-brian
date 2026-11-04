@@ -230,8 +230,9 @@
       }
     ],
     "voiceSource": {
-      "label": "Atlassian Design System, brand personality",
-      "url": "https://www.atlassian.design/brand/personality"
+      "label": "See the voice guideline",
+      "to": "everyday",
+      "basis": "https://www.atlassian.design/brand/personality"
     },
     "disclaimer": "Illustrative draft written for this sample, using Atlassian's public brand personality guidance. Not Atlassian content."
   },
@@ -291,11 +292,7 @@
         "sources": [
           {
             "label": "Brand - Color - Primary colors",
-            "url": "https://atlassian.design/foundations/color"
-          },
-          {
-            "label": "Design system - Button",
-            "url": "https://atlassian.design/components/button"
+            "to": "brand"
           }
         ]
       }

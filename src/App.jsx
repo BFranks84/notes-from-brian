@@ -165,7 +165,7 @@ function Portal({ company: c }) {
                   {theme === 'frontify' ? `Switch to the ${c.name} theme` : 'Switch back to Frontify'}
                 </Button>
                 <p className="theme-src">
-                  Colors and layout cues from <a href={ct?.url} target="_blank" rel="noopener">{ct?.source} <IconArrowOutExternal size={12} /></a>. Type is a free stand-in, not {c.name}'s own typeface. No logos, and not affiliated with {c.name}.
+                  Colors and layout cues from {ct?.source}. Type is a free stand-in, not {c.name}'s own typeface. No logos, and not affiliated with {c.name}.
                 </p>
               </div>
               <ul className="swatches">
@@ -343,7 +343,7 @@ function Tour({ company: c, ideas }) {
           {ideas.map((i, k) => (
             <article key={i.id} data-i={k} ref={(el) => (refs.current[k] = el)} className={`step ${k === active ? 'is-on' : ''}`}>
               <h3>{i.title}</h3>
-              <p className="step-why">{i.why.text} <a href={i.why.url} target="_blank" rel="noopener">{i.why.source} <IconArrowOutExternal size={12} /></a></p>
+              <p className="step-why">{i.why.text} <span className="step-src">Source: {i.why.source}</span></p>
               <ul>{i.looksLike.slice(0, 3).map((l, n) => <li key={n}>{l}</li>)}</ul>
               <p className="step-q"><span>A question for you</span>{i.question}</p>
             </article>

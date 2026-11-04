@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { openContext } from './ContextTypes.jsx';
 import { IconSparkle, IconArrowRoundAntiClockwise, IconImage, IconArrowOutExternal } from './icons.jsx';
 
 const reduce = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -115,7 +116,7 @@ export function ChatDemo({ hero, company }) {
       </a>
       <p className="chat-note">
         {hero.disclaimer}{' '}
-        <a href={hero.voiceSource.url} target="_blank" rel="noopener">Source <IconArrowOutExternal size={12} /></a>
+        {hero.voiceSource.to && <button className="chat-srclink" onClick={() => openContext(hero.voiceSource.to)}>{hero.voiceSource.label}</button>}
       </p>
     </div>
   );

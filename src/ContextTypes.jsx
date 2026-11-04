@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { IconCheck, IconCross, IconSparkle, IconDocumentText } from './icons.jsx';
 
+// In-page links ("Brand - Color - Primary colors") open the matching mini guideline instead of an outside site.
+export const openContext = (id) => window.dispatchEvent(new CustomEvent('nfb:context', { detail: id }));
+
 const reduce = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Use case 1: the system of context. Each context type shows a tiny guideline page in the company's
@@ -23,6 +26,16 @@ export function ContextTypes({ items, theme, company }) {
   }, [k, auto, seen, items.length]);
 
   const pick = (i) => { setAuto(false); setK(i); };
+  useEffect(() => {
+    const on = (e) => {
+      const i = items.findIndex((x) => x.id === e.detail);
+      if (i < 0) return;
+      pick(i);
+      ref.current?.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth', block: 'center' });
+    };
+    window.addEventListener('nfb:context', on);
+    return () => window.removeEventListener('nfb:context', on);
+  }, [items]);
   const it = items[k];
   const t = theme || {};
   const vars = {

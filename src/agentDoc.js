@@ -25,7 +25,7 @@ export function agentDoc(c, { origin, booking, sender }) {
     lines.push('## Brand Check (beta)');
     lines.push(c.check.sub.replace('{name}', c.name));
     lines.push(`- checks: ${c.check.categories.map((k) => k.label.toLowerCase()).join(', ')}`);
-    if (f) lines.push(`- example finding: ${f.text} Recommendation: ${f.recommendation} Sources: ${f.sources.map((s) => `${s.label} (${s.url})`).join('; ')}`);
+    if (f) lines.push(`- example finding: ${f.text} Recommendation: ${f.recommendation} Source: ${f.sources.map((s) => s.label).join('; ')}`);
     lines.push(`- note: ${c.check.note}`);
     lines.push('');
   }

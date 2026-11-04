@@ -234,5 +234,66 @@
       "url": "https://www.atlassian.design/brand/personality"
     },
     "disclaimer": "Illustrative draft written for this sample, using Atlassian's public brand personality guidance. Not Atlassian content."
+  },
+  "check": {
+    "eyebrow": "Brand check · Beta",
+    "title": "Then it checks the work",
+    "sub": "Before a draft goes out, Frontify can check it against {name}'s guidelines rule by rule, and point to the exact guideline behind anything it flags.",
+    "note": "Brand compliance checking is in beta. The asset and guideline here are samples built from Atlassian's public design system, not Atlassian's own.",
+    "asset": {
+      "kind": "LinkedIn post",
+      "file": "rovo-launch-social-v3.png",
+      "by": "draft from a regional marketing team",
+      "eyebrow": "New in Rovo",
+      "headline": "Less busywork. More teamwork.",
+      "body": "See how teams plan, write and ship with AI that knows their work.",
+      "cta": "Watch the demo"
+    },
+    "checks": [
+      {
+        "id": "layout",
+        "area": "frame",
+        "label": "Layout and safe area",
+        "pass": true,
+        "note": "Copy and artwork sit inside the safe area for a LinkedIn image."
+      },
+      {
+        "id": "type",
+        "area": "headline",
+        "label": "Typography",
+        "pass": true,
+        "note": "The headline uses the brand typeface at an approved weight and size."
+      },
+      {
+        "id": "voice",
+        "area": "body",
+        "label": "Tone of voice",
+        "pass": true,
+        "note": "Reads as bold, optimistic and practical, matching the voice guidelines."
+      },
+      {
+        "id": "color",
+        "area": "cta",
+        "label": "Color",
+        "pass": false,
+        "found": "#0052CC",
+        "expected": "#1868DB",
+        "expectedName": "Brand blue",
+        "note": "The button uses #0052CC, which isn't in the current brand palette.",
+        "path": "Guidelines › Color › Brand",
+        "rule": "Primary actions use Brand blue, #1868DB. Older blues shouldn't appear in new work.",
+        "source": {
+          "label": "Based on the Atlassian Design System, color",
+          "url": "https://atlassian.design/foundations/color"
+        }
+      },
+      {
+        "id": "contrast",
+        "area": "eyebrow",
+        "label": "Contrast",
+        "pass": true,
+        "note": "All text meets WCAG AA contrast on its background."
+      }
+    ]
   }
 }

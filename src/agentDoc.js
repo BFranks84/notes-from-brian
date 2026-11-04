@@ -14,6 +14,15 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push(c.hero.sub);
   lines.push('Frontify connects to AI tools like Claude, ChatGPT and Microsoft Copilot through the Frontify MCP server.');
   lines.push('');
+  if (c.check) {
+    const f = c.check.checks.find((k) => !k.pass);
+    lines.push('## Brand check (beta)');
+    lines.push(c.check.sub.replace('{name}', c.name));
+    lines.push(`- sample: a ${c.check.asset.kind} checked on ${c.check.checks.map((k) => k.label.toLowerCase()).join(', ')}`);
+    if (f) lines.push(`- example flag: ${f.note} Guideline: ${f.rule} (${f.source.url})`);
+    lines.push(`- note: ${c.check.note}`);
+    lines.push('');
+  }
   lines.push("## Ideas");
   c.ideas.forEach((i, n) => {
     lines.push('');

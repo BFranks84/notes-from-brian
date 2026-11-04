@@ -7,6 +7,7 @@ import { agentDoc } from './agentDoc.js';
 import { Scene } from './Scenes.jsx';
 import { ShareTemplate } from './ShareTemplate.jsx';
 import { RotatingWord, ChatDemo } from './Hero.jsx';
+import { BrandCheck } from './BrandCheck.jsx';
 import { FRONTIFY, companyTheme, applyTheme, preloadFont } from './theme.js';
 
 function useRoute() {
@@ -121,6 +122,18 @@ function Portal({ company: c }) {
               <ChatDemo hero={c.hero} company={c.name} />
             </div>
           </section>
+
+          {c.check && (
+            <section className="wrap block bc-block" aria-labelledby="check-title">
+              <div className="block-head">
+                <p className="bc-eyebrow-tag">{c.check.eyebrow}</p>
+                <h2 id="check-title">{c.check.title}</h2>
+                <p>{c.check.sub.replace('{name}', c.name)}</p>
+              </div>
+              <BrandCheck check={c.check} theme={ct || FRONTIFY} company={c.name} />
+              <p className="bc-note">{c.check.note}</p>
+            </section>
+          )}
 
           <Ladder company={c.name} />
 

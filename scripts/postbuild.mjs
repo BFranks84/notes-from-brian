@@ -5,7 +5,7 @@ import { agentDoc } from '../src/agentDoc.js';
 const ORIGIN = process.env.SITE_ORIGIN || 'https://notesfrombrian.com';
 const SITE = {
   origin: ORIGIN,
-  sender: { name: 'Brian Franke', title: 'Senior Enterprise Account Executive', company: 'Frontify', email: 'brian.franke@frontify.com', phone: '630.666.8201' },
+  sender: { name: 'Brian Franke', title: 'Senior Enterprise Account Executive', company: 'Frontify', email: 'brian.franke@frontify.com' },
   booking: 'https://frontify.chilipiper.com/personal-page/brian-franke',
 };
 const dist = path.resolve('dist');

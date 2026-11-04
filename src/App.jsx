@@ -257,7 +257,6 @@ function ContactCard({ s }) {
       </div>
       <ul className="contact-lines">
         <li><span>Email</span><a href={`mailto:${s.email}`}>{s.email}</a></li>
-        <li><span>Cell</span><a href={`tel:${s.tel}`}>{s.phone}</a></li>
         <li><span>Web</span><a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></li>
       </ul>
       <div className="contact-ctas">

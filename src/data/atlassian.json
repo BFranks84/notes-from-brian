@@ -204,7 +204,8 @@
       "brand",
       "creative",
       "product",
-      "event"
+      "event",
+      "writing"
     ],
     "sub": "Most people at Atlassian will never open Frontify. They'll ask Claude, ChatGPT or Copilot, and Frontify makes sure the answer already knows your brand.",
     "prompt": "Draft a LinkedIn post for our next Rovo feature launch.",
@@ -298,7 +299,7 @@
   "contexts": {
     "eyebrow": "Use case 1 · A system of context",
     "title": "Every kind of context, in one place",
-    "sub": "Brand, creative, product and event knowledge live in {name}'s portal as guideline pages. People read them, and AI tools answer from them.",
+    "sub": "Brand, creative, product, event and everyday writing guidance live in {name}'s portal as guideline pages. People read them, and AI tools answer from them.",
     "note": "Sample pages built from Atlassian's public design system and product names. Not Atlassian's own guidelines.",
     "items": [
       {
@@ -401,6 +402,39 @@
         ],
         "ask": "I need a speaker slide for our session.",
         "answer": "Opened the Speaker slide template. Layout and logo stay locked."
+      },
+      {
+        "id": "writing",
+        "label": "Writing",
+        "desc": "Email and everyday writing",
+        "kind": "writing",
+        "chapter": "Email & writing",
+        "section": "Email",
+        "title": "Email and writing",
+        "lead": "For every email, doc and message, not just marketing.",
+        "rules": [
+          [
+            "Subject",
+            "Say what you need in under eight words."
+          ],
+          [
+            "Opening",
+            "Lead with the ask or the answer."
+          ],
+          [
+            "Voice",
+            "Bold, optimistic and practical."
+          ],
+          [
+            "Sign-off",
+            "Use the standard signature. No quotes or images."
+          ]
+        ],
+        "do": "Can you review the launch plan by Thursday?",
+        "dont": "Just circling back on the below!!",
+        "askLabel": "Before sending, in Outlook with Copilot",
+        "ask": "Check this email against our writing guidelines.",
+        "answer": "Two fixes: put the ask in the first line, and use the standard signature. From Email & writing › Email."
       }
     ]
   }

@@ -669,3 +669,11 @@ button { font: inherit; color: inherit; }
 .ct-q span { display: block; font-size: 11px; opacity: .65; margin-bottom: 2px; }
 .ct-a { justify-self: start; display: inline-flex; gap: 8px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
 .ct-a svg { flex: none; margin-top: 3px; color: var(--accent-text); }
+.mini-writing { display: grid; gap: 10px; font-size: 12px; }
+.mini-writing dl { margin: 0; display: grid; gap: 0; border-top: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); }
+.mini-writing dl div { display: grid; grid-template-columns: 76px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); }
+.mini-writing dt { font-weight: 600; } .mini-writing dd { margin: 0; color: var(--m-ink2); }
+.mini-phr { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mini-phr p { padding: 8px 10px; border-radius: 6px; background: var(--m-surface); border: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); color: var(--m-ink2); }
+.mini-phr strong { display: flex; align-items: center; gap: 5px; font-size: 12px; margin-bottom: 3px; }
+.mini-phr .is-do strong { color: #1F845A; } .mini-phr .is-dont strong { color: #C9372C; }

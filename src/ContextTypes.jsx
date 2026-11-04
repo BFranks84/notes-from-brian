@@ -65,7 +65,7 @@ export function ContextTypes({ items, theme, company }) {
           </div>
         </div>
         <div className="ct-ai" key={`ai-${it.id}`}>
-          <p className="ct-q"><span>Someone asks their AI</span>{it.ask}</p>
+          <p className="ct-q"><span>{it.askLabel || 'Someone asks their AI'}</span>{it.ask}</p>
           <p className="ct-a"><IconSparkle size={14} /><span>{it.answer}</span></p>
         </div>
       </div>
@@ -112,6 +112,19 @@ function Preview({ it }) {
           {it.claims.map((c, i) => <li key={c} className="s" style={{ '--i': 5 + i }}>{c}</li>)}
         </ul>
         <p className="mini-rule s" style={{ '--i': 5 + it.claims.length }}>{it.rule}</p>
+      </div>
+    );
+  }
+  if (it.kind === 'writing') {
+    return (
+      <div className="mini-writing">
+        <dl>
+          {it.rules.map(([a, b], i) => (<div key={a} className="s" style={{ '--i': 3 + i }}><dt>{a}</dt><dd>{b}</dd></div>))}
+        </dl>
+        <div className="mini-phr">
+          <p className="is-do s" style={{ '--i': 3 + it.rules.length }}><strong><IconCheck size={13} />Do</strong>"{it.do}"</p>
+          <p className="is-dont s" style={{ '--i': 4 + it.rules.length }}><strong><IconCross size={11} />Don't</strong>"{it.dont}"</p>
+        </div>
       </div>
     );
   }

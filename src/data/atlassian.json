@@ -43,7 +43,7 @@
     {
       "id": "check",
       "title": "Brand Check before anything goes live",
-      "summary": "Brand Check (beta) reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
     },
     {
       "id": "everyday",

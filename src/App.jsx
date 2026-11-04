@@ -81,7 +81,9 @@ function Portal({ company: c }) {
       const y = window.scrollY; const vh = window.innerHeight;
       const talk = document.getElementById('talk-title');
       const nearEnd = talk && talk.getBoundingClientRect().top < vh * 0.9;
-      setPillOn(y > vh * 0.9 && !nearEnd);
+      const lad = document.querySelector('.ladder')?.getBoundingClientRect();
+      const inLadder = lad && lad.top < vh * 0.5 && lad.bottom > vh * 0.5;
+      setPillOn(y > vh * 0.9 && !nearEnd && !inLadder);
     };
     onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -205,32 +207,58 @@ const LADDER = [
   ['agency', 'What AI can do', 'Agents plan, decide and act'],
 ];
 
+// Mobile: a scroll-driven stack that builds from the foundation up, so each layer visibly rests on the ones before it.
+// Desktop: the five layers as connected chevrons, lighting up in sequence.
 function Ladder({ company }) {
   const ref = useRef(null);
+  const [n, setN] = useState(0); // layers placed (0..5)
   const [on, setOn] = useState(false);
   useEffect(() => {
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && setOn(true), { threshold: 0.3 });
-    ref.current && io.observe(ref.current);
-    return () => io.disconnect();
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { setN(LADDER.length); setOn(true); return; }
+    let raf = 0;
+    const tick = () => {
+      raf = 0;
+      const el = ref.current; if (!el) return;
+      const r = el.getBoundingClientRect(); const vh = window.innerHeight;
+      const span = Math.max(1, r.height - vh);
+      const p = Math.min(1, Math.max(0, -r.top / span));
+      setN(Math.min(LADDER.length, Math.floor(p * (LADDER.length + 0.6)) + 1));
+      if (r.top < vh * 0.7) setOn(true);
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    tick(); window.addEventListener('scroll', onScroll, { passive: true }); window.addEventListener('resize', onScroll);
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); cancelAnimationFrame(raf); };
   }, []);
+  const done = n >= LADDER.length;
   return (
-    <section ref={ref} className={`band ladder ${on ? 'is-on' : ''}`} aria-labelledby="ladder-title">
-      <div className="wrap">
-        <h2 id="ladder-title">Context is the missing layer</h2>
-        <p className="ladder-sub">
-          {company} already runs systems of record, engagement and intelligence. Agents need one more layer before they can act well:
-          a trusted place to read brand, creative and product context. Without it, they guess.
-        </p>
-        <ol className="rungs">
-          {LADDER.map(([t, k, d], i) => (
-            <li key={t} style={{ '--i': i }} className={t === 'context' ? 'is-key' : ''}>
-              <strong>Systems of {t}</strong>
-              <span>{d}</span>
-              <em>{k}</em>
-            </li>
-          ))}
-        </ol>
-        <p className="ladder-bar"><strong>Record, engagement, intelligence, context, agency.</strong> Effective AI depends on an effective context layer.</p>
+    <section ref={ref} className={`ladder ${on ? 'is-on' : ''} ${done ? 'is-done' : ''}`} aria-labelledby="ladder-title" style={{ '--n': n }}>
+      <div className="ladder-pin">
+        <div className="wrap">
+          <h2 id="ladder-title">Context is the missing layer</h2>
+          <p className="ladder-sub">
+            Each system builds on the one before it. {company} already has the first three. Agents need the fourth before they can act well.
+          </p>
+          <ol className="rungs">
+            {LADDER.map(([t, k, d], i) => {
+              const state = i < n - 1 ? 'is-past' : i === n - 1 ? 'is-now' : 'is-next';
+              return (
+                <li key={t} style={{ '--i': i }} className={`${state} ${t === 'context' ? 'is-key' : ''} ${t === 'agency' ? 'is-top' : ''}`}>
+                  <span className="rung-step">{i + 1}</span>
+                  <div className="rung-text">
+                    <strong>Systems of {t}</strong>
+                    <span className="rung-desc">{d}</span>
+                    <em>{k}</em>
+                    {i > 0 && (
+                      <span className="rung-builds">Builds on {LADDER.slice(0, i).map(([p]) => <b key={p}>{p}</b>)}</span>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+          <p className="ladder-bar">Effective AI depends on an effective context layer. Without it, agents guess.</p>
+        </div>
       </div>
     </section>
   );

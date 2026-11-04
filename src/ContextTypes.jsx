@@ -1,0 +1,132 @@
+import { useEffect, useRef, useState } from 'react';
+import { IconCheck, IconCross, IconSparkle, IconDocumentText } from './icons.jsx';
+
+const reduce = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Use case 1: the system of context. Each context type shows a tiny guideline page in the company's
+// brand (layout patterns borrowed from Frontify guideline pages), plus what an AI tool gets from it.
+export function ContextTypes({ items, theme, company }) {
+  const [k, setK] = useState(0);
+  const [auto, setAuto] = useState(true);
+  const [seen, setSeen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const io = new IntersectionObserver(([e]) => setSeen(e.isIntersecting), { threshold: 0.3 });
+    if (ref.current) io.observe(ref.current);
+    return () => io.disconnect();
+  }, []);
+  useEffect(() => {
+    if (!auto || !seen || reduce()) return;
+    const t = setTimeout(() => setK((x) => (x + 1) % items.length), 5200);
+    return () => clearTimeout(t);
+  }, [k, auto, seen, items.length]);
+
+  const pick = (i) => { setAuto(false); setK(i); };
+  const it = items[k];
+  const t = theme || {};
+  const vars = {
+    '--m-bg': t.bg, '--m-surface': t.surface, '--m-ink': t.ink, '--m-ink2': t.ink2 || t.ink,
+    '--m-accent': t.accent, '--m-accent-ink': t.accentInk, '--m-accent-text': t.accentText || t.accent,
+    '--m-hl': t.hl || t.surface, '--m-font': t.family, '--m-body': t.body, '--m-weight': t.displayWeight,
+    '--m-r': t.radiusCard, '--m-rb': t.radiusBtn,
+  };
+
+  return (
+    <div ref={ref} className="ctx-types">
+      <div className="ct-tabs" role="tablist" aria-label="Context types">
+        {items.map((x, i) => (
+          <button key={x.id} role="tab" aria-selected={i === k} aria-controls="ct-panel" className={`ct-tab ${i === k ? 'is-on' : ''}`} onClick={() => pick(i)}>
+            <span className="ct-tab-name">{x.label}</span>
+            <span className="ct-tab-desc">{x.desc}</span>
+            {i === k && auto && seen && <span className="ct-tab-timer" aria-hidden="true" key={`t-${k}`} />}
+          </button>
+        ))}
+      </div>
+
+      <div id="ct-panel" role="tabpanel" className="ct-panel">
+        <div className="mini" style={vars} aria-label={`Sample ${it.label.toLowerCase()} guideline page for ${company}`}>
+          <div className="mini-bar">
+            <span className="mini-dots" aria-hidden="true"><i /><i /><i /></span>
+            <span className="mini-url">{company} brand portal</span>
+          </div>
+          <div className="mini-body">
+            <nav className="mini-nav" aria-hidden="true">
+              {items.map((x2, i) => (
+                <span key={x2.id} className={i === k ? 'is-on' : ''}>{x2.chapter}</span>
+              ))}
+            </nav>
+            <div className="mini-page" key={it.id}>
+              <p className="mini-crumb s" style={{ '--i': 0 }}>{it.chapter} › {it.section}</p>
+              <h3 className="mini-h s" style={{ '--i': 1 }}>{it.title}</h3>
+              <p className="mini-lead s" style={{ '--i': 2 }}>{it.lead}</p>
+              <Preview it={it} />
+            </div>
+          </div>
+        </div>
+        <div className="ct-ai" key={`ai-${it.id}`}>
+          <p className="ct-q"><span>Someone asks their AI</span>{it.ask}</p>
+          <p className="ct-a"><IconSparkle size={14} /><span>{it.answer}</span></p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Preview({ it }) {
+  if (it.kind === 'color') {
+    return (
+      <div className="mini-swatches">
+        {it.swatches.map(([name, hex], i) => (
+          <div key={hex} className="mini-sw s" style={{ '--i': 3 + i }}>
+            <span className="mini-chip" style={{ background: hex }} />
+            <strong>{name}</strong>
+            <code>HEX {hex}</code>
+          </div>
+        ))}
+        <p className="mini-rule s" style={{ '--i': 3 + it.swatches.length }}>{it.rule}</p>
+      </div>
+    );
+  }
+  if (it.kind === 'photo') {
+    return (
+      <div className="mini-dd">
+        {[['do', it.do], ['dont', it.dont]].map(([kind, d], i) => (
+          <div key={kind} className={`mini-ddc is-${kind} s`} style={{ '--i': 3 + i }}>
+            <span className="mini-img" aria-hidden="true">
+              {kind === 'do' ? (<><b style={{ left: '18%' }} /><b style={{ left: '42%', top: '30%' }} /><b style={{ left: '66%' }} /></>) : (<b className="solo" />)}
+            </span>
+            <strong>{kind === 'do' ? <IconCheck size={13} /> : <IconCross size={11} />}{d.label}</strong>
+            <span>{d.note}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  if (it.kind === 'launch') {
+    return (
+      <div className="mini-launch">
+        <p className="mini-callout s" style={{ '--i': 3 }}>{it.positioning}</p>
+        <p className="mini-sub s" style={{ '--i': 4 }}>Approved claims</p>
+        <ul>
+          {it.claims.map((c, i) => <li key={c} className="s" style={{ '--i': 5 + i }}>{c}</li>)}
+        </ul>
+        <p className="mini-rule s" style={{ '--i': 5 + it.claims.length }}>{it.rule}</p>
+      </div>
+    );
+  }
+  return (
+    <div className="mini-event">
+      <dl className="s" style={{ '--i': 3 }}>
+        {it.facts.map(([a, b]) => (<div key={a}><dt>{a}</dt><dd>{b}</dd></div>))}
+      </dl>
+      {it.templates.map((tpl, i) => (
+        <div key={tpl.name} className="mini-tpl s" style={{ '--i': 4 + i }}>
+          <span className="mini-thumb" aria-hidden="true"><IconDocumentText size={14} /></span>
+          <span><strong>{tpl.name}</strong><em>{tpl.note}</em></span>
+          <span className="mini-use">Use this template</span>
+        </div>
+      ))}
+    </div>
+  );
+}

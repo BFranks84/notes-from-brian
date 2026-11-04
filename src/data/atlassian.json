@@ -204,8 +204,7 @@
       "brand",
       "creative",
       "product",
-      "campaign",
-      "partner"
+      "event"
     ],
     "sub": "Most people at Atlassian will never open Frontify. They'll ask Claude, ChatGPT or Copilot, and Frontify makes sure the answer already knows your brand.",
     "prompt": "Draft a LinkedIn post for our next Rovo feature launch.",
@@ -293,6 +292,115 @@
         "label": "Contrast",
         "pass": true,
         "note": "All text meets WCAG AA contrast on its background."
+      }
+    ]
+  },
+  "contexts": {
+    "eyebrow": "Use case 1 · A system of context",
+    "title": "Every kind of context, in one place",
+    "sub": "Brand, creative, product and event knowledge live in {name}'s portal as guideline pages. People read them, and AI tools answer from them.",
+    "note": "Sample pages built from Atlassian's public design system and product names. Not Atlassian's own guidelines.",
+    "items": [
+      {
+        "id": "brand",
+        "label": "Brand",
+        "desc": "Colors, type, logo and voice",
+        "kind": "color",
+        "chapter": "Color",
+        "section": "Primary colors",
+        "title": "Our palette",
+        "lead": "Brand blue leads. Neutrals carry most of the page.",
+        "swatches": [
+          [
+            "Brand blue",
+            "#1868DB"
+          ],
+          [
+            "Text",
+            "#292A2E"
+          ],
+          [
+            "Ink",
+            "#101214"
+          ],
+          [
+            "Surface",
+            "#F8F8F8"
+          ]
+        ],
+        "rule": "Use Brand blue for primary actions and links only.",
+        "ask": "What blue do I use for a button?",
+        "answer": "Brand blue, #1868DB, from Color › Primary colors."
+      },
+      {
+        "id": "creative",
+        "label": "Creative",
+        "desc": "Photography, illustration and motion",
+        "kind": "photo",
+        "chapter": "Photography",
+        "section": "Do and don't",
+        "title": "Photography",
+        "lead": "Real teams doing real work, never staged.",
+        "do": {
+          "label": "Teams at work",
+          "note": "Candid moments of people working together."
+        },
+        "dont": {
+          "label": "Posed for the camera",
+          "note": "No staged handshakes or stock smiles."
+        },
+        "ask": "Can I use a stock photo of a handshake?",
+        "answer": "Better not. Photography › Do and don't asks for candid teamwork."
+      },
+      {
+        "id": "product",
+        "label": "Product",
+        "desc": "Launches, positioning and claims",
+        "kind": "launch",
+        "chapter": "Product launch",
+        "section": "Rovo",
+        "title": "Rovo positioning",
+        "lead": "Start every launch brief from this page.",
+        "positioning": "Rovo is AI that works across the apps teams already use, with the context of their work.",
+        "claims": [
+          "Works across Jira, Confluence and Loom",
+          "Answers from your team's own content"
+        ],
+        "rule": "Always write Rovo, never \"the Rovo AI.\"",
+        "ask": "Write a one-line pitch for Rovo.",
+        "answer": "Drafted from the approved positioning in Product launch › Rovo."
+      },
+      {
+        "id": "event",
+        "label": "Event",
+        "desc": "Toolkits, booths and speaker kits",
+        "kind": "event",
+        "chapter": "Event toolkits",
+        "section": "Field events",
+        "title": "Field event toolkit",
+        "lead": "Everything a team needs to show up on brand.",
+        "facts": [
+          [
+            "Audience",
+            "Customers, partners and press"
+          ],
+          [
+            "Booth files",
+            "Due four weeks out"
+          ]
+        ],
+        "templates": [
+          {
+            "name": "Speaker slide",
+            "note": "Add talk title, name and session"
+          },
+          {
+            "name": "Event banner",
+            "note": "Headline and image, layout locked"
+          }
+        ],
+        "ask": "I need a speaker slide for our session.",
+        "answer": "Opened the Speaker slide template. Layout and logo stay locked."
       }
     ]
   }

@@ -8,6 +8,7 @@ import { Scene } from './Scenes.jsx';
 import { ShareTemplate } from './ShareTemplate.jsx';
 import { RotatingWord, ChatDemo } from './Hero.jsx';
 import { BrandCheck } from './BrandCheck.jsx';
+import { ContextTypes } from './ContextTypes.jsx';
 import { FRONTIFY, companyTheme, applyTheme, preloadFont } from './theme.js';
 
 function useRoute() {
@@ -123,6 +124,20 @@ function Portal({ company: c }) {
             </div>
           </section>
 
+          <Ladder company={c.name} />
+
+          {c.contexts && (
+            <section className="wrap block ct-block" aria-labelledby="ctx-title">
+              <div className="block-head">
+                <p className="bc-eyebrow-tag">{c.contexts.eyebrow}</p>
+                <h2 id="ctx-title">{c.contexts.title}</h2>
+                <p>{c.contexts.sub.replace('{name}', c.name)}</p>
+              </div>
+              <ContextTypes items={c.contexts.items} theme={ct || FRONTIFY} company={c.name} />
+              <p className="bc-note">{c.contexts.note}</p>
+            </section>
+          )}
+
           {c.check && (
             <section className="wrap block bc-block" aria-labelledby="check-title">
               <div className="block-head">
@@ -135,7 +150,6 @@ function Portal({ company: c }) {
             </section>
           )}
 
-          <Ladder company={c.name} />
 
           <Tour company={c} ideas={tour} />
 

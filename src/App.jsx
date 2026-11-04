@@ -227,6 +227,11 @@ function Ladder({ company }) {
     return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); cancelAnimationFrame(raf); };
   }, []);
   const done = n >= LADDER.length;
+  // Tap a placed layer to open it; scrolling to a new layer resets to the newest one.
+  const [focus, setFocus] = useState(null);
+  useEffect(() => { setFocus(null); }, [n]);
+  const open = focus ?? n - 1;
+  const toggle = (i) => { if (i < n) setFocus(i === open ? (i === n - 1 ? null : n - 1) : i); };
   return (
     <section ref={ref} className={`ladder ${on ? 'is-on' : ''} ${done ? 'is-done' : ''}`} aria-labelledby="ladder-title" style={{ '--n': n }}>
       <div className="ladder-pin">
@@ -237,9 +242,18 @@ function Ladder({ company }) {
           </p>
           <ol className="rungs">
             {LADDER.map(([t, k, d], i) => {
-              const state = i < n - 1 ? 'is-past' : i === n - 1 ? 'is-now' : 'is-next';
+              const state = i === open ? 'is-now' : i < n ? 'is-past' : 'is-next';
               return (
-                <li key={t} style={{ '--i': i }} className={`${state} ${t === 'context' ? 'is-key' : ''} ${t === 'agency' ? 'is-top' : ''}`}>
+                <li
+                  key={t}
+                  style={{ '--i': i }}
+                  className={`${state} ${t === 'context' ? 'is-key' : ''} ${t === 'agency' ? 'is-top' : ''}`}
+                  role={i < n ? 'button' : undefined}
+                  tabIndex={i < n ? 0 : -1}
+                  aria-expanded={i < n ? i === open : undefined}
+                  onClick={() => toggle(i)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(i); } }}
+                >
                   <span className="rung-step">{i + 1}</span>
                   <div className="rung-text">
                     <strong>Systems of {t}</strong>

@@ -52,7 +52,6 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push('## Next step');
   lines.push(`Pick any idea above and book time with ${sender.name.split(' ')[0]}: ${booking}`);
   if (sender.email) lines.push(`Contact: ${sender.email}${sender.phone ? `, ${sender.phone} (cell)` : ''}. Frontify: https://www.frontify.com/en`);
-  if (sender.email) lines.push(`Contact: ${sender.email}${sender.phone ? `, ${sender.phone} (cell)` : ''}. Frontify: https://www.frontify.com/en`);
   lines.push('No fixed agenda. Expect peer examples, setup patterns and an honest read on fit.');
   return lines.join('\n');
 }

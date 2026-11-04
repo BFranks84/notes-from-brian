@@ -29,9 +29,9 @@ const TOOLS = [
 ];
 
 // The "missing context" moment: generic answer first, then brand context snaps in and the answer rewrites.
-export function ChatDemo({ hero, company }) {
+export function ChatDemo({ hero, company, theme }) {
   const [tool, setTool] = useState(TOOLS[0]);
-  const [phase, setPhase] = useState(reduce() ? 4 : 0); // 0 typing, 1 generic, 2 pulling context, 3 rewriting, 4 done
+  const [phase, setPhase] = useState(reduce() ? 4 : -1); // -1 waiting for the visitor, 0 typing, 1 generic, 2 pulling context, 3 rewriting, 4 done
   const [typed, setTyped] = useState(reduce() ? hero.prompt : '');
   const [ctxN, setCtxN] = useState(reduce() ? hero.context.length : 0);
   const [answer, setAnswer] = useState(reduce() ? hero.onbrand : '');
@@ -46,7 +46,7 @@ export function ChatDemo({ hero, company }) {
     for (let k = 1; k <= hero.prompt.length; k++) { if (!alive()) return; setTyped(hero.prompt.slice(0, k)); await wait(22); }
     await wait(350); if (!alive()) return;
     setPhase(1);
-    await wait(1700); if (!alive()) return;
+    await wait(hero.badImage ? 3000 : 1700); if (!alive()) return;
     setPhase(2);
     for (let k = 1; k <= hero.context.length; k++) { await wait(380); if (!alive()) return; setCtxN(k); }
     await wait(450); if (!alive()) return;
@@ -56,7 +56,12 @@ export function ChatDemo({ hero, company }) {
     setPhase(4);
   };
 
-  useEffect(() => { play(); return () => { run.current++; }; }, [tool.id]);
+  // The visitor drives: nothing plays until they press Send. Switching tools resets to the prompt.
+  useEffect(() => {
+    run.current++;
+    if (!reduce()) { setPhase(-1); setTyped(''); setCtxN(0); setAnswer(''); }
+    return () => { run.current++; };
+  }, [tool.id]);
 
   return (
     <div className="chat" aria-label={`Demo: ${tool.name} answering with ${company}'s brand context`}>
@@ -66,16 +71,27 @@ export function ChatDemo({ hero, company }) {
             <button key={t.id} role="radio" aria-checked={t.id === tool.id} onClick={() => setTool(t)} className="chat-tool">{t.name}</button>
           ))}
         </div>
-        <button className="chat-replay" onClick={play} aria-label="Replay demo"><IconArrowRoundAntiClockwise size={16} /></button>
+        {phase >= 0 && <button className="chat-replay" onClick={play} aria-label="Run it again"><IconArrowRoundAntiClockwise size={16} /></button>}
       </div>
 
       <div className="chat-body">
+        {phase === -1 ? (
+          <div className="chat-compose">
+            <p className="bc-try">Try it</p>
+            <p className="chat-compose-lead">Send the same request to {tool.name}. See what it makes without {company}'s context, then with it.</p>
+            <div className="chat-input">{hero.prompt}</div>
+            <button className="chat-send" onClick={play}><IconSparkle size={15} /> Send to {tool.name}</button>
+            <p className="bc-tap">Pick Claude, ChatGPT or Copilot above</p>
+          </div>
+        ) : (
+        <>
         <div className="bubble is-me">{typed}<span className="caret" hidden={phase > 0} /></div>
 
         {phase >= 1 && (
           <div className={`bubble is-ai ${phase >= 2 ? 'is-stale' : ''} ${phase >= 3 ? 'is-gone' : ''}`}>
             <span className="ai-who">{tool.name}, without brand context</span>
             <p>{hero.generic}</p>
+            {hero.badImage && <img className="ai-bad" src={hero.badImage} alt="A fictional AI-generated LinkedIn graphic with a posed team, a teal gradient and a misspelled headline" width="440" height="440" loading="lazy" />}
           </div>
         )}
 
@@ -101,12 +117,23 @@ export function ChatDemo({ hero, company }) {
             <span className="ai-who">{tool.name}, with {company}'s context</span>
             <p>{answer}<span className="caret" hidden={phase === 4} /></p>
             {phase === 4 && (
-              <div className="ai-attach pop">
-                <span className="ai-img"><IconImage size={16} /></span>
-                <span>Approved launch visual<em>From the {company} brand portal</em></span>
-              </div>
+              hero.brandCard ? (
+                <div className="ai-brandcard pop" style={theme ? { '--b-bg': theme.hl, '--b-ink': theme.ink, '--b-accent': theme.accent, '--b-font': theme.family, '--b-weight': theme.displayWeight } : undefined}>
+                  <span className="abc-art" aria-hidden="true"><i /><i /></span>
+                  <span className="abc-eyebrow">{hero.brandCard.eyebrow}</span>
+                  <strong>{hero.brandCard.headline}</strong>
+                  <em>Built from approved {company} colors, type and voice</em>
+                </div>
+              ) : (
+                <div className="ai-attach pop">
+                  <span className="ai-img"><IconImage size={16} /></span>
+                  <span>Approved launch visual<em>From the {company} brand portal</em></span>
+                </div>
+              )
             )}
           </div>
+        )}
+        </>
         )}
       </div>
       <a className="chat-video" href={tool.video} target="_blank" rel="noopener">

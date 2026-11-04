@@ -111,23 +111,33 @@ function Portal({ company: c }) {
           <section className="hero" aria-labelledby="hero-title">
             <div className="hero-copy">
               <p className="hero-kicker">A sample Brian at Frontify set up for {c.name}</p>
-              <h1 id="hero-title">
-                <span className="rot-line">The <RotatingWord words={c.hero.rotate} /></span> context platform for {c.name}'s teams and their AI
-              </h1>
-              <p className="hero-sub">{c.hero.sub}</p>
+              <h1 id="hero-title">{c.hero.headline} <span className="hero-h2">{c.hero.headline2}</span></h1>
+              <p className="hero-sub">{c.hero.sub.replace('{name}', c.name)}</p>
               <div className="hero-ctas">
-                <a className="btn-link is-strong press" href="#what"><IconArrowDown size={16} /> See how it works</a>
+                <a className="btn-link is-strong press" href="#what"><IconArrowDown size={16} /> See how Frontify fixes it</a>
                 <a className="btn-link press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Talk to Brian</a>
               </div>
             </div>
-            <div className="hero-demo">
-              <ChatDemo hero={c.hero} company={c.name} />
-            </div>
+            {c.hero.badImage && (
+              <figure className="hero-bad">
+                <span className="hero-bad-tag">{c.hero.badTag}</span>
+                <img src={c.hero.badImage} alt="A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient and the headline Work Smarter Together With With AI" width="440" height="440" />
+                <figcaption>{c.hero.badCaption}</figcaption>
+              </figure>
+            )}
           </section>
 
           <WhatIsFrontify name={c.name} />
 
           <Ladder company={c.name} />
+
+          <section className="wrap block uc1-demo" aria-labelledby="uc1-demo-title">
+            <div className="block-head">
+              <h2 id="uc1-demo-title"><span className="rot-line">The <RotatingWord words={c.hero.rotate} /></span> context platform for {c.name}'s teams and their AI</h2>
+              <p>Most people at {c.name} will never open Frontify. They'll ask Claude, ChatGPT or Copilot, and Frontify makes sure the answer already knows the brand.</p>
+            </div>
+            <ChatDemo hero={c.hero} company={c.name} theme={ct} />
+          </section>
 
           {c.contexts && (
             <section className="wrap block ct-block" aria-labelledby="ctx-title">
@@ -346,7 +356,9 @@ function Ladder({ company }) {
           </p>
           <ol className="rungs">
             {LADDER.map(([t, k, d], i) => {
-              const state = i === open ? 'is-now' : i < n ? 'is-past' : 'is-next';
+              // We're selling the context layer: once it's placed it stays open; the other layers collapse.
+              const pinned = t === 'context' && i < n;
+              const state = i === open || pinned ? 'is-now' : i < n ? 'is-past' : 'is-next';
               return (
                 <li
                   key={t}
@@ -354,8 +366,8 @@ function Ladder({ company }) {
                   className={`${state} ${t === 'context' ? 'is-key' : ''} ${t === 'agency' ? 'is-top' : ''}`}
                   role={i < n ? 'button' : undefined}
                   tabIndex={i < n ? 0 : -1}
-                  aria-expanded={i < n ? i === open : undefined}
-                  onClick={() => toggle(i)}
+                  aria-expanded={i < n ? i === open || pinned : undefined}
+                  onClick={() => { if (!pinned) toggle(i); }}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(i); } }}
                 >
                   <span className="rung-step">{i + 1}</span>

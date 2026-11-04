@@ -882,3 +882,50 @@ button { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: no-preference) {
   .what-steps li { animation: miniIn 600ms var(--ease-out) both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
 }
+
+/* Brand Check on a real (bad) AI image: findings are regions on the image */
+.bc-asset.is-image { padding: 0; display: block; background: #222; }
+.bc-asset.is-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.bc-box { position: absolute; border: 2px solid transparent; border-radius: 4px; transition: border-color 250ms var(--ease), background-color 250ms var(--ease); }
+.bc-box.is-on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); box-shadow: 0 0 0 2px rgba(255,255,255,.6); }
+.bc-box .bc-pin { top: -12px; left: -12px; }
+.bc-srcplain { font-size: 13px; color: var(--ink-2); }
+
+/* Hero: the off-brand AI image, then the on-brand card built from the brand */
+.ai-bad { display: block; width: 100%; max-width: 260px; aspect-ratio: 1; object-fit: cover; margin-top: 10px; border-radius: 8px; }
+.bubble.is-stale .ai-bad { filter: grayscale(1); opacity: .6; }
+.ai-brandcard { position: relative; overflow: hidden; display: grid; gap: 4px; margin-top: 10px; padding: 16px; max-width: 260px; aspect-ratio: 1; align-content: end; border-radius: 8px; background: var(--b-bg, #E9F2FE); color: var(--b-ink, #101214); border: 1px solid var(--line); }
+.abc-art i { position: absolute; border-radius: 50%; background: var(--b-accent, #1868DB); }
+.abc-art i:first-child { right: -8%; top: -8%; width: 48%; aspect-ratio: 1; }
+.abc-art i:last-child { right: 30%; top: 34%; width: 14%; aspect-ratio: 1; background: var(--b-ink, #101214); }
+.abc-eyebrow { position: relative; font-size: 10px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; }
+.ai-brandcard strong { position: relative; font-family: var(--b-font, inherit); font-weight: var(--b-weight, 600); font-size: 22px; line-height: 1.05; letter-spacing: -0.02em; }
+.ai-brandcard em { position: relative; font-style: normal; font-size: 11px; opacity: .7; margin-top: 6px; }
+
+/* Hero: the pitch + the off-brand AI image */
+.hero h1 { max-width: 18ch; }
+.hero-h2 { display: block; color: var(--hero-accent); font-style: var(--display-style); }
+.hero-bad { margin: 0; width: min(100%, 420px); justify-self: center; display: grid; gap: 10px; }
+.hero-bad img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; box-shadow: 0 18px 40px -22px rgba(0,0,0,.5); transform: rotate(-2deg); }
+.hero-bad figcaption { font-size: 13px; color: color-mix(in srgb, var(--hero-ink) 70%, var(--hero-bg)); text-align: center; }
+@media (min-width: 980px) {
+  .hero { grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); align-items: center; text-align: left; max-width: 1240px; margin: 0 auto; }
+  .hero-copy { align-items: flex-start; }
+}
+@media (prefers-reduced-motion: no-preference) { .hero-bad { animation: rise 900ms var(--ease-out) 260ms both; } }
+
+/* Use case 1 demo: visitor-driven chat */
+.uc1-demo .block-head h2 { font-size: clamp(2rem, 5vw, 3.2rem); }
+.uc1-demo .rot-word { color: var(--accent-text); }
+.uc1-demo .chat { max-width: 820px; }
+.bubble.is-ai { max-height: 700px; }
+.ai-bad, .ai-brandcard { max-width: 200px; }
+.chat-compose { display: grid; justify-items: center; align-content: center; gap: 12px; text-align: center; min-height: 380px; padding: 12px; }
+.chat-compose-lead { max-width: 44ch; color: var(--ink-2); }
+.chat-input { width: min(100%, 520px); padding: 12px 14px; border: 1px solid var(--line-mid); border-radius: 12px; background: var(--surface); text-align: left; font-size: 15px; }
+.chat-send { display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer; padding: 12px 20px; min-height: 48px; border-radius: 999px; background: var(--ink); color: var(--bg); font: inherit; font-size: 15px; font-weight: 600; }
+@media (prefers-reduced-motion: no-preference) { .chat-send { animation: bcCall 1.8s var(--ease) infinite; } }
+.bubble.is-ai.is-gone { max-height: 0; }
+.hero-bad { position: relative; }
+.hero-bad-tag { position: absolute; z-index: 1; top: 12px; left: 12px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; background: rgba(17,17,16,.78); color: #fff; transform: rotate(-2deg); }
+.hero-bad img { transform: rotate(-2deg); }

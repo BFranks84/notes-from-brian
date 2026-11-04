@@ -1,0 +1,238 @@
+{
+  "slug": "atlassian",
+  "name": "Atlassian",
+  "status": "draft",
+  "accent": "#1868DB",
+  "accentInk": "#FFFFFF",
+  "palette": [
+    {
+      "name": "Atlassian blue",
+      "hex": "#1868DB",
+      "role": "Brand fills, brand text and links",
+      "source": "@atlaskit/tokens, light theme",
+      "url": "https://unpkg.com/@atlaskit/tokens/dist/esm/artifacts/themes/atlassian-light.js"
+    },
+    {
+      "name": "Neutral bold",
+      "hex": "#292A2E",
+      "role": "Body text and neutral fills",
+      "source": "@atlaskit/tokens, light theme",
+      "url": "https://unpkg.com/@atlaskit/tokens/dist/esm/artifacts/themes/atlassian-light.js"
+    }
+  ],
+  "note": {
+    "headline": "We hear email is only being read by AI agents.",
+    "body": [
+      "So I wrote you a card instead.",
+      "I'm Brian, and I work with brand and creative teams at Frontify. After reading what Atlassian has shared this year, a few ideas stuck with me. They're guesses, not conclusions. You know your world better than I do.",
+      "If one of them is interesting, I'd love to compare notes."
+    ],
+    "emailLine": "You're seeing this from my email. It's the same page I left on a card at your San Francisco office."
+  },
+  "ideas": [
+    {
+      "id": "agent-context",
+      "title": "Brand context inside the AI tools your team already uses",
+      "summary": "People ask Claude, ChatGPT or Copilot. Frontify quietly supplies the brand rules, messaging and approved assets.",
+      "why": {
+        "text": "Atlassian's Team '26 Europe update framed AI as multiplayer work, where agents join teams with clear identity and scoped access.",
+        "source": "Atlassian blog",
+        "url": "https://www.atlassian.com/blog/company-news/team26-europe-ai-platform"
+      },
+      "looksLike": [
+        "Guidelines, approved assets and messaging live in one place, structured for people and readable by AI.",
+        "Frontify's MCP server lets tools like Claude, ChatGPT and Cursor look up brand rules and approved assets. It's read-only by default, and an admin decides when to turn it on.",
+        "An agent drafting a page pulls from the same source your brand team already maintains."
+      ],
+      "pieces": [
+        {
+          "label": "Frontify MCP",
+          "url": "https://help.frontify.com/en/articles/14787214-frontify-mcp"
+        },
+        {
+          "label": "Brand assistant",
+          "url": "https://help.frontify.com/en/articles/14718123-brand-assistant"
+        }
+      ],
+      "question": "When an agent drafts marketing content today, where does it get your brand rules?",
+      "preview": "agent",
+      "demo": {
+        "q": "What tone should a launch post use?",
+        "a": "Bold, optimistic and practical, with a wink. Use plain language and skip the jargon.",
+        "cite": "Voice and tone",
+        "note": "Answer drawn from Atlassian's public voice and tone guidance, for illustration."
+      }
+    },
+    {
+      "id": "approved-messaging",
+      "title": "Approved messaging at the start of the brief",
+      "summary": "Your tools run the work. Frontify can hold the brand context the work starts from.",
+      "why": {
+        "text": "Atlassian's own marketing post says more AI tools alone won't fix coordination, and that work should start from the right brief and approved messaging.",
+        "source": "Atlassian blog",
+        "url": "https://www.atlassian.com/blog/company-news/gartner-marketing-work-management-2026"
+      },
+      "looksLike": [
+        "Messaging, guidelines and approved assets sit in a living brand portal that teams link to from their briefs.",
+        "Creative reviews run as approval requests with clear reviewers and deadlines.",
+        "Frontify connects to Jira Cloud, so brand work and the tickets around it stay linked."
+      ],
+      "pieces": [
+        {
+          "label": "Brand guidelines",
+          "url": "https://www.frontify.com/en/brand-guidelines"
+        },
+        {
+          "label": "Approvals",
+          "url": "https://help.frontify.com/en/articles/4111876-feedback-and-approval-process"
+        },
+        {
+          "label": "Jira Cloud integration",
+          "url": "https://www.frontify.com/en/integrations/jira-cloud"
+        }
+      ],
+      "question": "Where does approved messaging live today, and who keeps it current?",
+      "preview": "approvals",
+      "demo": {
+        "asset": "Q1 launch brief",
+        "steps": [
+          "Brief",
+          "Brand review",
+          "Approved"
+        ],
+        "who": [
+          "Brand",
+          "Product marketing"
+        ]
+      }
+    },
+    {
+      "id": "app-family",
+      "title": "One current home for a family of app brands",
+      "summary": "Jira, Confluence, Loom, Rovo and more, each with its own logo and rules.",
+      "why": {
+        "text": "Atlassian's public design system documents a shared logo system across its apps, plus separate rules for Marketplace partners.",
+        "source": "Atlassian Design System",
+        "url": "https://atlassian.design/foundations/logos"
+      },
+      "looksLike": [
+        "A brand hub with a page per app, all inheriting the parent brand.",
+        "Internal-only logo sets stay internal through permissions, while partners get a view made for them.",
+        "Update a logo once and every portal shows the current version."
+      ],
+      "pieces": [
+        {
+          "label": "Multi-brand architecture",
+          "url": "https://www.frontify.com/en/guide/multi-brand-architecture"
+        },
+        {
+          "label": "Sharing and access",
+          "url": "https://help.frontify.com/en/articles/4895189-sharing-capabilities-assets-collections-and-folders"
+        }
+      ],
+      "question": "When a team or partner needs the current Loom or Rovo logo, where do they go?",
+      "preview": "brandfamily",
+      "demo": {
+        "parent": "Atlassian",
+        "children": [
+          "Jira",
+          "Confluence",
+          "Loom",
+          "Rovo",
+          "Trello"
+        ],
+        "event": "Logo update published"
+      }
+    },
+    {
+      "id": "event-templates",
+      "title": "Event content without the request queue",
+      "summary": "Two Team '26 events this year means a lot of speaker cards, slides and signage.",
+      "why": {
+        "text": "Atlassian ran Team '26 in the US in May and Team '26 Europe in Amsterdam on Oct 6 to 8.",
+        "source": "Atlassian Events",
+        "url": "https://events.atlassian.com/teameurope"
+      },
+      "looksLike": [
+        "Designers build templates once, with brand elements locked.",
+        "Event and field teams fill them in from a browser, including motion versions for social.",
+        "Your creative team spends its time on the work only it can do."
+      ],
+      "pieces": [
+        {
+          "label": "Templates",
+          "url": "https://www.frontify.com/en/templates"
+        },
+        {
+          "label": "Figma Buzz plug-in",
+          "url": "https://www.frontify.com/en/integrations/figma-buzz"
+        }
+      ],
+      "question": "How many event assets does your team still build by hand for a Team event?",
+      "preview": "templates",
+      "demo": {
+        "fields": [
+          [
+            "Event",
+            "Team '26 Europe"
+          ],
+          [
+            "City",
+            "Amsterdam"
+          ],
+          [
+            "Speaker",
+            "Your name"
+          ]
+        ],
+        "format": "Speaker card"
+      }
+    }
+  ],
+  "theme": {
+    "label": "Atlassian",
+    "bg": "#FFFFFF",
+    "ink": "#292A2E",
+    "accent": "#1868DB",
+    "accentInk": "#FFFFFF",
+    "source": "Atlassian's public design tokens (@atlaskit/tokens, light theme)",
+    "url": "https://unpkg.com/@atlaskit/tokens/dist/esm/artifacts/themes/atlassian-light.js"
+  },
+  "office": "350 Bush St",
+  "hero": {
+    "rotate": [
+      "brand",
+      "creative",
+      "product",
+      "campaign",
+      "partner"
+    ],
+    "sub": "Most people at Atlassian will never open Frontify. They'll ask Claude, ChatGPT or Copilot, and Frontify makes sure the answer already knows your brand.",
+    "prompt": "Draft a LinkedIn post for our next Rovo feature launch.",
+    "generic": "Excited to announce an amazing new feature! Our innovative AI solution will revolutionize the way your team works. Don't miss out! #Innovation #AI #Teamwork",
+    "onbrand": "Rovo just learned a new trick. Ask it a question and it pulls the answer from work your team already did. No digging, no tab maze. Try it this week and tell us what it should learn next.",
+    "context": [
+      {
+        "label": "Tone of voice",
+        "value": "Bold, optimistic, practical with a wink"
+      },
+      {
+        "label": "Messaging",
+        "value": "Approved Rovo launch messaging"
+      },
+      {
+        "label": "Colors",
+        "value": "Brand blue on neutral"
+      },
+      {
+        "label": "Image",
+        "value": "Approved launch visual"
+      }
+    ],
+    "voiceSource": {
+      "label": "Atlassian Design System, brand personality",
+      "url": "https://www.atlassian.design/brand/personality"
+    },
+    "disclaimer": "Illustrative draft written for this sample, using Atlassian's public brand personality guidance. Not Atlassian content."
+  }
+}

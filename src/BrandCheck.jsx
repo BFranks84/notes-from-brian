@@ -86,7 +86,7 @@ export function BrandCheck({ check, theme, company }) {
   return (
     <div ref={rootRef} className={`bc is-${phase}`}>
       <div className="bc-head">
-        <span className="bc-title"><IconSparkle size={16} /> Brand checker <span className="bc-beta">Beta</span></span>
+        <span className="bc-title"><IconSparkle size={16} /> Brand checker</span>
         {phase !== 'idle' && <button className="bc-replay" onClick={play} aria-label="Run the brand check again"><IconArrowRoundAntiClockwise size={16} /></button>}
       </div>
       <div className="bc-grid">

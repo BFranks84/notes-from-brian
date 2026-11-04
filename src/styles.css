@@ -845,3 +845,11 @@ button { font: inherit; color: inherit; }
   .ct-tab { padding: 9px 16px; min-height: 44px; }
   .ct-tab-name { font-size: 15px; }
 }
+/* Brand Check waits for the visitor: a clear, pulsing call to run it */
+.bc-try { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); }
+.bc-idle .bc-run { border: 0; font: inherit; font-size: 15px; font-weight: 600; padding: 12px 20px; min-height: 48px; border-radius: 8px; cursor: pointer; position: relative; }
+.bc-idle .bc-run:hover { transform: translateY(-1px); }
+@media (prefers-reduced-motion: no-preference) { .bc-idle .bc-run { animation: bcCall 1.8s var(--ease) infinite; } }
+@keyframes bcCall { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); } 70%, 100% { box-shadow: 0 0 0 14px transparent; } }
+.bc-tap { font-size: 12px; color: var(--ink-3); }
+.bc-cta { cursor: default; }

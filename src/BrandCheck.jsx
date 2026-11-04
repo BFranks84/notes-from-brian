@@ -17,15 +17,13 @@ export function BrandCheck({ check, theme, company }) {
   const [cur, setCur] = useState(0);
   const rootRef = useRef(null);
   const run = useRef(0);
-  const started = useRef(false);
 
   const play = async () => {
     const id = ++run.current;
     const alive = () => id === run.current;
     setCur(0);
     if (reduce()) { setPhase('detail'); setProg(cats.map(() => 1)); return; }
-    setPhase('idle'); setProg(cats.map(() => 0));
-    await wait(900); if (!alive()) return;
+    setProg(cats.map(() => 0));
     setPhase('run');
     const t0 = performance.now();
     await new Promise((done) => {
@@ -44,15 +42,7 @@ export function BrandCheck({ check, theme, company }) {
     setPhase('detail');
   };
 
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !started.current) { started.current = true; play(); }
-    }, { threshold: 0.35 });
-    io.observe(el);
-    return () => { io.disconnect(); run.current++; };
-  }, []);
+  useEffect(() => () => { run.current++; }, []);
 
   const done = phase === 'results' || phase === 'detail';
   const f = findings[cur];
@@ -97,7 +87,7 @@ export function BrandCheck({ check, theme, company }) {
     <div ref={rootRef} className={`bc is-${phase}`}>
       <div className="bc-head">
         <span className="bc-title"><IconSparkle size={16} /> Brand checker <span className="bc-beta">Beta</span></span>
-        <button className="bc-replay" onClick={play} aria-label="Replay the brand check"><IconArrowRoundAntiClockwise size={16} /></button>
+        {phase !== 'idle' && <button className="bc-replay" onClick={play} aria-label="Run the brand check again"><IconArrowRoundAntiClockwise size={16} /></button>}
       </div>
       <div className="bc-grid">
         <div className="bc-stage">
@@ -117,8 +107,10 @@ export function BrandCheck({ check, theme, company }) {
         <div className="bc-panel" aria-live="polite">
           {phase === 'idle' && (
             <div className="bc-idle">
-              <p>The brand checker runs checks on your asset.</p>
-              <span className="bc-run"><IconSparkle size={14} /> Run brand checker</span>
+              <p className="bc-try">Try it</p>
+              <p>Run the brand checker on this sample post and see what it finds.</p>
+              <button className="bc-run" onClick={play}><IconSparkle size={14} /> Run brand checker</button>
+              <p className="bc-tap">Tap to run the check</p>
             </div>
           )}
 

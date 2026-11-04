@@ -868,3 +868,17 @@ button { font: inherit; color: inherit; }
 .contact-ctas { display: flex; flex-wrap: wrap; gap: 8px; }
 .contact .btn-link { background: transparent; color: var(--bg); border: 1px solid color-mix(in srgb, var(--bg) 45%, transparent); }
 .contact .btn-link:hover { background: color-mix(in srgb, var(--bg) 12%, transparent); }
+
+/* ---------- What is Frontify (primer before the use cases) ---------- */
+.what-why { max-width: 760px; padding: 18px 20px; border-radius: var(--r-card); background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); font-size: 17px; }
+.what-k { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
+.what-steps { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+@media (min-width: 800px) { .what-steps { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
+.what-steps li { padding: 18px 20px; border-radius: var(--r-card); background: var(--surface); border: 1px solid var(--line); display: grid; gap: 6px; align-content: start; }
+.what-n { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-weight: 600; font-size: 14px; }
+.what-steps strong { font-family: var(--display); font-weight: var(--display-weight); font-style: var(--display-style); font-size: 26px; letter-spacing: var(--display-tracking); line-height: 1.1; }
+.what-steps p { color: var(--ink-2); font-size: 15px; }
+.what-bridge { margin-top: 18px; font-size: 18px; }
+@media (prefers-reduced-motion: no-preference) {
+  .what-steps li { animation: miniIn 600ms var(--ease-out) both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+}

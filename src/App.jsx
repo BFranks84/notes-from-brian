@@ -116,7 +116,7 @@ function Portal({ company: c }) {
               </h1>
               <p className="hero-sub">{c.hero.sub}</p>
               <div className="hero-ctas">
-                <a className="btn-link is-strong press" href="#uc1"><IconArrowDown size={16} /> See how it works</a>
+                <a className="btn-link is-strong press" href="#what"><IconArrowDown size={16} /> See how it works</a>
                 <a className="btn-link press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Talk to Brian</a>
               </div>
             </div>
@@ -124,6 +124,8 @@ function Portal({ company: c }) {
               <ChatDemo hero={c.hero} company={c.name} />
             </div>
           </section>
+
+          <WhatIsFrontify name={c.name} />
 
           <Ladder company={c.name} />
 
@@ -239,6 +241,34 @@ function Portal({ company: c }) {
       )}
 
     </div>
+  );
+}
+
+// Plain-language primer before the use cases: what Frontify is, why it matters with AI, and the three steps.
+const STEPS = [
+  ['Store', 'Keep guidelines, logos, photos, templates and messaging in one current place, instead of scattered folders and old PDFs.'],
+  ['Connect', 'Claude, ChatGPT and Copilot read that brand context through the Frontify MCP server, so what they make starts on brand.'],
+  ['Check', 'Brand Check reviews work against your guidelines before it goes live, and points to the rule behind every finding.'],
+];
+function WhatIsFrontify({ name }) {
+  return (
+    <section id="what" className="wrap block what" aria-labelledby="what-title">
+      <div className="block-head">
+        <p className="bc-eyebrow-tag">First, what is Frontify?</p>
+        <h2 id="what-title">One home for your brand, built for people and AI</h2>
+        <p>Frontify is where brand and marketing teams keep everything that makes their brand theirs: guidelines, logos, photos, templates and product messaging. Everyone finds the current version in one place.</p>
+      </div>
+      <div className="what-why">
+        <p className="what-k">Why it matters now</p>
+        <p>AI tools write and design in seconds, but they don't know your brand. Ask for a launch post and you get the wrong colors, the wrong voice and claims nobody approved. The more people use AI, the more off-brand work your team has to catch.</p>
+      </div>
+      <ol className="what-steps">
+        {STEPS.map(([t, d], i) => (
+          <li key={t}><span className="what-n">{i + 1}</span><strong>{t}</strong><p>{d}</p></li>
+        ))}
+      </ol>
+      <p className="what-bridge">That's what we mean by a <strong>system of context</strong>. Here's how it could work for {name}.</p>
+    </section>
   );
 }
 

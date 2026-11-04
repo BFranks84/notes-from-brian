@@ -7,6 +7,7 @@ import { agentDoc } from './agentDoc.js';
 import { Scene } from './Scenes.jsx';
 import { ShareTemplate } from './ShareTemplate.jsx';
 import { RotatingWord, ChatDemo } from './Hero.jsx';
+import { FRONTIFY, companyTheme, applyTheme, preloadFont } from './theme.js';
 
 function useRoute() {
   const slug = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/')[0].toLowerCase();
@@ -37,16 +38,6 @@ function Home() {
   );
 }
 
-const FRONTIFY_THEME = { bg: '#F0F0EB', ink: '#111110', accent: '#B60AE3', accentInk: '#FFFFFF', label: 'Frontify' };
-
-function applyTheme(t) {
-  const r = document.documentElement.style;
-  r.setProperty('--bg', t.bg);
-  r.setProperty('--ink', t.ink);
-  r.setProperty('--accent', t.accent);
-  r.setProperty('--accent-ink', t.accentInk);
-}
-
 function Portal({ company: c }) {
   const [view, setViewRaw] = useState('person');
   const [theme, setThemeRaw] = useState('frontify');
@@ -56,7 +47,12 @@ function Portal({ company: c }) {
   const doc = useMemo(() => agentDoc(c, SITE), [c]);
   const tour = c.ideas.slice(1);
 
-  useEffect(() => { applyTheme(theme === 'company' ? c.theme : FRONTIFY_THEME); }, [theme, c]);
+  const ct = useMemo(() => companyTheme(c.slug), [c.slug]);
+  useEffect(() => { applyTheme(theme === 'company' && ct ? ct : FRONTIFY); }, [theme, ct]);
+  useEffect(() => {
+    const idle = window.requestIdleCallback || ((f) => setTimeout(f, 1500));
+    idle(() => preloadFont(ct));
+  }, [ct]);
 
   const setView = (v) => { setViewRaw(v); window.scrollTo({ top: 0 }); };
   const setTheme = (t, origin) => {
@@ -133,18 +129,18 @@ function Portal({ company: c }) {
               <div>
                 <h2 id="theme-title">One portal, wearing your brand</h2>
                 <p>
-                  Every Frontify portal takes on the brand it serves. Try it: this page can switch to {c.name}'s publicly documented
-                  colors and back.
+                  Every Frontify portal takes on the brand it serves: colors, type, shapes and tone. Try it. This page can switch into
+                  {c.name}'s public brand system and back.
                 </p>
                 <Button emphasis="strong" className="btn press" onPress={toggleTheme}>
                   {theme === 'frontify' ? `Switch to the ${c.name} theme` : 'Switch back to Frontify'}
                 </Button>
                 <p className="theme-src">
-                  Colors from <a href={c.theme.url} target="_blank" rel="noopener">{c.theme.source} <IconArrowOutExternal size={12} /></a>. No logos, and not affiliated with {c.name}.
+                  Colors and layout cues from <a href={ct?.url} target="_blank" rel="noopener">{ct?.source} <IconArrowOutExternal size={12} /></a>. Type is a free stand-in, not {c.name}'s own typeface. No logos, and not affiliated with {c.name}.
                 </p>
               </div>
               <ul className="swatches">
-                {[['Accent', c.theme.accent], ['Ink', c.theme.ink], ['Surface', c.theme.bg]].map(([k, v]) => (
+                {(ct?.palette || []).map(([k, v]) => (
                   <li key={k}><span style={{ background: v }} /><strong>{k}</strong><em>{v}</em></li>
                 ))}
               </ul>

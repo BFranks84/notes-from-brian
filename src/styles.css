@@ -677,3 +677,4 @@ button { font: inherit; color: inherit; }
 .mini-phr p { padding: 8px 10px; border-radius: 6px; background: var(--m-surface); border: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); color: var(--m-ink2); }
 .mini-phr strong { display: flex; align-items: center; gap: 5px; font-size: 12px; margin-bottom: 3px; }
 .mini-phr .is-do strong { color: #1F845A; } .mini-phr .is-dont strong { color: #C9372C; }
+.mini-from { justify-self: start; margin-top: -4px; padding: 3px 8px; border-radius: 999px; font-size: 11px; background: var(--m-hl); color: var(--m-accent-text); }

@@ -205,7 +205,7 @@
       "creative",
       "product",
       "event",
-      "writing"
+      "everyday"
     ],
     "sub": "Most people at Atlassian will never open Frontify. They'll ask Claude, ChatGPT or Copilot, and Frontify makes sure the answer already knows your brand.",
     "prompt": "Draft a LinkedIn post for our next Rovo feature launch.",
@@ -299,7 +299,7 @@
   "contexts": {
     "eyebrow": "Use case 1 · A system of context",
     "title": "Every kind of context, in one place",
-    "sub": "Brand, creative, product, event and everyday writing guidance live in {name}'s portal as guideline pages. People read them, and AI tools answer from them.",
+    "sub": "Brand, creative, product and event guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from Atlassian's public design system and product names. Not Atlassian's own guidelines.",
     "items": [
       {
@@ -404,14 +404,14 @@
         "answer": "Opened the Speaker slide template. Layout and logo stay locked."
       },
       {
-        "id": "writing",
-        "label": "Writing",
-        "desc": "Email and everyday writing",
+        "id": "everyday",
+        "label": "Everyday",
+        "desc": "Bite-size rules for every employee",
         "kind": "writing",
-        "chapter": "Email & writing",
-        "section": "Email",
-        "title": "Email and writing",
-        "lead": "For every email, doc and message, not just marketing.",
+        "chapter": "Everyday",
+        "section": "Email tone of voice",
+        "title": "Email tone of voice",
+        "lead": "The short version of our tone of voice, for everyone who sends email.",
         "rules": [
           [
             "Subject",
@@ -434,7 +434,8 @@
         "dont": "Just circling back on the below!!",
         "askLabel": "Before sending, in Outlook with Copilot",
         "ask": "Check this email against our writing guidelines.",
-        "answer": "Two fixes: put the ask in the first line, and use the standard signature. From Email & writing › Email."
+        "answer": "Two fixes: put the ask in the first line, and use the standard signature. From Everyday › Email tone of voice.",
+        "from": "Condensed from Brand › Tone of voice"
       }
     ]
   }

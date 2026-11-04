@@ -118,6 +118,7 @@ function Preview({ it }) {
   if (it.kind === 'writing') {
     return (
       <div className="mini-writing">
+        {it.from && <p className="mini-from s" style={{ '--i': 3 }}>{it.from}</p>}
         <dl>
           {it.rules.map(([a, b], i) => (<div key={a} className="s" style={{ '--i': 3 + i }}><dt>{a}</dt><dd>{b}</dd></div>))}
         </dl>

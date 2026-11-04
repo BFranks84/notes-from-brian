@@ -3,6 +3,7 @@ import { flushSync } from 'react-dom';
 import { Segmented, Btn as Button } from './ui.jsx';
 import { IconArrowOutExternal, IconCalendar, IconClipboard, IconLockClosed, IconArrowDown } from './icons.jsx';
 import { SITE, COMPANIES } from './config.js';
+import { poss } from './names.js';
 import { agentDoc } from './agentDoc.js';
 import { Scene } from './Scenes.jsx';
 import { ShareTemplate } from './ShareTemplate.jsx';
@@ -121,7 +122,7 @@ function Portal({ company: c }) {
             {c.hero.badImage && (
               <figure className="hero-bad">
                 <span className="hero-bad-tag">{c.hero.badTag}</span>
-                <img src={c.hero.badImage} alt="A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient and the headline Work Smarter Together With With AI" width="440" height="440" />
+                <img src={c.hero.badImage} alt={c.hero.badAlt} width="440" height="440" />
                 <figcaption>{c.hero.badCaption}</figcaption>
               </figure>
             )}
@@ -133,7 +134,7 @@ function Portal({ company: c }) {
 
           <section className="wrap block uc1-demo" aria-labelledby="uc1-demo-title">
             <div className="block-head">
-              <h2 id="uc1-demo-title"><span className="rot-line">The <RotatingWord words={c.hero.rotate} /></span> context platform for {c.name}'s teams and their AI</h2>
+              <h2 id="uc1-demo-title"><span className="rot-line">The <RotatingWord words={c.hero.rotate} /></span> context platform for {poss(c.name)} teams and their AI</h2>
               <p>Most people at {c.name} will never open Frontify. They'll ask Claude, ChatGPT or Copilot, and Frontify makes sure the answer already knows the brand.</p>
             </div>
             <ChatDemo hero={c.hero} company={c.name} theme={ct} />
@@ -194,13 +195,13 @@ function Portal({ company: c }) {
                 <h2 id="theme-title">One portal, wearing your brand</h2>
                 <p>
                   Every Frontify portal takes on the brand it serves: colors, type, shapes and tone. Try it. This page can switch into
-                  {c.name}'s public brand system and back.
+                  {poss(c.name)} public brand system and back.
                 </p>
                 <Button emphasis="strong" className="btn press" onPress={toggleTheme}>
                   {theme === 'frontify' ? `Switch to the ${c.name} theme` : 'Switch back to Frontify'}
                 </Button>
                 <p className="theme-src">
-                  Colors and layout cues from {ct?.source}. Type is a free stand-in, not {c.name}'s own typeface. No logos, and not affiliated with {c.name}.
+                  Colors and layout cues from {ct?.source}. Type is a free stand-in, not {poss(c.name)} own typeface. No logos, and not affiliated with {c.name}.
                 </p>
               </div>
               <ul className="swatches">

@@ -5,7 +5,9 @@ export const SITE = {
   booking: 'https://frontify.chilipiper.com/personal-page/brian-franke',
 };
 
+import { normalize } from './names.js';
+
 const modules = import.meta.glob('./data/*.json', { eager: true });
 export const COMPANIES = Object.fromEntries(
-  Object.values(modules).map((m) => [m.default.slug, m.default]),
+  Object.values(modules).map((m) => [m.default.slug, normalize(m.default)]),
 );

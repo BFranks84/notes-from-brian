@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { openContext } from './ContextTypes.jsx';
+import { poss } from './names.js';
 import { IconSparkle, IconArrowRoundAntiClockwise, IconImage, IconArrowOutExternal } from './icons.jsx';
 
 const reduce = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -64,7 +65,7 @@ export function ChatDemo({ hero, company, theme }) {
   }, [tool.id]);
 
   return (
-    <div className="chat" aria-label={`Demo: ${tool.name} answering with ${company}'s brand context`}>
+    <div className="chat" aria-label={`Demo: ${tool.name} answering with ${poss(company)} brand context`}>
       <div className="chat-bar">
         <div className="chat-tools" role="radiogroup" aria-label="AI tool">
           {TOOLS.map((t) => (
@@ -78,7 +79,7 @@ export function ChatDemo({ hero, company, theme }) {
         {phase === -1 ? (
           <div className="chat-compose">
             <p className="bc-try">Try it</p>
-            <p className="chat-compose-lead">Send the same request to {tool.name}. See what it makes without {company}'s context, then with it.</p>
+            <p className="chat-compose-lead">Send the same request to {tool.name}. See what it makes without {poss(company)} context, then with it.</p>
             <div className="chat-input">{hero.prompt}</div>
             <button className="chat-send" onClick={play}><IconSparkle size={15} /> Send to {tool.name}</button>
             <p className="bc-tap">Pick Claude, ChatGPT or Copilot above</p>
@@ -91,7 +92,7 @@ export function ChatDemo({ hero, company, theme }) {
           <div className={`bubble is-ai ${phase >= 2 ? 'is-stale' : ''} ${phase >= 3 ? 'is-gone' : ''}`}>
             <span className="ai-who">{tool.name}, without brand context</span>
             <p>{hero.generic}</p>
-            {hero.badImage && <img className="ai-bad" src={hero.badImage} alt="A fictional AI-generated LinkedIn graphic with a posed team, a teal gradient and a misspelled headline" width="440" height="440" loading="lazy" />}
+            {hero.badImage && <img className="ai-bad" src={hero.badImage} alt={hero.badAlt} width="440" height="440" loading="lazy" />}
           </div>
         )}
 
@@ -99,7 +100,7 @@ export function ChatDemo({ hero, company, theme }) {
           <div className="ctx">
             <p className="ctx-status">
               <IconSparkle size={14} />
-              <span className={phase === 2 ? 'shimmer' : ''}>{phase === 2 ? `Pulling ${company}'s brand context from Frontify` : `Context from Frontify, via ${tool.how}`}</span>
+              <span className={phase === 2 ? 'shimmer' : ''}>{phase === 2 ? `Pulling ${poss(company)} brand context from Frontify` : `Context from Frontify, via ${tool.how}`}</span>
             </p>
             <ul className="ctx-cards">
               {hero.context.map((c, k) => (
@@ -114,7 +115,7 @@ export function ChatDemo({ hero, company, theme }) {
 
         {phase >= 3 && (
           <div className="bubble is-ai is-brand">
-            <span className="ai-who">{tool.name}, with {company}'s context</span>
+            <span className="ai-who">{tool.name}, with {poss(company)} context</span>
             <p>{answer}<span className="caret" hidden={phase === 4} /></p>
             {phase === 4 && (
               hero.brandCard ? (

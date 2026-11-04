@@ -1,3 +1,4 @@
+import { poss } from './names.js';
 import { useMemo, useState } from 'react';
 import { Btn as Button } from './ui.jsx';
 import { IconLockClosed, IconPen, IconClipboard, IconEnvelope, IconArrowOutShare } from './icons.jsx';
@@ -19,7 +20,7 @@ export function ShareTemplate({ company, shareUrl }) {
     () => [greeting, '', locked, pick, personal, '', `Take a look: ${shareUrl}`].filter((l, i, a) => !(l === '' && a[i - 1] === '')).join('\n'),
     [greeting, locked, pick, personal, shareUrl],
   );
-  const subject = `Worth a look: ideas for ${company.name}'s brand teams`;
+  const subject = `Worth a look: ideas for ${poss(company.name)} brand teams`;
 
   const copy = async () => {
     try {

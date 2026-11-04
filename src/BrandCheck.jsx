@@ -93,7 +93,7 @@ export function BrandCheck({ check, theme, company }) {
         <div className="bc-stage">
           {a.image ? (
             <figure className={`bc-asset is-image ${phase === 'run' ? 'is-scanning' : ''}`} aria-label={`Sample ${a.kind} for ${company}`}>
-              <img src={a.image} alt="A fictional AI-generated LinkedIn graphic with a posed team, a teal gradient and a misspelled headline" width="440" height="440" />
+              <img src={a.image} alt={a.alt} width="440" height="440" />
               {findings.map((x, i) => x.box && (
                 <span key={i} data-i={i} className={`bc-box ${phase === 'detail' && i === cur ? 'is-on' : ''}`} style={{ left: `${x.box[0]}%`, top: `${x.box[1]}%`, width: `${x.box[2]}%`, height: `${x.box[3]}%` }} aria-hidden="true">
                   {done && <span className={`bc-pin ${phase === 'detail' && i === cur ? 'is-on' : ''}`}>{i + 1}</span>}

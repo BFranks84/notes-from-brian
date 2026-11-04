@@ -110,7 +110,8 @@
     "headline": "AI is making everyone a creative.",
     "headline2": "That doesn't mean they're good at it.",
     "badCaption": "Looks fine at a glance. Look again: the doubled word, the posed thumbs-up, the wrong blue.",
-    "badTag": "Fictional AI-generated work content"
+    "badTag": "Fictional AI-generated work content",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient and a doubled word in the headline"
   },
   "check": {
     "eyebrow": "Use case 3 · Brand Check",
@@ -120,7 +121,8 @@
     "asset": {
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
-      "image": "/ai/atlassian-offbrand-3.jpg"
+      "image": "/ai/atlassian-offbrand-3.jpg",
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient and a doubled word in the headline"
     },
     "categories": [
       {

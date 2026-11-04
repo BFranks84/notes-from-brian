@@ -1,0 +1,474 @@
+{
+  "slug": "pinterest",
+  "name": "Pinterest",
+  "accent": "#E60023",
+  "accentInk": "#FFFFFF",
+  "ideas": [
+    {
+      "id": "context",
+      "title": "A system of context for every AI tool",
+      "summary": "Frontify gives Claude, ChatGPT and Copilot the brand, creative, product and event context they need, so answers come out on brand."
+    },
+    {
+      "id": "contexts",
+      "title": "What context lives in Frontify",
+      "summary": "Brand, creative, product, event and Everyday guidance live as guideline pages that people read and AI tools answer from."
+    },
+    {
+      "id": "check",
+      "title": "Brand Check before anything goes live",
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
+    },
+    {
+      "id": "everyday",
+      "title": "Everyday guidelines inside Outlook and PowerPoint",
+      "summary": "Claude in Microsoft 365, connected to Frontify, checks emails and decks against short Everyday guidelines before they go out."
+    },
+    {
+      "id": "partners",
+      "title": "Partner and agency files, in the right place",
+      "summary": "Partners submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
+    }
+  ],
+  "hero": {
+    "rotate": [
+      "brand",
+      "creative",
+      "product",
+      "event",
+      "everyday"
+    ],
+    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
+    "prompt": "Make a LinkedIn post and image for our next Performance+ launch.",
+    "generic": "Excited to announce an amazing new feature! Our innovative AI solution will revolutionize the way your team works. Don't miss out! #Innovation #AI #Teamwork",
+    "onbrand": "People come to Pinterest with intention. Performance+ helps you meet them there, with campaigns that build and tune themselves. Try it on your next campaign.",
+    "context": [
+      {
+        "label": "Tone of voice",
+        "value": "Simple, conversational, with a dash of cleverness"
+      },
+      {
+        "label": "Messaging",
+        "value": "Approved Performance+ messaging"
+      },
+      {
+        "label": "Colors",
+        "value": "Pushpin red on white"
+      },
+      {
+        "label": "Image",
+        "value": "Approved launch visual"
+      }
+    ],
+    "disclaimer": "Illustrative draft written for this sample, using Pinterest's public brand guidance. Not Pinterest content.",
+    "badImage": "/ai/pinterest-offbrand.jpg",
+    "brandCard": {
+      "eyebrow": "New: Performance+",
+      "headline": "Reach people when they intend to act."
+    },
+    "headline": "AI is making everyone a creative.",
+    "headline2": "That doesn't mean they're good at it.",
+    "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
+    "badTag": "Fictional AI-generated work content",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed creative team, a pink wash and a missing space in the headline",
+    "voiceSource": {
+      "label": "See the voice guideline",
+      "to": "everyday"
+    }
+  },
+  "check": {
+    "eyebrow": "Use case 3 · Brand Check",
+    "title": "Then it checks the work",
+    "sub": "Before anything goes live, Brand Check reviews it against {name}'s guidelines, flags potential issues, and shows which guideline informed each finding.",
+    "note": "Brand Check runs on the context you already keep in Frontify. It's more than a prompt: it's a service built into Frontify, available in the portal and through the API. The image is fictional AI-generated work content, and the findings are samples.",
+    "asset": {
+      "kind": "AI-generated LinkedIn image",
+      "by": "fictional, made with a generic AI image tool",
+      "image": "/ai/pinterest-offbrand.jpg",
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed creative team, a pink wash and a missing space in the headline"
+    },
+    "categories": [
+      {
+        "id": "logo",
+        "label": "Logo",
+        "status": "skip"
+      },
+      {
+        "id": "color",
+        "label": "Color"
+      },
+      {
+        "id": "typography",
+        "label": "Typography"
+      },
+      {
+        "id": "layout",
+        "label": "Layout"
+      },
+      {
+        "id": "writing",
+        "label": "Writing"
+      },
+      {
+        "id": "imagery",
+        "label": "Imagery"
+      }
+    ],
+    "findings": [
+      {
+        "cat": "color",
+        "box": [
+          2,
+          2,
+          96,
+          96
+        ],
+        "text": "The hot pink and peach wash isn't Pushpin red.",
+        "found": "#F25C9A",
+        "expected": "#E60023",
+        "expectedName": "Pushpin",
+        "recommendation": "Use Pushpin red, #E60023, with purpose on white, and no color wash over photos.",
+        "sources": [
+          {
+            "label": "Brand - Color - Primary colors",
+            "to": "brand"
+          }
+        ]
+      },
+      {
+        "cat": "writing",
+        "box": [
+          8,
+          12,
+          84,
+          20
+        ],
+        "text": "The headline is missing a space (\"Like NeverBefore\") and leans on attention, not intention.",
+        "recommendation": "Fix the spacing and lead with what people came to do, in a short, conversational line.",
+        "sources": [
+          {
+            "label": "Product - Performance+ positioning",
+            "to": "product"
+          },
+          {
+            "label": "Everyday - Tone of voice",
+            "to": "everyday"
+          }
+        ]
+      },
+      {
+        "cat": "imagery",
+        "box": [
+          0,
+          35,
+          100,
+          55
+        ],
+        "text": "A posed group smiling at the camera doesn't match the photography style.",
+        "recommendation": "Use a candid photo of a real team at work from the photo library.",
+        "sources": [
+          {
+            "label": "Creative - Photography - Do and don't",
+            "to": "creative"
+          }
+        ]
+      }
+    ]
+  },
+  "contexts": {
+    "eyebrow": "Use case 2 · What context lives in Frontify",
+    "title": "Every kind of context, in one place",
+    "sub": "Brand, creative, product and event guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "note": "Sample pages built from Pinterest's public brand information. Not Pinterest's own guidelines.",
+    "items": [
+      {
+        "id": "brand",
+        "label": "Brand",
+        "desc": "Colors, type, logo and voice",
+        "kind": "color",
+        "chapter": "Color",
+        "section": "Primary colors",
+        "title": "Our palette",
+        "lead": "How Pinterest uses color.",
+        "swatches": [
+          [
+            "Pushpin",
+            "#E60023"
+          ],
+          [
+            "Cosmicore",
+            "#111111"
+          ],
+          [
+            "Roboflow",
+            "#767676"
+          ],
+          [
+            "Skycicle",
+            "#0074E8"
+          ]
+        ],
+        "rule": "Pushpin red is the hero color. Use it with purpose, on white.",
+        "ask": "Which color should a social post lead with?",
+        "answer": "Use **Pushpin, #E60023**. Pushpin red is the hero color."
+      },
+      {
+        "id": "creative",
+        "label": "Creative",
+        "desc": "Photography, illustration and motion",
+        "kind": "photo",
+        "chapter": "Photography",
+        "section": "Do and don't",
+        "title": "Photography",
+        "lead": "Real teams doing real work, never staged.",
+        "do": {
+          "label": "Teams at work",
+          "note": "Candid moments of people working together."
+        },
+        "dont": {
+          "label": "Posed for the camera",
+          "note": "No staged handshakes or stock smiles."
+        },
+        "ask": "Can I use a stock photo of a handshake?",
+        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+      },
+      {
+        "id": "product",
+        "label": "Product",
+        "desc": "Launches, positioning and claims",
+        "kind": "launch",
+        "chapter": "Product launch",
+        "section": "Performance+",
+        "title": "Performance+ positioning",
+        "lead": "Start every launch brief from this page.",
+        "positioning": "Performance+ uses AI to help advertisers build and optimize campaigns on Pinterest.",
+        "claims": [
+          "AI-assisted campaign creation",
+          "Built for people who come with intent"
+        ],
+        "rule": "Talk about intention, not attention.",
+        "ask": "Write a one-line pitch for Performance+.",
+        "answer": "**Performance+ uses AI to help advertisers build and optimize campaigns on Pinterest.** Drafted from the approved positioning."
+      },
+      {
+        "id": "event",
+        "label": "Event",
+        "desc": "Toolkits, booths and speaker kits",
+        "kind": "event",
+        "chapter": "Event toolkits",
+        "section": "Pinterest Presents",
+        "title": "Pinterest Presents toolkit",
+        "lead": "Everything a team needs to show up on brand.",
+        "facts": [
+          [
+            "Audience",
+            "Customers, partners and press"
+          ],
+          [
+            "Booth files",
+            "Due four weeks out"
+          ]
+        ],
+        "templates": [
+          {
+            "name": "Speaker slide",
+            "note": "Add talk title, name and session"
+          },
+          {
+            "name": "Event banner",
+            "note": "Headline and image, layout locked"
+          }
+        ],
+        "ask": "I need a speaker slide for our session.",
+        "answer": "I opened the **Speaker slide** template. Add your talk title, name and session; **the layout and logo stay locked**."
+      },
+      {
+        "id": "everyday",
+        "label": "Everyday",
+        "desc": "Short rules for email, decks and docs",
+        "kind": "writing",
+        "chapter": "Everyday",
+        "section": "Email tone of voice",
+        "title": "Email tone of voice",
+        "lead": "The short version of our tone of voice, for everyone who sends email.",
+        "rules": [
+          [
+            "Subject",
+            "Say what you need in under eight words."
+          ],
+          [
+            "Opening",
+            "Lead with the ask or the answer."
+          ],
+          [
+            "Voice",
+            "Simple, conversational, with a dash of cleverness."
+          ],
+          [
+            "Sign-off",
+            "Use the standard signature. No quotes or images."
+          ]
+        ],
+        "do": "Can you review the launch plan by Thursday?",
+        "dont": "Just circling back on the below!!",
+        "askLabel": "Before sending, in Outlook with Copilot",
+        "ask": "Check this email against our writing guidelines.",
+        "answer": "Two fixes before you send: **put the ask in the first line**, and **use the standard signature**.",
+        "from": "Condensed from Brand › Tone of voice",
+        "deck": {
+          "title": "Presentations",
+          "rules": [
+            [
+              "Template",
+              "Start from the company template."
+            ],
+            [
+              "Titles",
+              "Six words or fewer."
+            ],
+            [
+              "Bullets",
+              "Three per slide, at most."
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "everyday": {
+    "eyebrow": "Use case 4 · Everyday guidelines, inside Microsoft 365",
+    "title": "The right tone in every email and deck",
+    "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude inside Outlook and PowerPoint reads the Everyday guidelines and checks the work before it goes out.",
+    "note": "Claude for Microsoft 365 reads Frontify through the Frontify connector (MCP) once it's set up in your Claude workspace. Sample email, deck and guidelines.",
+    "tabs": [
+      {
+        "id": "outlook",
+        "label": "Email in Outlook",
+        "kind": "email",
+        "guideline": "Email tone of voice",
+        "to": "Field marketing team",
+        "ask": "Check this email against our email tone of voice before I send it.",
+        "intro": "Three fixes based on **Everyday › Email tone of voice**:",
+        "before": {
+          "subject": "Following up",
+          "body": [
+            "Hi team, just circling back on the below!!",
+            "We've been heads-down on the Performance+ launch and there's a lot going on, so I wanted to share where things stand.",
+            "Can you review the launch plan by Thursday?"
+          ],
+          "sig": "Cheers!! ✨ \"Dream big, ship bigger\""
+        },
+        "after": {
+          "subject": "Review the Performance+ launch plan by Thursday",
+          "body": [
+            "Hi team, can you review the Performance+ launch plan by Thursday?",
+            "It covers the messaging, launch assets and timeline. Comments in the doc are perfect."
+          ],
+          "sig": "Sam Lee · Marketing"
+        },
+        "fixes": [
+          {
+            "target": "subject",
+            "label": "Subject:",
+            "note": "say what you need. \"Following up\" doesn't."
+          },
+          {
+            "target": "p0",
+            "label": "Opening:",
+            "note": "lead with the ask. It's in the last line right now."
+          },
+          {
+            "target": "sig",
+            "label": "Sign-off:",
+            "note": "use the standard signature, with no quotes."
+          }
+        ],
+        "done": "Updated. The draft matches the email tone of voice and is ready to send."
+      },
+      {
+        "id": "powerpoint",
+        "label": "Deck in PowerPoint",
+        "kind": "deck",
+        "guideline": "Presentations",
+        "ask": "Is this slide built the way our presentation guidelines say?",
+        "intro": "Three fixes based on **Everyday › Presentations**:",
+        "before": {
+          "title": "Q3 results and some thoughts on where we go next with Performance+",
+          "bullets": [
+            "Pipeline grew in every region",
+            "Trials doubled after the keynote",
+            "Partners asked for more co-marketing",
+            "We should talk about pricing",
+            "Support tickets went down",
+            "Next steps TBD"
+          ]
+        },
+        "after": {
+          "title": "Performance+: Q3 results",
+          "bullets": [
+            "Pipeline grew in every region",
+            "Trials doubled after the keynote",
+            "Partners want more co-marketing"
+          ],
+          "footer": "2026 template"
+        },
+        "fixes": [
+          {
+            "target": "template",
+            "label": "Template:",
+            "note": "this slide isn't on the company template."
+          },
+          {
+            "target": "title",
+            "label": "Title:",
+            "note": "14 words. Keep titles to six or fewer."
+          },
+          {
+            "target": "bullets",
+            "label": "Bullets:",
+            "note": "six on one slide. Keep it to three."
+          }
+        ],
+        "done": "Updated. Slide 2 now uses the company template and follows the presentation guidelines."
+      }
+    ]
+  },
+  "partners": {
+    "eyebrow": "Use case 5 · Partner and agency files",
+    "title": "Partner files land in the right place",
+    "sub": "Agency partners submit work straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
+    "note": "Sample files, partner and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "page": "Partners › Submit an asset",
+    "submitter": "Northwind Creative · agency partner",
+    "library": "Partner submissions",
+    "files": [
+      {
+        "name": "performanceplus-partner-banner.png",
+        "size": "2.1 MB",
+        "title": "Performance+ webinar"
+      },
+      {
+        "name": "performanceplus-partner-social.png",
+        "size": "840 KB",
+        "title": "Performance+ for teams"
+      }
+    ],
+    "existing": [
+      "Trend report",
+      "Shopping ads guide",
+      "Cannes recap",
+      "Creator spotlight"
+    ],
+    "ask": "Tag these Performance+ and Cleared for external use, and set them to expire Dec 31, 2026.",
+    "plan": "I'll add the tags Performance+ and Cleared for external use, and set Available until to Dec 31, 2026, on the 2 selected assets. Say yes and I'll apply it.",
+    "tags": [
+      "Performance+",
+      "Cleared for external use"
+    ],
+    "expires": "Dec 31, 2026",
+    "actions": [
+      "Add tags",
+      "Set expiry date"
+    ]
+  }
+}

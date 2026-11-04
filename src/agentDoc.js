@@ -1,3 +1,4 @@
+import { poss } from './names.js';
 // Builds the agent-readable version of a company page. Used at runtime (Agent view)
 // and at build time (/<slug>/agent.md), so both always match the person view.
 export function agentDoc(c, { origin, booking, sender }) {
@@ -18,7 +19,7 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push('## Use cases');
   lines.push('');
   lines.push('### 1. A system of context');
-  lines.push(`Effective AI depends on an effective context layer. Frontify holds ${c.name}'s brand, creative, product and event knowledge so AI tools stop guessing.`);
+  lines.push(`Effective AI depends on an effective context layer. Frontify holds ${poss(c.name)} brand, creative, product and event knowledge so AI tools stop guessing.`);
   lines.push('');
   if (c.contexts) {
     lines.push(`### 2. ${uc(c.contexts.eyebrow)}`);

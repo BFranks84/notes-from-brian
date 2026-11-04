@@ -15,14 +15,12 @@ export function EverydayDemo({ demo, theme, company }) {
   const [nFix, setNFix] = useState(reduce() ? 9 : 0);
   const ref = useRef(null);
   const run = useRef(0);
-  const seen = useRef(false);
   const t = tabs[tab];
 
   const play = async () => {
     const id = ++run.current; const alive = () => id === run.current;
     if (reduce()) { setSt(5); setNFix(9); return; }
-    setSt(0); setNFix(0);
-    await wait(900); if (!alive()) return; setSt(1);
+    setSt(1); setNFix(0);
     await wait(1100); if (!alive()) return; setSt(2);
     await wait(1400); if (!alive()) return; setSt(3);
     for (let k = 1; k <= t.fixes.length; k++) { await wait(550); if (!alive()) return; setNFix(k); }
@@ -30,12 +28,9 @@ export function EverydayDemo({ demo, theme, company }) {
     await wait(900); if (!alive()) return; setSt(5);
   };
 
-  useEffect(() => {
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting && !seen.current) { seen.current = true; play(); } }, { threshold: 0.35 });
-    if (ref.current) io.observe(ref.current);
-    return () => { io.disconnect(); run.current++; };
-  }, []);
-  useEffect(() => { if (seen.current) play(); }, [tab]);
+  // The visitor drives: nothing runs until they tap. Switching apps resets to the draft.
+  useEffect(() => () => { run.current++; }, []);
+  useEffect(() => { run.current++; if (!reduce()) { setSt(0); setNFix(0); } }, [tab]);
 
   const after = st >= 5;
   const hl = (target) => {
@@ -56,7 +51,7 @@ export function EverydayDemo({ demo, theme, company }) {
         {tabs.map((x, i) => (
           <button key={x.id} role="tab" aria-selected={i === tab} className={`ev-tab ${i === tab ? 'is-on' : ''}`} onClick={() => setTab(i)}>{x.label}</button>
         ))}
-        <button className="ev-replay" onClick={play} aria-label="Replay"><IconArrowRoundAntiClockwise size={16} /></button>
+        {st > 0 && <button className="ev-replay" onClick={play} aria-label="Run it again"><IconArrowRoundAntiClockwise size={16} /></button>}
       </div>
 
       <div className="ev-win">
@@ -91,6 +86,13 @@ export function EverydayDemo({ demo, theme, company }) {
 
         <aside className="ev-claude" aria-live="polite">
           <p className="ev-ch"><IconSparkle size={15} /> Claude <span>Connected to Frontify</span></p>
+          {st === 0 && (
+            <div className="ev-try">
+              <p className="bc-try">Try it</p>
+              <p>{t.kind === 'email' ? 'This draft is about to go out. Ask Claude to check it first.' : 'This slide is about to be presented. Ask Claude to check it first.'}</p>
+              <button className="chat-send" onClick={play}><IconSparkle size={15} /> Ask Claude to check it</button>
+            </div>
+          )}
           {st >= 1 && <p className="ev-me pop">{t.ask}</p>}
           {st === 2 && <p className="ev-read"><span className="shimmer">Reading Everyday › {t.guideline} from Frontify</span></p>}
           {st >= 3 && (

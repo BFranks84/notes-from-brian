@@ -9,13 +9,12 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 export function PartnerFiles({ demo, theme, company }) {
   const [st, setSt] = useState(reduce() ? 9 : 0);
   const [pct, setPct] = useState(reduce() ? 100 : 0);
-  const ref = useRef(null); const run = useRef(0); const seen = useRef(false);
+  const ref = useRef(null); const run = useRef(0);
   // 0 form, 1 uploading, 2 uploaded, 3 submitted, 4 library + new, 5 asked, 6 working, 7 plan, 8 yes, 9 done
   const play = async () => {
     const id = ++run.current; const alive = () => id === run.current;
     if (reduce()) { setSt(9); setPct(100); return; }
-    setSt(0); setPct(0);
-    await wait(800); if (!alive()) return; setSt(1);
+    setPct(0); setSt(1);
     for (let p = 0; p <= 100; p += 4) { await wait(28); if (!alive()) return; setPct(p); }
     setSt(2); await wait(1100); if (!alive()) return;
     setSt(3); await wait(1000); if (!alive()) return;
@@ -26,11 +25,8 @@ export function PartnerFiles({ demo, theme, company }) {
     setSt(8); await wait(1100); if (!alive()) return;
     setSt(9);
   };
-  useEffect(() => {
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting && !seen.current) { seen.current = true; play(); } }, { threshold: 0.35 });
-    if (ref.current) io.observe(ref.current);
-    return () => { io.disconnect(); run.current++; };
-  }, []);
+  // The visitor drives: the partner's upload starts when they tap.
+  useEffect(() => () => { run.current++; }, []);
 
   const lib = st >= 4;
   const t = theme || {};
@@ -43,7 +39,7 @@ export function PartnerFiles({ demo, theme, company }) {
       <div className="pf-tabs" aria-hidden="true">
         <span className={!lib ? 'is-on' : ''}>1 · Partner</span>
         <span className={lib ? 'is-on' : ''}>2 · Brand team</span>
-        <button className="ev-replay" onClick={play} aria-label="Replay"><IconArrowRoundAntiClockwise size={16} /></button>
+        {st > 0 && <button className="ev-replay" onClick={play} aria-label="Run it again"><IconArrowRoundAntiClockwise size={16} /></button>}
       </div>
 
       {!lib ? (
@@ -53,7 +49,11 @@ export function PartnerFiles({ demo, theme, company }) {
             <p className="pf-mh">New Submission</p>
             <div className="pf-drop">
               {st === 0 ? (
-                <p className="pf-hint"><IconImage size={18} /> Add or drop your assets here.</p>
+                <div className="pf-try">
+                  <p className="pf-hint"><IconImage size={18} /> Add or drop your assets here.</p>
+                  <button className="chat-send" onClick={play}>Try it: submit 2 partner files</button>
+                  <p className="bc-tap">You're the partner agency. Then see what the brand team gets.</p>
+                </div>
               ) : (
                 <>
                   <span className="pf-ring" style={{ '--pct': pct }}><b>{pct}%</b></span>

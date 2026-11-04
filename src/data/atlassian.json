@@ -154,8 +154,8 @@
         "url": "https://events.atlassian.com/teameurope"
       },
       "looksLike": [
-        "Designers build templates once, with brand elements locked.",
-        "Event and field teams fill them in from a browser, including motion versions for social.",
+        "Designers build the template once, with the event name, dates and logo locked.",
+        "Event and field teams fill in the talk title, speaker and photo from a browser, then export.",
         "Your creative team spends its time on the work only it can do."
       ],
       "pieces": [
@@ -171,21 +171,21 @@
       "question": "How many event assets does your team still build by hand for a Team event?",
       "preview": "templates",
       "demo": {
+        "name": "Team speaker card",
+        "locked": "Team '26 Europe · Amsterdam",
         "fields": [
           [
-            "Event",
-            "Team '26 Europe"
-          ],
-          [
-            "City",
-            "Amsterdam"
+            "Talk title",
+            "Planning with Rovo",
+            "Talk title"
           ],
           [
             "Speaker",
-            "Your name"
+            "Your name, your role",
+            "Speaker name"
           ]
         ],
-        "format": "Speaker card"
+        "image": "Speaker photo"
       }
     }
   ],

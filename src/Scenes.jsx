@@ -103,25 +103,54 @@ function FamilyScene({ demo }) {
   );
 }
 
+// Mirrors the Frontify template editor: fill the open fields, apply, and the locked layout updates; then export.
 function TemplateScene({ demo, company }) {
-  const [a, b, c] = demo.fields;
-  const v1 = useTyped(a[1], { speed: 40, delay: 300 });
-  const v2 = useTyped(b[1], { speed: 40, delay: 300 + a[1].length * 40 + 150 });
-  const v3 = useTyped(c[1], { speed: 40, delay: 300 + (a[1].length + b[1].length) * 40 + 300 });
+  const [a, b] = demo.fields;
+  const t1 = 300; const t2 = t1 + a[1].length * 45 + 250; const tApply = t2 + b[1].length * 45 + 500;
+  const v1 = useTyped(a[1], { speed: 45, delay: t1 });
+  const v2 = useTyped(b[1], { speed: 45, delay: t2 });
+  const [st, setSt] = useState(reduce() ? 3 : 0); // 0 none, 1 editing, 2 applying, 3 applied, 4 export menu
+  useEffect(() => {
+    if (reduce()) return;
+    const ts = [setTimeout(() => setSt(1), t1), setTimeout(() => setSt(2), tApply), setTimeout(() => setSt(3), tApply + 1000), setTimeout(() => setSt(4), tApply + 2100)];
+    return () => ts.forEach(clearTimeout);
+  }, []);
+  const shown = st >= 3 ? [a[1], b[1]] : [a[2] || a[0], b[2] || b[0]];
+  const pill = st === 0 ? ['No changes', ''] : st < 3 ? ['Changes not applied', 'is-pending'] : ['Changes applied', 'is-ok'];
   return (
-    <div className="sc sc-tpl">
-      <div className="sc-fields">
-        {[[a[0], v1], [b[0], v2], [c[0], v3]].map(([k, v]) => (
-          <label key={k}><span>{k}</span><em>{v || ' '}</em></label>
-        ))}
+    <div className="sc sc-ed">
+      <div className="ed-top">
+        <span className="ed-name">{demo.name}</span>
+        <span className={`ed-pill ${pill[1]}`}><i />{pill[0]}</span>
+        <span className="ed-export">Export
+          {st === 4 && (
+            <span className="ed-menu pop"><span>Create file for download</span><span>Export to project or library</span></span>
+          )}
+        </span>
       </div>
-      <div className="sc-render">
-        <span className="sc-lock"><IconLockClosed size={12} /> Locked layout</span>
-        <span className="sc-kicker">{demo.format}</span>
-        <strong>{v1 || ' '}</strong>
-        <span>{v2 || ' '}</span>
-        <span className="sc-speaker">{v3 || ' '}</span>
-        <span className="sc-brand">{company}</span>
+      <div className="ed-body">
+        <div className="ed-canvas">
+          <div className={`ed-art ${st === 2 ? 'is-busy' : ''}`}>
+            {st === 2 ? (
+              <span className="ed-spin"><i />Applying changes</span>
+            ) : (
+              <>
+                <span className="ed-photo" aria-hidden="true"><b /></span>
+                <span className="ed-lockline"><IconLockClosed size={10} /> {demo.locked}</span>
+                <strong>{shown[0]}</strong>
+                <span className="ed-sp">{shown[1]}</span>
+                <span className="ed-brand"><IconLockClosed size={10} /> {company}</span>
+              </>
+            )}
+          </div>
+        </div>
+        <div className="ed-fields">
+          {[[a[0], v1], [b[0], v2]].map(([k, v], i) => (
+            <label key={k}><span>{k}</span><em className={st >= 1 && ((i === 0 && v1.length < a[1].length) || (i === 1 && v1.length === a[1].length && v2.length < b[1].length)) ? 'is-focus' : ''}>{v || (i === 0 ? a[2] : b[2]) || ' '}</em></label>
+          ))}
+          <label><span>Image</span><em className="ed-img"><i />{demo.image}</em></label>
+          <span className={`ed-apply ${st === 1 ? 'is-ready' : ''}`}>Apply changes</span>
+        </div>
       </div>
     </div>
   );

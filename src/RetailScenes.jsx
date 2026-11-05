@@ -57,7 +57,19 @@ function Bottles({ x, y, n, w = 12, gap = 6, heights = [26, 20, 30, 22, 18, 28] 
   });
 }
 
-export function Scene({ kind, copy, small, label }) {
+// Folded apparel stacks for a clothing store's shelves, in place of bottles.
+function Folded({ x, y, n, w = 34, gap = 6 }) {
+  return Array.from({ length: n }, (_, i) => {
+    const bx = x + i * (w + gap); const layers = 3 + (i % 2);
+    return (
+      <g key={i} className={`rs-fold t${i % 3}`}>
+        {Array.from({ length: layers }, (_, k) => <rect key={k} x={bx} y={y - (k + 1) * 8} width={w} height="7.4" rx="2" />)}
+      </g>
+    );
+  });
+}
+
+export function Scene({ kind, copy, small, label, goods = 'bottles', strips = ['Mini · $12', 'Mini · $16', 'Gift card'] }) {
   const t = small ? null : label;
   if (kind === 'window') {
     return (
@@ -103,9 +115,15 @@ export function Scene({ kind, copy, small, label }) {
         <rect className="rs-run" x="298" y="40" width="82" height="196" />
         <rect className="rs-unit" x="118" y="18" width="164" height="218" />
         {[110, 160, 210].map((y) => <rect key={y} className="rs-shelf" x="118" y={y} width="164" height="4" />)}
-        <Bottles x={128} y={110} n={8} w={13} gap={6.2} />
-        <Bottles x={128} y={160} n={8} w={13} gap={6.2} heights={[22, 28, 18, 26, 24, 20]} />
-        <Bottles x={128} y={210} n={8} w={13} gap={6.2} heights={[30, 24, 26, 20, 28, 22]} />
+        {goods === 'folded' ? (<>
+          <Folded x={124} y={110} n={4} w={34} gap={5} />
+          <Folded x={124} y={160} n={4} w={34} gap={5} />
+          <Folded x={124} y={210} n={4} w={34} gap={5} />
+        </>) : (<>
+          <Bottles x={128} y={110} n={8} w={13} gap={6.2} />
+          <Bottles x={128} y={160} n={8} w={13} gap={6.2} heights={[22, 28, 18, 26, 24, 20]} />
+          <Bottles x={128} y={210} n={8} w={13} gap={6.2} heights={[30, 24, 26, 20, 28, 22]} />
+        </>)}
         <Sign x={136} y={26} w={128} h={48} copy={copy} size={13} sub={7.5} max={20} />
         {[110, 160, 210].map((y) => <rect key={`r${y}`} className="rs-shelf is-run" x="20" y={y} width="82" height="3" />)}
         {[110, 160, 210].map((y) => <rect key={`l${y}`} className="rs-shelf is-run" x="298" y={y} width="82" height="3" />)}
@@ -127,7 +145,7 @@ export function Scene({ kind, copy, small, label }) {
       {[56, 126, 196].map((x, i) => (
         <g key={x} className="rs-strip">
           <rect x={x} y="172" width="62" height="14" rx="1" />
-          <text x={x + 31} y="179.5" textAnchor="middle" dominantBaseline="middle">{['Mini · $12', 'Mini · $16', 'Gift card'][i]}</text>
+          <text x={x + 31} y="179.5" textAnchor="middle" dominantBaseline="middle">{strips[i]}</text>
         </g>
       ))}
       {t && <Tag x={122} y={86} w={76} h={52} label={t} lx={160} ly={72} anchor="middle" />}

@@ -1151,3 +1151,8 @@ button { font: inherit; color: inherit; }
 @media (min-width: 1080px) { .contact { grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; column-gap: 40px; } .contact-lines a { white-space: nowrap; word-break: normal; } }
 
 .ai-brandcard.is-long strong { font-size: 17px; }
+
+.rs-fold rect { stroke: var(--m-ink); stroke-width: 1; }
+.rs-fold.t0 rect { fill: color-mix(in srgb, var(--m-accent) 55%, var(--m-bg)); }
+.rs-fold.t1 rect { fill: var(--m-bg); }
+.rs-fold.t2 rect { fill: color-mix(in srgb, var(--m-ink) 22%, var(--m-bg)); }

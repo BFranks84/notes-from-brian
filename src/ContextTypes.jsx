@@ -165,7 +165,7 @@ function Preview({ it }) {
         <div className="mini-rthumbs">
           {it.thumbs.map((th, i) => (
             <figure key={th.kind} className="s" style={{ '--i': 3 + i }}>
-              <Scene kind={th.kind} copy={th.copy} small />
+              <Scene kind={th.kind} copy={th.copy} small goods={it.goods} strips={it.strips} />
               <figcaption>{th.label}</figcaption>
             </figure>
           ))}

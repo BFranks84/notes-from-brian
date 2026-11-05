@@ -56,7 +56,7 @@ export function StoreGuide({ demo, theme, company }) {
 
             <div className="sg-grid" key={`${pl.id}-${pi}`}>
               <figure className="sg-mock s" style={{ '--i': 0 }}>
-                <Scene kind={pl.id} copy={promo.copy[pl.id]} label={`${pl.sign} · ${pl.size}`} />
+                <Scene kind={pl.id} copy={promo.copy[pl.id]} label={`${pl.sign} · ${pl.size}`} goods={demo.goods} strips={demo.strips} />
                 <figcaption>{promo.name} · {promo.dates}. {promo.note}</figcaption>
               </figure>
               <div className="sg-side">

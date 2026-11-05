@@ -169,6 +169,42 @@ S = {
 # Retailers only. Each promotion with `copy` has the sign copy for every placement; one without is the recently ended one.
 ASK = 'A store manager asks the brand assistant'
 RETAIL = {
+ 'gap': dict(
+   eyebrow='Use case 6 · Retail context',
+   title='Every store shows the campaign the same way',
+   sub="{name}'s portal shows how each campaign should look in store, brand by brand: the windows, the front table, the shelves and the register. Store teams see the mockup, the size and the rules, then print from the template. Or they ask the brand assistant.",
+   note="Sample mockups, campaigns, sizes and dates built for this page. Not {name}'s own store standards.",
+   chapter='Retail', section='In-store campaign', template='In-store sign', askLabel=ASK, goods='folded',
+   strips=['Socks · $12', 'Beanie · $15', 'Gift card'],
+   promos=[
+     dict(status='Now', name='Holiday', dates='Nov 1 – Dec 24', note='Signs come down after close on Dec 24.',
+          copy=dict(window=['Give comfort', 'Holiday gifts for everyone'], table=['Gifts under $30', 'Cozy picks for everyone'],
+                    shelf=['Holiday knits', 'Soft, warm and ready to wrap'], register=['Add a gift card', 'Any amount, any brand'])),
+     dict(status='Next', name='New year denim', dates='Dec 26 – Jan 31', note='Goes up for opening on Dec 26.',
+          copy=dict(window=['New year, new fit', 'Find your denim'], table=['Denim for every fit', 'Find yours in store'],
+                    shelf=['Denim fits', 'Straight, relaxed and slim'], register=['Find your fit', 'Ask about our fit guide'])),
+     dict(status='Ended', name='Back to school', dates='Jul 15 – Sep 15', note='Its signs expired in the library, so no one reprints them.'),
+   ],
+   placements=[
+     dict(id='window', label='Window', sign='Window graphic', size='48 × 72 in', where='Both windows, centered at eye level. Each brand dresses its own windows.',
+          content='Campaign art and the headline in that brand\'s look. Never mix two brands in one window.',
+          ask='Can the Old Navy and Gap windows share one graphic?', answer='No. **Each brand dresses its own windows** in its own look. Pull each brand\'s window graphic from the campaign toolkit.'),
+     dict(id='table', label='Front table', sign='Table header', size='11 × 17 in', where='Front edge of the first table inside the door, facing the entrance.',
+          content='Headline and one line of copy. Folded stacks by size, smallest on top.',
+          ask='What goes on the front table this week?', answer='The **Holiday gifts under $30** edit, with the **table header facing the entrance**. Fold stacks by size, smallest on top.'),
+     dict(id='shelf', label='Shelf', sign='Shelf topper', size='8.5 × 11 in', where='Top of each wall fixture, at eye level.',
+          content='One product story per fixture, never two.',
+          ask='Can one shelf topper cover knits and denim?', answer='**No. One product story per fixture.** Give denim its own topper on the next fixture.'),
+     dict(id='register', label='Register', sign='Counter card', size='5 × 7 in', where='Left of the register, angled toward the customer.',
+          content='One add-on offer. Impulse items get price strips only.',
+          ask='What sign goes at the register this month?', answer='One **counter card, left of the register**, angled toward the customer. For Holiday it is Add a gift card. Impulse items get **price strips only**.'),
+   ],
+   context=dict(id='retail', label='Retail', desc='Windows, shelves and the register', kind='retail', chapter='Retail', section='In-store campaign',
+     title='Holiday in store', lead='How the current campaign shows up in every store, brand by brand.',
+     rule='Each brand dresses its own windows. Never mix two brands in one window.',
+     ask='Where does the holiday sign go at the register?', answer='The **counter card** goes **left of the register**, angled toward the customer. Impulse items get price strips only.'),
+   idea=dict(id='retail', title='Campaigns in store: windows, shelves and the register', summary='Mockups in the portal show how each campaign should look in the window, on the front table, on the shelf and at the register, brand by brand, with the size and rules for every sign.'),
+ ),
  'sephora': dict(
    eyebrow='Use case 6 · Retail context',
    title='Every store shows the promotion the same way',
@@ -493,6 +529,8 @@ def build(slug, s):
         now = next(p for p in r['promos'] if p['status'] == 'Now')
         names = {'window': 'Window', 'shelf': 'Shelf', 'register': 'Register'}
         ctx['thumbs'] = [{'kind': k, 'label': v, 'copy': now['copy'][k]} for k, v in names.items()]
+        for k in ('goods', 'strips'):
+            if k in r: ctx[k] = r[k]
         its = d['contexts']['items']
         its.insert(next(i for i, x in enumerate(its) if x['id'] == 'event') + 1, ctx)
         d['contexts']['sub'] = "Brand, creative, product, campaign and retail guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them."

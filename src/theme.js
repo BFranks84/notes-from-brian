@@ -35,6 +35,15 @@ export function companyTheme(slug) {
   return { ...t, family: f.family, body, loadFont: f.load };
 }
 
+// The company theme plus any extra themes it lists in `also` (e.g. a parent company and its featured brand).
+// Pages without `also` get exactly one option, so the switch stays Frontify | Company.
+export function themeOptions(slug, name) {
+  const main = companyTheme(slug);
+  if (!main) return [];
+  return [{ value: 'company', label: name, theme: main },
+    ...(main.also || []).map((k) => ({ value: k, label: THEMES[k]?.label || k, theme: companyTheme(k) })).filter((o) => o.theme)];
+}
+
 export function preloadFont(theme) {
   if (theme?.loadFont) theme.loadFont().catch(() => {});
 }

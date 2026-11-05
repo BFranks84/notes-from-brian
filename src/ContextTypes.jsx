@@ -128,7 +128,7 @@ function Preview({ it }) {
     return (
       <div className="mini-launch">
         <p className="mini-callout s" style={{ '--i': 3 }}>{it.positioning}</p>
-        <p className="mini-sub s" style={{ '--i': 4 }}>Approved claims</p>
+        <p className="mini-sub s" style={{ '--i': 4 }}>{it.claimsLabel || 'Approved claims'}</p>
         <ul>
           {it.claims.map((c, i) => <li key={c} className="s" style={{ '--i': 5 + i }}>{c}</li>)}
         </ul>

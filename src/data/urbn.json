@@ -1,0 +1,682 @@
+{
+  "slug": "urbn",
+  "name": "URBN",
+  "accent": "#167A92",
+  "accentInk": "#FFFFFF",
+  "ideas": [
+    {
+      "id": "context",
+      "title": "A system of context for every AI tool",
+      "summary": "Frontify gives Claude and Gemini the brand, creative, product and event context they need, so answers come out on brand."
+    },
+    {
+      "id": "contexts",
+      "title": "What context lives in Frontify",
+      "summary": "Brand, creative, product, event and Everyday guidance live as guideline pages that people read and AI tools answer from."
+    },
+    {
+      "id": "check",
+      "title": "Brand Check before anything goes live",
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
+    },
+    {
+      "id": "everyday",
+      "title": "Everyday guidelines inside emails and presentations",
+      "summary": "Claude or Gemini, connected to Frontify, checks emails and presentations against short Everyday guidelines before they go out."
+    },
+    {
+      "id": "partners",
+      "title": "Agency files, in the right place",
+      "summary": "Agencies and brand collaborators submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
+    },
+    {
+      "id": "retail",
+      "title": "Store signs from submitted copy: windows, shelves and the register",
+      "summary": "Store teams fill in the copy on locked sign templates, and mockups show how each campaign should look in the window, on the front table, on the shelf and at the register."
+    }
+  ],
+  "hero": {
+    "rotate": [
+      "voice",
+      "brand",
+      "creative",
+      "campaign",
+      "retail",
+      "everyday",
+      "agency"
+    ],
+    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
+    "prompt": "Make a LinkedIn post and image for the Anthropologie holiday gift guide.",
+    "generic": "Excited to announce an amazing new feature! Our innovative AI solution will revolutionize the way your team works. Don't miss out! #Innovation #AI #Teamwork",
+    "onbrand": "This season, give something uncommon. Hand-picked gifts, only-here finds and pieces made to be kept, for everyone on your list. Discover the holiday gift guide in stores and online.",
+    "context": [
+      {
+        "label": "Tone of voice",
+        "value": "Warm, curious and uncommon"
+      },
+      {
+        "label": "Messaging",
+        "value": "Approved Anthropologie messaging"
+      },
+      {
+        "label": "Colors",
+        "value": "Anthropologie blue on ivory and taupe"
+      },
+      {
+        "label": "Image",
+        "value": "Approved launch visual"
+      }
+    ],
+    "disclaimer": "Illustrative draft written for this sample, using URBN's public brand guidance. Not URBN content.",
+    "badImage": "/ai/urbn-offbrand.jpg",
+    "brandCard": {
+      "eyebrow": "Anthropologie · Holiday",
+      "headline": "Give something uncommon."
+    },
+    "headline": "AI is making everyone a creative.",
+    "headline2": "That doesn't mean they're good at it.",
+    "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
+    "badTag": "Fictional AI-generated work content",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed group of shoppers, a coral-to-magenta color wash and a generic headline",
+    "voiceSource": {
+      "label": "See the voice guideline",
+      "to": "everyday"
+    }
+  },
+  "check": {
+    "eyebrow": "Use case 3 · Brand Check",
+    "title": "Then it checks the work",
+    "sub": "Before anything goes live, Brand Check reviews it against {name}'s guidelines, flags potential issues, and shows which guideline informed each finding.",
+    "note": "Brand Check runs on the context you already keep in Frontify. It's more than a prompt: it's a service built into Frontify, available in the portal and through the API. The image is fictional AI-generated work content, and the findings are samples.",
+    "asset": {
+      "kind": "AI-generated LinkedIn image",
+      "by": "fictional, made with a generic AI image tool",
+      "image": "/ai/urbn-offbrand.jpg",
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed group of shoppers, a coral-to-magenta color wash and a generic headline"
+    },
+    "categories": [
+      {
+        "id": "logo",
+        "label": "Logo",
+        "status": "skip"
+      },
+      {
+        "id": "color",
+        "label": "Color"
+      },
+      {
+        "id": "typography",
+        "label": "Typography"
+      },
+      {
+        "id": "layout",
+        "label": "Layout"
+      },
+      {
+        "id": "writing",
+        "label": "Writing"
+      },
+      {
+        "id": "imagery",
+        "label": "Imagery"
+      }
+    ],
+    "findings": [
+      {
+        "cat": "writing",
+        "box": [
+          10,
+          3,
+          80,
+          22
+        ],
+        "text": "\"Shop The Season's Must-Have Styles\" is generic retail copy in title case. It doesn't sound like Anthropologie.",
+        "recommendation": "Start from the voice guide: warm, curious and specific, in sentence case.",
+        "sources": [
+          {
+            "label": "Voice - Anthropologie voice principles",
+            "to": "product"
+          },
+          {
+            "label": "Everyday - Tone of voice",
+            "to": "everyday"
+          }
+        ]
+      },
+      {
+        "cat": "color",
+        "box": [
+          2,
+          2,
+          96,
+          96
+        ],
+        "text": "The coral-to-magenta wash isn't in Anthropologie's palette.",
+        "found": "#D9577A",
+        "expected": "#167A92",
+        "expectedName": "Blue",
+        "recommendation": "Let the photo lead on ivory, and keep Anthropologie blue, #167A92, to small accents.",
+        "sources": [
+          {
+            "label": "Brand - Color - Primary colors",
+            "to": "brand"
+          }
+        ]
+      },
+      {
+        "cat": "imagery",
+        "box": [
+          0,
+          31,
+          100,
+          69
+        ],
+        "text": "A posed group smiling at the camera doesn't match the photography style.",
+        "recommendation": "Use a candid photo of a real team at work from the photo library.",
+        "sources": [
+          {
+            "label": "Creative - Photography - Do and don't",
+            "to": "creative"
+          }
+        ]
+      }
+    ]
+  },
+  "contexts": {
+    "eyebrow": "Use case 2 · What context lives in Frontify",
+    "title": "Every kind of context, in one place",
+    "sub": "Voice, brand, creative, campaign, retail and agency guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "note": "Sample pages built from URBN's public brand information. Not URBN's own guidelines.",
+    "items": [
+      {
+        "id": "product",
+        "label": "Voice",
+        "desc": "Voice principles, glossary and copy rules",
+        "kind": "launch",
+        "chapter": "Brand voice",
+        "section": "Anthropologie",
+        "title": "Anthropologie voice principles",
+        "lead": "One voice for the master brand and every label. The tone shifts by channel.",
+        "positioning": "Anthropologie is unique, just like you. We write like a friend with great taste: warm, curious and specific.",
+        "claims": [
+          "Warm: talk with people, not at them. Never pushy.",
+          "Curious: tell the story behind the piece.",
+          "Uncommon: specific words, never stock retail phrases."
+        ],
+        "rule": "Hyphenate compound adjectives before a noun: wide-leg pants, only-here finds.",
+        "ask": "Is it wide leg or wide-leg?",
+        "answer": "**Wide-leg**, with a hyphen, when it describes a noun: wide-leg pants, wide-leg jeans. From the glossary in Brand voice.",
+        "claimsLabel": "Voice principles"
+      },
+      {
+        "id": "brand",
+        "label": "Brand",
+        "desc": "Colors, type, logo and voice",
+        "kind": "color",
+        "chapter": "Color",
+        "section": "Primary colors",
+        "title": "Our palette",
+        "lead": "How Anthropologie uses color.",
+        "swatches": [
+          [
+            "Blue",
+            "#167A92"
+          ],
+          [
+            "Ivory",
+            "#FDFDF9"
+          ],
+          [
+            "Taupe",
+            "#E5E2DE"
+          ],
+          [
+            "Charcoal",
+            "#26262C"
+          ]
+        ],
+        "rule": "Let the photo lead on ivory and taupe. Anthropologie blue is for small accents and links.",
+        "ask": "Which color should a social post lead with?",
+        "answer": "Lead with the photo on **ivory and taupe**, and keep **Anthropologie blue, #167A92**, for small accents and links."
+      },
+      {
+        "id": "creative",
+        "label": "Creative",
+        "desc": "Photography, illustration and motion",
+        "kind": "photo",
+        "chapter": "Photography",
+        "section": "Do and don't",
+        "title": "Photography",
+        "lead": "Real teams doing real work, never staged.",
+        "do": {
+          "label": "Teams at work",
+          "note": "Candid moments of people working together."
+        },
+        "dont": {
+          "label": "Posed for the camera",
+          "note": "No staged handshakes or stock smiles."
+        },
+        "ask": "Can I use a stock photo of a handshake?",
+        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+      },
+      {
+        "id": "event",
+        "label": "Campaign",
+        "desc": "Toolkits for every campaign",
+        "kind": "event",
+        "chapter": "Campaign toolkits",
+        "section": "Holiday campaign",
+        "title": "Holiday campaign toolkit",
+        "lead": "Everything a team needs to show up on brand.",
+        "facts": [
+          [
+            "Audience",
+            "Every brand and region team"
+          ],
+          [
+            "Assets",
+            "Locked templates and approved photos"
+          ]
+        ],
+        "templates": [
+          {
+            "name": "Social post",
+            "note": "Headline and image, layout locked"
+          },
+          {
+            "name": "In-store sign",
+            "note": "Add the offer, the rest stays on brand"
+          }
+        ],
+        "ask": "I need a social post for the campaign.",
+        "answer": "I opened the **Social post** template. Add your headline and image; **the layout and logo stay locked**."
+      },
+      {
+        "id": "retail",
+        "label": "Retail",
+        "desc": "Windows, shelves and the register",
+        "kind": "retail",
+        "chapter": "Retail",
+        "section": "In-store campaign",
+        "title": "Holiday in store",
+        "lead": "How the current campaign shows up in every Anthropologie store.",
+        "rule": "Store teams write the copy. The sign template keeps the layout, type and colors on brand.",
+        "ask": "Where does the holiday sign go at the register?",
+        "answer": "The **counter card** goes **left of the register**, angled toward the customer. Small gifts get price strips only.",
+        "thumbs": [
+          {
+            "kind": "window",
+            "label": "Window",
+            "copy": [
+              "Gifts to keep",
+              "Shop the guide"
+            ]
+          },
+          {
+            "kind": "shelf",
+            "label": "Shelf",
+            "copy": [
+              "Cozy knits",
+              "Soft, warm and made to be kept"
+            ]
+          },
+          {
+            "kind": "register",
+            "label": "Register",
+            "copy": [
+              "Add a gift card",
+              "Any amount"
+            ]
+          }
+        ],
+        "goods": "folded",
+        "strips": [
+          "Candle · $28",
+          "Ornament · $14",
+          "Gift card"
+        ]
+      },
+      {
+        "id": "everyday",
+        "label": "Everyday",
+        "desc": "Short rules for email, decks and docs",
+        "kind": "writing",
+        "chapter": "Everyday",
+        "section": "Email tone of voice",
+        "title": "Email tone of voice",
+        "lead": "The short version of our tone of voice, for everyone who sends email.",
+        "rules": [
+          [
+            "Subject",
+            "Say what you need in under eight words."
+          ],
+          [
+            "Opening",
+            "Lead with the ask or the answer."
+          ],
+          [
+            "Voice",
+            "Warm, curious and uncommon."
+          ],
+          [
+            "Sign-off",
+            "Use the standard signature. No quotes or images."
+          ]
+        ],
+        "do": "Can you review the launch plan by Thursday?",
+        "dont": "Just circling back on the below!!",
+        "askLabel": "Before sending, with Claude or Gemini",
+        "ask": "Check this email against our writing guidelines.",
+        "answer": "Two fixes before you send: **put the ask in the first line**, and **use the standard signature**.",
+        "from": "Condensed from Brand › Tone of voice",
+        "deck": {
+          "title": "Presentations",
+          "rules": [
+            [
+              "Template",
+              "Start from the company template."
+            ],
+            [
+              "Titles",
+              "Six words or fewer."
+            ],
+            [
+              "Bullets",
+              "Three per slide, at most."
+            ]
+          ]
+        }
+      },
+      {
+        "id": "partners",
+        "label": "Agencies",
+        "desc": "What agencies and brand collaborators send, and how",
+        "kind": "partners",
+        "chapter": "Agencies",
+        "section": "Submitting files",
+        "title": "Agency submission guide",
+        "lead": "What agencies and brand collaborators need to know before they send work.",
+        "steps": [
+          [
+            "Submit",
+            "Through Agencies › Submit an asset in the portal, never by email."
+          ],
+          [
+            "Name files",
+            "anthropologie-agency-banner-v1.png: campaign, asset, version."
+          ],
+          [
+            "Fill in",
+            "Campaign, usage rights and an expiry date."
+          ],
+          [
+            "Start from",
+            "Approved logos, photos and templates in the portal."
+          ]
+        ],
+        "rule": "Every submission needs usage rights and an expiry date.",
+        "askLabel": "An agency asks the brand assistant",
+        "ask": "How do we send final files to the brand team?",
+        "answer": "**Submit them in the portal** under Agencies › Submit an asset, with **usage rights and an expiry date**. They land in the Agency submissions library."
+      }
+    ]
+  },
+  "everyday": {
+    "eyebrow": "Use case 4 · Everyday guidelines, inside your office applications",
+    "title": "The right tone in every email and deck",
+    "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude or Gemini inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
+    "note": "Claude and Gemini, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines.",
+    "tabs": [
+      {
+        "id": "outlook",
+        "label": "Email",
+        "kind": "email",
+        "guideline": "Email tone of voice",
+        "to": "Field marketing team",
+        "ask": "Check this email against our email tone of voice before I send it.",
+        "intro": "Three fixes based on **Everyday › Email tone of voice**:",
+        "before": {
+          "subject": "Following up",
+          "body": [
+            "Hi team, just circling back on the below!!",
+            "We've been heads-down on the Anthropologie holiday campaign and there's a lot going on, so I wanted to share where things stand.",
+            "Can you review the launch plan by Thursday?"
+          ],
+          "sig": "Cheers!! ✨ \"Dream big, ship bigger\""
+        },
+        "after": {
+          "subject": "Review the holiday campaign plan by Thursday",
+          "body": [
+            "Hi team, can you review the holiday campaign plan by Thursday?",
+            "It covers the messaging, launch assets and timeline. Comments in the doc are perfect."
+          ],
+          "sig": "Sam Lee · Marketing"
+        },
+        "fixes": [
+          {
+            "target": "subject",
+            "label": "Subject:",
+            "note": "say what you need. \"Following up\" doesn't."
+          },
+          {
+            "target": "p0",
+            "label": "Opening:",
+            "note": "lead with the ask. It's in the last line right now."
+          },
+          {
+            "target": "sig",
+            "label": "Sign-off:",
+            "note": "use the standard signature, with no quotes."
+          }
+        ],
+        "done": "Updated. The draft matches the email tone of voice and is ready to send."
+      },
+      {
+        "id": "powerpoint",
+        "label": "Presentation",
+        "kind": "deck",
+        "guideline": "Presentations",
+        "ask": "Is this slide built the way our presentation guidelines say?",
+        "intro": "Three fixes based on **Everyday › Presentations**:",
+        "before": {
+          "title": "Q3 results and some thoughts on where we go next with Anthropologie",
+          "bullets": [
+            "Pipeline grew in every region",
+            "Trials doubled after the keynote",
+            "Agencies asked for more co-marketing",
+            "We should talk about pricing",
+            "Support tickets went down",
+            "Next steps TBD"
+          ]
+        },
+        "after": {
+          "title": "Anthropologie: Q3 results",
+          "bullets": [
+            "Pipeline grew in every region",
+            "Trials doubled after the keynote",
+            "Agencies want more co-marketing"
+          ],
+          "footer": "2026 template"
+        },
+        "fixes": [
+          {
+            "target": "template",
+            "label": "Template:",
+            "note": "this slide isn't on the company template."
+          },
+          {
+            "target": "title",
+            "label": "Title:",
+            "note": "14 words. Keep titles to six or fewer."
+          },
+          {
+            "target": "bullets",
+            "label": "Bullets:",
+            "note": "six on one slide. Keep it to three."
+          }
+        ],
+        "done": "Updated. Slide 2 now uses the company template and follows the presentation guidelines."
+      }
+    ]
+  },
+  "partners": {
+    "eyebrow": "Use case 5 · Agency files",
+    "title": "Agency files land in the right place",
+    "sub": "Agencies and brand collaborators submit work straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
+    "note": "Sample files, agency and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "page": "Agencies › Submit an asset",
+    "submitter": "Northwind Creative · creative agency",
+    "library": "Agency submissions",
+    "files": [
+      {
+        "name": "anthropologie-agency-banner.png",
+        "size": "2.1 MB",
+        "title": "Anthropologie webinar"
+      },
+      {
+        "name": "anthropologie-agency-social.png",
+        "size": "840 KB",
+        "title": "Anthropologie for teams"
+      }
+    ],
+    "existing": [
+      "Holiday gift guide",
+      "Home collection lookbook",
+      "Weddings campaign",
+      "Spring denim"
+    ],
+    "ask": "Tag these Anthropologie and Cleared for external use, and set them to expire Dec 31, 2026.",
+    "plan": "I'll add the tags Anthropologie and Cleared for external use, and set Available until to Dec 31, 2026, on the 2 selected assets. Say yes and I'll apply it.",
+    "tags": [
+      "Anthropologie",
+      "Cleared for external use"
+    ],
+    "expires": "Dec 31, 2026",
+    "actions": [
+      "Add tags",
+      "Set expiry date"
+    ],
+    "who": "Agency",
+    "you": "You're the agency. Then see what the brand team gets.",
+    "tryLabel": "Try it: submit 2 agency files"
+  },
+  "ai": [
+    "Claude",
+    "Gemini"
+  ],
+  "contentTheme": "urbn-anthropologie",
+  "retail": {
+    "eyebrow": "Use case 6 · Retail context",
+    "title": "Store teams send the words. The signs come out on brand.",
+    "sub": "{name}'s portal shows how each Anthropologie campaign should look in store: the windows, the front table, the shelves and the register. Store teams fill in the copy on the sign template. The layout, type and colors stay locked, so every sign prints on brand. Or they ask the brand assistant.",
+    "note": "Sample mockups, campaigns, sizes and dates built for this page. Not {name}'s own store standards.",
+    "chapter": "Retail",
+    "section": "In-store campaign",
+    "template": "In-store sign",
+    "askLabel": "A store manager asks the brand assistant",
+    "goods": "folded",
+    "strips": [
+      "Candle · $28",
+      "Ornament · $14",
+      "Gift card"
+    ],
+    "promos": [
+      {
+        "status": "Now",
+        "name": "Holiday",
+        "dates": "Nov 1 – Dec 24",
+        "note": "Signs come down after close on Dec 24.",
+        "copy": {
+          "window": [
+            "Gifts to keep",
+            "Shop the guide"
+          ],
+          "table": [
+            "Gifts under $50",
+            "For everyone"
+          ],
+          "shelf": [
+            "Cozy knits",
+            "Soft, warm and made to be kept"
+          ],
+          "register": [
+            "Add a gift card",
+            "Any amount"
+          ]
+        }
+      },
+      {
+        "status": "Next",
+        "name": "New year, new rooms",
+        "dates": "Dec 26 – Jan 31",
+        "note": "Goes up for opening on Dec 26.",
+        "copy": {
+          "window": [
+            "Fresh rooms",
+            "New for home"
+          ],
+          "table": [
+            "Small changes, new rooms",
+            "Pillows and throws"
+          ],
+          "shelf": [
+            "Layered bedding",
+            "Mix the textures, keep it soft"
+          ],
+          "register": [
+            "Finish the room",
+            "Ask us how"
+          ]
+        }
+      },
+      {
+        "status": "Ended",
+        "name": "Fall arrivals",
+        "dates": "Aug 15 – Oct 31",
+        "note": "Its signs expired in the library, so no one reprints them."
+      }
+    ],
+    "placements": [
+      {
+        "id": "window",
+        "label": "Window",
+        "sign": "Window graphic",
+        "size": "48 × 72 in",
+        "where": "Both windows, centered at eye level, above the display.",
+        "content": "One campaign story per window: the headline and one line, in sentence case.",
+        "ask": "Can I write the window headline in all caps?",
+        "answer": "No. **Headlines are in sentence case**, like the rest of the voice guide. Fill in the copy on the window template and the type stays on brand."
+      },
+      {
+        "id": "table",
+        "label": "Front table",
+        "sign": "Table header",
+        "size": "11 × 17 in",
+        "where": "Front edge of the first table inside the door, facing the entrance.",
+        "content": "Headline and one line of copy. Gifts styled in small groups, not stacks.",
+        "ask": "What goes on the front table this week?",
+        "answer": "The **Gifts under $50** edit, with the **table header facing the entrance**. Style gifts in small groups, not stacks."
+      },
+      {
+        "id": "shelf",
+        "label": "Shelf",
+        "sign": "Shelf topper",
+        "size": "8.5 × 11 in",
+        "where": "Top of each wall fixture, at eye level.",
+        "content": "One product story per fixture, never two.",
+        "ask": "Can one shelf topper cover knits and candles?",
+        "answer": "**No. One product story per fixture.** Give candles their own topper on the next fixture."
+      },
+      {
+        "id": "register",
+        "label": "Register",
+        "sign": "Counter card",
+        "size": "5 × 7 in",
+        "where": "Left of the register, angled toward the customer.",
+        "content": "One add-on offer. Small gifts get price strips only.",
+        "ask": "What sign goes at the register this month?",
+        "answer": "One **counter card, left of the register**, angled toward the customer. For Holiday it is Add a gift card. Small gifts get **price strips only**."
+      }
+    ]
+  }
+}

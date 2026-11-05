@@ -185,6 +185,29 @@ S = {
    ftext="\"Your Wealth, Our Expertise\" is a generic line, and a wealth headline needs the approved disclosures before it goes out.",
    frec2="Start from the approved Private Wealth positioning, and add the required disclosures from the template.",
    alt="A fictional AI-generated LinkedIn graphic: posed advisors in suits, a teal-to-navy color wash and a generic headline"),
+ 'urbn': dict(name='URBN', product='Anthropologie', short='Anthropologie', eyebrow='Anthropologie · Holiday',
+   content_theme='urbn-anthropologie',
+   prompt='Make a LinkedIn post and image for the Anthropologie holiday gift guide.',
+   card='Give something uncommon.', voice='Warm, curious and uncommon', colors='Anthropologie blue on ivory and taupe',
+   onbrand="This season, give something uncommon. Hand-picked gifts, only-here finds and pieces made to be kept, for everyone on your list. Discover the holiday gift guide in stores and online.",
+   positioning="Anthropologie is unique, just like you. We write like a friend with great taste: warm, curious and specific.",
+   claims=["Warm: talk with people, not at them. Never pushy.", "Curious: tell the story behind the piece.", "Uncommon: specific words, never stock retail phrases."],
+   prule="Hyphenate compound adjectives before a noun: wide-leg pants, only-here finds.",
+   brule="Let the photo lead on ivory and taupe. Anthropologie blue is for small accents and links.",
+   banswer="Lead with the photo on **ivory and taupe**, and keep **Anthropologie blue, #167A92**, for small accents and links.",
+   event='Holiday campaign', etitle='Holiday campaign toolkit', elabel='Campaign',
+   product_chapter='Brand voice', product_section='Anthropologie', product_title='Anthropologie voice principles',
+   first_tab='product', first_finding='writing', product_label='Voice', product_desc='Voice principles, glossary and copy rules', product_claimsLabel='Voice principles',
+   product_lead='One voice for the master brand and every label. The tone shifts by channel.',
+   product_ask='Is it wide leg or wide-leg?',
+   product_answer='**Wide-leg**, with a hyphen, when it describes a noun: wide-leg pants, wide-leg jeans. From the glossary in Brand voice.',
+   topic='the Anthropologie holiday campaign', plan='holiday campaign plan',
+   partners='Agencies and brand collaborators', ptype='creative agency', existing=['Holiday gift guide', 'Home collection lookbook', 'Weddings campaign', 'Spring denim'],
+   found='#D9577A', fcolor="The coral-to-magenta wash isn't in Anthropologie's palette.",
+   frec="Let the photo lead on ivory, and keep Anthropologie blue, #167A92, to small accents.", head_box=[10, 3, 80, 22], img_box=[0, 31, 100, 69],
+   ftext="\"Shop The Season's Must-Have Styles\" is generic retail copy in title case. It doesn't sound like Anthropologie.",
+   frec2="Start from the voice guide: warm, curious and specific, in sentence case.",
+   alt="A fictional AI-generated LinkedIn graphic: a posed group of shoppers, a coral-to-magenta color wash and a generic headline"),
 }
 
 # Use case 6 (retail context): how the promotion looks in each spot in store, plus a Retail tab in use case 2.
@@ -261,6 +284,42 @@ RETAIL = {
      rule='Windows carry art and the headline only. Prices go inside the store.',
      ask='Where does the holiday sign go at the register?', answer='The **counter card** goes **left of the register**, angled toward the guest. Queue fixtures get price strips only.'),
    idea=dict(id='retail', title='Promotions in store: windows, shelves and the register', summary='Mockups in the portal show how each promotion should look in the window, on the gifting table, on the shelf and at the register, with the size and rules for every sign.'),
+ ),
+ 'urbn': dict(
+   eyebrow='Use case 6 · Retail context',
+   title='Store teams send the words. The signs come out on brand.',
+   sub="{name}'s portal shows how each Anthropologie campaign should look in store: the windows, the front table, the shelves and the register. Store teams fill in the copy on the sign template. The layout, type and colors stay locked, so every sign prints on brand. Or they ask the brand assistant.",
+   note="Sample mockups, campaigns, sizes and dates built for this page. Not {name}'s own store standards.",
+   chapter='Retail', section='In-store campaign', template='In-store sign', askLabel=ASK, goods='folded',
+   strips=['Candle · $28', 'Ornament · $14', 'Gift card'],
+   promos=[
+     dict(status='Now', name='Holiday', dates='Nov 1 – Dec 24', note='Signs come down after close on Dec 24.',
+          copy=dict(window=['Gifts to keep', 'Shop the guide'], table=['Gifts under $50', 'For everyone'],
+                    shelf=['Cozy knits', 'Soft, warm and made to be kept'], register=['Add a gift card', 'Any amount'])),
+     dict(status='Next', name='New year, new rooms', dates='Dec 26 – Jan 31', note='Goes up for opening on Dec 26.',
+          copy=dict(window=['Fresh rooms', 'New for home'], table=['Small changes, new rooms', 'Pillows and throws'],
+                    shelf=['Layered bedding', 'Mix the textures, keep it soft'], register=['Finish the room', 'Ask us how'])),
+     dict(status='Ended', name='Fall arrivals', dates='Aug 15 – Oct 31', note='Its signs expired in the library, so no one reprints them.'),
+   ],
+   placements=[
+     dict(id='window', label='Window', sign='Window graphic', size='48 × 72 in', where='Both windows, centered at eye level, above the display.',
+          content='One campaign story per window: the headline and one line, in sentence case.',
+          ask='Can I write the window headline in all caps?', answer='No. **Headlines are in sentence case**, like the rest of the voice guide. Fill in the copy on the window template and the type stays on brand.'),
+     dict(id='table', label='Front table', sign='Table header', size='11 × 17 in', where='Front edge of the first table inside the door, facing the entrance.',
+          content='Headline and one line of copy. Gifts styled in small groups, not stacks.',
+          ask='What goes on the front table this week?', answer='The **Gifts under $50** edit, with the **table header facing the entrance**. Style gifts in small groups, not stacks.'),
+     dict(id='shelf', label='Shelf', sign='Shelf topper', size='8.5 × 11 in', where='Top of each wall fixture, at eye level.',
+          content='One product story per fixture, never two.',
+          ask='Can one shelf topper cover knits and candles?', answer='**No. One product story per fixture.** Give candles their own topper on the next fixture.'),
+     dict(id='register', label='Register', sign='Counter card', size='5 × 7 in', where='Left of the register, angled toward the customer.',
+          content='One add-on offer. Small gifts get price strips only.',
+          ask='What sign goes at the register this month?', answer='One **counter card, left of the register**, angled toward the customer. For Holiday it is Add a gift card. Small gifts get **price strips only**.'),
+   ],
+   context=dict(id='retail', label='Retail', desc='Windows, shelves and the register', kind='retail', chapter='Retail', section='In-store campaign',
+     title='Holiday in store', lead='How the current campaign shows up in every Anthropologie store.',
+     rule='Store teams write the copy. The sign template keeps the layout, type and colors on brand.',
+     ask='Where does the holiday sign go at the register?', answer='The **counter card** goes **left of the register**, angled toward the customer. Small gifts get price strips only.'),
+   idea=dict(id='retail', title='Store signs from submitted copy: windows, shelves and the register', summary='Store teams fill in the copy on locked sign templates, and mockups show how each campaign should look in the window, on the front table, on the shelf and at the register.'),
  ),
 }
 
@@ -393,7 +452,7 @@ AUD = {
  'vendor': dict(tab='Vendors', word='vendor', who='Vendor', files='Vendor and agency files', title='Vendor files land in the right place', area='Vendors', lib='Vendor submissions', you="You're the vendor. Then see what the brand team gets.", asker='A vendor asks the brand assistant'),
  'retailer': dict(tab='Retailers', word='retailer', who='Retailer', files='Retailer files', title='Retailer files land in the right place', area='Retailers', lib='Retailer submissions', you="You're the retailer. Then see what the brand team gets.", asker='A retail partner asks the brand assistant'),
 }
-AUD_FOR = {'cibc': 'vendor', 'gap': 'agency', 'sephora': 'agency', 'pinterest': 'agency', 'twitch': 'agency', 'flooranddecor': 'supplier', 'cvshealth': 'supplier'}
+AUD_FOR = {'urbn': 'agency', 'cibc': 'vendor', 'gap': 'agency', 'sephora': 'agency', 'pinterest': 'agency', 'twitch': 'agency', 'flooranddecor': 'supplier', 'cvshealth': 'supplier'}
 
 def apply_aud(d, key, partners_label, ptype):
     """Use the right word for who sends files in, everywhere it shows: use case, tab, idea chip, rotating word."""
@@ -441,6 +500,7 @@ def rotate_words(items):
 AI = {
  'flooranddecor': ['Claude', 'Copilot'],          # Oct 23 call: Claude is the enterprise standard; some employees have Copilot
  'cvshealth': ['ChatGPT', 'Copilot', 'Gemini'],   # Sep 10 demo: "Copilot slash ChatGPT and Gemini... Gemini Enterprise"
+ 'urbn': ['Claude', 'Gemini'],                    # Sep 24 intro: Gemini and Claude seats; Oct 16: Google Workspace with Gemini
 }
 ALL_AI = ['ChatGPT', 'Claude', 'Copilot', 'Gemini']
 
@@ -487,17 +547,18 @@ def partners_tab(name, partners_label, key, packaging=False):
       ask='How do we send final files to the brand team?', answer='**Submit them in the portal** under Partners › Submit an asset, with **usage rights and an expiry date**. They land in the Partner submissions library.')
 
 def contexts_intro(items):
-    lab = {'brand': 'brand', 'creative': 'creative', 'product': 'product'}
+    lab = {'brand': 'brand', 'creative': 'creative'}
     sing = {'Advisors': 'advisor', 'Vendors': 'vendor', 'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'Franchisees': 'franchisee', 'Retailers': 'retailer'}
-    ws = [lab.get(i['id'], sing.get(i['label'], i['label'].lower())) for i in items if i['id'] != 'everyday']
+    ws = [lab.get(i['id'], sing.get(i['label'], i['label'].lower())) for i in items if i['id'] != 'everyday']  # product uses its tab label (Product, or e.g. Voice)
     lst = ', '.join(ws[:-1]) + ' and ' + ws[-1]
     return f"{lst[0].upper() + lst[1:]} guidance live in {{name}}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them."
 
 def build(slug, s):
     d = copy.deepcopy(TPL)
-    t = THEMES[slug]; name = s['name']; prod = s['product']
+    t = THEMES[s.get('content_theme', slug)]; name = s['name']; prod = s['product']
     for k in ('status', 'note', 'theme', 'office', 'palette'): d.pop(k, None)
     d.update(slug=slug, name=name, accent=t['accent'], accentInk=t['accentInk'])
+    if s.get('content_theme'): d['contentTheme'] = s['content_theme']
     # The brand's lead color: the palette swatch that matches the theme accent (fallback: first swatch).
     lead = next((x for x in t['palette'] if x[1].lower() == t['accent'].lower()), t['palette'][0])
     img = f'/ai/{slug}-offbrand.jpg'
@@ -517,13 +578,16 @@ def build(slug, s):
     # Use case 2: context types
     items = {i['id']: i for i in d['contexts']['items']}
     b = items['brand']; b['swatches'] = [list(x) for x in t['palette']]; b['rule'] = s['brule']
-    b['lead'] = f"How {name} uses color."
+    b['lead'] = f"How {t['label'] if s.get('content_theme') else name} uses color."
     b['ask'] = 'Which color should a social post lead with?'
     b['answer'] = s.get('banswer') or f"Use **{lead[0]}, {lead[1]}**. {s['brule'].split('.')[0]}."
     p = items['product']; p['chapter'] = s.get('product_chapter', 'Product launch'); p['section'] = s.get('product_section', prod)
     p['title'] = s.get('product_title', f"{prod} positioning"); p['positioning'] = s['positioning']; p['claims'] = s['claims']; p['rule'] = s['prule']
     p['ask'] = f"Write a one-line pitch for {prod}." if 'product_title' not in s else "Write a one-line intro to our brand family."
     p['answer'] = f"**{s['positioning'].split('.')[0]}.** Drafted from the approved positioning."
+    # Optional: turn the Product tab into another kind of guidance page (e.g. a brand voice page)
+    for k in ('label', 'desc', 'lead', 'ask', 'answer', 'claimsLabel'):
+        if s.get(f'product_{k}'): p[k] = s[f'product_{k}']
     e = items['event']; e['label'] = s['elabel']; e['chapter'] = 'Event toolkits' if s['elabel'] == 'Event' else 'Campaign toolkits'
     e['section'] = s['event']; e['title'] = s['etitle']
     e['desc'] = 'Toolkits, booths and speaker kits' if s['elabel'] == 'Event' else 'Toolkits for every campaign'
@@ -543,9 +607,11 @@ def build(slug, s):
         {'cat': 'color', 'box': [2, 2, 96, 96], 'text': s['fcolor'], 'found': s['found'], 'expected': lead[1], 'expectedName': lead[0],
          'recommendation': s['frec'], 'sources': [{'label': 'Brand - Color - Primary colors', 'to': 'brand'}]},
         {'cat': 'writing', 'box': s['head_box'], 'text': s['ftext'], 'recommendation': s['frec2'],
-         'sources': [{'label': f"Product - {p['title']}", 'to': 'product'}, {'label': 'Everyday - Tone of voice', 'to': 'everyday'}]},
+         'sources': [{'label': f"{p['label']} - {p['title']}", 'to': 'product'}, {'label': 'Everyday - Tone of voice', 'to': 'everyday'}]},
         {'cat': 'imagery', 'box': s['img_box'], 'text': "A posed group smiling at the camera doesn't match the photography style.",
          'recommendation': 'Use a candid photo of a real team at work from the photo library.', 'sources': [{'label': "Creative - Photography - Do and don't", 'to': 'creative'}]}]
+    if s.get('first_finding'):  # e.g. lead with the copy finding when brand voice is the main use case
+        c['findings'].sort(key=lambda f: f['cat'] != s['first_finding'])
     # Use case 4: Everyday in Microsoft 365
     tabs = d['everyday']['tabs']
     em, dk = tabs[0], tabs[1]
@@ -607,6 +673,8 @@ def build(slug, s):
     pt = partners_tab(name, s['partners'], s['short'].lower().replace(' ', '-').replace('+', 'plus'), packaging=bool(PACKAGING.get(slug)))
     its[:] = [i for i in its if i['id'] != 'partners'] + [pt]
     apply_aud(d, AUD_FOR.get(slug, 'partner'), s['partners'], s['ptype'])
+    if s.get('first_tab'):  # lead with the use case that matters most to this customer
+        its.sort(key=lambda i: i['id'] != s['first_tab'])
     d['contexts']['sub'] = contexts_intro(its)
     d['hero']['rotate'] = rotate_words(its)
     apply_ai(d, AI.get(slug))

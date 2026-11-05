@@ -594,5 +594,93 @@
   ],
   "source": "us.cibc.com (observed site colors)",
   "url": "https://us.cibc.com/"
+ },
+ "urbn": {
+  "label": "URBN",
+  "evidence": "observed (urbn.com CSS, Nov 5, 2026); no public brand palette",
+  "bg": "#FFFFFF",
+  "surface": "#F7F7F7",
+  "ink": "#151206",
+  "ink2": "#5E5E5E",
+  "accent": "#151206",
+  "accentInk": "#FFFFFF",
+  "accentText": "#151206",
+  "hl": "#EDEDED",
+  "heroBg": "#151206",
+  "heroInk": "#FFFFFF",
+  "heroAccentText": "#D8D8D8",
+  "font": "outfit",
+  "displayWeight": 800,
+  "displayTracking": "-0.01em",
+  "displayItalic": false,
+  "radiusBtn": "0px",
+  "radiusCard": "0px",
+  "btnCase": "uppercase",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "Black",
+    "#151206"
+   ],
+   [
+    "White",
+    "#FFFFFF"
+   ],
+   [
+    "Gray",
+    "#818181"
+   ],
+   [
+    "Light gray",
+    "#D8D8D8"
+   ]
+  ],
+  "source": "urbn.com (observed site colors)",
+  "url": "https://www.urbn.com/",
+  "also": [
+   "urbn-anthropologie"
+  ]
+ },
+ "urbn-anthropologie": {
+  "label": "Anthropologie",
+  "evidence": "observed (anthropologie.com CSS color variables, Nov 5, 2026); no public brand palette",
+  "bg": "#FDFDF9",
+  "surface": "#F7F6F2",
+  "ink": "#26262C",
+  "ink2": "#5C5C5F",
+  "accent": "#167A92",
+  "accentInk": "#FFFFFF",
+  "accentText": "#167A92",
+  "hl": "#E8F2F4",
+  "heroBg": "#F7F6F2",
+  "heroInk": "#26262C",
+  "font": "caslon",
+  "displayWeight": 400,
+  "displayTracking": "-0.01em",
+  "displayItalic": false,
+  "radiusBtn": "0px",
+  "radiusCard": "0px",
+  "btnCase": "none",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "Blue",
+    "#167A92"
+   ],
+   [
+    "Ivory",
+    "#FDFDF9"
+   ],
+   [
+    "Taupe",
+    "#E5E2DE"
+   ],
+   [
+    "Charcoal",
+    "#26262C"
+   ]
+  ],
+  "source": "anthropologie.com (observed site colors)",
+  "url": "https://www.anthropologie.com/"
  }
 }

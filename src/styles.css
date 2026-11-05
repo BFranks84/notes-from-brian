@@ -516,6 +516,12 @@ button { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: no-preference) {
   .seg-theme.is-hint .seg-item:last-of-type::after { content: ''; position: absolute; top: 5px; right: 5px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: hintPulse 1.6s var(--ease) infinite; }
 }
+/* With three or more themes, the hint sits on the first company theme, where there is room beside the label */
+.seg-theme.is-multi.is-hint .seg-item:last-of-type::after { content: none; }
+.seg-theme.is-multi.is-hint .seg-item:nth-of-type(2) { position: relative; }
+@media (prefers-reduced-motion: no-preference) {
+  .seg-theme.is-multi.is-hint .seg-item:nth-of-type(2)::after { content: ''; position: absolute; top: 5px; right: 5px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: hintPulse 1.6s var(--ease) infinite; }
+}
 @keyframes hintPulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 100% { box-shadow: 0 0 0 8px transparent; } }
 @media (max-width: 600px) {
   .appbar { padding: 0 12px; }

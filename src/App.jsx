@@ -14,7 +14,7 @@ import { EverydayDemo } from './EverydayDemo.jsx';
 import { PartnerFiles } from './PartnerFiles.jsx';
 import { StoreGuide } from './StoreGuide.jsx';
 import { PackagingLibrary } from './PackagingLibrary.jsx';
-import { FRONTIFY, companyTheme, applyTheme, preloadFont } from './theme.js';
+import { FRONTIFY, companyTheme, themeOptions, applyTheme, preloadFont } from './theme.js';
 
 // End a sentence with a company name without doubling the period ("Gap Inc.").
 const endDot = (n) => (n.endsWith('.') ? n : `${n}.`);
@@ -58,11 +58,17 @@ function Portal({ company: c }) {
   const doc = useMemo(() => agentDoc(c, SITE), [c]);
 
   const ct = useMemo(() => companyTheme(c.slug), [c.slug]);
-  useEffect(() => { applyTheme(theme === 'company' && ct ? ct : FRONTIFY); }, [theme, ct]);
+  // Demos use the featured brand's theme when the page sets one (e.g. a parent company featuring one brand).
+  const dt = useMemo(() => (c.contentTheme ? companyTheme(c.contentTheme) : ct), [c.contentTheme, ct]);
+  const opts = useMemo(() => themeOptions(c.slug, c.name), [c.slug, c.name]);
+  const order = ['frontify', ...opts.map((o) => o.value)];
+  const cur = opts.find((o) => o.value === theme);
+  const shown = cur || opts[0];
+  useEffect(() => { applyTheme(cur ? cur.theme : FRONTIFY); }, [cur]);
   useEffect(() => {
     const idle = window.requestIdleCallback || ((f) => setTimeout(f, 1500));
-    idle(() => preloadFont(ct));
-  }, [ct]);
+    idle(() => opts.forEach((o) => preloadFont(o.theme)));
+  }, [opts]);
 
   const setView = (v) => { setViewRaw(v); window.scrollTo({ top: 0 }); };
   const setTheme = (t, origin) => {
@@ -79,8 +85,10 @@ function Portal({ company: c }) {
   const toggleTheme = (e) => {
     setHinted(true);
     const r = e?.currentTarget?.getBoundingClientRect?.();
-    setTheme(theme === 'frontify' ? 'company' : 'frontify', r ? { x: r.left + r.width / 2, y: r.top + r.height / 2 } : null);
+    setTheme(order[(order.indexOf(theme) + 1) % order.length], r ? { x: r.left + r.width / 2, y: r.top + r.height / 2 } : null);
   };
+  const next = order[(order.indexOf(theme) + 1) % order.length];
+  const nextLabel = next === 'frontify' ? 'Switch back to Frontify' : `Switch to the ${opts.find((o) => o.value === next).label} theme`;
   const pick = c.ideas.find((i) => i.id === pickId);
 
   return (
@@ -94,7 +102,7 @@ function Portal({ company: c }) {
         <div className="appbar-right">
           {ct && (
             <Segmented
-              className={`seg-theme ${hinted ? '' : 'is-hint'}`}
+              className={`seg-theme ${opts.length > 1 ? 'is-multi' : ''} ${hinted ? '' : 'is-hint'}`}
               ariaLabel="Theme"
               value={theme}
               onChange={(v, e) => {
@@ -102,7 +110,7 @@ function Portal({ company: c }) {
                 const r = e?.currentTarget?.getBoundingClientRect?.();
                 setTheme(v, r ? { x: r.left + r.width / 2, y: r.top + r.height / 2 } : null);
               }}
-              options={[{ value: 'frontify', label: 'Frontify' }, { value: 'company', label: c.name }]}
+              options={[{ value: 'frontify', label: 'Frontify' }, ...opts.map((o) => ({ value: o.value, label: o.label }))]}
             />
           )}
           <span className="appbar-viewas" id="viewas">View as</span>
@@ -142,7 +150,7 @@ function Portal({ company: c }) {
               <h2 id="uc1-demo-title"><span className="rot-line">The <RotatingWord words={c.hero.rotate} /> context platform</span> <span className="rot-line">for {poss(c.name)} employees and their AI</span></h2>
               <p>Most people at {c.name} will never open Frontify. They'll ask {listOf(aiTools(c), 'or')}, and Frontify makes sure the answer already knows the brand.</p>
             </div>
-            <ChatDemo hero={c.hero} company={c.name} theme={ct} ai={c.ai} />
+            <ChatDemo hero={c.hero} company={c.name} theme={dt} ai={c.ai} />
           </section>
 
           {c.contexts && (
@@ -152,7 +160,7 @@ function Portal({ company: c }) {
                 <h2 id="ctx-title">{c.contexts.title}</h2>
                 <p>{c.contexts.sub.replace('{name}', c.name)}</p>
               </div>
-              <ContextTypes items={c.contexts.items} theme={ct || FRONTIFY} company={c.name} />
+              <ContextTypes items={c.contexts.items} theme={dt || FRONTIFY} company={c.name} />
               <p className="bc-note">{c.contexts.note}</p>
             </section>
           )}
@@ -164,7 +172,7 @@ function Portal({ company: c }) {
                 <h2 id="check-title">{c.check.title}</h2>
                 <p>{c.check.sub.replace('{name}', c.name)}</p>
               </div>
-              <BrandCheck check={c.check} theme={ct || FRONTIFY} company={c.name} />
+              <BrandCheck check={c.check} theme={dt || FRONTIFY} company={c.name} />
               <p className="bc-note">{c.check.note}</p>
             </section>
           )}
@@ -176,7 +184,7 @@ function Portal({ company: c }) {
                 <h2 id="pl-title">{c.packaging.title}</h2>
                 <p>{c.packaging.sub.replace('{name}', c.name)}</p>
               </div>
-              <PackagingLibrary demo={c.packaging} theme={ct || FRONTIFY} company={c.name} />
+              <PackagingLibrary demo={c.packaging} theme={dt || FRONTIFY} company={c.name} />
               <p className="bc-note">{c.packaging.note.replace('{name}', c.name)}</p>
             </section>
           )}
@@ -189,7 +197,7 @@ function Portal({ company: c }) {
                 <h2 id="ev-title">{c.everyday.title}</h2>
                 <p>{c.everyday.sub.replace('{name}', c.name)}</p>
               </div>
-              <EverydayDemo demo={c.everyday} theme={ct || FRONTIFY} company={c.name} ai={c.ai} />
+              <EverydayDemo demo={c.everyday} theme={dt || FRONTIFY} company={c.name} ai={c.ai} />
               <p className="bc-note">{c.everyday.note}</p>
             </section>
           )}
@@ -201,7 +209,7 @@ function Portal({ company: c }) {
                 <h2 id="pf-title">{c.partners.title}</h2>
                 <p>{c.partners.sub.replace('{name}', c.name)}</p>
               </div>
-              <PartnerFiles demo={c.partners} theme={ct || FRONTIFY} company={c.name} />
+              <PartnerFiles demo={c.partners} theme={dt || FRONTIFY} company={c.name} />
               <p className="bc-note">{c.partners.note}</p>
             </section>
           )}
@@ -213,7 +221,7 @@ function Portal({ company: c }) {
                 <h2 id="sg-title">{c.retail.title}</h2>
                 <p>{c.retail.sub.replace('{name}', c.name)}</p>
               </div>
-              <StoreGuide demo={c.retail} theme={ct || FRONTIFY} company={c.name} />
+              <StoreGuide demo={c.retail} theme={dt || FRONTIFY} company={c.name} />
               <p className="bc-note">{c.retail.note.replace('{name}', c.name)}</p>
             </section>
           )}
@@ -224,17 +232,17 @@ function Portal({ company: c }) {
                 <h2 id="theme-title">One portal, wearing your brand</h2>
                 <p>
                   Every Frontify portal takes on the brand it serves: colors, type, shapes and tone. Try it. This page can switch into{' '}
-                  {poss(c.name)} public brand system and back.
+                  {opts.length > 1 ? `${listOf(opts.map((o) => poss(o.label)))} public brand systems` : `${poss(c.name)} public brand system`} and back.
                 </p>
                 <Button emphasis="strong" className="btn press" onPress={toggleTheme}>
-                  {theme === 'frontify' ? `Switch to the ${c.name} theme` : 'Switch back to Frontify'}
+                  {nextLabel}
                 </Button>
                 <p className="theme-src">
-                  Colors and layout cues from {ct?.source}. Type is a free stand-in, not {poss(c.name)} own typeface. No logos, and not affiliated with {endDot(c.name)}
+                  Colors and layout cues from {shown?.theme.source}. Type is a free stand-in, not {poss(shown?.label || c.name)} own typeface. No logos, and not affiliated with {endDot(c.name)}
                 </p>
               </div>
               <ul className="swatches">
-                {(ct?.palette || []).map(([k, v]) => (
+                {(shown?.theme.palette || []).map(([k, v]) => (
                   <li key={k}><span style={{ background: v }} /><strong>{k}</strong><em>{v}</em></li>
                 ))}
               </ul>

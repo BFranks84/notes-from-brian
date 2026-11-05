@@ -19,6 +19,7 @@ export function PackagingLibrary({ demo, theme, company }) {
   const [sort, setSort] = useState('name');
   const [view, setView] = useState(null);
   const [zone, setZone] = useState('logo');
+  const [mode, setMode] = useState(demo.tree ? 'tree' : 'browse');
 
   const facets = useMemo(() => demo.facets.map((f) => ({ ...f, values: [...new Set(assets.map((a) => a[f.id]))].sort() })), [demo, assets]);
   const count = Object.values(sel).reduce((n, s) => n + s.length, 0);
@@ -42,7 +43,7 @@ export function PackagingLibrary({ demo, theme, company }) {
 
   const a = view && assets.find((x) => x.id === view);
   const rules = a ? { ...(demo.typeRules[a.type] || {}), ...demo.rules, ...(a.rules || {}) } : null;
-  const qa = a ? (a.qa || demo.detailQa) : demo.libraryQa;
+  const qa = a ? (a.qa || demo.detailQa) : mode === 'tree' && demo.tree ? demo.tree.qa : demo.libraryQa;
 
   const t = theme || {};
   const vars = {
@@ -67,7 +68,15 @@ export function PackagingLibrary({ demo, theme, company }) {
           <span className="pl-icons" aria-hidden="true"><IconSearch /><IconSparkle size={16} /></span>
         </div>
 
-        {!a ? (
+        {!a && demo.tree && (
+          <div className="pl-modes" role="tablist" aria-label="Packaging view">
+            <button role="tab" aria-selected={mode === 'tree'} className={mode === 'tree' ? 'is-on' : ''} onClick={() => setMode('tree')}>{demo.tree.label}</button>
+            <button role="tab" aria-selected={mode === 'browse'} className={mode === 'browse' ? 'is-on' : ''} onClick={() => setMode('browse')}>Browse all packaging</button>
+          </div>
+        )}
+        {!a && mode === 'tree' ? (
+          <TreeFinder tree={demo.tree} assets={assets} onOpen={(id) => { setView(id); setZone('logo'); }} />
+        ) : !a ? (
           <div className="pl-lib">
             <div className="pl-searchrow">
               <label className="pl-search">
@@ -173,13 +182,73 @@ export function PackagingLibrary({ demo, theme, company }) {
           </div>
         )}
       </div>
-      <div className="ct-ai" key={`ai-${a ? a.id : 'lib'}`}>
+      <div className="ct-ai" key={`ai-${a ? a.id : mode}`}>
         <p className="ct-q"><span>{demo.askLabel}</span>{qa.ask.replace('{name}', a?.name || '')}</p>
         <div className="ct-a">
           <p><IconSparkle size={14} /><span>{rich(qa.answer.replace('{name}', a?.name || ''))}</span></p>
           <p className="ct-src">Based on {qa.sources}</p>
         </div>
       </div>
+    </div>
+  );
+}
+
+// A guided path to the right packaging rules: each answer narrows the pillar, art style and format, then shows
+// the template, the rules that apply and the matching packages.
+function TreeFinder({ tree, assets, onOpen }) {
+  const [ans, setAns] = useState([]);
+  const pick = (i, o) => setAns((a) => [...a.slice(0, i), o]);
+  const got = Object.assign({}, ...ans.map((o) => o.set));
+  const step = tree.steps[ans.length];
+  const done = ans.length === tree.steps.length;
+  const pillar = got.pillar && tree.pillars[got.pillar];
+  const matches = done ? assets.filter((x) => x.pillar === got.pillar && (!got.format || x.format === got.format)) : [];
+  const near = done && !matches.length ? assets.filter((x) => x.pillar === got.pillar) : [];
+  return (
+    <div className="pt">
+      <p className="pt-intro">{tree.intro}</p>
+      <ol className="pt-path">
+        {tree.steps.map((s, i) => (
+          <li key={s.id} className={i < ans.length ? 'is-done' : i === ans.length ? 'is-now' : ''}>
+            <span className="pl-n">{i + 1}</span>
+            <div>
+              <p className="pt-q">{s.q}</p>
+              {i < ans.length ? (
+                <button className="pt-ans" onClick={() => setAns(ans.slice(0, i))} aria-label={`Change answer: ${ans[i].label}`}>
+                  {ans[i].label}{ans[i].note && <em>{ans[i].note}</em>} <span>Change</span>
+                </button>
+              ) : i === ans.length ? (
+                <div className="pt-opts">
+                  {s.options.map((o) => <button key={o.label} className="pl-chip" onClick={() => pick(i, o)}>{o.label}</button>)}
+                </div>
+              ) : null}
+            </div>
+          </li>
+        ))}
+      </ol>
+      {!done && pillar && <p className="pt-pillar">Pillar so far: <strong>{pillar.name}</strong>. {pillar.blurb}</p>}
+      {done && pillar && (
+        <div className="pt-result pop">
+          <p className="pl-kicker">Your packaging path</p>
+          <h3 className="mini-h">{pillar.name} · {got.art} · {got.format}</h3>
+          <p className="pt-tpl">Start from the <strong>{pillar.name} {got.format.toLowerCase()} template</strong>. {pillar.blurb}</p>
+          <ul className="pt-rules">
+            {[...pillar.rules, ...(tree.artRules[got.art] || [])].map((r) => <li key={r}>{r}</li>)}
+          </ul>
+          <p className="pl-kicker">{matches.length ? `${matches.length} approved ${matches.length === 1 ? 'package' : 'packages'} on this path` : `No ${got.format.toLowerCase()} yet in ${pillar.name}. Closest packages in the pillar`}</p>
+          <ul className="pl-grid pt-grid">
+            {(matches.length ? matches : near).slice(0, 4).map((x) => (
+              <li key={x.id}>
+                <button className="pl-card" onClick={() => onOpen(x.id)}>
+                  <span className="pl-thumb"><Pack a={x} /></span>
+                  <span className="pl-meta"><strong>{x.name}</strong><em>{x.brand} · {x.size}</em></span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button className="pl-link" onClick={() => setAns([])}>Start over</button>
+        </div>
+      )}
     </div>
   );
 }

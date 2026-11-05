@@ -26,8 +26,8 @@
     },
     {
       "id": "everyday",
-      "title": "Everyday guidelines inside Outlook and PowerPoint",
-      "summary": "Claude in Microsoft 365, connected to Frontify, checks emails and decks against short Everyday guidelines before they go out."
+      "title": "Everyday guidelines inside emails and presentations",
+      "summary": "Claude, connected to Frontify, checks emails and presentations against short Everyday guidelines before they go out."
     },
     {
       "id": "partners",
@@ -423,12 +423,12 @@
   "everyday": {
     "eyebrow": "Use case 5 · Everyday guidelines, inside your office applications",
     "title": "The right tone in every email and deck",
-    "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude inside Outlook and PowerPoint reads the Everyday guidelines and checks the work before it goes out.",
+    "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
     "note": "Claude for Microsoft 365 reads Frontify through the Frontify connector (MCP) once it's set up in your Claude workspace. Sample email, deck and guidelines.",
     "tabs": [
       {
         "id": "outlook",
-        "label": "Email in Outlook",
+        "label": "Email",
         "kind": "email",
         "guideline": "Email tone of voice",
         "to": "Field marketing team",
@@ -472,7 +472,7 @@
       },
       {
         "id": "powerpoint",
-        "label": "Deck in PowerPoint",
+        "label": "Presentation",
         "kind": "deck",
         "guideline": "Presentations",
         "ask": "Is this slide built the way our presentation guidelines say?",

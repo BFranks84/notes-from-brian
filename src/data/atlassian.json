@@ -409,7 +409,7 @@
     "eyebrow": "Use case 4 · Everyday guidelines, inside your office applications",
     "title": "The right tone in every email and deck",
     "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
-    "note": "Claude for Microsoft 365 reads Frontify through the Frontify connector (MCP) once it's set up in your Claude workspace. Sample email, deck and guidelines.",
+    "note": "Your agent embedded in your enterprise apps can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines.",
     "tabs": [
       {
         "id": "outlook",

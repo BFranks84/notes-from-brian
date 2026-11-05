@@ -483,6 +483,10 @@ button { font: inherit; color: inherit; }
   transform: translateX(calc(100% * var(--i)));
   transition: transform 150ms var(--ease);
 }
+/* Once measured, the highlight uses the selected option's real position and width */
+.seg[style*='--seg-w'] .seg-indicator { width: var(--seg-w); transform: translateX(var(--seg-x)); transition: transform 150ms var(--ease), width 150ms var(--ease); }
+/* Three or more themes: each option is as wide as its label, so long names don't spill over */
+.seg-theme.is-multi { grid-auto-columns: auto; }
 .seg-indicator::before { content: ''; position: absolute; inset: 0; border-radius: calc(var(--r-s) - 1px); background: var(--surface); box-shadow: 0 0 0 1px var(--ink); }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -848,6 +852,8 @@ button { font: inherit; color: inherit; }
 .pf-libmain { padding: 16px; display: grid; align-content: start; gap: 10px; background: color-mix(in srgb, var(--ink) 2%, var(--surface)); }
 .pf-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 @media (min-width: 600px) { .pf-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* Phones: show 4 tiles with shorter thumbnails so the assistant answer stays in view */
+@media (max-width: 599px) { .pf-grid > .pf-tile:nth-child(n+5) { display: none; } .pf-thumb { aspect-ratio: 16 / 9; } }
 .pf-tile { display: grid; gap: 6px; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); font-size: 12px; min-width: 0; }
 .pf-tile.is-new { animation: pfIn 520ms var(--ease-out) both; animation-delay: calc(var(--i) * 140ms); }
 @keyframes pfIn { from { opacity: 0; transform: translateY(-14px) scale(.96); } to { opacity: 1; transform: none; } }

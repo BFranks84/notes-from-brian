@@ -1,10 +1,25 @@
 // Lightweight local versions of a few Fondue components (SegmentedControl, Button, Badge).
 // They follow Fondue's own styles and tokens, without shipping the whole component library to phones.
+import { useLayoutEffect, useRef, useState } from 'react';
 
 export function Segmented({ value, onChange, options, labelledBy, className = '', ariaLabel }) {
   const idx = Math.max(0, options.findIndex((o) => o.value === value));
+  // The highlight follows the selected option's real size, so options can be as wide as their labels
+  const ref = useRef(null);
+  const [box, setBox] = useState(null);
+  useLayoutEffect(() => {
+    const measure = () => {
+      const b = ref.current?.querySelectorAll('.seg-item')[idx];
+      if (b) setBox({ x: b.offsetLeft, w: b.offsetWidth });
+    };
+    measure();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
+    if (ro && ref.current) ro.observe(ref.current);
+    return () => ro && ro.disconnect();
+  }, [idx, options.length]);
+  const pos = box ? { '--seg-x': `${box.x}px`, '--seg-w': `${box.w}px` } : {};
   return (
-    <div className={`seg ${className}`} role="radiogroup" aria-labelledby={labelledBy} aria-label={ariaLabel} style={{ '--n': options.length, '--i': idx }}>
+    <div ref={ref} className={`seg ${className}`} role="radiogroup" aria-labelledby={labelledBy} aria-label={ariaLabel} style={{ '--n': options.length, '--i': idx, ...pos }}>
       {options.map((o) => (
         <button
           key={o.value}

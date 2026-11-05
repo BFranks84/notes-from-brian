@@ -223,7 +223,7 @@ function Portal({ company: c }) {
               <div>
                 <h2 id="theme-title">One portal, wearing your brand</h2>
                 <p>
-                  Every Frontify portal takes on the brand it serves: colors, type, shapes and tone. Try it. This page can switch into
+                  Every Frontify portal takes on the brand it serves: colors, type, shapes and tone. Try it. This page can switch into{' '}
                   {poss(c.name)} public brand system and back.
                 </p>
                 <Button emphasis="strong" className="btn press" onPress={toggleTheme}>

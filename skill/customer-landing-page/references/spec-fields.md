@@ -11,16 +11,16 @@ Copy an existing entry and change every value.
 | Field | What it is |
 |---|---|
 | `label` | Company name as shown on the theme switch |
-| `evidence`, `source`, `url` | Where the colors came from, e.g. `"observed (us.cibc.com CSS, Nov 5, 2026); no public brand palette"`. Shown on the page as the source line. |
+| `evidence`, `source`, `url` | Where the colors came from. `evidence` is a note for us, e.g. `"observed (us.cibc.com CSS, Nov 5, 2026); no public brand palette"` or `"approximate (third-party palette sites; lululemon.com blocks reading)"`. `source` is shown on the page as "Colors and layout cues from {source}", so write it as a noun phrase, e.g. `"us.cibc.com (observed site colors)"`. |
 | `bg`, `surface` | Page background and card background (usually white and a very light gray) |
-| `ink`, `ink2` | Main text and secondary text. Must be dark enough to read on `bg`. |
+| `ink`, `ink2` | Main text (the brand's near-black) and secondary text (a mid-dark gray). Both need 4.5:1 on `bg`. |
 | `accent` | The brand's lead color. Must also appear in `palette`. |
 | `accentInk` | Text color on top of `accent` (usually `#FFFFFF`) |
-| `accentText` | The accent darkened enough to read as text on white (4.5:1 contrast) |
-| `hl` | A very light tint of the accent, for highlights |
+| `accentText` | The accent darkened enough to read as text on white: at least 4.5:1 contrast. Check it with the snippet at the end of this file. |
+| `hl` | A very light tint of the accent (about 90% white), for highlights |
 | `heroBg`, `heroInk` | Hero background and text when the company theme is on |
 | `heroAccentText` | Optional. Accent for the hero's second line if `accentText` is too dark or light there |
-| `font` | A free stand-in font. Pick one of: `figtree`, `fira`, `manrope`, `caslon`, `worksans`, `plex`, `spacegrotesk`, `inter`, `outfit`, `helvetica`. Never claim it is the brand's own typeface. |
+| `font` | A free stand-in font for the company theme (the page starts in Frontify's look; the font applies when the visitor switches to the company theme). Pick one of: `figtree`, `fira`, `manrope`, `caslon`, `worksans`, `plex`, `spacegrotesk`, `inter`, `outfit`, `helvetica`. Never claim it is the brand's own typeface. |
 | `displayWeight` | Headline weight (400–800). Match how heavy the brand's headlines look. |
 | `displayTracking`, `displayItalic` | Headline letter spacing (e.g. `"-0.01em"`) and italic on/off |
 | `radiusBtn`, `radiusCard` | Corner rounding, e.g. `"4px"` for square brands, `"999px"` for pill buttons |
@@ -83,8 +83,8 @@ Copy the closest existing company (B2B tech: `ibm`, `servicenow`; retail: `gap`;
 
 | Field | What it is |
 |---|---|
-| `partners` | Who sends files in, as a phrase: `'Vendors and agencies'`, `'IBM Business Partners'` |
-| `ptype` | One of them, singular: `'creative vendor'`, `'business partner'` |
+| `partners` | Who sends files in, as a phrase: `'Vendors and agencies'`, `'IBM Business Partners'`. On a page that isn't a partner page, don't use the word "partner" here (use `'Agencies and creative studios'`, not `'Agencies and creative partners'`). |
+| `ptype` | One of them, singular: `'creative vendor'`, `'creative agency'`, `'business partner'` (partner pages only) |
 | `existing` | Four short names of assets already in the library |
 
 ## Other dicts in `gen_companies.py`
@@ -97,3 +97,27 @@ Copy the closest existing company (B2B tech: `ibm`, `servicenow`; retail: `gap`;
 | `RETAIL['<slug>']` | A retailer, and in-store came up | Copy `gap` (apparel, `goods='folded'`) or `sephora` (bottles) |
 
 Do not edit `src/data/<slug>.json` by hand. It is regenerated on every build.
+
+## What may be invented
+
+Everything on the page is labeled a sample, but it should still be believable and fair to the company.
+
+- **From public sources only:** `positioning`, `claims`, `colors`, palette, product names and their casing. Use the company's own site or press releases, not resellers or reviews.
+- **Fine to write as a sample:** `card`, `onbrand` (a social post in their voice), `existing` asset names, the Brand Check findings, and the campaign name. Keep them plausible and plain.
+- **`prule`:** use a real public rule if there is one (casing, a compliance line). Otherwise use a safe, generic one (e.g. "Use the full product name on first mention"). Don't invent legal rules.
+- **No event or campaign came up:** set `elabel='Campaign'` with a seasonal campaign (e.g. `'Holiday campaign'`) and say it's a placeholder in your summary.
+- **Trademarks:** leave out ™ and ® in page text.
+- **`onbrand` is the post itself,** written to the company's customers. It isn't a note to employees about where to find assets.
+
+## Contrast check
+
+```python
+def lum(h):
+    c = [int(h[i:i+2], 16) / 255 for i in (1, 3, 5)]
+    c = [x / 12.92 if x <= 0.03928 else ((x + 0.055) / 1.055) ** 2.4 for x in c]
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+def contrast(a, b):
+    la, lb = sorted([lum(a), lum(b)], reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+print(contrast('#AF0B1C', '#FFFFFF'))  # needs >= 4.5
+```

@@ -4,11 +4,11 @@
 
 ```bash
 npm run build
-npx vite preview --port 4173 &      # keep it running in the background
+npx vite preview --port 4173 --strictPort &   # keep it running; if 4173 is taken, use another port + QA_BASE=http://localhost:<port>
 node scripts/qa.mjs <slug>          # screenshots land in qa/<slug>/
 ```
 
-The check covers: the page loads, no JavaScript errors, no sideways scroll on desktop (1280) or phone (375), no double periods, no glued words ("intoCIBC"), no placeholder text, only call-validated AI tools named, no stray "partner" wording on non-partner pages, rotating words match the tabs, and headlines that span the full width. Every line must say PASS.
+The check clicks every tab and runs Brand Check before the screenshots. It covers: the right page is being served, the page loads, no JavaScript errors, no sideways scroll on desktop (1280) or phone (375), no double periods, no glued words ("intoCIBC", "intolululemon"), no placeholder text, only call-validated AI tools named, no stray "partner" wording on non-partner pages, rotating words match the tabs, and headlines that span the full width. Every line must say PASS.
 
 If the preview server stops (it can be killed after a while), start it again.
 

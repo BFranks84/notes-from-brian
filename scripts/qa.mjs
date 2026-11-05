@@ -37,6 +37,8 @@ for (const [label, vp] of [['desktop', { width: 1280, height: 900 }], ['phone', 
   page.on('pageerror', (e) => errors.push(String(e)));
   const res = await page.goto(`${base}/${slug}`, { waitUntil: 'networkidle' });
   await page.waitForTimeout(1200);
+  const served = await page.evaluate(() => document.body.innerText);
+  check(`${label}: right page is served (mentions ${data.name})`, served.includes(data.name), 'if this fails, another server is on that port: use --strictPort');
   check(`${label}: page loads (200)`, res && res.status() === 200, String(res && res.status()));
   // Scroll through so lazy/animated sections render
   const h = await page.evaluate(() => document.body.scrollHeight);
@@ -47,11 +49,20 @@ for (const [label, vp] of [['desktop', { width: 1280, height: 900 }], ['phone', 
   check(`${label}: no sideways scroll`, sw <= vp.width, `scrollWidth ${sw} vs ${vp.width}`);
 
   if (label === 'desktop') {
-    const text = await page.evaluate(() => document.body.innerText);
+    // Click every tab (context tabs, Everyday apps, store places) so hidden panels are checked too
+    let text = await page.evaluate(() => document.body.innerText);
+    for (const sel of ['.ct-block [role="tab"]', '.ev-tab', '.sg-tab']) {
+      const tabsEls = await page.$$(sel);
+      for (const t of tabsEls) { await t.click(); await page.waitForTimeout(250); text += '\n' + await page.evaluate(() => document.body.innerText); }
+      if (tabsEls[0]) await tabsEls[0].click();
+    }
     const dbl = text.match(/[^.]\.\.(?!\.)/g);
     check('No double periods ("Inc..")', !dbl, dbl ? dbl.slice(0, 3).join(', ') : '');
     const glued = text.match(/\b[a-z]{3,}[A-Z][A-Za-z]+/g);
     check('No glued words ("intoCIBC")', !glued, glued ? glued.slice(0, 3).join(', ') : '');
+    const esc = data.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const gluedName = text.match(new RegExp(`[A-Za-z]${esc}`, 'g'));
+    check(`Company name never glued to a word ("into${data.name}")`, !gluedName, gluedName ? gluedName.slice(0, 3).join(', ') : '');
     check('No placeholder text left', !/\{name\}|\bundefined\b|\bNaN\b|\bTODO\b|[Ll]orem ipsum/.test(text));
     // AI tool rule: name only call-validated tools. With none known, every tool may appear (default list) or none.
     if (known.length) {
@@ -75,6 +86,9 @@ for (const [label, vp] of [['desktop', { width: 1280, height: 900 }], ['phone', 
     check('Headlines span full content width', off.length === 0, off.map((w) => `${w.cls}: ${w.head}/${w.inner}`).join('; '));
   }
 
+  // Run Brand Check so its boxes show in the bc-block screenshot (check they sit on the headline and the people)
+  const run = await page.$('.bc-run');
+  if (run) { await run.scrollIntoViewIfNeeded(); await run.click(); await page.waitForTimeout(6000); }
   for (const sel of sections) {
     const el = await page.$(sel);
     if (!el) continue;

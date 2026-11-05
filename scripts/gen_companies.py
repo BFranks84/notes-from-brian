@@ -411,6 +411,10 @@ def apply_aud(d, key, partners_label, ptype):
             i['title'] = f"{A['files']}, in the right place"
             i['summary'] = f"{partners_label} submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
     rot = d['hero']['rotate']; d['hero']['rotate'] = [A['word'] if w in AUD_WORDS else w for w in rot]
+    # The Everyday deck mentions who sends work in; use the same word there
+    dk = d['everyday']['tabs'][1]
+    for side in ('before', 'after'):
+        dk[side]['bullets'] = [b.replace('Partners', A['tab']) for b in dk[side]['bullets']]
     for it in d['contexts']['items']:
         if it['id'] == 'partners':
             it['label'] = A['tab']; it['askLabel'] = A['asker']; it['chapter'] = A['area']

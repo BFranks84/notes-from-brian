@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { IconCheck, IconCross, IconSparkle, IconDocumentText } from './icons.jsx';
 import { Scene } from './RetailScenes.jsx';
+import { Pack } from './PackScenes.jsx';
 
 // In-page links ("Brand - Color - Primary colors") open the matching mini guideline instead of an outside site.
 export const openContext = (id) => window.dispatchEvent(new CustomEvent('nfb:context', { detail: id }));
@@ -132,6 +133,17 @@ function Preview({ it }) {
           {it.claims.map((c, i) => <li key={c} className="s" style={{ '--i': 5 + i }}>{c}</li>)}
         </ul>
         <p className="mini-rule s" style={{ '--i': 5 + it.claims.length }}>{it.rule}</p>
+      </div>
+    );
+  }
+  if (it.kind === 'packaging') {
+    return (
+      <div className="mini-pack">
+        <div className="s" style={{ '--i': 3 }}><Pack a={it.pack} callouts active="name" /></div>
+        <ol className="s" style={{ '--i': 4 }}>
+          {it.rules.map(([k, v]) => <li key={k}><strong>{k}:</strong> {v}</li>)}
+        </ol>
+        <p className="mini-rule s" style={{ '--i': 5 }}>{it.rule}</p>
       </div>
     );
   }

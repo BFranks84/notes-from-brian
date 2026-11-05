@@ -13,6 +13,7 @@ import { ContextTypes } from './ContextTypes.jsx';
 import { EverydayDemo } from './EverydayDemo.jsx';
 import { PartnerFiles } from './PartnerFiles.jsx';
 import { StoreGuide } from './StoreGuide.jsx';
+import { PackagingLibrary } from './PackagingLibrary.jsx';
 import { FRONTIFY, companyTheme, applyTheme, preloadFont } from './theme.js';
 
 function useRoute() {
@@ -162,6 +163,18 @@ function Portal({ company: c }) {
               </div>
               <BrandCheck check={c.check} theme={ct || FRONTIFY} company={c.name} />
               <p className="bc-note">{c.check.note}</p>
+            </section>
+          )}
+
+          {c.packaging && (
+            <section className="wrap block pl-block" aria-labelledby="pl-title">
+              <div className="block-head">
+                <p className="bc-eyebrow-tag">{c.packaging.eyebrow}</p>
+                <h2 id="pl-title">{c.packaging.title}</h2>
+                <p>{c.packaging.sub.replace('{name}', c.name)}</p>
+              </div>
+              <PackagingLibrary demo={c.packaging} theme={ct || FRONTIFY} company={c.name} />
+              <p className="bc-note">{c.packaging.note.replace('{name}', c.name)}</p>
             </section>
           )}
 

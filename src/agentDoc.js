@@ -16,6 +16,7 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push('Frontify connects to AI tools like Claude, ChatGPT and Microsoft Copilot through the Frontify MCP server.');
   lines.push('');
   const uc = (e) => e.replace(/^Use case \d+ · /, '');
+  const num = (e, d) => (e.match(/^Use case (\d+)/) || [])[1] || d;
   lines.push('## Use cases');
   lines.push('');
   lines.push('### 1. A system of context');
@@ -29,22 +30,33 @@ export function agentDoc(c, { origin, booking, sender }) {
   }
   if (c.check) {
     const f = c.check.findings[0];
-    lines.push(`### 3. ${uc(c.check.eyebrow)}`);
+    lines.push(`### ${num(c.check.eyebrow, 3)}. ${uc(c.check.eyebrow)}`);
     lines.push(c.check.sub.replace('{name}', c.name));
     lines.push(`- checks: ${c.check.categories.map((k) => k.label.toLowerCase()).join(', ')}`);
     if (f) lines.push(`- example finding: ${f.text} Recommendation: ${f.recommendation} Source: ${f.sources.map((x) => x.label).join('; ')}`);
     lines.push(`- note: ${c.check.note}`);
     lines.push('');
   }
+  if (c.packaging) {
+    const k = c.packaging;
+    lines.push(`### ${num(k.eyebrow, 4)}. ${uc(k.eyebrow)}`);
+    lines.push(k.sub.replace('{name}', c.name));
+    lines.push(`- library filters: ${k.facets.map((f) => f.label).join(', ')}`);
+    k.assets.forEach((a) => lines.push(`- ${a.brand} ${a.name}: ${a.format}, ${a.size}, ${a.market}, ${a.status.toLowerCase()}, ${a.logo.toLowerCase()}`));
+    lines.push(`- every product has a packaging guideline: ${Object.values({ logo: 'brand band', name: 'product name', claim: 'claims', size: 'size and count', info: 'required info' }).join(', ')}, plus source files (${k.files.join(', ')})`);
+    lines.push(`- example: "${k.libraryQa.ask}" → ${k.libraryQa.answer.replace(/\*\*/g, '')}`);
+    lines.push(`- note: ${k.note.replace('{name}', c.name)}`);
+    lines.push('');
+  }
   if (c.everyday) {
-    lines.push(`### 4. ${uc(c.everyday.eyebrow)}`);
+    lines.push(`### ${num(c.everyday.eyebrow, 4)}. ${uc(c.everyday.eyebrow)}`);
     lines.push(c.everyday.sub.replace('{name}', c.name));
     c.everyday.tabs.forEach((x) => lines.push(`- ${x.label}: "${x.ask}" → ${x.fixes.map((f) => `${f.label} ${f.note}`).join(' ')} (source: Everyday - ${x.guideline})`));
     lines.push(`- note: ${c.everyday.note}`);
     lines.push('');
   }
   if (c.partners) {
-    lines.push(`### 5. ${uc(c.partners.eyebrow)}`);
+    lines.push(`### ${num(c.partners.eyebrow, 5)}. ${uc(c.partners.eyebrow)}`);
     lines.push(c.partners.sub.replace('{name}', c.name));
     lines.push(`- example: a partner submits ${c.partners.files.length} files to ${c.partners.library}; then "${c.partners.ask}"`);
     lines.push(`- note: ${c.partners.note}`);
@@ -52,7 +64,7 @@ export function agentDoc(c, { origin, booking, sender }) {
   }
   if (c.retail) {
     const r = c.retail;
-    lines.push(`### 6. ${uc(r.eyebrow)}`);
+    lines.push(`### ${num(r.eyebrow, 6)}. ${uc(r.eyebrow)}`);
     lines.push(r.sub.replace('{name}', c.name));
     r.promos.forEach((p) => lines.push(`- promotion (${p.status.toLowerCase()}): ${p.name}, ${p.dates}. ${p.note}`));
     r.placements.forEach((x) => lines.push(`- ${x.label}: ${x.sign}, ${x.size}. ${x.where} ${x.content} Example: "${x.ask}" → ${x.answer.replace(/\*\*/g, '')}`));

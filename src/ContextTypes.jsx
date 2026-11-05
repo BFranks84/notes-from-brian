@@ -136,6 +136,18 @@ function Preview({ it }) {
       </div>
     );
   }
+  if (it.kind === 'partners') {
+    return (
+      <div className="mini-partners">
+        <ol>
+          {it.steps.map(([k, v], i) => (
+            <li key={k} className="s" style={{ '--i': 3 + i }}><span className="mini-step">{i + 1}</span><span><strong>{k}</strong>{v}</span></li>
+          ))}
+        </ol>
+        <p className="mini-rule s" style={{ '--i': 3 + it.steps.length }}>{it.rule}</p>
+      </div>
+    );
+  }
   if (it.kind === 'packaging') {
     return (
       <div className="mini-pack">

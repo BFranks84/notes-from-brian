@@ -1134,3 +1134,10 @@ button { font: inherit; color: inherit; }
 
 .pl-thumb .pk { width: 100%; height: 100%; }
 .pl-stage .pk { max-height: 420px; }
+
+/* Partners tab in use case 2 */
+.mini-partners { display: grid; gap: 8px; font-size: 12px; }
+.mini-partners ol { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); }
+.mini-partners li { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; padding: 8px 0; border-bottom: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); color: var(--m-ink2); }
+.mini-partners li strong { display: block; color: var(--m-ink); font-size: 12px; }
+.mini-step { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 700; background: var(--m-ink); color: var(--m-bg); }

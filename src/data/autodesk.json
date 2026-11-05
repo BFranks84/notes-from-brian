@@ -27,7 +27,7 @@
     {
       "id": "partners",
       "title": "Partner and agency files, in the right place",
-      "summary": "Partners submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
+      "summary": "Resellers and agency partners submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
     }
   ],
   "hero": {
@@ -36,7 +36,8 @@
       "creative",
       "product",
       "event",
-      "everyday"
+      "everyday",
+      "partner"
     ],
     "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
     "prompt": "Make a LinkedIn post and image for our next Autodesk Assistant launch.",
@@ -178,7 +179,7 @@
   "contexts": {
     "eyebrow": "Use case 2 · What context lives in Frontify",
     "title": "Every kind of context, in one place",
-    "sub": "Brand, creative, product and event guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "sub": "Brand, creative, product, event and partner guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from Autodesk's public brand information. Not Autodesk's own guidelines.",
     "items": [
       {
@@ -332,6 +333,38 @@
             ]
           ]
         }
+      },
+      {
+        "id": "partners",
+        "label": "Partners",
+        "desc": "What resellers and agency partners send, and how",
+        "kind": "partners",
+        "chapter": "Partners",
+        "section": "Submitting files",
+        "title": "Partner submission guide",
+        "lead": "What resellers and agency partners need to know before they send work.",
+        "steps": [
+          [
+            "Submit",
+            "Through Partners › Submit an asset in the portal, never by email."
+          ],
+          [
+            "Name files",
+            "assistant-partner-banner-v1.png: campaign, asset, version."
+          ],
+          [
+            "Fill in",
+            "Campaign, usage rights and an expiry date."
+          ],
+          [
+            "Start from",
+            "Approved logos, photos and templates in the portal."
+          ]
+        ],
+        "rule": "Every submission needs usage rights and an expiry date.",
+        "askLabel": "A partner asks the brand assistant",
+        "ask": "How do we send final files to the brand team?",
+        "answer": "**Submit them in the portal** under Partners › Submit an asset, with **usage rights and an expiry date**. They land in the Partner submissions library."
       }
     ]
   },
@@ -469,6 +502,9 @@
     "actions": [
       "Add tags",
       "Set expiry date"
-    ]
+    ],
+    "who": "Partner",
+    "you": "You're the partner. Then see what the brand team gets.",
+    "tryLabel": "Try it: submit 2 partner files"
   }
 }

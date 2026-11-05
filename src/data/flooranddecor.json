@@ -31,8 +31,8 @@
     },
     {
       "id": "partners",
-      "title": "Partner and agency files, in the right place",
-      "summary": "Partners submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
+      "title": "Supplier and agency files, in the right place",
+      "summary": "Suppliers and agencies submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
     }
   ],
   "hero": {
@@ -40,9 +40,10 @@
       "brand",
       "creative",
       "product",
-      "event",
+      "campaign",
       "packaging",
-      "everyday"
+      "everyday",
+      "supplier"
     ],
     "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
     "prompt": "Make a LinkedIn post and image for our next NatureMatch launch.",
@@ -184,7 +185,7 @@
   "contexts": {
     "eyebrow": "Use case 2 · What context lives in Frontify",
     "title": "Every kind of context, in one place",
-    "sub": "Brand, creative, product, campaign and packaging guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "sub": "Brand, creative, product, campaign, packaging and supplier guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from Floor & Decor's public brand information. Not Floor & Decor's own guidelines.",
     "items": [
       {
@@ -382,6 +383,38 @@
             ]
           ]
         }
+      },
+      {
+        "id": "partners",
+        "label": "Suppliers",
+        "desc": "What suppliers send, and how",
+        "kind": "partners",
+        "chapter": "Suppliers",
+        "section": "Submitting packaging files",
+        "title": "Supplier submission guide",
+        "lead": "What suppliers and agencies need to know before they send packaging artwork.",
+        "steps": [
+          [
+            "Submit",
+            "Through Suppliers › Submit an asset in the portal, never by email."
+          ],
+          [
+            "Name files",
+            "naturematch-carton-dieline-v2.pdf: product, file type, version."
+          ],
+          [
+            "Fill in",
+            "Product, SKU, format and dieline version."
+          ],
+          [
+            "Start from",
+            "The current dieline and logo in the packaging library."
+          ]
+        ],
+        "rule": "Every packaging file needs the SKU and the dieline version.",
+        "askLabel": "A packaging supplier asks the brand assistant",
+        "ask": "How do we send updated packaging artwork?",
+        "answer": "**Submit it in the portal** under Suppliers › Submit an asset, with the **product, SKU and dieline version**. It lands in the Supplier submissions library."
       }
     ]
   },
@@ -484,13 +517,13 @@
     ]
   },
   "partners": {
-    "eyebrow": "Use case 6 · Partner and agency files",
-    "title": "Partner files land in the right place",
-    "sub": "Suppliers and agency partners submit packaging artwork straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
-    "note": "Sample files, partner and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
-    "page": "Partners › Submit an asset",
-    "submitter": "Northwind Creative · supplier",
-    "library": "Partner submissions",
+    "eyebrow": "Use case 6 · Supplier and agency files",
+    "title": "Supplier and agency files land in the right place",
+    "sub": "Suppliers and agencies submit packaging artwork straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
+    "note": "Sample files, supplier and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "page": "Suppliers › Submit an asset",
+    "submitter": "Northwind Packaging · packaging supplier",
+    "library": "Supplier submissions",
     "files": [
       {
         "name": "naturematch-carton-dieline.pdf",
@@ -519,7 +552,10 @@
     "actions": [
       "Add tags",
       "Set expiry date"
-    ]
+    ],
+    "who": "Supplier",
+    "you": "You're the packaging supplier. Then see what the brand team gets.",
+    "tryLabel": "Try it: submit 2 supplier files"
   },
   "packaging": {
     "eyebrow": "Use case 4 · Packaging",

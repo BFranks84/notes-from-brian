@@ -58,7 +58,7 @@ export function agentDoc(c, { origin, booking, sender }) {
   if (c.partners) {
     lines.push(`### ${num(c.partners.eyebrow, 5)}. ${uc(c.partners.eyebrow)}`);
     lines.push(c.partners.sub.replace('{name}', c.name));
-    lines.push(`- example: a partner submits ${c.partners.files.length} files to ${c.partners.library}; then "${c.partners.ask}"`);
+    lines.push(`- example: ${(c.partners.who || 'Partner').toLowerCase() === 'agency' ? 'an agency' : 'a ' + (c.partners.who || 'partner').toLowerCase()} submits ${c.partners.files.length} files to ${c.partners.library}; then "${c.partners.ask}"`);
     lines.push(`- note: ${c.partners.note}`);
     lines.push('');
   }

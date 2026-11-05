@@ -1,6 +1,6 @@
 """Generate company page data from the Atlassian template plus a compact per-company spec.
 Use cases 1-3 are fixed for every company; 4-5 are tailored via the spec. Run: python3 scripts/gen_companies.py"""
-import json, copy, os
+import json, copy, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 THEMES = json.load(open(f'{ROOT}/src/themes.json'))
 TPL = json.load(open(f'{ROOT}/src/data/atlassian.json'))
@@ -40,7 +40,7 @@ S = {
    claims=["Each brand keeps its own guidelines", "Shared teams work across all four brands"], prule="Never mix one brand's colors or type into another's work.",
    brule="Each brand keeps its own palette. Corporate work stays navy, black and white.",
    event='Holiday campaign', etitle='Holiday campaign toolkit', elabel='Campaign', product_chapter='Our brands', product_section='Brand family', product_title='Four brands, one company',
-   partners='Agencies and licensing partners', ptype='agency partner', existing=['Old Navy holiday', 'Athleta spring', 'Banana Republic lookbook', 'Gap denim'],
+   partners='Agencies and licensees', ptype='agency', existing=['Old Navy holiday', 'Athleta spring', 'Banana Republic lookbook', 'Gap denim'],
    img='gap_1', found='#1E4FA8', fcolor="The royal blue and gold overlay isn't the brand's navy.",
    frec="Use navy, black and white for corporate work, with no color wash over photos.", head_box=[5, 10, 90, 22], img_box=[5, 32, 90, 50],
    ftext="\"Style Meets Innovation\" is a generic line that doesn't sound like any of the four brands.",
@@ -79,7 +79,7 @@ S = {
    claims=["AI-assisted campaign creation", "Built for people who come with intent"], prule="Talk about intention, not attention.",
    brule="Pushpin red is the hero color. Use it with purpose, on white.",
    event='Pinterest Presents', etitle='Pinterest Presents toolkit', elabel='Event',
-   partners='Agency partners', ptype='agency partner', existing=['Trend report', 'Shopping ads guide', 'Cannes recap', 'Creator spotlight'],
+   partners='Agencies', ptype='agency', existing=['Trend report', 'Shopping ads guide', 'Cannes recap', 'Creator spotlight'],
    img='pinterest_1', found='#F25C9A', fcolor="The hot pink and peach wash isn't Pushpin red.",
    frec="Use Pushpin red, #E60023, with purpose on white, and no color wash over photos.", head_box=[8, 12, 84, 20], img_box=[0, 35, 100, 55],
    ftext="\"Inspire Your Audience Like Never Before\" leans on attention, not intention, and doesn't name Performance+.",
@@ -92,7 +92,7 @@ S = {
    claims=["A tenth-anniversary cohort of 12 brands", "Built to grow emerging founders"], prule="Write Sephora Accelerate in full on first mention.",
    brule="Black and white lead. Color comes from the products, not the layout.",
    event='Holiday campaign', etitle='Holiday campaign toolkit', elabel='Campaign',
-   partners='Brand partners', ptype='brand partner', existing=['Holiday gifting', 'Clean beauty edit', 'Accelerate cohort', 'Savings event'],
+   partners='Agencies and vendor brands', ptype='agency', existing=['Holiday gifting', 'Clean beauty edit', 'Accelerate cohort', 'Savings event'],
    img='sephora_0', found='#E8B4A8', fcolor="The rose gold and blush wash isn't Sephora's black and white.",
    frec="Use black and white for layout, and let product color carry the image.", head_box=[18, 13, 64, 22], img_box=[0, 20, 100, 70],
    ftext="\"Glow Up Your Beauty Routine\" is a generic line with no expert voice, and it doesn't mention Sephora Accelerate.",
@@ -105,7 +105,7 @@ S = {
    claims=["Highlights pulled from each stream", "Creators choose what gets shared"], prule="Creators come first in every headline.",
    brule="Twitch purple leads. Near-black and white keep it readable.",
    event='TwitchCon', etitle='TwitchCon toolkit', elabel='Event',
-   partners='Creator and agency partners', ptype='agency partner', existing=['TwitchCon recap', 'Creator spotlight', 'Sponsorship guide', 'Emote pack'],
+   partners='Agencies and creators', ptype='agency', existing=['TwitchCon recap', 'Creator spotlight', 'Sponsorship guide', 'Emote pack'],
    img='twitch_0', found='#5B5BFF', fcolor="The blue-violet and cyan gradient isn't Twitch purple.",
    frec="Use Twitch purple, #9146FF, with near-black and white.", head_box=[5, 7, 85, 23], img_box=[10, 32, 90, 55],
    ftext="The headline is a generic \"level up\" line with no creator voice and no product in it.",
@@ -144,7 +144,7 @@ S = {
    claims=["99 products across tile, vinyl plank and laminate", "Built on the 2026 Design Trends forecast"], prule="Every NatureMatch claim names the material: tile, vinyl plank or laminate.",
    brule="FND red is the action color. Layouts stay black and white.",
    event='Bring It Home', etitle='Bring It Home campaign toolkit', elabel='Campaign',
-   partners='Suppliers and agency partners', ptype='supplier', existing=['NatureMatch launch', 'Bring It Home spots', 'Pro newsletter', 'Design trends 2026'],
+   partners='Suppliers and agencies', ptype='packaging supplier', existing=['NatureMatch launch', 'Bring It Home spots', 'Pro newsletter', 'Design trends 2026'],
    img='flooranddecor', found='#F0855A', fcolor="The coral-orange wash is close to FND red, but it isn't in the palette, and the brand doesn't wash photos.",
    frec="Use FND red, #EA1722, as the action color on white and black, with no color wash over photos.", head_box=[7, 3, 86, 15], img_box=[1, 27, 98, 72],
    ftext="\"Elevate Every Room\" is a generic line. It names no product or material, so it isn't approved NatureMatch messaging.",
@@ -157,7 +157,7 @@ S = {
    claims=["Seasonal decor and gifts in one brand", "In about 9,000 CVS Pharmacy stores"], prule="Write Joyward as one word, with a capital J.",
    brule="CVS red leads. Warm gray and white carry the layout.",
    event='Holiday campaign', etitle='Holiday campaign toolkit', elabel='Campaign',
-   partners='Suppliers and agency partners', ptype='supplier', existing=['Joyward launch', 'Pain relief refresh', 'Well Market snacks', 'Holiday gifting'],
+   partners='Suppliers and agencies', ptype='packaging supplier', existing=['Joyward launch', 'Pain relief refresh', 'Well Market snacks', 'Holiday gifting'],
    img='cvshealth', found='#D04E9A', fcolor="The magenta-pink wash reads close to CVS red at a glance, but it isn't in the palette, and the brand doesn't wash photos.",
    frec="Use CVS red, #CC0000, on white and warm gray, with no color wash over photos.", head_box=[7, 3, 86, 15], img_box=[1, 27, 98, 72],
    ftext="\"Wellness Starts Here\" is a generic line. It doesn't name Joyward or use approved messaging.",
@@ -325,6 +325,75 @@ PACKAGING = {
  ),
 }
 
+# Who sends files in. B2B pages say "partners"; most B2C pages say "agencies"; packaging pages say "suppliers".
+# franchisee and retailer are ready for future pages (7-Eleven, Burger King, a brand selling through retailers).
+AUD = {
+ 'partner': dict(tab='Partners', word='partner', who='Partner', files='Partner and agency files', title='Partner files land in the right place', area='Partners', lib='Partner submissions', you="You're the partner. Then see what the brand team gets.", asker='A partner asks the brand assistant'),
+ 'agency': dict(tab='Agencies', word='agency', who='Agency', files='Agency files', title='Agency files land in the right place', area='Agencies', lib='Agency submissions', you="You're the agency. Then see what the brand team gets.", asker='An agency asks the brand assistant'),
+ 'supplier': dict(tab='Suppliers', word='supplier', who='Supplier', files='Supplier and agency files', title='Supplier and agency files land in the right place', area='Suppliers', lib='Supplier submissions', you="You're the packaging supplier. Then see what the brand team gets.", asker='A packaging supplier asks the brand assistant'),
+ 'franchisee': dict(tab='Franchisees', word='franchisee', who='Franchisee', files='Franchisee files', title='Franchisee files land in the right place', area='Franchisees', lib='Franchisee submissions', you="You're the franchisee. Then see what the brand team gets.", asker='A franchisee asks the brand assistant'),
+ 'retailer': dict(tab='Retailers', word='retailer', who='Retailer', files='Retailer files', title='Retailer files land in the right place', area='Retailers', lib='Retailer submissions', you="You're the retailer. Then see what the brand team gets.", asker='A retail partner asks the brand assistant'),
+}
+AUD_FOR = {'gap': 'agency', 'sephora': 'agency', 'pinterest': 'agency', 'twitch': 'agency', 'flooranddecor': 'supplier', 'cvshealth': 'supplier'}
+
+def apply_aud(d, key, partners_label, ptype):
+    """Use the right word for who sends files in, everywhere it shows: use case, tab, idea chip, rotating word."""
+    A = AUD[key]; pf = d['partners']
+    n = re.match(r'Use case (\d+)', pf['eyebrow']).group(1)
+    pf['eyebrow'] = f"Use case {n} · {A['files']}"; pf['title'] = A['title']
+    pf['page'] = f"{A['area']} › Submit an asset"; pf['library'] = A['lib']
+    pf['submitter'] = f"{'Northwind Packaging' if key == 'supplier' else 'Northwind Creative'} · {ptype}"
+    for f in pf['files']: f['name'] = f['name'].replace('-partner-', f"-{A['word']}-")
+    pf['note'] = f"Sample files, {A['word']} and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates."
+    pf['who'] = A['who']; pf['you'] = A['you']; pf['tryLabel'] = f"Try it: submit 2 {A['word']} files"
+    pf['plan'] = pf['plan']
+    for i in d['ideas']:
+        if i['id'] == 'partners':
+            i['title'] = f"{A['files']}, in the right place"
+            i['summary'] = f"{partners_label} submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
+    rot = d['hero']['rotate']; d['hero']['rotate'] = [A['word'] if w in AUD_WORDS else w for w in rot]
+    for it in d['contexts']['items']:
+        if it['id'] == 'partners':
+            it['label'] = A['tab']; it['askLabel'] = A['asker']; it['chapter'] = A['area']
+            it['steps'][1][1] = it['steps'][1][1].replace('-partner-', f"-{A['word']}-")
+            it['steps'][0][1] = f"Through {A['area']} › Submit an asset in the portal, never by email."
+            it['answer'] = it['answer'].replace('Partners › Submit an asset', f"{A['area']} › Submit an asset").replace('Partner submissions', A['lib'])
+            if key != 'supplier':
+                it['desc'] = f"What {_lc(partners_label)} send, and how"
+                it['title'] = f"{A['who']} submission guide"
+AUD_WORDS = {a['word'] for a in AUD.values()}
+
+# The rotating word in use case 1 ("The ___ context platform") cycles through exactly the context tabs on the page.
+WORD = {'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'Franchisees': 'franchisee', 'Retailers': 'retailer'}
+def rotate_words(items):
+    return [WORD.get(i['label'], i['label'].lower()) for i in items]
+
+def _lc(s):
+    # Lowercase the first letter for mid-sentence use, but keep names like IBM intact.
+    return s if s[:2].isupper() else s[0].lower() + s[1:]
+
+def partners_tab(name, partners_label, key, packaging=False):
+    if packaging:
+        return dict(id='partners', label='Partners', desc='What suppliers send, and how', kind='partners', chapter='Partners', section='Submitting packaging files',
+          title='Supplier submission guide', lead=f"What {_lc(partners_label)} need to know before they send packaging artwork.",
+          steps=[['Submit', 'Through Partners › Submit an asset in the portal, never by email.'], ['Name files', f'{key}-carton-dieline-v2.pdf: product, file type, version.'],
+                 ['Fill in', 'Product, SKU, format and dieline version.'], ['Start from', 'The current dieline and logo in the packaging library.']],
+          rule='Every packaging file needs the SKU and the dieline version.', askLabel='A packaging supplier asks the brand assistant',
+          ask='How do we send updated packaging artwork?', answer='**Submit it in the portal** under Partners › Submit an asset, with the **product, SKU and dieline version**. It lands in the Partner submissions library.')
+    return dict(id='partners', label='Partners', desc='What agencies and partners send, and how', kind='partners', chapter='Partners', section='Submitting files',
+      title='Partner submission guide', lead=f"What {_lc(partners_label)} need to know before they send work.",
+      steps=[['Submit', 'Through Partners › Submit an asset in the portal, never by email.'], ['Name files', f'{key}-partner-banner-v1.png: campaign, asset, version.'],
+             ['Fill in', 'Campaign, usage rights and an expiry date.'], ['Start from', 'Approved logos, photos and templates in the portal.']],
+      rule='Every submission needs usage rights and an expiry date.', askLabel='A partner agency asks the brand assistant',
+      ask='How do we send final files to the brand team?', answer='**Submit them in the portal** under Partners › Submit an asset, with **usage rights and an expiry date**. They land in the Partner submissions library.')
+
+def contexts_intro(items):
+    lab = {'brand': 'brand', 'creative': 'creative', 'product': 'product'}
+    sing = {'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'Franchisees': 'franchisee', 'Retailers': 'retailer'}
+    ws = [lab.get(i['id'], sing.get(i['label'], i['label'].lower())) for i in items if i['id'] != 'everyday']
+    lst = ', '.join(ws[:-1]) + ' and ' + ws[-1]
+    return f"{lst[0].upper() + lst[1:]} guidance live in {{name}}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them."
+
 def build(slug, s):
     d = copy.deepcopy(TPL)
     t = THEMES[slug]; name = s['name']; prod = s['product']
@@ -430,6 +499,13 @@ def build(slug, s):
         rot = d['hero']['rotate']; rot.insert(rot.index('event') + 1, 'retail')
         d['retail'] = r
         d['ideas'].append(idea)
+    # Partners tab (every page), then the use case 2 intro from whatever tabs this page has
+    its = d['contexts']['items']
+    pt = partners_tab(name, s['partners'], s['short'].lower().replace(' ', '-').replace('+', 'plus'), packaging=bool(PACKAGING.get(slug)))
+    its[:] = [i for i in its if i['id'] != 'partners'] + [pt]
+    apply_aud(d, AUD_FOR.get(slug, 'partner'), s['partners'], s['ptype'])
+    d['contexts']['sub'] = contexts_intro(its)
+    d['hero']['rotate'] = rotate_words(its)
     return d
 
 if __name__ == '__main__':

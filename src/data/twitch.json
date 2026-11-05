@@ -26,8 +26,8 @@
     },
     {
       "id": "partners",
-      "title": "Partner and agency files, in the right place",
-      "summary": "Partners submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
+      "title": "Agency files, in the right place",
+      "summary": "Agencies and creators submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
     }
   ],
   "hero": {
@@ -36,7 +36,8 @@
       "creative",
       "product",
       "event",
-      "everyday"
+      "everyday",
+      "agency"
     ],
     "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
     "prompt": "Make a LinkedIn post and image for our next Stream Recaps launch.",
@@ -178,7 +179,7 @@
   "contexts": {
     "eyebrow": "Use case 2 · What context lives in Frontify",
     "title": "Every kind of context, in one place",
-    "sub": "Brand, creative, product and event guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "sub": "Brand, creative, product, event and agency guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from Twitch's public brand information. Not Twitch's own guidelines.",
     "items": [
       {
@@ -332,6 +333,38 @@
             ]
           ]
         }
+      },
+      {
+        "id": "partners",
+        "label": "Agencies",
+        "desc": "What agencies and creators send, and how",
+        "kind": "partners",
+        "chapter": "Agencies",
+        "section": "Submitting files",
+        "title": "Agency submission guide",
+        "lead": "What agencies and creators need to know before they send work.",
+        "steps": [
+          [
+            "Submit",
+            "Through Agencies › Submit an asset in the portal, never by email."
+          ],
+          [
+            "Name files",
+            "recaps-agency-banner-v1.png: campaign, asset, version."
+          ],
+          [
+            "Fill in",
+            "Campaign, usage rights and an expiry date."
+          ],
+          [
+            "Start from",
+            "Approved logos, photos and templates in the portal."
+          ]
+        ],
+        "rule": "Every submission needs usage rights and an expiry date.",
+        "askLabel": "An agency asks the brand assistant",
+        "ask": "How do we send final files to the brand team?",
+        "answer": "**Submit them in the portal** under Agencies › Submit an asset, with **usage rights and an expiry date**. They land in the Agency submissions library."
       }
     ]
   },
@@ -434,21 +467,21 @@
     ]
   },
   "partners": {
-    "eyebrow": "Use case 5 · Partner and agency files",
-    "title": "Partner files land in the right place",
-    "sub": "Creator and agency partners submit work straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
-    "note": "Sample files, partner and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
-    "page": "Partners › Submit an asset",
-    "submitter": "Northwind Creative · agency partner",
-    "library": "Partner submissions",
+    "eyebrow": "Use case 5 · Agency files",
+    "title": "Agency files land in the right place",
+    "sub": "Agencies and creators submit work straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
+    "note": "Sample files, agency and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "page": "Agencies › Submit an asset",
+    "submitter": "Northwind Creative · agency",
+    "library": "Agency submissions",
     "files": [
       {
-        "name": "recaps-partner-banner.png",
+        "name": "recaps-agency-banner.png",
         "size": "2.1 MB",
         "title": "Recaps webinar"
       },
       {
-        "name": "recaps-partner-social.png",
+        "name": "recaps-agency-social.png",
         "size": "840 KB",
         "title": "Recaps for teams"
       }
@@ -469,6 +502,9 @@
     "actions": [
       "Add tags",
       "Set expiry date"
-    ]
+    ],
+    "who": "Agency",
+    "you": "You're the agency. Then see what the brand team gets.",
+    "tryLabel": "Try it: submit 2 agency files"
   }
 }

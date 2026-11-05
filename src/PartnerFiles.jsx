@@ -37,7 +37,7 @@ export function PartnerFiles({ demo, theme, company }) {
   return (
     <div ref={ref} className="pf">
       <div className="pf-tabs" aria-hidden="true">
-        <span className={!lib ? 'is-on' : ''}>1 · Partner</span>
+        <span className={!lib ? 'is-on' : ''}>1 · {demo.who || 'Partner'}</span>
         <span className={lib ? 'is-on' : ''}>2 · Brand team</span>
         {st > 0 && <button className="ev-replay" onClick={play} aria-label="Run it again"><IconArrowRoundAntiClockwise size={16} /></button>}
       </div>
@@ -51,8 +51,8 @@ export function PartnerFiles({ demo, theme, company }) {
               {st === 0 ? (
                 <div className="pf-try">
                   <p className="pf-hint"><IconImage size={18} /> Add or drop your assets here.</p>
-                  <button className="chat-send" onClick={play}>Try it: submit 2 partner files</button>
-                  <p className="bc-tap">You're the partner agency. Then see what the brand team gets.</p>
+                  <button className="chat-send" onClick={play}>{demo.tryLabel || 'Try it: submit 2 partner files'}</button>
+                  <p className="bc-tap">{demo.you || "You're the partner. Then see what the brand team gets."}</p>
                 </div>
               ) : (
                 <>

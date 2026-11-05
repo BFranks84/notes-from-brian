@@ -50,6 +50,17 @@ export function agentDoc(c, { origin, booking, sender }) {
     lines.push(`- note: ${c.partners.note}`);
     lines.push('');
   }
+  if (c.retail) {
+    const r = c.retail;
+    lines.push(`### 6. ${uc(r.eyebrow)}`);
+    lines.push(r.sub.replace('{name}', c.name));
+    const now = r.promos.find((p) => p.status === 'Now');
+    if (now) lines.push(`- promotion now: ${now.name} (${now.dates}). ${now.note}`);
+    r.signs.forEach((s) => lines.push(`- sign: ${s.name}, ${s.size}. ${s.where}`));
+    r.tabs.forEach((x) => lines.push(`- example: "${x.ask}" → ${x.answer.replace(/\*\*/g, '')} (source: ${x.source})`));
+    lines.push(`- note: ${r.note.replace('{name}', c.name)}`);
+    lines.push('');
+  }
   lines.push('## Next step');
   lines.push(`Pick any idea above and book time with ${sender.name.split(' ')[0]}: ${booking}`);
   if (sender.email) lines.push(`Contact: ${sender.email}. Frontify: https://www.frontify.com/en`);

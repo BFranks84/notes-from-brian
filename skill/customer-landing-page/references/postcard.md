@@ -16,14 +16,14 @@ node scripts/postcard.mjs <slug>
 
 It writes:
 - `<slug>.pdf`: the print file, exactly 6 × 4 in, no margins
-- `<slug>.png`: a preview
+- `<slug>.png`: the same card as a 300 dpi PNG (1800 × 1200 px), which FedEx and most print shops accept
 - `<slug>-qr.svg` and `<slug>-qr.png`: the QR code alone, which points at `https://notesfrombrian.com/<slug>`
 
 The name, role and email default to Brian's. Change them with the flags if someone else is sending the card.
 
 ## Check it
 
-1. Open the PNG. The company name and the address under the QR code must fit on one line, and nothing can be cut off.
+1. Open the PNG. All the grid lines should line up across the top, middle and bottom rows. The company name and the address under the QR code must fit on one line, and nothing can be cut off.
 2. Scan the QR code from the PNG with a phone, or decode it, and confirm it opens the live page.
 3. Send Brian the PDF and PNG. Tell him the tap stickers should point at the same address.
 

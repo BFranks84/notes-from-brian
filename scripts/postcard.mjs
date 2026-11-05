@@ -1,7 +1,7 @@
 // Makes the print-ready postcard (Grid design, 6 x 4 in) for one company page.
 //   node scripts/postcard.mjs <slug> [--name "Brian Franke"] [--role "Senior Enterprise AE, Frontify"]
 //        [--email brian.franke@frontify.com] [--guides] [--no-lines] [--out postcards]
-// Writes <out>/<slug>.pdf (for the printer), <slug>.png (preview) and <slug>-qr.svg / .png.
+// Writes <out>/<slug>.pdf and <slug>.png (both print-ready: PNG is 1800 x 1200 px = 300 dpi) and <slug>-qr.svg / .png.
 // The QR code points at https://notesfrombrian.com/<slug>; the page must be live before printing.
 // --guides shows the dashed sticker-placement circle (leave it off for the print file).
 import fs from 'node:fs';
@@ -47,7 +47,7 @@ const filled = path.resolve('postcard', `.${slug}.html`);
 fs.writeFileSync(filled, html);
 
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 576, height: 384 }, deviceScaleFactor: 3 });
+const page = await browser.newPage({ viewport: { width: 576, height: 384 }, deviceScaleFactor: 3.125 }); // 1800 x 1200 px = 6 x 4 in at 300 dpi
 await page.goto(`file://${filled}`, { waitUntil: 'networkidle' });
 await page.evaluate(() => document.fonts.ready);
 await page.screenshot({ path: path.join(out, `${slug}.png`) });

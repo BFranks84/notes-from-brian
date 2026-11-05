@@ -10,7 +10,7 @@
 html, body { margin: 0; padding: 0; }
 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .card { width: 576px; height: 384px; box-sizing: border-box; background: #F0F0EB; color: #111110; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; }
-.top { height: 56px; display: flex; border-bottom: 1px solid #111110; flex-shrink: 0; }
+.top { height: 56px; box-sizing: border-box; display: flex; border-bottom: 1px solid #111110; flex-shrink: 0; }
 .logo { width: 148px; flex-shrink: 0; box-sizing: border-box; padding: 0 28px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 3px; }
 .logo img { height: 20px; width: auto; display: block; }
 .small { font-size: 10px; line-height: 1.2; }
@@ -19,14 +19,14 @@ html, body { margin: 0; padding: 0; }
 .mid { flex-grow: 1; display: flex; min-height: 0; }
 .note { flex-grow: 1; padding: 20px 28px 14px; display: flex; flex-direction: column; gap: 10px; }
 .lines { flex-grow: 1; background-image: {{LINES}}; }
-.side { width: 176px; flex-shrink: 0; border-left: 1px solid #111110; display: flex; flex-direction: column; }
+.side { width: 176px; box-sizing: border-box; flex-shrink: 0; border-left: 1px solid #111110; display: flex; flex-direction: column; }
 .qr { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-bottom: 1px solid #111110; }
 .qr svg { width: 128px; height: 128px; display: block; }
 .tap { height: 128px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
 .tap span { display: flex; align-items: center; gap: 5px; font-size: 12px; }
 .ring { width: 104px; height: 104px; box-sizing: border-box; border: 1px solid #111110; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 .guide { width: 95px; height: 95px; box-sizing: border-box; border: 1.5px dashed #767676; border-radius: 50%; display: {{GUIDE}}; }
-.bottom { height: 28px; flex-shrink: 0; border-top: 1px solid #111110; background-image: linear-gradient(90deg, #111110 1px, transparent 1px); background-size: 28px 100%; background-position: 8px 0; }
+.bottom { height: 28px; box-sizing: border-box; flex-shrink: 0; border-top: 1px solid #111110; background-image: linear-gradient(90deg, #111110 1px, transparent 1px); background-size: 28px 100%; background-position: 8px 0; }
 </style>
 </head>
 <body>

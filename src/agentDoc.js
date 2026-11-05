@@ -1,4 +1,4 @@
-import { poss } from './names.js';
+import { poss, aiTools, listOf } from './names.js';
 // Builds the agent-readable version of a company page. Used at runtime (Agent view)
 // and at build time (/<slug>/agent.md), so both always match the person view.
 export function agentDoc(c, { origin, booking, sender }) {
@@ -13,7 +13,7 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push('');
   lines.push('## Summary');
   lines.push(c.hero.sub);
-  lines.push('Frontify connects to AI tools like Claude, ChatGPT and Microsoft Copilot through the Frontify MCP server.');
+  lines.push(`Frontify connects to AI tools like ${listOf(aiTools(c))} through the Frontify MCP server.`);
   lines.push('');
   const uc = (e) => e.replace(/^Use case \d+ · /, '');
   const num = (e, d) => (e.match(/^Use case (\d+)/) || [])[1] || d;

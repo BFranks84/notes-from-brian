@@ -3,7 +3,7 @@ import { flushSync } from 'react-dom';
 import { Segmented, Btn as Button } from './ui.jsx';
 import { IconArrowOutExternal, IconCalendar, IconClipboard, IconLockClosed, IconArrowDown } from './icons.jsx';
 import { SITE, COMPANIES } from './config.js';
-import { poss } from './names.js';
+import { poss, aiTools, listOf } from './names.js';
 import { agentDoc } from './agentDoc.js';
 import { Scene } from './Scenes.jsx';
 import { ShareTemplate } from './ShareTemplate.jsx';
@@ -133,16 +133,16 @@ function Portal({ company: c }) {
             )}
           </section>
 
-          <WhatIsFrontify name={c.name} />
+          <WhatIsFrontify name={c.name} tools={aiTools(c)} />
 
           <Ladder company={c.name} />
 
           <section className="wrap block uc1-demo" aria-labelledby="uc1-demo-title">
             <div className="block-head">
               <h2 id="uc1-demo-title"><span className="rot-line">The <RotatingWord words={c.hero.rotate} /> context platform</span> <span className="rot-line">for {poss(c.name)} employees and their AI</span></h2>
-              <p>Most people at {c.name} will never open Frontify. They'll ask Claude, ChatGPT or Copilot, and Frontify makes sure the answer already knows the brand.</p>
+              <p>Most people at {c.name} will never open Frontify. They'll ask {listOf(aiTools(c), 'or')}, and Frontify makes sure the answer already knows the brand.</p>
             </div>
-            <ChatDemo hero={c.hero} company={c.name} theme={ct} />
+            <ChatDemo hero={c.hero} company={c.name} theme={ct} ai={c.ai} />
           </section>
 
           {c.contexts && (
@@ -189,7 +189,7 @@ function Portal({ company: c }) {
                 <h2 id="ev-title">{c.everyday.title}</h2>
                 <p>{c.everyday.sub.replace('{name}', c.name)}</p>
               </div>
-              <EverydayDemo demo={c.everyday} theme={ct || FRONTIFY} company={c.name} />
+              <EverydayDemo demo={c.everyday} theme={ct || FRONTIFY} company={c.name} ai={c.ai} />
               <p className="bc-note">{c.everyday.note}</p>
             </section>
           )}
@@ -287,10 +287,10 @@ function Portal({ company: c }) {
 // Plain-language primer before the use cases: what Frontify is, why it matters with AI, and the three steps.
 const STEPS = [
   ['Store', 'Keep guidelines, logos, photos, templates and messaging in one current place, instead of scattered folders and old PDFs.'],
-  ['Connect', 'Claude, ChatGPT and Copilot read that brand context through the Frontify MCP server, so what they make starts on brand.'],
+  ['Connect', (tools) => `${listOf(tools)} ${tools.length === 1 ? 'reads' : 'read'} that brand context through the Frontify MCP server, so what ${tools.length === 1 ? 'it makes' : 'they make'} starts on brand.`],
   ['Check', 'Brand Check reviews work against your guidelines before it goes live, and points to the rule behind every finding.'],
 ];
-function WhatIsFrontify({ name }) {
+function WhatIsFrontify({ name, tools }) {
   return (
     <section id="what" className="wrap block what" aria-labelledby="what-title">
       <div className="block-head">
@@ -304,7 +304,7 @@ function WhatIsFrontify({ name }) {
       </div>
       <ol className="what-steps">
         {STEPS.map(([t, d], i) => (
-          <li key={t}><span className="what-n">{i + 1}</span><strong>{t}</strong><p>{d}</p></li>
+          <li key={t}><span className="what-n">{i + 1}</span><strong>{t}</strong><p>{typeof d === 'function' ? d(tools) : d}</p></li>
         ))}
       </ol>
       <p className="what-bridge">That's what we mean by a <strong>system of context</strong>. Here's how it could work for {endDot(name)}</p>

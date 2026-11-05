@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { openContext } from './ContextTypes.jsx';
-import { poss } from './names.js';
+import { poss, listOf } from './names.js';
 import { IconSparkle, IconArrowRoundAntiClockwise, IconImage, IconArrowOutExternal } from './icons.jsx';
 
 const reduce = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -23,14 +23,17 @@ export function RotatingWord({ words }) {
   );
 }
 
-const TOOLS = [
-  { id: 'claude', name: 'Claude', how: 'Frontify MCP', video: 'https://vimeo.com/1238774322' },
+const ALL_TOOLS = [
   { id: 'chatgpt', name: 'ChatGPT', how: 'Frontify MCP', video: 'https://vimeo.com/1238773854' },
+  { id: 'claude', name: 'Claude', how: 'Frontify MCP', video: 'https://vimeo.com/1238774322' },
   { id: 'copilot', name: 'Copilot', how: 'Frontify MCP', video: 'https://vimeo.com/1238771221' },
+  { id: 'gemini', name: 'Gemini', how: 'Frontify MCP' },
 ];
 
 // The "missing context" moment: generic answer first, then brand context snaps in and the answer rewrites.
-export function ChatDemo({ hero, company, theme }) {
+export function ChatDemo({ hero, company, theme, ai }) {
+  // Only the tools this company uses, when we know them; otherwise all of them.
+  const TOOLS = ai && ai.length ? ALL_TOOLS.filter((t) => ai.includes(t.name)) : ALL_TOOLS;
   const [tool, setTool] = useState(TOOLS[0]);
   const [phase, setPhase] = useState(reduce() ? 4 : -1); // -1 waiting for the visitor, 0 typing, 1 generic, 2 pulling context, 3 rewriting, 4 done
   const [typed, setTyped] = useState(reduce() ? hero.prompt : '');
@@ -82,7 +85,7 @@ export function ChatDemo({ hero, company, theme }) {
             <p className="chat-compose-lead">Send the same request to {tool.name}. See what it makes without {poss(company)} context, then with it.</p>
             <div className="chat-input">{hero.prompt}</div>
             <button className="chat-send" onClick={play}><IconSparkle size={15} /> Send to {tool.name}</button>
-            <p className="bc-tap">Pick Claude, ChatGPT or Copilot above</p>
+            {TOOLS.length > 1 && <p className="bc-tap">Pick {listOf(TOOLS.map((x) => x.name), 'or')} above</p>}
           </div>
         ) : (
         <>
@@ -137,11 +140,11 @@ export function ChatDemo({ hero, company, theme }) {
         </>
         )}
       </div>
-      <a className={`chat-video ${phase === -1 ? 'is-narrow' : ''}`} href={tool.video} target="_blank" rel="noopener">
+      {tool.video && <a className={`chat-video ${phase === -1 ? 'is-narrow' : ''}`} href={tool.video} target="_blank" rel="noopener">
         <span className="chat-play" aria-hidden="true" />
         <span><strong>Watch the real thing</strong> Frontify working inside {tool.name}, recorded live</span>
         <IconArrowOutExternal size={14} />
-      </a>
+      </a>}
       <p className="chat-note">
         {hero.disclaimer}{' '}
         {hero.voiceSource.to && <button className="chat-srclink" onClick={() => openContext(hero.voiceSource.to)}>{hero.voiceSource.label}</button>}

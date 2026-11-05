@@ -1178,3 +1178,7 @@ button { font: inherit; color: inherit; }
 .rs-fold.t1 rect { fill: var(--m-bg); }
 .rs-fold.t2 rect { fill: color-mix(in srgb, var(--m-ink) 22%, var(--m-bg)); }
 @media (min-width: 900px) and (max-width: 1099px) { .rungs li { min-height: 350px; } }
+
+.ev-agents { display: inline-flex; gap: 4px; padding: 3px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 6%, var(--surface)); justify-self: start; }
+.ev-agent { font: inherit; font-size: 12px; font-weight: 500; min-height: 30px; padding: 4px 12px; border: 0; border-radius: 999px; background: none; color: var(--ink-2); cursor: pointer; }
+.ev-agent.is-on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }

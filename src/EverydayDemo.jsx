@@ -8,8 +8,12 @@ const rich = (t) => t.split(/(\*\*[^*]+\*\*)/).map((p, i) => (p.startsWith('**')
 
 // Use case 4: the Everyday guidelines at work inside Microsoft 365. Claude (connected to Frontify) checks an
 // email or a deck against the short Everyday rules, cites them, and applies the fixes.
-export function EverydayDemo({ demo, theme, company }) {
+export function EverydayDemo({ demo, theme, company, ai }) {
   const tabs = demo.tabs;
+  const known = ai && ai.length ? ai : null;
+  const [agentI, setAgentI] = useState(0);
+  const agent = known ? known[agentI] : null;
+  const who = agent || 'your assistant';
   const [tab, setTab] = useState(0);
   const [st, setSt] = useState(reduce() ? 5 : 0); // 0 doc, 1 ask, 2 reading, 3 fixes, 4 applying, 5 done
   const [nFix, setNFix] = useState(reduce() ? 9 : 0);
@@ -85,12 +89,17 @@ export function EverydayDemo({ demo, theme, company }) {
         </div>
 
         <aside className="ev-claude" aria-live="polite">
-          <p className="ev-ch"><IconSparkle size={15} /> Claude <span>Connected to Frontify</span></p>
+          <p className="ev-ch"><IconSparkle size={15} /> {agent || 'Your AI assistant'} <span>Connected to Frontify</span></p>
+          {known && known.length > 1 && st === 0 && (
+            <div className="ev-agents" role="radiogroup" aria-label="AI assistant">
+              {known.map((n, i) => <button key={n} role="radio" aria-checked={i === agentI} className={`ev-agent ${i === agentI ? 'is-on' : ''}`} onClick={() => setAgentI(i)}>{n}</button>)}
+            </div>
+          )}
           {st === 0 && (
             <div className="ev-try">
               <p className="bc-try">Try it</p>
-              <p>{t.kind === 'email' ? 'This draft is about to go out. Ask Claude to check it first.' : 'This slide is about to be presented. Ask Claude to check it first.'}</p>
-              <button className="chat-send" onClick={play}><IconSparkle size={15} /> Ask Claude to check it</button>
+              <p>{t.kind === 'email' ? `This draft is about to go out. Ask ${who} to check it first.` : `This slide is about to be presented. Ask ${who} to check it first.`}</p>
+              <button className="chat-send" onClick={play}><IconSparkle size={15} /> Ask {who} to check it</button>
             </div>
           )}
           {st >= 1 && <p className="ev-me pop">{t.ask}</p>}

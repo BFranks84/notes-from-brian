@@ -404,6 +404,39 @@ WORD = {'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'F
 def rotate_words(items):
     return [WORD.get(i['label'], i['label'].lower()) for i in items]
 
+# AI tools each company uses, only where our call notes or research say so clearly. Pages name only these;
+# everywhere else they name every major tool (alphabetically) or a generic assistant.
+AI = {
+ 'flooranddecor': ['Claude', 'Copilot'],          # Oct 23 call: Claude is the enterprise standard; some employees have Copilot
+ 'cvshealth': ['ChatGPT', 'Copilot', 'Gemini'],   # Sep 10 demo: "Copilot slash ChatGPT and Gemini... Gemini Enterprise"
+ 'servicenow': ['Claude'],                        # account research: Claude rolled out to ~29K employees (Jan 2026)
+ 'autodesk': ['Copilot'],                         # account research: Microsoft 365 Copilot to ~5,000 employees (Fortune, Aug 2024)
+}
+ALL_AI = ['ChatGPT', 'Claude', 'Copilot', 'Gemini']
+
+def _list(xs, conj='and'):
+    return xs[0] if len(xs) == 1 else ', '.join(xs[:-1]) + f' {conj} ' + xs[-1]
+
+def apply_ai(d, tools):
+    """Name only the company's own AI tools; default to all of them, or to a generic assistant in one-panel demos."""
+    d['ai'] = tools or None
+    every = tools or ALL_AI
+    who = _list(tools, 'or') if tools else None          # in the Everyday demo
+    for i in d['ideas']:
+        if i['id'] == 'context':
+            i['summary'] = f"Frontify gives {_list(every)} the brand, creative, product and event context they need, so answers come out on brand."
+        if i['id'] == 'everyday':
+            i['summary'] = f"{who or 'Your AI assistant'}, connected to Frontify, checks emails and presentations against short Everyday guidelines before they go out."
+    ev = d['everyday']
+    ev['sub'] = f"Most of {{name}} will never open a brand portal. With Frontify connected, {who or 'your AI assistant'} inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out."
+    if tools:
+        ev['note'] = f"{_list(tools)}, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines."
+    else:
+        ev['note'] = f"Your agent embedded in your enterprise apps, usually {_list(ALL_AI, 'or')}, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines."
+    for it in d['contexts']['items']:
+        if it['id'] == 'everyday':
+            it['askLabel'] = f"Before sending, with {who or 'your AI assistant'}"
+
 def _lc(s):
     # Lowercase the first letter for mid-sentence use, but keep names like IBM intact.
     return s if s[:2].isupper() else s[0].lower() + s[1:]
@@ -544,9 +577,15 @@ def build(slug, s):
     apply_aud(d, AUD_FOR.get(slug, 'partner'), s['partners'], s['ptype'])
     d['contexts']['sub'] = contexts_intro(its)
     d['hero']['rotate'] = rotate_words(its)
+    apply_ai(d, AI.get(slug))
     return d
 
 if __name__ == '__main__':
+    # The template page (Atlassian) gets the same treatment; it has no known tools, so it uses the defaults.
+    _tpl = json.load(open(f'{ROOT}/src/data/atlassian.json'))
+    apply_ai(_tpl, AI.get('atlassian'))
+    json.dump(_tpl, open(f'{ROOT}/src/data/atlassian.json', 'w'), indent=2, ensure_ascii=False)
+    TPL = _tpl
     for slug, s in S.items():
         json.dump(build(slug, s), open(f'{ROOT}/src/data/{slug}.json', 'w'), indent=2, ensure_ascii=False)
         print('wrote', slug)

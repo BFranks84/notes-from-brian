@@ -345,6 +345,14 @@ const LADDER = [
   ['context', 'What AI needs to know', 'Brand, creative, product and operational knowledge'],
   ['agency', 'What AI can do', 'Agents plan, decide and act'],
 ];
+// The back of each card: when that wave of enterprise software arrived, and what it does in one sentence.
+const WAVES = {
+  record: ['Early 2000s', 'Store customer, financial, product and sales information, and give every employee access to it.'],
+  engagement: ['2011', 'Engage customers and prospects with personalized experiences across email, social and mobile.'],
+  intelligence: ['2017', 'Visualize information so teams can choose the next best action.'],
+  context: ['2025', 'Frontify started as a brand portal in 2013, the first system of context, and brings 13 years of context management and distribution.'],
+  agency: ['Now', 'AI agents plan, decide and act across your tools, and they act well only when they can read the context layer.'],
+};
 
 // Mobile: a scroll-driven stack that builds from the foundation up, so each layer visibly rests on the ones before it.
 // Desktop: the five layers as connected chevrons, lighting up in sequence.
@@ -375,6 +383,11 @@ function Ladder({ company }) {
   useEffect(() => { setFocus(null); }, [n]);
   const open = focus ?? n - 1;
   const toggle = (i) => { if (i < n) setFocus(i === open ? (i === n - 1 ? null : n - 1) : i); };
+  // Desktop: each card flips to show when its wave arrived and what it does. Mobile: the open card shows it inline.
+  const [flipped, setFlipped] = useState(() => new Set());
+  const isDesk = () => window.matchMedia('(min-width: 900px)').matches;
+  const flip = (i) => setFlipped((s) => { const x = new Set(s); x.has(i) ? x.delete(i) : x.add(i); return x; });
+  const act = (i, pinned) => { if (isDesk()) flip(i); else if (!pinned) toggle(i); };
   return (
     <section id="uc1" ref={ref} className={`ladder ${on ? 'is-on' : ''} ${done ? 'is-done' : ''}`} aria-labelledby="ladder-title" style={{ '--n': n }}>
       <div className="ladder-pin">
@@ -389,25 +402,38 @@ function Ladder({ company }) {
               // We're selling the context layer: once it's placed it stays open; the other layers collapse.
               const pinned = t === 'context' && i < n;
               const state = i === open || pinned ? 'is-now' : i < n ? 'is-past' : 'is-next';
+              const [era, what] = WAVES[t];
+              const isFlipped = flipped.has(i);
               return (
                 <li
                   key={t}
                   style={{ '--i': i }}
-                  className={`${state} ${t === 'context' ? 'is-key' : ''} ${t === 'agency' ? 'is-top' : ''}`}
-                  role={i < n ? 'button' : undefined}
-                  tabIndex={i < n ? 0 : -1}
-                  aria-expanded={i < n ? i === open || pinned : undefined}
-                  onClick={() => { if (!pinned) toggle(i); }}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(i); } }}
+                  className={`${state} ${t === 'context' ? 'is-key' : ''} ${t === 'agency' ? 'is-top' : ''} ${isFlipped ? 'is-flipped' : ''}`}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isFlipped}
+                  aria-label={`Systems of ${t}. ${isFlipped ? `${era}: ${what}` : `${d}. ${k}.`} Press to flip.`}
+                  onClick={() => act(i, pinned)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(i, pinned); } }}
                 >
                   <span className="rung-step">{i + 1}</span>
-                  <div className="rung-text">
-                    <strong>Systems of {t}</strong>
-                    <span className="rung-desc">{d}</span>
-                    <em>{k}</em>
-                    {i > 0 && (
-                      <span className="rung-builds">Builds on {LADDER.slice(0, i).map(([p]) => <b key={p}>{p}</b>)}</span>
-                    )}
+                  <div className="rung-flip">
+                    <div className="rung-text rung-face is-front" aria-hidden={isFlipped}>
+                      <strong>Systems of {t}</strong>
+                      <span className="rung-desc">{d}</span>
+                      <span className="rung-wave">{era} · {what}</span>
+                      <em>{k}</em>
+                      {i > 0 && (
+                        <span className="rung-builds">Builds on {LADDER.slice(0, i).map(([p]) => <b key={p}>{p}</b>)}</span>
+                      )}
+                      <span className="rung-hint" aria-hidden="true">↻ Flip</span>
+                    </div>
+                    <div className="rung-face is-back" aria-hidden={!isFlipped}>
+                      <span className="rung-era">{era}</span>
+                      <strong>Systems of {t}</strong>
+                      <p>{what}</p>
+                      <span className="rung-hint" aria-hidden="true">↻ Back</span>
+                    </div>
                   </div>
                 </li>
               );

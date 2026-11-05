@@ -184,7 +184,7 @@ button { font: inherit; color: inherit; }
 @media (min-width: 900px) {
   .rungs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
   .rungs li {
-    position: relative; display: flex; flex-direction: column; gap: 10px; min-height: 230px; padding: 20px 34px 20px 22px;
+    position: relative; display: flex; flex-direction: column; gap: 10px; min-height: 300px; padding: 20px 34px 20px 22px;
     background: color-mix(in srgb, var(--ink) 7%, var(--bg)); color: var(--ink-2);
     clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%);
     margin-left: -10px; opacity: 0.25; transition: opacity 500ms var(--ease), background-color 500ms var(--ease);
@@ -201,8 +201,23 @@ button { font: inherit; color: inherit; }
   .rungs li.is-key strong { color: var(--bg); border-color: color-mix(in srgb, var(--bg) 35%, transparent); }
   .rungs li.is-top { background: color-mix(in srgb, var(--ink) 55%, var(--bg)); color: var(--bg); }
   .rungs li.is-top strong { color: var(--bg); }
-  .rung-step, .rung-builds { display: none; }
+  .rung-step, .rung-builds, .rung-wave { display: none; }
+  /* Flip: the card turns over to show when the wave arrived and what it does */
+  .rungs li { perspective: 900px; cursor: pointer; }
+  .rung-flip { position: relative; flex: 1; display: flex; transform-style: preserve-3d; transition: transform 650ms var(--ease-out); }
+  .rungs li.is-flipped .rung-flip { transform: rotateY(180deg); }
+  .rung-face { backface-visibility: hidden; -webkit-backface-visibility: hidden; flex: 1; }
+  .rung-face.is-back { position: absolute; inset: 0; transform: rotateY(180deg); display: flex; flex-direction: column; gap: 8px; }
+  .rung-era { font-family: var(--display); font-weight: var(--display-weight); font-style: var(--display-style); letter-spacing: var(--display-tracking); font-size: 30px; line-height: 1; color: inherit; }
+  .rung-face.is-back strong { padding-bottom: 8px; }
+  .rung-face.is-back p { font-size: 13.5px; line-height: 1.4; }
+  .rung-hint { margin-top: auto; align-self: flex-start; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; opacity: .55; transition: opacity 200ms; }
+  .rung-face.is-front .rung-hint { margin-top: 0; }
+  .rungs li:hover .rung-hint, .rungs li:focus-visible .rung-hint { opacity: 1; }
+  .rungs li:focus-visible { outline: none; }
+  .rungs li:focus-visible .rung-flip { outline: 2px solid var(--accent-text); outline-offset: 4px; border-radius: 4px; }
 }
+@media (min-width: 900px) and (prefers-reduced-motion: reduce) { .rung-flip { transition: none; } }
 
 /* Mobile: pinned stack that builds upward as you scroll */
 @media (max-width: 899px) {
@@ -253,6 +268,10 @@ button { font: inherit; color: inherit; }
   .rungs li.is-top.is-past .rung-text, .rungs li.is-top.is-now .rung-text { background: color-mix(in srgb, var(--ink) 55%, var(--bg)); color: var(--bg); }
   .rungs li.is-top .rung-text strong, .rungs li.is-top.is-now em { color: var(--bg); }
   .ladder-bar { margin-top: 12px; font-size: 15px; padding: 12px 14px; }
+  /* Mobile has no flip: the open card shows when the wave arrived and what it does, inline. */
+  .rung-face.is-back, .rung-hint { display: none; }
+  .rung-wave { display: block; font-size: 13px; line-height: 1.4; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 400ms var(--ease-out), opacity 300ms var(--ease), margin 400ms var(--ease-out); }
+  .rungs li.is-now .rung-wave { max-height: 120px; opacity: .9; margin-top: 8px; }
 }
 @media (max-width: 899px) and (prefers-reduced-motion: reduce) {
   .ladder { height: auto; padding: 56px 0; }
@@ -363,8 +382,8 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Share block ---------- */
 .block { padding-top: 72px; padding-bottom: 24px; }
-.block-head { max-width: 62ch; margin-bottom: 20px; }
-.block-head p { margin-top: 10px; color: var(--ink-3); font-size: 17px; }
+.block-head { margin-bottom: 20px; }
+.block-head p { margin-top: 10px; color: var(--ink-3); font-size: 17px; max-width: 62ch; }
 
 /* ---------- Talk ---------- */
 .talk { margin-top: 56px; padding: 88px 0 104px; background: var(--ink); color: var(--bg); }
@@ -1156,3 +1175,4 @@ button { font: inherit; color: inherit; }
 .rs-fold.t0 rect { fill: color-mix(in srgb, var(--m-accent) 55%, var(--m-bg)); }
 .rs-fold.t1 rect { fill: var(--m-bg); }
 .rs-fold.t2 rect { fill: color-mix(in srgb, var(--m-ink) 22%, var(--m-bg)); }
+@media (min-width: 900px) and (max-width: 1099px) { .rungs li { min-height: 350px; } }

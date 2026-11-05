@@ -420,7 +420,7 @@
     ]
   },
   "everyday": {
-    "eyebrow": "Use case 4 · Everyday guidelines, inside Microsoft 365",
+    "eyebrow": "Use case 4 · Everyday guidelines, inside your office applications",
     "title": "The right tone in every email and deck",
     "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude inside Outlook and PowerPoint reads the Everyday guidelines and checks the work before it goes out.",
     "note": "Claude for Microsoft 365 reads Frontify through the Frontify connector (MCP) once it's set up in your Claude workspace. Sample email, deck and guidelines.",

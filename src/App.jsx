@@ -16,6 +16,9 @@ import { StoreGuide } from './StoreGuide.jsx';
 import { PackagingLibrary } from './PackagingLibrary.jsx';
 import { FRONTIFY, companyTheme, applyTheme, preloadFont } from './theme.js';
 
+// End a sentence with a company name without doubling the period ("Gap Inc.").
+const endDot = (n) => (n.endsWith('.') ? n : `${n}.`);
+
 function useRoute() {
   const slug = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/')[0].toLowerCase();
   return { slug };
@@ -227,7 +230,7 @@ function Portal({ company: c }) {
                   {theme === 'frontify' ? `Switch to the ${c.name} theme` : 'Switch back to Frontify'}
                 </Button>
                 <p className="theme-src">
-                  Colors and layout cues from {ct?.source}. Type is a free stand-in, not {poss(c.name)} own typeface. No logos, and not affiliated with {c.name}.
+                  Colors and layout cues from {ct?.source}. Type is a free stand-in, not {poss(c.name)} own typeface. No logos, and not affiliated with {endDot(c.name)}
                 </p>
               </div>
               <ul className="swatches">
@@ -272,7 +275,7 @@ function Portal({ company: c }) {
           </section>
 
           <footer className="foot">
-            <p><IconLockClosed size={12} /> An independent sample by Brian Franke at Frontify. Not affiliated with, sponsored by or endorsed by {c.name}. {c.name} and related names are trademarks of their owners. Built with Fondue, Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
+            <p><IconLockClosed size={12} /> An independent sample by Brian Franke at Frontify. Not affiliated with, sponsored by or endorsed by {endDot(c.name)} {c.name} and related names are trademarks of their owners. Built with Fondue, Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
           </footer>
         </main>
       )}
@@ -304,7 +307,7 @@ function WhatIsFrontify({ name }) {
           <li key={t}><span className="what-n">{i + 1}</span><strong>{t}</strong><p>{d}</p></li>
         ))}
       </ol>
-      <p className="what-bridge">That's what we mean by a <strong>system of context</strong>. Here's how it could work for {name}.</p>
+      <p className="what-bridge">That's what we mean by a <strong>system of context</strong>. Here's how it could work for {endDot(name)}</p>
     </section>
   );
 }
@@ -436,7 +439,7 @@ function Tour({ company: c, ideas }) {
     <section id="tour" className="tour" aria-labelledby="tour-title">
       <div className="wrap tour-head">
         <h2 id="tour-title">What your AI reads, behind the scenes</h2>
-        <p>A few more ideas for {c.name}. The portal changes as you scroll.</p>
+        <p>A few more ideas for {endDot(c.name)} The portal changes as you scroll.</p>
       </div>
       <div className="wrap tour-grid">
         <div className="tour-stage">

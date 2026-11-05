@@ -119,7 +119,7 @@ export function ChatDemo({ hero, company, theme }) {
             <p>{answer}<span className="caret" hidden={phase === 4} /></p>
             {phase === 4 && (
               hero.brandCard ? (
-                <div className="ai-brandcard pop" style={theme ? { '--b-bg': theme.hl, '--b-ink': theme.ink, '--b-accent': theme.accent, '--b-font': theme.family, '--b-weight': theme.displayWeight } : undefined}>
+                <div className={`ai-brandcard pop ${hero.brandCard.headline.length > 34 || hero.brandCard.eyebrow.length > 22 ? 'is-long' : ''}`} style={theme ? { '--b-bg': theme.hl, '--b-ink': theme.ink, '--b-accent': theme.accent, '--b-font': theme.family, '--b-weight': theme.displayWeight } : undefined}>
                   <span className="abc-art" aria-hidden="true"><i /><i /></span>
                   <span className="abc-eyebrow">{hero.brandCard.eyebrow}</span>
                   <strong>{hero.brandCard.headline}</strong>
@@ -137,7 +137,7 @@ export function ChatDemo({ hero, company, theme }) {
         </>
         )}
       </div>
-      <a className="chat-video" href={tool.video} target="_blank" rel="noopener">
+      <a className={`chat-video ${phase === -1 ? 'is-narrow' : ''}`} href={tool.video} target="_blank" rel="noopener">
         <span className="chat-play" aria-hidden="true" />
         <span><strong>Watch the real thing</strong> Frontify working inside {tool.name}, recorded live</span>
         <IconArrowOutExternal size={14} />

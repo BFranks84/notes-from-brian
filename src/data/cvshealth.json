@@ -1,0 +1,1012 @@
+{
+  "slug": "cvshealth",
+  "name": "CVS Health",
+  "accent": "#CC0000",
+  "accentInk": "#FFFFFF",
+  "ideas": [
+    {
+      "id": "context",
+      "title": "A system of context for every AI tool",
+      "summary": "Frontify gives Claude, ChatGPT and Copilot the brand, creative, product and event context they need, so answers come out on brand."
+    },
+    {
+      "id": "contexts",
+      "title": "What context lives in Frontify",
+      "summary": "Brand, creative, product, event and Everyday guidance live as guideline pages that people read and AI tools answer from."
+    },
+    {
+      "id": "check",
+      "title": "Brand Check before anything goes live",
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
+    },
+    {
+      "id": "packaging",
+      "title": "Packaging: the right rules for every SKU",
+      "summary": "A guided path from category to pillar, template and rules, plus a searchable library of every approved package with its packaging guideline."
+    },
+    {
+      "id": "everyday",
+      "title": "Everyday guidelines inside Outlook and PowerPoint",
+      "summary": "Claude in Microsoft 365, connected to Frontify, checks emails and decks against short Everyday guidelines before they go out."
+    },
+    {
+      "id": "partners",
+      "title": "Partner and agency files, in the right place",
+      "summary": "Partners submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
+    }
+  ],
+  "hero": {
+    "rotate": [
+      "brand",
+      "creative",
+      "product",
+      "event",
+      "packaging",
+      "everyday"
+    ],
+    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
+    "prompt": "Make a LinkedIn post and image for our next Joyward launch.",
+    "generic": "Excited to announce an amazing new feature! Our innovative AI solution will revolutionize the way your team works. Don't miss out! #Innovation #AI #Teamwork",
+    "onbrand": "Joyward is our brand for seasonal decor and gifts, in stores now. Find something joyful for everyone on your list.",
+    "context": [
+      {
+        "label": "Tone of voice",
+        "value": "Caring, clear and everyday-optimistic"
+      },
+      {
+        "label": "Messaging",
+        "value": "Approved Joyward messaging"
+      },
+      {
+        "label": "Colors",
+        "value": "CVS red on white and warm gray"
+      },
+      {
+        "label": "Image",
+        "value": "Approved launch visual"
+      }
+    ],
+    "disclaimer": "Illustrative draft written for this sample, using CVS Health's public brand guidance. Not CVS Health content.",
+    "badImage": "/ai/cvshealth-offbrand.jpg",
+    "brandCard": {
+      "eyebrow": "New: Joyward",
+      "headline": "Seasonal decor and gifts, made joyful."
+    },
+    "headline": "AI is making everyone a creative.",
+    "headline2": "That doesn't mean they're good at it.",
+    "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
+    "badTag": "Fictional AI-generated work content",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: posed pharmacy staff, a magenta-pink color wash and a generic headline",
+    "voiceSource": {
+      "label": "See the voice guideline",
+      "to": "everyday"
+    }
+  },
+  "check": {
+    "eyebrow": "Use case 3 · Brand Check",
+    "title": "Then it checks the work",
+    "sub": "Before anything goes live, Brand Check reviews it against {name}'s guidelines, flags potential issues, and shows which guideline informed each finding.",
+    "note": "Brand Check runs on the context you already keep in Frontify. It's more than a prompt: it's a service built into Frontify, available in the portal and through the API. The image is fictional AI-generated work content, and the findings are samples.",
+    "asset": {
+      "kind": "AI-generated LinkedIn image",
+      "by": "fictional, made with a generic AI image tool",
+      "image": "/ai/cvshealth-offbrand.jpg",
+      "alt": "A fictional AI-generated LinkedIn graphic: posed pharmacy staff, a magenta-pink color wash and a generic headline"
+    },
+    "categories": [
+      {
+        "id": "logo",
+        "label": "Logo",
+        "status": "skip"
+      },
+      {
+        "id": "color",
+        "label": "Color"
+      },
+      {
+        "id": "typography",
+        "label": "Typography"
+      },
+      {
+        "id": "layout",
+        "label": "Layout"
+      },
+      {
+        "id": "writing",
+        "label": "Writing"
+      },
+      {
+        "id": "imagery",
+        "label": "Imagery"
+      }
+    ],
+    "findings": [
+      {
+        "cat": "color",
+        "box": [
+          2,
+          2,
+          96,
+          96
+        ],
+        "text": "The magenta-pink wash reads close to CVS red at a glance, but it isn't in the palette, and the brand doesn't wash photos.",
+        "found": "#D04E9A",
+        "expected": "#CC0000",
+        "expectedName": "CVS red",
+        "recommendation": "Use CVS red, #CC0000, on white and warm gray, with no color wash over photos.",
+        "sources": [
+          {
+            "label": "Brand - Color - Primary colors",
+            "to": "brand"
+          }
+        ]
+      },
+      {
+        "cat": "writing",
+        "box": [
+          7,
+          3,
+          86,
+          15
+        ],
+        "text": "\"Wellness Starts Here\" is a generic line. It doesn't name Joyward or use approved messaging.",
+        "recommendation": "Start from the approved Joyward positioning and write in the caring, clear voice.",
+        "sources": [
+          {
+            "label": "Product - Joyward positioning",
+            "to": "product"
+          },
+          {
+            "label": "Everyday - Tone of voice",
+            "to": "everyday"
+          }
+        ]
+      },
+      {
+        "cat": "imagery",
+        "box": [
+          1,
+          27,
+          98,
+          72
+        ],
+        "text": "A posed group smiling at the camera doesn't match the photography style.",
+        "recommendation": "Use a candid photo of a real team at work from the photo library.",
+        "sources": [
+          {
+            "label": "Creative - Photography - Do and don't",
+            "to": "creative"
+          }
+        ]
+      }
+    ]
+  },
+  "contexts": {
+    "eyebrow": "Use case 2 · What context lives in Frontify",
+    "title": "Every kind of context, in one place",
+    "sub": "Brand, creative, product, campaign and packaging guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "note": "Sample pages built from CVS Health's public brand information. Not CVS Health's own guidelines.",
+    "items": [
+      {
+        "id": "brand",
+        "label": "Brand",
+        "desc": "Colors, type, logo and voice",
+        "kind": "color",
+        "chapter": "Color",
+        "section": "Primary colors",
+        "title": "Our palette",
+        "lead": "How CVS Health uses color.",
+        "swatches": [
+          [
+            "CVS red",
+            "#CC0000"
+          ],
+          [
+            "Ink",
+            "#262626"
+          ],
+          [
+            "Warm gray",
+            "#F2EFEB"
+          ],
+          [
+            "Navy",
+            "#0B315E"
+          ]
+        ],
+        "rule": "CVS red leads. Warm gray and white carry the layout.",
+        "ask": "Which color should a social post lead with?",
+        "answer": "Use **CVS red, #CC0000**. CVS red leads."
+      },
+      {
+        "id": "creative",
+        "label": "Creative",
+        "desc": "Photography, illustration and motion",
+        "kind": "photo",
+        "chapter": "Photography",
+        "section": "Do and don't",
+        "title": "Photography",
+        "lead": "Real teams doing real work, never staged.",
+        "do": {
+          "label": "Teams at work",
+          "note": "Candid moments of people working together."
+        },
+        "dont": {
+          "label": "Posed for the camera",
+          "note": "No staged handshakes or stock smiles."
+        },
+        "ask": "Can I use a stock photo of a handshake?",
+        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+      },
+      {
+        "id": "product",
+        "label": "Product",
+        "desc": "Launches, positioning and claims",
+        "kind": "launch",
+        "chapter": "Product launch",
+        "section": "Joyward",
+        "title": "Joyward positioning",
+        "lead": "Start every launch brief from this page.",
+        "positioning": "Joyward is CVS Pharmacy's brand for seasonal decor and gifts.",
+        "claims": [
+          "Seasonal decor and gifts in one brand",
+          "In about 9,000 CVS Pharmacy stores"
+        ],
+        "rule": "Write Joyward as one word, with a capital J.",
+        "ask": "Write a one-line pitch for Joyward.",
+        "answer": "**Joyward is CVS Pharmacy's brand for seasonal decor and gifts.** Drafted from the approved positioning."
+      },
+      {
+        "id": "event",
+        "label": "Campaign",
+        "desc": "Toolkits for every campaign",
+        "kind": "event",
+        "chapter": "Campaign toolkits",
+        "section": "Holiday campaign",
+        "title": "Holiday campaign toolkit",
+        "lead": "Everything a team needs to show up on brand.",
+        "facts": [
+          [
+            "Audience",
+            "Every brand and region team"
+          ],
+          [
+            "Assets",
+            "Locked templates and approved photos"
+          ]
+        ],
+        "templates": [
+          {
+            "name": "Social post",
+            "note": "Headline and image, layout locked"
+          },
+          {
+            "name": "In-store sign",
+            "note": "Add the offer, the rest stays on brand"
+          }
+        ],
+        "ask": "I need a social post for the campaign.",
+        "answer": "I opened the **Social post** template. Add your headline and image; **the layout and logo stay locked**."
+      },
+      {
+        "id": "packaging",
+        "label": "Packaging",
+        "desc": "Pillars, categories and pack rules",
+        "kind": "packaging",
+        "chapter": "Packaging",
+        "section": "Pillar architecture",
+        "title": "Fixed and flex, by pillar",
+        "lead": "What stays the same on every store-brand pack, and what changes by pillar.",
+        "pack": {
+          "id": "cv1",
+          "brand": "CVS",
+          "name": "Ibuprofen 200 mg Tablets",
+          "short": "Ibuprofen 200 mg Tablets",
+          "line": "Health · Pain relief",
+          "type": "carton",
+          "format": "Carton",
+          "size": "100 ct",
+          "color": "#CC0000",
+          "claim": "Pain reliever",
+          "status": "Approved",
+          "logo": "Current logo",
+          "updated": "Oct 21, 2026",
+          "updatedSort": 20261021,
+          "market": "US",
+          "pillar": "Health",
+          "category": "Pain relief"
+        },
+        "rules": [
+          [
+            "Fixed",
+            "brand band, name hierarchy, facts panel"
+          ],
+          [
+            "Flex",
+            "color, art and icons, by pillar"
+          ],
+          [
+            "Category",
+            "extra rules, like Drug Facts for health"
+          ]
+        ],
+        "rule": "Flat colors only. No gradients on any pillar.",
+        "ask": "Which pillar does a new vitamin go in?",
+        "answer": "The **Wellness** pillar. Lead with the benefit, then count and dose, and put Supplement Facts on the side or back panel."
+      },
+      {
+        "id": "everyday",
+        "label": "Everyday",
+        "desc": "Short rules for email, decks and docs",
+        "kind": "writing",
+        "chapter": "Everyday",
+        "section": "Email tone of voice",
+        "title": "Email tone of voice",
+        "lead": "The short version of our tone of voice, for everyone who sends email.",
+        "rules": [
+          [
+            "Subject",
+            "Say what you need in under eight words."
+          ],
+          [
+            "Opening",
+            "Lead with the ask or the answer."
+          ],
+          [
+            "Voice",
+            "Caring, clear and everyday-optimistic."
+          ],
+          [
+            "Sign-off",
+            "Use the standard signature. No quotes or images."
+          ]
+        ],
+        "do": "Can you review the launch plan by Thursday?",
+        "dont": "Just circling back on the below!!",
+        "askLabel": "Before sending, in Outlook with Copilot",
+        "ask": "Check this email against our writing guidelines.",
+        "answer": "Two fixes before you send: **put the ask in the first line**, and **use the standard signature**.",
+        "from": "Condensed from Brand › Tone of voice",
+        "deck": {
+          "title": "Presentations",
+          "rules": [
+            [
+              "Template",
+              "Start from the company template."
+            ],
+            [
+              "Titles",
+              "Six words or fewer."
+            ],
+            [
+              "Bullets",
+              "Three per slide, at most."
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "everyday": {
+    "eyebrow": "Use case 5 · Everyday guidelines, inside Microsoft 365",
+    "title": "The right tone in every email and deck",
+    "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude inside Outlook and PowerPoint reads the Everyday guidelines and checks the work before it goes out.",
+    "note": "Claude for Microsoft 365 reads Frontify through the Frontify connector (MCP) once it's set up in your Claude workspace. Sample email, deck and guidelines.",
+    "tabs": [
+      {
+        "id": "outlook",
+        "label": "Email in Outlook",
+        "kind": "email",
+        "guideline": "Email tone of voice",
+        "to": "Field marketing team",
+        "ask": "Check this email against our email tone of voice before I send it.",
+        "intro": "Three fixes based on **Everyday › Email tone of voice**:",
+        "before": {
+          "subject": "Following up",
+          "body": [
+            "Hi team, just circling back on the below!!",
+            "We've been heads-down on the Joyward launch and there's a lot going on, so I wanted to share where things stand.",
+            "Can you review the launch plan by Thursday?"
+          ],
+          "sig": "Cheers!! ✨ \"Dream big, ship bigger\""
+        },
+        "after": {
+          "subject": "Review the Joyward launch plan by Thursday",
+          "body": [
+            "Hi team, can you review the Joyward launch plan by Thursday?",
+            "It covers the messaging, launch assets and timeline. Comments in the doc are perfect."
+          ],
+          "sig": "Sam Lee · Marketing"
+        },
+        "fixes": [
+          {
+            "target": "subject",
+            "label": "Subject:",
+            "note": "say what you need. \"Following up\" doesn't."
+          },
+          {
+            "target": "p0",
+            "label": "Opening:",
+            "note": "lead with the ask. It's in the last line right now."
+          },
+          {
+            "target": "sig",
+            "label": "Sign-off:",
+            "note": "use the standard signature, with no quotes."
+          }
+        ],
+        "done": "Updated. The draft matches the email tone of voice and is ready to send."
+      },
+      {
+        "id": "powerpoint",
+        "label": "Deck in PowerPoint",
+        "kind": "deck",
+        "guideline": "Presentations",
+        "ask": "Is this slide built the way our presentation guidelines say?",
+        "intro": "Three fixes based on **Everyday › Presentations**:",
+        "before": {
+          "title": "Q3 results and some thoughts on where we go next with Joyward",
+          "bullets": [
+            "Pipeline grew in every region",
+            "Trials doubled after the keynote",
+            "Partners asked for more co-marketing",
+            "We should talk about pricing",
+            "Support tickets went down",
+            "Next steps TBD"
+          ]
+        },
+        "after": {
+          "title": "Joyward: Q3 results",
+          "bullets": [
+            "Pipeline grew in every region",
+            "Trials doubled after the keynote",
+            "Partners want more co-marketing"
+          ],
+          "footer": "2026 template"
+        },
+        "fixes": [
+          {
+            "target": "template",
+            "label": "Template:",
+            "note": "this slide isn't on the company template."
+          },
+          {
+            "target": "title",
+            "label": "Title:",
+            "note": "14 words. Keep titles to six or fewer."
+          },
+          {
+            "target": "bullets",
+            "label": "Bullets:",
+            "note": "six on one slide. Keep it to three."
+          }
+        ],
+        "done": "Updated. Slide 2 now uses the company template and follows the presentation guidelines."
+      }
+    ]
+  },
+  "partners": {
+    "eyebrow": "Use case 6 · Partner and agency files",
+    "title": "Partner files land in the right place",
+    "sub": "Suppliers and agency partners submit packaging artwork straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
+    "note": "Sample files, partner and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "page": "Partners › Submit an asset",
+    "submitter": "Northwind Creative · supplier",
+    "library": "Partner submissions",
+    "files": [
+      {
+        "name": "joyward-carton-dieline.pdf",
+        "size": "3.4 MB",
+        "title": "Carton dieline"
+      },
+      {
+        "name": "joyward-front-panel.png",
+        "size": "1.2 MB",
+        "title": "Front panel art"
+      }
+    ],
+    "existing": [
+      "Joyward launch",
+      "Pain relief refresh",
+      "Well Market snacks",
+      "Holiday gifting"
+    ],
+    "ask": "Tag these Joyward and Packaging artwork, and set them to expire Dec 31, 2026.",
+    "plan": "I'll add the tags Joyward and Packaging artwork, and set Available until to Dec 31, 2026, on the 2 selected assets. Say yes and I'll apply it.",
+    "tags": [
+      "Joyward",
+      "Packaging artwork"
+    ],
+    "expires": "Dec 31, 2026",
+    "actions": [
+      "Add tags",
+      "Set expiry date"
+    ]
+  },
+  "packaging": {
+    "eyebrow": "Use case 4 · Packaging",
+    "title": "The right packaging rules in three questions",
+    "sub": "{name}'s store-brand packaging runs on pillars, with rules that change by category. A guided path takes anyone from a product's category to its pillar, template and rules. A searchable library holds every approved package with its metadata and its packaging guideline.",
+    "note": "Sample pillars, packages, sizes and rules built for this page. Not {name}'s own packaging system or guidelines.",
+    "wordmark": "CVS Health",
+    "placeholder": "Search packaging, e.g. melatonin or 100 ct",
+    "askLabel": "A packaging designer asks the brand assistant",
+    "files": [
+      "Dieline (.ai)",
+      "Print-ready (.pdf)",
+      "3D mockup (.png)"
+    ],
+    "facets": [
+      {
+        "id": "brand",
+        "label": "Brand"
+      },
+      {
+        "id": "pillar",
+        "label": "Pillar"
+      },
+      {
+        "id": "category",
+        "label": "Category"
+      },
+      {
+        "id": "format",
+        "label": "Format"
+      },
+      {
+        "id": "logo",
+        "label": "Design version"
+      },
+      {
+        "id": "status",
+        "label": "Status"
+      }
+    ],
+    "assets": [
+      {
+        "id": "cv1",
+        "brand": "CVS",
+        "name": "Ibuprofen 200 mg Tablets",
+        "short": "Ibuprofen 200 mg Tablets",
+        "line": "Health · Pain relief",
+        "type": "carton",
+        "format": "Carton",
+        "size": "100 ct",
+        "color": "#CC0000",
+        "claim": "Pain reliever",
+        "status": "Approved",
+        "logo": "Current logo",
+        "updated": "Oct 21, 2026",
+        "updatedSort": 20261021,
+        "market": "US",
+        "pillar": "Health",
+        "category": "Pain relief"
+      },
+      {
+        "id": "cv2",
+        "brand": "CVS",
+        "name": "Acetaminophen Extra Strength Caplets",
+        "short": "Acetaminophen Extra Strength",
+        "line": "Health · Pain relief",
+        "type": "carton",
+        "format": "Carton",
+        "size": "100 ct",
+        "color": "#CC0000",
+        "claim": "Pain reliever",
+        "status": "In review",
+        "logo": "Previous logo",
+        "updated": "Jul 8, 2025",
+        "updatedSort": 20250708,
+        "market": "US",
+        "pillar": "Health",
+        "category": "Pain relief"
+      },
+      {
+        "id": "cv3",
+        "brand": "CVS",
+        "name": "Children's Acetaminophen Liquid",
+        "short": "Children's Acetaminophen",
+        "line": "Health · Pain relief",
+        "type": "bottle",
+        "format": "Bottle",
+        "size": "4 fl oz",
+        "color": "#CC0000",
+        "claim": "Ages 2 to 11",
+        "status": "Approved",
+        "logo": "Previous logo",
+        "updated": "May 19, 2025",
+        "updatedSort": 20250519,
+        "market": "US",
+        "pillar": "Health",
+        "category": "Pain relief"
+      },
+      {
+        "id": "cv4",
+        "brand": "CVS",
+        "name": "Loratadine 10 mg Tablets",
+        "short": "Loratadine 10 mg",
+        "line": "Health · Allergy",
+        "type": "carton",
+        "format": "Carton",
+        "size": "30 ct",
+        "color": "#CC0000",
+        "claim": "Allergy relief",
+        "status": "Approved",
+        "logo": "Current logo",
+        "updated": "Sep 12, 2026",
+        "updatedSort": 20260912,
+        "market": "US",
+        "pillar": "Health",
+        "category": "Allergy"
+      },
+      {
+        "id": "cv5",
+        "brand": "CVS",
+        "name": "Vitamin D3 Softgels",
+        "short": "Vitamin D3 Softgels",
+        "line": "Wellness · Vitamins",
+        "type": "bottle",
+        "format": "Bottle",
+        "size": "250 ct",
+        "color": "#0B315E",
+        "claim": "Bone health support",
+        "status": "Approved",
+        "logo": "Current logo",
+        "updated": "Aug 4, 2026",
+        "updatedSort": 20260804,
+        "market": "US",
+        "pillar": "Wellness",
+        "category": "Vitamins"
+      },
+      {
+        "id": "cv6",
+        "brand": "CVS",
+        "name": "Melatonin Gummies",
+        "short": "Melatonin Gummies",
+        "line": "Wellness · Sleep",
+        "type": "bottle",
+        "format": "Bottle",
+        "size": "60 ct",
+        "color": "#0B315E",
+        "claim": "Sleep support",
+        "status": "Approved",
+        "logo": "Previous logo",
+        "updated": "Apr 2, 2025",
+        "updatedSort": 20250402,
+        "market": "US",
+        "pillar": "Wellness",
+        "category": "Sleep"
+      },
+      {
+        "id": "cv7",
+        "brand": "CVS Beauty",
+        "name": "Daily Moisturizing Lotion",
+        "short": "Daily Moisturizing Lotion",
+        "line": "Beauty · Skin care",
+        "type": "tube",
+        "format": "Tube",
+        "size": "8 fl oz",
+        "color": "#9C5B6E",
+        "claim": "For dry skin",
+        "status": "Approved",
+        "logo": "Current logo",
+        "updated": "Oct 2, 2026",
+        "updatedSort": 20261002,
+        "market": "US",
+        "pillar": "Beauty",
+        "category": "Skin care"
+      },
+      {
+        "id": "cv8",
+        "brand": "CVS Beauty",
+        "name": "Micellar Cleansing Water",
+        "short": "Micellar Cleansing Water",
+        "line": "Beauty · Skin care",
+        "type": "bottle",
+        "format": "Bottle",
+        "size": "13.5 fl oz",
+        "color": "#9C5B6E",
+        "claim": "All skin types",
+        "status": "Approved",
+        "logo": "Current logo",
+        "updated": "Sep 25, 2026",
+        "updatedSort": 20260925,
+        "market": "US",
+        "pillar": "Beauty",
+        "category": "Skin care"
+      },
+      {
+        "id": "cv9",
+        "brand": "Well Market",
+        "name": "Sea Salt Kettle Chips",
+        "short": "Sea Salt Kettle Chips",
+        "line": "Food · Snacks",
+        "type": "bag",
+        "format": "Bag",
+        "size": "7 oz",
+        "color": "#C9631C",
+        "claim": "Kettle cooked",
+        "status": "Approved",
+        "logo": "Current logo",
+        "updated": "Oct 9, 2026",
+        "updatedSort": 20261009,
+        "market": "US",
+        "pillar": "Food",
+        "category": "Snacks"
+      },
+      {
+        "id": "cv10",
+        "brand": "Well Market",
+        "name": "Sweet and Salty Trail Mix",
+        "short": "Sweet and Salty Trail Mix",
+        "line": "Food · Snacks",
+        "type": "bag",
+        "format": "Bag",
+        "size": "10 oz",
+        "color": "#C9631C",
+        "claim": "Resealable bag",
+        "status": "In review",
+        "logo": "Current logo",
+        "updated": "Nov 2, 2026",
+        "updatedSort": 20261102,
+        "market": "US",
+        "pillar": "Food",
+        "category": "Snacks"
+      },
+      {
+        "id": "cv11",
+        "brand": "Joyward",
+        "name": "Holiday Mug Gift Set",
+        "short": "Holiday Mug Gift Set",
+        "line": "Seasonal · Gifts",
+        "type": "box",
+        "format": "Gift box",
+        "size": "1 set",
+        "color": "#2E6B4F",
+        "claim": "Ready to gift",
+        "status": "Approved",
+        "logo": "Current logo",
+        "updated": "Oct 30, 2026",
+        "updatedSort": 20261030,
+        "market": "US",
+        "pillar": "Seasonal",
+        "category": "Gifts"
+      }
+    ],
+    "quick": [
+      {
+        "label": "Health pillar",
+        "filter": {
+          "pillar": [
+            "Health"
+          ]
+        }
+      },
+      {
+        "label": "Still on the previous design",
+        "filter": {
+          "logo": [
+            "Previous logo"
+          ]
+        }
+      },
+      {
+        "label": "Well Market",
+        "q": "Well Market"
+      }
+    ],
+    "typeRules": {
+      "carton": {
+        "logo": "Brand band across the top. Fixed on every pillar; current design only.",
+        "name": "Active ingredient and strength first, then the product name.",
+        "claim": "One claim from the approved claims library. Anything else moves to the back.",
+        "size": "Count and dosage form, bottom center.",
+        "info": "Back and side panels: Drug Facts, barcode and the How2Recycle label. Design never touches Drug Facts."
+      },
+      "bottle": {
+        "logo": "Brand band at the top of the label. Fixed on every pillar.",
+        "name": "What it is first, then strength or formula.",
+        "claim": "One claim from the approved claims library.",
+        "size": "Count or volume, bottom of the front label.",
+        "info": "Back label: Drug, Supplement or Nutrition Facts as the category requires, barcode and How2Recycle label."
+      },
+      "tube": {
+        "logo": "Brand band at the top of the tube. Fixed on every pillar.",
+        "name": "Product type and finish first.",
+        "claim": "One claim. Ingredient callouts stay on the back unless approved.",
+        "size": "Volume in fl oz and mL, above the cap.",
+        "info": "Back: ingredients, directions, barcode and How2Recycle label."
+      },
+      "bag": {
+        "logo": "Brand band at the top of the bag. Fixed on every pillar.",
+        "name": "Food name first, flavor second.",
+        "claim": "One claim, for example kettle cooked.",
+        "size": "Net weight bottom left, in oz and g.",
+        "info": "Back: Nutrition Facts, ingredients and allergen statement, barcode."
+      },
+      "box": {
+        "logo": "Brand band across the top. Fixed on every pillar.",
+        "name": "What is in the set, in the seasonal voice.",
+        "claim": "One giftable claim, for example ready to gift.",
+        "size": "Piece count, bottom center.",
+        "info": "Back: contents, care, gift tag space and barcode."
+      }
+    },
+    "rules": {},
+    "tree": {
+      "label": "Find my packaging rules",
+      "intro": "Answer three questions. The path leads to the pillar, the template and the rules that apply, plus approved packages that already follow them.",
+      "steps": [
+        {
+          "id": "category",
+          "q": "What category is the product in?",
+          "options": [
+            {
+              "label": "Pain relief",
+              "note": "Health pillar",
+              "set": {
+                "pillar": "Health"
+              }
+            },
+            {
+              "label": "Vitamins and supplements",
+              "note": "Wellness pillar",
+              "set": {
+                "pillar": "Wellness"
+              }
+            },
+            {
+              "label": "Skin care",
+              "note": "Beauty pillar",
+              "set": {
+                "pillar": "Beauty"
+              }
+            },
+            {
+              "label": "Snacks",
+              "note": "Food pillar",
+              "set": {
+                "pillar": "Food"
+              }
+            },
+            {
+              "label": "Seasonal gifts",
+              "note": "Seasonal pillar",
+              "set": {
+                "pillar": "Seasonal"
+              }
+            }
+          ]
+        },
+        {
+          "id": "art",
+          "q": "Does the front of pack use photography?",
+          "options": [
+            {
+              "label": "Yes, product or food photography",
+              "set": {
+                "art": "Photography"
+              }
+            },
+            {
+              "label": "No, illustration and icons",
+              "set": {
+                "art": "Illustration"
+              }
+            }
+          ]
+        },
+        {
+          "id": "format",
+          "q": "What is the package?",
+          "options": [
+            {
+              "label": "Carton",
+              "set": {
+                "format": "Carton"
+              }
+            },
+            {
+              "label": "Bottle",
+              "set": {
+                "format": "Bottle"
+              }
+            },
+            {
+              "label": "Tube",
+              "set": {
+                "format": "Tube"
+              }
+            },
+            {
+              "label": "Bag",
+              "set": {
+                "format": "Bag"
+              }
+            },
+            {
+              "label": "Gift box",
+              "set": {
+                "format": "Gift box"
+              }
+            }
+          ]
+        }
+      ],
+      "pillars": {
+        "Health": {
+          "name": "Health",
+          "blurb": "Clarity first: the active ingredient and what it treats lead the front.",
+          "rules": [
+            "Lead with the active ingredient and strength, then what it treats.",
+            "The compare-to callout sits top right, never over the product name.",
+            "Drug Facts stay on the back panel, untouched by design.",
+            "Flat colors only, no gradients."
+          ]
+        },
+        "Wellness": {
+          "name": "Wellness",
+          "blurb": "Calm and clear: the benefit leads, then count and dose.",
+          "rules": [
+            "Lead with the benefit, then count and dose.",
+            "Supplement Facts on the side or back panel.",
+            "One benefit icon, from the approved set.",
+            "Flat colors only, no gradients."
+          ]
+        },
+        "Beauty": {
+          "name": "Beauty",
+          "blurb": "Product-led: the product type and finish lead.",
+          "rules": [
+            "Name the product type and finish first.",
+            "Ingredient callouts stay on the back unless approved.",
+            "Size in fl oz and mL.",
+            "Flat colors only, no gradients."
+          ]
+        },
+        "Food": {
+          "name": "Food",
+          "blurb": "Crave-worthy: the food leads.",
+          "rules": [
+            "Show the real product, never a styled substitute.",
+            "Net weight bottom left, in oz and g.",
+            "Nutrition Facts and allergen statement on the back.",
+            "Flat colors only, no gradients."
+          ]
+        },
+        "Seasonal": {
+          "name": "Seasonal",
+          "blurb": "Joyful and giftable: the season leads.",
+          "rules": [
+            "Seasonal art from the current toolkit only.",
+            "Leave gift tag space on every gift box.",
+            "Retire seasonal art when the season ends."
+          ]
+        }
+      },
+      "artRules": {
+        "Photography": [
+          "Use approved photography from the library. No AI-generated product shots."
+        ],
+        "Illustration": [
+          "Use icons and illustrations from the approved set only."
+        ]
+      },
+      "qa": {
+        "ask": "I'm packaging a new pain reliever. Which rules apply?",
+        "answer": "Start in the **Health pillar** with the **Health carton template**. Lead with the active ingredient and strength, keep the compare-to callout top right, and leave **Drug Facts** untouched.",
+        "sources": "3 sources: Packaging - Pillars - Health; Health carton template; Category rules - Pain relief"
+      }
+    },
+    "libraryQa": {
+      "ask": "Which Health packages are still on the previous design?",
+      "answer": "**2 packages**: Acetaminophen Extra Strength Caplets and Children's Acetaminophen Liquid. I filtered Packaging by **Pillar: Health** and **Design version: Previous logo**.",
+      "sources": "packaging library metadata"
+    },
+    "detailQa": {
+      "ask": "What has to stay fixed on the {name} pack?",
+      "answer": "**The brand band, the name hierarchy and the facts panel stay fixed.** Color, art and icons flex by pillar and category.",
+      "sources": "2 sources: Packaging - Pillar architecture; the product guideline"
+    }
+  }
+}

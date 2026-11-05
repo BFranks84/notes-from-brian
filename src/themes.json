@@ -1,113 +1,556 @@
 {
-  "_about": "Company themes for the 'wear your brand' switch. Colors are from official public design resources where available (evidence: verified) or observed from the company's own public website CSS on 2026-11-04 (evidence: observed). Fonts are free stand-ins chosen to feel similar, never the company's licensed typeface (except IBM Plex, which IBM publishes under the open-source OFL). No logos.",
-  "atlassian": {
-    "label": "Atlassian", "evidence": "verified (design tokens) + observed (site layout)",
-    "bg": "#FFFFFF", "surface": "#F8F8F8", "ink": "#101214", "ink2": "#292A2E",
-    "accent": "#1868DB", "accentInk": "#FFFFFF", "accentText": "#1868DB", "hl": "#E9F2FE",
-    "heroBg": "#FFFFFF", "heroInk": "#101214",
-    "font": "figtree", "displayWeight": 600, "displayTracking": "-0.02em", "displayItalic": false,
-    "radiusBtn": "999px", "radiusCard": "12px", "btnCase": "none", "eyebrowCase": "uppercase",
-    "palette": [["Brand blue", "#1868DB"], ["Text", "#292A2E"], ["Ink", "#101214"], ["Surface", "#F8F8F8"]],
-    "source": "Atlassian Design System tokens and atlassian.com", "url": "https://atlassian.design/foundations/color"
-  },
-  "autodesk": {
-    "label": "Autodesk", "evidence": "verified (brand.autodesk.com) + observed (site layout)",
-    "bg": "#FFFFFF", "surface": "#F5F5F0", "ink": "#000000", "ink2": "#333333",
-    "accent": "#FFFF00", "accentInk": "#000000", "accentText": "#000000", "hl": "#FFFF00",
-    "heroBg": "#000000", "heroInk": "#FFFFFF", "heroAccentText": "#FFFF00",
-    "font": "fira", "displayWeight": 700, "displayTracking": "-0.01em", "displayItalic": false,
-    "radiusBtn": "8px", "radiusCard": "8px", "btnCase": "none", "eyebrowCase": "uppercase",
-    "palette": [["Hello Yellow", "#FFFF00"], ["Black", "#000000"], ["Warm Slate", "#D5D5CB"], ["Dawn", "#F09D4F"]],
-    "source": "Autodesk Brand Hub, color", "url": "https://brand.autodesk.com/visual-system/color/"
-  },
-  "databricks": {
-    "label": "Databricks", "evidence": "observed (databricks.com CSS); brand portal not publicly readable",
-    "bg": "#F9F7F4", "surface": "#FFFFFF", "ink": "#1B3139", "ink2": "#1B3139",
-    "accent": "#EB1600", "accentInk": "#FFFFFF", "accentText": "#C41200", "hl": "#EEEDE9",
-    "heroBg": "#0B2026", "heroInk": "#FFFFFF", "heroAccentText": "#FF5F46",
-    "font": "manrope", "displayWeight": 600, "displayTracking": "-0.02em", "displayItalic": false,
-    "radiusBtn": "4px", "radiusCard": "4px", "btnCase": "none", "eyebrowCase": "uppercase",
-    "palette": [["Lava", "#EB1600"], ["Navy", "#0B2026"], ["Navy ink", "#1B3139"], ["Oat", "#F9F7F4"]],
-    "source": "databricks.com (observed site colors)", "url": "https://www.databricks.com/"
-  },
-  "gap": {
-    "label": "Gap Inc.", "evidence": "observed (gapinc.com CSS); no public brand palette",
-    "bg": "#FFFFFF", "surface": "#F5F5F5", "ink": "#000000", "ink2": "#454545",
-    "accent": "#0F2441", "accentInk": "#FFFFFF", "accentText": "#0F2441", "hl": "#E8EDF4",
-    "heroBg": "#FFFFFF", "heroInk": "#000000",
-    "font": "caslon", "displayWeight": 400, "displayTracking": "-0.02em", "displayItalic": true,
-    "radiusBtn": "0px", "radiusCard": "0px", "btnCase": "uppercase", "eyebrowCase": "uppercase",
-    "palette": [["Black", "#000000"], ["Navy", "#0F2441"], ["Blue", "#2049A5"], ["Gray", "#5E5D5D"]],
-    "source": "gapinc.com (observed site colors)", "url": "https://www.gapinc.com/en-us/"
-  },
-  "hpe": {
-    "label": "HPE", "evidence": "verified (HPE Design System) + observed (hpe.com)",
-    "bg": "#FFFFFF", "surface": "#F7F7F7", "ink": "#292D3A", "ink2": "#535C66",
-    "accent": "#01A982", "accentInk": "#FFFFFF", "accentText": "#006750", "hl": "#E3F6F0",
-    "heroBg": "#292D3A", "heroInk": "#FFFFFF", "heroAccentText": "#01A982",
-    "font": "worksans", "displayWeight": 400, "displayTracking": "-0.02em", "displayItalic": false,
-    "radiusBtn": "999px", "radiusCard": "12px", "btnCase": "none", "eyebrowCase": "none",
-    "palette": [["HPE green", "#01A982"], ["Deep green", "#006750"], ["Slate", "#292D3A"], ["Purple", "#7630EA"]],
-    "source": "HPE Design System, color", "url": "https://design-system.hpe.design/foundation/color"
-  },
-  "ibm": {
-    "label": "IBM", "evidence": "verified (IBM Design Language / Carbon)",
-    "bg": "#FFFFFF", "surface": "#F4F4F4", "ink": "#161616", "ink2": "#525252",
-    "accent": "#0F62FE", "accentInk": "#FFFFFF", "accentText": "#0F62FE", "hl": "#EDF5FF",
-    "heroBg": "#FFFFFF", "heroInk": "#161616",
-    "font": "plex", "displayWeight": 300, "displayTracking": "0", "displayItalic": false,
-    "radiusBtn": "0px", "radiusCard": "0px", "btnCase": "none", "eyebrowCase": "none",
-    "palette": [["Blue 60", "#0F62FE"], ["Gray 100", "#161616"], ["Gray 10", "#F4F4F4"], ["Gray 70", "#525252"]],
-    "source": "IBM Design Language, color", "url": "https://www.ibm.com/design/language/color/"
-  },
-  "pinterest": {
-    "label": "Pinterest", "evidence": "verified (Gestalt v1 palette) + observed (business.pinterest.com)",
-    "bg": "#FFFFFF", "surface": "#F1F1F1", "ink": "#111111", "ink2": "#767676",
-    "accent": "#E60023", "accentInk": "#FFFFFF", "accentText": "#E60023", "hl": "#FFEBEE",
-    "heroBg": "#FFFFFF", "heroInk": "#111111",
-    "font": "figtree", "displayWeight": 600, "displayTracking": "-0.02em", "displayItalic": false,
-    "radiusBtn": "999px", "radiusCard": "20px", "btnCase": "none", "eyebrowCase": "none",
-    "palette": [["Pushpin", "#E60023"], ["Cosmicore", "#111111"], ["Roboflow", "#767676"], ["Skycicle", "#0074E8"]],
-    "source": "Gestalt design system, color palette", "url": "https://gestalt.pinterest.systems/v1/foundations/color/palette"
-  },
-  "sephora": {
-    "label": "Sephora", "evidence": "observed (sephora.com); no public brand palette",
-    "bg": "#FFFFFF", "surface": "#F6F6F8", "ink": "#000000", "ink2": "#666666",
-    "accent": "#000000", "accentInk": "#FFFFFF", "accentText": "#000000", "hl": "#EEEEEE",
-    "heroBg": "#000000", "heroInk": "#FFFFFF", "heroAccentText": "#FFFFFF",
-    "font": "helvetica", "displayWeight": 700, "displayTracking": "-0.02em", "displayItalic": false,
-    "radiusBtn": "999px", "radiusCard": "4px", "btnCase": "none", "eyebrowCase": "uppercase",
-    "palette": [["Black", "#000000"], ["White", "#FFFFFF"], ["Gray", "#666666"], ["Mist", "#F6F6F8"]],
-    "source": "sephora.com (observed site colors)", "url": "https://www.sephora.com/"
-  },
-  "intuitive": {
-    "label": "Intuitive", "evidence": "observed (intuitive.com); no public brand palette",
-    "bg": "#FFFFFF", "surface": "#F2F3F5", "ink": "#1C1C1F", "ink2": "#5A5A60",
-    "accent": "#0F25D1", "accentInk": "#FFFFFF", "accentText": "#0F25D1", "hl": "#E8EAFB",
-    "heroBg": "#1C1C1F", "heroInk": "#F2F3F5", "heroAccentText": "#9AA6FF",
-    "font": "outfit", "displayWeight": 500, "displayTracking": "-0.02em", "displayItalic": false,
-    "radiusBtn": "24px", "radiusCard": "16px", "btnCase": "none", "eyebrowCase": "none",
-    "palette": [["Night", "#1C1C1F"], ["Mist", "#F2F3F5"], ["Blue", "#0F25D1"], ["Stone", "#DCDCE0"]],
-    "source": "intuitive.com (observed site colors)", "url": "https://www.intuitive.com/en-us"
-  },
-  "twitch": {
-    "label": "Twitch", "evidence": "observed (twitch.tv CSS) + press (2019 rebrand)",
-    "bg": "#F7F7F8", "surface": "#FFFFFF", "ink": "#0E0E10", "ink2": "#53535F",
-    "accent": "#9147FF", "accentInk": "#FFFFFF", "accentText": "#772CE8", "hl": "#F0E6FF",
-    "heroBg": "#0E0E10", "heroInk": "#EFEFF1", "heroAccentText": "#BF94FF",
-    "font": "spacegrotesk", "displayWeight": 600, "displayTracking": "-0.02em", "displayItalic": false,
-    "radiusBtn": "999px", "radiusCard": "6px", "btnCase": "none", "eyebrowCase": "none",
-    "palette": [["Twitch purple", "#9147FF"], ["Deep purple", "#5C16C5"], ["Near black", "#0E0E10"], ["Fog", "#F7F7F8"]],
-    "source": "twitch.tv (observed site colors)", "url": "https://www.twitch.tv/"
-  },
-  "servicenow": {
-    "label": "ServiceNow", "evidence": "observed (servicenow.com design tokens)",
-    "bg": "#FFFFFF", "surface": "#F2F5F7", "ink": "#032D42", "ink2": "#365B6F",
-    "accent": "#63DF4E", "accentInk": "#032D42", "accentText": "#005F1E", "hl": "#DEFFD9",
-    "heroBg": "#032D42", "heroInk": "#FFFFFF", "heroAccentText": "#63DF4E",
-    "font": "inter", "displayWeight": 300, "displayTracking": "-0.02em", "displayItalic": false,
-    "radiusBtn": "999px", "radiusCard": "16px", "btnCase": "none", "eyebrowCase": "none",
-    "palette": [["Wasabi green", "#63DF4E"], ["Infinite blue", "#032D42"], ["Light wasabi", "#DEFFD9"], ["Mist", "#F2F5F7"]],
-    "source": "servicenow.com (observed design tokens)", "url": "https://www.servicenow.com/"
-  }
+ "_about": "Company themes for the 'wear your brand' switch. Colors are from official public design resources where available (evidence: verified) or observed from the company's own public website CSS on 2026-11-04 (evidence: observed). Fonts are free stand-ins chosen to feel similar, never the company's licensed typeface (except IBM Plex, which IBM publishes under the open-source OFL). No logos.",
+ "atlassian": {
+  "label": "Atlassian",
+  "evidence": "verified (design tokens) + observed (site layout)",
+  "bg": "#FFFFFF",
+  "surface": "#F8F8F8",
+  "ink": "#101214",
+  "ink2": "#292A2E",
+  "accent": "#1868DB",
+  "accentInk": "#FFFFFF",
+  "accentText": "#1868DB",
+  "hl": "#E9F2FE",
+  "heroBg": "#FFFFFF",
+  "heroInk": "#101214",
+  "font": "figtree",
+  "displayWeight": 600,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "999px",
+  "radiusCard": "12px",
+  "btnCase": "none",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "Brand blue",
+    "#1868DB"
+   ],
+   [
+    "Text",
+    "#292A2E"
+   ],
+   [
+    "Ink",
+    "#101214"
+   ],
+   [
+    "Surface",
+    "#F8F8F8"
+   ]
+  ],
+  "source": "Atlassian Design System tokens and atlassian.com",
+  "url": "https://atlassian.design/foundations/color"
+ },
+ "autodesk": {
+  "label": "Autodesk",
+  "evidence": "verified (brand.autodesk.com) + observed (site layout)",
+  "bg": "#FFFFFF",
+  "surface": "#F5F5F0",
+  "ink": "#000000",
+  "ink2": "#333333",
+  "accent": "#FFFF00",
+  "accentInk": "#000000",
+  "accentText": "#000000",
+  "hl": "#FFFF00",
+  "heroBg": "#000000",
+  "heroInk": "#FFFFFF",
+  "heroAccentText": "#FFFF00",
+  "font": "fira",
+  "displayWeight": 700,
+  "displayTracking": "-0.01em",
+  "displayItalic": false,
+  "radiusBtn": "8px",
+  "radiusCard": "8px",
+  "btnCase": "none",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "Hello Yellow",
+    "#FFFF00"
+   ],
+   [
+    "Black",
+    "#000000"
+   ],
+   [
+    "Warm Slate",
+    "#D5D5CB"
+   ],
+   [
+    "Dawn",
+    "#F09D4F"
+   ]
+  ],
+  "source": "Autodesk Brand Hub, color",
+  "url": "https://brand.autodesk.com/visual-system/color/"
+ },
+ "databricks": {
+  "label": "Databricks",
+  "evidence": "observed (databricks.com CSS); brand portal not publicly readable",
+  "bg": "#F9F7F4",
+  "surface": "#FFFFFF",
+  "ink": "#1B3139",
+  "ink2": "#1B3139",
+  "accent": "#EB1600",
+  "accentInk": "#FFFFFF",
+  "accentText": "#C41200",
+  "hl": "#EEEDE9",
+  "heroBg": "#0B2026",
+  "heroInk": "#FFFFFF",
+  "heroAccentText": "#FF5F46",
+  "font": "manrope",
+  "displayWeight": 600,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "4px",
+  "radiusCard": "4px",
+  "btnCase": "none",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "Lava",
+    "#EB1600"
+   ],
+   [
+    "Navy",
+    "#0B2026"
+   ],
+   [
+    "Navy ink",
+    "#1B3139"
+   ],
+   [
+    "Oat",
+    "#F9F7F4"
+   ]
+  ],
+  "source": "databricks.com (observed site colors)",
+  "url": "https://www.databricks.com/"
+ },
+ "gap": {
+  "label": "Gap Inc.",
+  "evidence": "observed (gapinc.com CSS); no public brand palette",
+  "bg": "#FFFFFF",
+  "surface": "#F5F5F5",
+  "ink": "#000000",
+  "ink2": "#454545",
+  "accent": "#0F2441",
+  "accentInk": "#FFFFFF",
+  "accentText": "#0F2441",
+  "hl": "#E8EDF4",
+  "heroBg": "#FFFFFF",
+  "heroInk": "#000000",
+  "font": "caslon",
+  "displayWeight": 400,
+  "displayTracking": "-0.02em",
+  "displayItalic": true,
+  "radiusBtn": "0px",
+  "radiusCard": "0px",
+  "btnCase": "uppercase",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "Black",
+    "#000000"
+   ],
+   [
+    "Navy",
+    "#0F2441"
+   ],
+   [
+    "Blue",
+    "#2049A5"
+   ],
+   [
+    "Gray",
+    "#5E5D5D"
+   ]
+  ],
+  "source": "gapinc.com (observed site colors)",
+  "url": "https://www.gapinc.com/en-us/"
+ },
+ "hpe": {
+  "label": "HPE",
+  "evidence": "verified (HPE Design System) + observed (hpe.com)",
+  "bg": "#FFFFFF",
+  "surface": "#F7F7F7",
+  "ink": "#292D3A",
+  "ink2": "#535C66",
+  "accent": "#01A982",
+  "accentInk": "#FFFFFF",
+  "accentText": "#006750",
+  "hl": "#E3F6F0",
+  "heroBg": "#292D3A",
+  "heroInk": "#FFFFFF",
+  "heroAccentText": "#01A982",
+  "font": "worksans",
+  "displayWeight": 400,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "999px",
+  "radiusCard": "12px",
+  "btnCase": "none",
+  "eyebrowCase": "none",
+  "palette": [
+   [
+    "HPE green",
+    "#01A982"
+   ],
+   [
+    "Deep green",
+    "#006750"
+   ],
+   [
+    "Slate",
+    "#292D3A"
+   ],
+   [
+    "Purple",
+    "#7630EA"
+   ]
+  ],
+  "source": "HPE Design System, color",
+  "url": "https://design-system.hpe.design/foundation/color"
+ },
+ "ibm": {
+  "label": "IBM",
+  "evidence": "verified (IBM Design Language / Carbon)",
+  "bg": "#FFFFFF",
+  "surface": "#F4F4F4",
+  "ink": "#161616",
+  "ink2": "#525252",
+  "accent": "#0F62FE",
+  "accentInk": "#FFFFFF",
+  "accentText": "#0F62FE",
+  "hl": "#EDF5FF",
+  "heroBg": "#FFFFFF",
+  "heroInk": "#161616",
+  "font": "plex",
+  "displayWeight": 300,
+  "displayTracking": "0",
+  "displayItalic": false,
+  "radiusBtn": "0px",
+  "radiusCard": "0px",
+  "btnCase": "none",
+  "eyebrowCase": "none",
+  "palette": [
+   [
+    "Blue 60",
+    "#0F62FE"
+   ],
+   [
+    "Gray 100",
+    "#161616"
+   ],
+   [
+    "Gray 10",
+    "#F4F4F4"
+   ],
+   [
+    "Gray 70",
+    "#525252"
+   ]
+  ],
+  "source": "IBM Design Language, color",
+  "url": "https://www.ibm.com/design/language/color/"
+ },
+ "pinterest": {
+  "label": "Pinterest",
+  "evidence": "verified (Gestalt v1 palette) + observed (business.pinterest.com)",
+  "bg": "#FFFFFF",
+  "surface": "#F1F1F1",
+  "ink": "#111111",
+  "ink2": "#767676",
+  "accent": "#E60023",
+  "accentInk": "#FFFFFF",
+  "accentText": "#E60023",
+  "hl": "#FFEBEE",
+  "heroBg": "#FFFFFF",
+  "heroInk": "#111111",
+  "font": "figtree",
+  "displayWeight": 600,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "999px",
+  "radiusCard": "20px",
+  "btnCase": "none",
+  "eyebrowCase": "none",
+  "palette": [
+   [
+    "Pushpin",
+    "#E60023"
+   ],
+   [
+    "Cosmicore",
+    "#111111"
+   ],
+   [
+    "Roboflow",
+    "#767676"
+   ],
+   [
+    "Skycicle",
+    "#0074E8"
+   ]
+  ],
+  "source": "Gestalt design system, color palette",
+  "url": "https://gestalt.pinterest.systems/v1/foundations/color/palette"
+ },
+ "sephora": {
+  "label": "Sephora",
+  "evidence": "observed (sephora.com); no public brand palette",
+  "bg": "#FFFFFF",
+  "surface": "#F6F6F8",
+  "ink": "#000000",
+  "ink2": "#666666",
+  "accent": "#000000",
+  "accentInk": "#FFFFFF",
+  "accentText": "#000000",
+  "hl": "#EEEEEE",
+  "heroBg": "#000000",
+  "heroInk": "#FFFFFF",
+  "heroAccentText": "#FFFFFF",
+  "font": "helvetica",
+  "displayWeight": 700,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "999px",
+  "radiusCard": "4px",
+  "btnCase": "none",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "Black",
+    "#000000"
+   ],
+   [
+    "White",
+    "#FFFFFF"
+   ],
+   [
+    "Gray",
+    "#666666"
+   ],
+   [
+    "Mist",
+    "#F6F6F8"
+   ]
+  ],
+  "source": "sephora.com (observed site colors)",
+  "url": "https://www.sephora.com/"
+ },
+ "intuitive": {
+  "label": "Intuitive",
+  "evidence": "observed (intuitive.com); no public brand palette",
+  "bg": "#FFFFFF",
+  "surface": "#F2F3F5",
+  "ink": "#1C1C1F",
+  "ink2": "#5A5A60",
+  "accent": "#0F25D1",
+  "accentInk": "#FFFFFF",
+  "accentText": "#0F25D1",
+  "hl": "#E8EAFB",
+  "heroBg": "#1C1C1F",
+  "heroInk": "#F2F3F5",
+  "heroAccentText": "#9AA6FF",
+  "font": "outfit",
+  "displayWeight": 500,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "24px",
+  "radiusCard": "16px",
+  "btnCase": "none",
+  "eyebrowCase": "none",
+  "palette": [
+   [
+    "Night",
+    "#1C1C1F"
+   ],
+   [
+    "Mist",
+    "#F2F3F5"
+   ],
+   [
+    "Blue",
+    "#0F25D1"
+   ],
+   [
+    "Stone",
+    "#DCDCE0"
+   ]
+  ],
+  "source": "intuitive.com (observed site colors)",
+  "url": "https://www.intuitive.com/en-us"
+ },
+ "twitch": {
+  "label": "Twitch",
+  "evidence": "observed (twitch.tv CSS) + press (2019 rebrand)",
+  "bg": "#F7F7F8",
+  "surface": "#FFFFFF",
+  "ink": "#0E0E10",
+  "ink2": "#53535F",
+  "accent": "#9147FF",
+  "accentInk": "#FFFFFF",
+  "accentText": "#772CE8",
+  "hl": "#F0E6FF",
+  "heroBg": "#0E0E10",
+  "heroInk": "#EFEFF1",
+  "heroAccentText": "#BF94FF",
+  "font": "spacegrotesk",
+  "displayWeight": 600,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "999px",
+  "radiusCard": "6px",
+  "btnCase": "none",
+  "eyebrowCase": "none",
+  "palette": [
+   [
+    "Twitch purple",
+    "#9147FF"
+   ],
+   [
+    "Deep purple",
+    "#5C16C5"
+   ],
+   [
+    "Near black",
+    "#0E0E10"
+   ],
+   [
+    "Fog",
+    "#F7F7F8"
+   ]
+  ],
+  "source": "twitch.tv (observed site colors)",
+  "url": "https://www.twitch.tv/"
+ },
+ "servicenow": {
+  "label": "ServiceNow",
+  "evidence": "observed (servicenow.com design tokens)",
+  "bg": "#FFFFFF",
+  "surface": "#F2F5F7",
+  "ink": "#032D42",
+  "ink2": "#365B6F",
+  "accent": "#63DF4E",
+  "accentInk": "#032D42",
+  "accentText": "#005F1E",
+  "hl": "#DEFFD9",
+  "heroBg": "#032D42",
+  "heroInk": "#FFFFFF",
+  "heroAccentText": "#63DF4E",
+  "font": "inter",
+  "displayWeight": 300,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "999px",
+  "radiusCard": "16px",
+  "btnCase": "none",
+  "eyebrowCase": "none",
+  "palette": [
+   [
+    "Wasabi green",
+    "#63DF4E"
+   ],
+   [
+    "Infinite blue",
+    "#032D42"
+   ],
+   [
+    "Light wasabi",
+    "#DEFFD9"
+   ],
+   [
+    "Mist",
+    "#F2F5F7"
+   ]
+  ],
+  "source": "servicenow.com (observed design tokens)",
+  "url": "https://www.servicenow.com/"
+ },
+ "flooranddecor": {
+  "label": "Floor & Decor",
+  "evidence": "observed (flooranddecor.com CSS); no public brand palette",
+  "bg": "#FFFFFF",
+  "surface": "#F3F3F3",
+  "ink": "#000000",
+  "ink2": "#4A4A4A",
+  "accent": "#EA1722",
+  "accentInk": "#FFFFFF",
+  "accentText": "#B3121B",
+  "hl": "#FDECEC",
+  "heroBg": "#FFFFFF",
+  "heroInk": "#000000",
+  "font": "inter",
+  "displayWeight": 800,
+  "displayTracking": "-0.02em",
+  "displayItalic": false,
+  "radiusBtn": "0px",
+  "radiusCard": "0px",
+  "btnCase": "uppercase",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "FND red",
+    "#EA1722"
+   ],
+   [
+    "Black",
+    "#000000"
+   ],
+   [
+    "Light gray",
+    "#F3F3F3"
+   ],
+   [
+    "Deep red",
+    "#A61018"
+   ]
+  ],
+  "source": "flooranddecor.com (observed site colors)",
+  "url": "https://www.flooranddecor.com/"
+ },
+ "cvshealth": {
+  "label": "CVS Health",
+  "evidence": "observed (cvshealth.com CSS); no public brand palette",
+  "bg": "#FFFFFF",
+  "surface": "#F2EFEB",
+  "ink": "#262626",
+  "ink2": "#4D4D4D",
+  "accent": "#CC0000",
+  "accentInk": "#FFFFFF",
+  "accentText": "#CC0000",
+  "hl": "#FBEAEA",
+  "heroBg": "#FFFFFF",
+  "heroInk": "#262626",
+  "font": "fira",
+  "displayWeight": 700,
+  "displayTracking": "-0.01em",
+  "displayItalic": false,
+  "radiusBtn": "10px",
+  "radiusCard": "10px",
+  "btnCase": "none",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "CVS red",
+    "#CC0000"
+   ],
+   [
+    "Ink",
+    "#262626"
+   ],
+   [
+    "Warm gray",
+    "#F2EFEB"
+   ],
+   [
+    "Navy",
+    "#0B315E"
+   ]
+  ],
+  "source": "cvshealth.com (observed site colors)",
+  "url": "https://www.cvshealth.com/"
+ }
 }

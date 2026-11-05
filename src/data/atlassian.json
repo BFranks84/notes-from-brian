@@ -109,9 +109,9 @@
     },
     "headline": "AI is making everyone a creative.",
     "headline2": "That doesn't mean they're good at it.",
-    "badCaption": "Looks fine at a glance. Look again: the doubled word, the posed thumbs-up, the wrong blue.",
+    "badCaption": "Looks fine at a glance. Look again: the generic headline, the posed thumbs-up, the wrong blue.",
     "badTag": "Fictional AI-generated work content",
-    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient and a doubled word in the headline"
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient and a generic headline"
   },
   "check": {
     "eyebrow": "Use case 3 · Brand Check",
@@ -122,7 +122,7 @@
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
       "image": "/ai/atlassian-offbrand-3.jpg",
-      "alt": "A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient and a doubled word in the headline"
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient and a generic headline"
     },
     "categories": [
       {
@@ -180,8 +180,8 @@
           80,
           28
         ],
-        "text": "The headline repeats a word (\"Together With With AI\") and uses a generic AI claim instead of approved Rovo messaging.",
-        "recommendation": "Fix the doubled word and start from the approved positioning, like \"Less busywork. More teamwork.\"",
+        "text": "\"Work Smarter Together With AI\" is a generic AI claim, not approved Rovo messaging.",
+        "recommendation": "Start from the approved positioning, like \"Less busywork. More teamwork.\"",
         "sources": [
           {
             "label": "Product - Rovo positioning",

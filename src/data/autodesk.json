@@ -70,7 +70,7 @@
     "headline2": "That doesn't mean they're good at it.",
     "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
     "badTag": "Fictional AI-generated work content",
-    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed team of architects, an amber wash and a garbled headline",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed team of architects, an amber wash and a generic headline",
     "voiceSource": {
       "label": "See the voice guideline",
       "to": "everyday"
@@ -85,7 +85,7 @@
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
       "image": "/ai/autodesk-offbrand.jpg",
-      "alt": "A fictional AI-generated LinkedIn graphic: a posed team of architects, an amber wash and a garbled headline"
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed team of architects, an amber wash and a generic headline"
     },
     "categories": [
       {
@@ -143,8 +143,8 @@
           85,
           20
         ],
-        "text": "The headline has a garbled word (\"Faster ser With AI\") and a speed claim with no proof behind it.",
-        "recommendation": "Fix the headline and keep claims specific and supported, like the approved Assistant positioning.",
+        "text": "\"Design The Future Faster With AI\" is a speed claim with no proof behind it, and it doesn't name Autodesk Assistant.",
+        "recommendation": "Keep claims specific and supported, like the approved Assistant positioning.",
         "sources": [
           {
             "label": "Product - Autodesk Assistant positioning",

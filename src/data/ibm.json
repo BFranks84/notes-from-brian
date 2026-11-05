@@ -70,7 +70,7 @@
     "headline2": "That doesn't mean they're good at it.",
     "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
     "badTag": "Fictional AI-generated work content",
-    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed business team, a violet gradient and a garbled headline",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed business team, a violet gradient and a generic headline",
     "voiceSource": {
       "label": "See the voice guideline",
       "to": "everyday"
@@ -85,7 +85,7 @@
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
       "image": "/ai/ibm-offbrand.jpg",
-      "alt": "A fictional AI-generated LinkedIn graphic: a posed business team, a violet gradient and a garbled headline"
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed business team, a violet gradient and a generic headline"
     },
     "categories": [
       {
@@ -143,8 +143,8 @@
           90,
           23
         ],
-        "text": "The headline is garbled (\"Transform Business With's AI Agents\") and generic.",
-        "recommendation": "Fix the headline and use approved watsonx Orchestrate messaging, with watsonx in lowercase.",
+        "text": "\"Transform Your Business With AI Agents\" is generic, not approved watsonx Orchestrate messaging.",
+        "recommendation": "Use approved watsonx Orchestrate messaging, with watsonx in lowercase.",
         "sources": [
           {
             "label": "Product - watsonx Orchestrate positioning",

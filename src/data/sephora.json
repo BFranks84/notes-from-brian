@@ -76,7 +76,7 @@
     "headline2": "That doesn't mean they're good at it.",
     "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
     "badTag": "Fictional AI-generated work content",
-    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed beauty team, a blush wash and a misspelled headline",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed beauty team, a blush wash and a generic headline",
     "voiceSource": {
       "label": "See the voice guideline",
       "to": "everyday"
@@ -91,7 +91,7 @@
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
       "image": "/ai/sephora-offbrand.jpg",
-      "alt": "A fictional AI-generated LinkedIn graphic: a posed beauty team, a blush wash and a misspelled headline"
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed beauty team, a blush wash and a generic headline"
     },
     "categories": [
       {
@@ -149,8 +149,8 @@
           64,
           22
         ],
-        "text": "The headline has a typo (\"Glow Up Your Beauty Loine\") and a generic line with no expert voice.",
-        "recommendation": "Fix the typo and write like a beauty advisor: specific, inclusive and helpful.",
+        "text": "\"Glow Up Your Beauty Routine\" is a generic line with no expert voice, and it doesn't mention Sephora Accelerate.",
+        "recommendation": "Write like a beauty advisor: specific, inclusive and helpful.",
         "sources": [
           {
             "label": "Product - Sephora Accelerate positioning",

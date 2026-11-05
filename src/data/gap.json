@@ -70,7 +70,7 @@
     "headline2": "That doesn't mean they're good at it.",
     "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
     "badTag": "Fictional AI-generated work content",
-    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed fashion team, a royal blue wash and a misspelled headline",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed fashion team, a royal blue wash and a generic headline",
     "voiceSource": {
       "label": "See the voice guideline",
       "to": "everyday"
@@ -85,7 +85,7 @@
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
       "image": "/ai/gap-offbrand.jpg",
-      "alt": "A fictional AI-generated LinkedIn graphic: a posed fashion team, a royal blue wash and a misspelled headline"
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed fashion team, a royal blue wash and a generic headline"
     },
     "categories": [
       {
@@ -143,8 +143,8 @@
           90,
           22
         ],
-        "text": "The headline has a typo (\"Style Mees Innovation\") and a generic line that doesn't sound like any of the four brands.",
-        "recommendation": "Fix the typo and write in the voice of the brand the post is for.",
+        "text": "\"Style Meets Innovation\" is a generic line that doesn't sound like any of the four brands.",
+        "recommendation": "Write in the voice of the brand the post is for.",
         "sources": [
           {
             "label": "Product - Four brands, one company",

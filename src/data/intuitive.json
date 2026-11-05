@@ -70,7 +70,7 @@
     "headline2": "That doesn't mean they're good at it.",
     "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
     "badTag": "Fictional AI-generated work content",
-    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed surgical team, a purple wash and a misspelled headline",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed surgical team, a purple wash and a generic headline",
     "voiceSource": {
       "label": "See the voice guideline",
       "to": "everyday"
@@ -85,7 +85,7 @@
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
       "image": "/ai/intuitive-offbrand.jpg",
-      "alt": "A fictional AI-generated LinkedIn graphic: a posed surgical team, a purple wash and a misspelled headline"
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed surgical team, a purple wash and a generic headline"
     },
     "categories": [
       {
@@ -143,8 +143,8 @@
           80,
           20
         ],
-        "text": "The headline has a typo (\"Surgerry\") and a sweeping claim that isn't in the approved claims library.",
-        "recommendation": "Fix the typo and use an approved claim, or none at all.",
+        "text": "\"The Future Of Surgery Is Here\" is a sweeping claim that isn't in the approved claims library.",
+        "recommendation": "Use an approved claim from the library, or none at all.",
         "sources": [
           {
             "label": "Product - da Vinci 5 positioning",

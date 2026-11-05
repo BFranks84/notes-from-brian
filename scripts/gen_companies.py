@@ -17,9 +17,9 @@ S = {
    partners='Resellers and agency partners', ptype='reseller partner', existing=['Fusion how-to', 'Revit webinar', 'AU recap', 'Maya reel'],
    img='autodesk_1', found='#D9A441', fcolor="The mustard and amber wash isn't how Autodesk uses color.",
    frec="Lead with black and white, and keep Hello Yellow to small highlights.", head_box=[5, 8, 85, 20], img_box=[0, 30, 100, 55],
-   ftext="The headline has a garbled word (\"Faster ser With AI\") and a speed claim with no proof behind it.",
-   frec2="Fix the headline and keep claims specific and supported, like the approved Assistant positioning.",
-   alt="A fictional AI-generated LinkedIn graphic: a posed team of architects, an amber wash and a garbled headline"),
+   ftext="\"Design The Future Faster With AI\" is a speed claim with no proof behind it, and it doesn't name Autodesk Assistant.",
+   frec2="Keep claims specific and supported, like the approved Assistant positioning.",
+   alt="A fictional AI-generated LinkedIn graphic: a posed team of architects, an amber wash and a generic headline"),
  'databricks': dict(name='Databricks', product='Agent Bricks', short='Agent Bricks', eyebrow='New in Agent Bricks',
    card='Build agents. Govern them in one place.', voice='Clear, confident and specific', colors='Lava on Navy and Oat',
    onbrand="Agent Bricks now works with any model or harness, and every agent, model and MCP is governed in one place. Build your first agent this week.",
@@ -43,9 +43,9 @@ S = {
    partners='Agencies and licensing partners', ptype='agency partner', existing=['Old Navy holiday', 'Athleta spring', 'Banana Republic lookbook', 'Gap denim'],
    img='gap_1', found='#1E4FA8', fcolor="The royal blue and gold overlay isn't the brand's navy.",
    frec="Use navy, black and white for corporate work, with no color wash over photos.", head_box=[5, 10, 90, 22], img_box=[5, 32, 90, 50],
-   ftext="The headline has a typo (\"Style Mees Innovation\") and a generic line that doesn't sound like any of the four brands.",
-   frec2="Fix the typo and write in the voice of the brand the post is for.",
-   alt="A fictional AI-generated LinkedIn graphic: a posed fashion team, a royal blue wash and a misspelled headline"),
+   ftext="\"Style Meets Innovation\" is a generic line that doesn't sound like any of the four brands.",
+   frec2="Write in the voice of the brand the post is for.",
+   alt="A fictional AI-generated LinkedIn graphic: a posed fashion team, a royal blue wash and a generic headline"),
  'hpe': dict(name='HPE', product='HPE GreenLake', short='GreenLake', eyebrow='New in HPE GreenLake',
    card='Run hybrid IT with agents you can trust.', voice='Open, courageous and inspired', colors='HPE green on white and slate',
    onbrand="HPE GreenLake now brings agentic operations to your whole hybrid estate, with an agent registry and governance built in. See it running in your environment.",
@@ -69,9 +69,9 @@ S = {
    partners='IBM Business Partners', ptype='business partner', existing=['Think recap', 'Granite models', 'Red Hat webinar', 'Consulting case'],
    img='ibm_1', found='#7B4DFF', fcolor="The violet and magenta gradient isn't in the IBM palette.",
    frec="Use Blue 60, #0F62FE, with grays, and no gradient over photos.", head_box=[5, 8, 90, 23], img_box=[0, 45, 100, 40],
-   ftext="The headline is garbled (\"Transform Business With's AI Agents\") and generic.",
-   frec2="Fix the headline and use approved watsonx Orchestrate messaging, with watsonx in lowercase.",
-   alt="A fictional AI-generated LinkedIn graphic: a posed business team, a violet gradient and a garbled headline"),
+   ftext="\"Transform Your Business With AI Agents\" is generic, not approved watsonx Orchestrate messaging.",
+   frec2="Use approved watsonx Orchestrate messaging, with watsonx in lowercase.",
+   alt="A fictional AI-generated LinkedIn graphic: a posed business team, a violet gradient and a generic headline"),
  'pinterest': dict(name='Pinterest', product='Performance+', short='Performance+', eyebrow='New: Performance+',
    card='Reach people when they intend to act.', voice='Simple, conversational, with a dash of cleverness', colors='Pushpin red on white',
    onbrand="People come to Pinterest with intention. Performance+ helps you meet them there, with campaigns that build and tune themselves. Try it on your next campaign.",
@@ -82,9 +82,9 @@ S = {
    partners='Agency partners', ptype='agency partner', existing=['Trend report', 'Shopping ads guide', 'Cannes recap', 'Creator spotlight'],
    img='pinterest_1', found='#F25C9A', fcolor="The hot pink and peach wash isn't Pushpin red.",
    frec="Use Pushpin red, #E60023, with purpose on white, and no color wash over photos.", head_box=[8, 12, 84, 20], img_box=[0, 35, 100, 55],
-   ftext="The headline is missing a space (\"Like NeverBefore\") and leans on attention, not intention.",
-   frec2="Fix the spacing and lead with what people came to do, in a short, conversational line.",
-   alt="A fictional AI-generated LinkedIn graphic: a posed creative team, a pink wash and a missing space in the headline"),
+   ftext="\"Inspire Your Audience Like Never Before\" leans on attention, not intention, and doesn't name Performance+.",
+   frec2="Lead with what people came to do, in a short, conversational line.",
+   alt="A fictional AI-generated LinkedIn graphic: a posed creative team, a pink wash and a generic headline"),
  'sephora': dict(name='Sephora', product='Sephora Accelerate', short='Accelerate', eyebrow='Sephora Accelerate',
    card='Meet the founders shaping what\'s next.', voice='Inclusive, approachable and expert', colors='Black and white',
    onbrand="Ten years of Sephora Accelerate, and 12 new founders joining the cohort. Meet the brands shaping what's next in beauty.",
@@ -95,9 +95,9 @@ S = {
    partners='Brand partners', ptype='brand partner', existing=['Holiday gifting', 'Clean beauty edit', 'Accelerate cohort', 'Savings event'],
    img='sephora_0', found='#E8B4A8', fcolor="The rose gold and blush wash isn't Sephora's black and white.",
    frec="Use black and white for layout, and let product color carry the image.", head_box=[18, 13, 64, 22], img_box=[0, 20, 100, 70],
-   ftext="The headline has a typo (\"Glow Up Your Beauty Loine\") and a generic line with no expert voice.",
-   frec2="Fix the typo and write like a beauty advisor: specific, inclusive and helpful.",
-   alt="A fictional AI-generated LinkedIn graphic: a posed beauty team, a blush wash and a misspelled headline"),
+   ftext="\"Glow Up Your Beauty Routine\" is a generic line with no expert voice, and it doesn't mention Sephora Accelerate.",
+   frec2="Write like a beauty advisor: specific, inclusive and helpful.",
+   alt="A fictional AI-generated LinkedIn graphic: a posed beauty team, a blush wash and a generic headline"),
  'twitch': dict(name='Twitch', product='Stream Recaps', short='Recaps', eyebrow='New: Stream Recaps',
    card='Your best moments, ready to share.', voice='Playful, creator-first, with a dash of chaos', colors='Twitch purple on near-black',
    onbrand="Stream Recaps turn your best moments into a highlight reel you can share. You pick what goes out. Go live, then check your recap.",
@@ -121,9 +121,9 @@ S = {
    partners='Partners', ptype='implementation partner', existing=['Knowledge recap', 'Now Assist guide', 'Partner webinar', 'Customer story'],
    img='servicenow_0', found='#1BA37A', fcolor="The emerald and ocean blue wash isn't Wasabi green.",
    frec="Use Wasabi green with Infinite blue, and no color wash over photos.", head_box=[6, 10, 80, 18], img_box=[0, 28, 100, 60],
-   ftext="The headline has a typo (\"Make Work Flw Better\") and a generic AI claim.",
-   frec2="Fix the typo and lead with proven value, not hype.",
-   alt="A fictional AI-generated LinkedIn graphic: a posed enterprise team, a green-blue wash and a misspelled headline"),
+   ftext="\"Make Work Flow Better With AI\" is a generic AI claim, not proven value.",
+   frec2="Lead with proven value, not hype, and name Autonomous Workforce.",
+   alt="A fictional AI-generated LinkedIn graphic: a posed enterprise team, a green-blue wash and a generic headline"),
  'intuitive': dict(name='Intuitive', product='da Vinci 5', short='da Vinci 5', eyebrow='da Vinci 5',
    card='Built with surgeons, for care teams.', voice='Clear, precise and patient-first', colors='Blue on light neutrals',
    onbrand="da Vinci 5 is Intuitive's newest da Vinci system. See how care teams are putting it to work, with every claim drawn from the approved library.",
@@ -134,9 +134,35 @@ S = {
    partners='Agencies and distribution partners', ptype='agency partner', existing=['Congress recap', 'Training guide', 'Case video', 'Ion overview'],
    img='intuitive_0', found='#7B5CD6', fcolor="The cobalt and purple wash isn't in the brand palette.",
    frec="Use the brand blue on light neutrals, with no color wash over photos.", head_box=[5, 8, 80, 20], img_box=[5, 32, 90, 60],
-   ftext="The headline has a typo (\"Surgerry\") and a sweeping claim that isn't in the approved claims library.",
-   frec2="Fix the typo and use an approved claim, or none at all.",
-   alt="A fictional AI-generated LinkedIn graphic: a posed surgical team, a purple wash and a misspelled headline"),
+   ftext="\"The Future Of Surgery Is Here\" is a sweeping claim that isn't in the approved claims library.",
+   frec2="Use an approved claim from the library, or none at all.",
+   alt="A fictional AI-generated LinkedIn graphic: a posed surgical team, a purple wash and a generic headline"),
+ 'flooranddecor': dict(name='Floor & Decor', product='NatureMatch', short='NatureMatch', eyebrow='New: NatureMatch',
+   card='Stone and wood looks for every room.', voice='Confident, practical and value-driven', colors='FND red on white and black',
+   onbrand="Meet NatureMatch: authentic stone- and wood-look tile, vinyl plank and laminate, built on our 2026 design trends. See the collection in store and online.",
+   positioning="NatureMatch brings authentic stone- and wood-look materials to tile, vinyl plank and waterproof laminate.",
+   claims=["99 products across tile, vinyl plank and laminate", "Built on the 2026 Design Trends forecast"], prule="Every NatureMatch claim names the material: tile, vinyl plank or laminate.",
+   brule="FND red is the action color. Layouts stay black and white.",
+   event='Bring It Home', etitle='Bring It Home campaign toolkit', elabel='Campaign',
+   partners='Suppliers and agency partners', ptype='supplier', existing=['NatureMatch launch', 'Bring It Home spots', 'Pro newsletter', 'Design trends 2026'],
+   img='flooranddecor', found='#F0855A', fcolor="The coral-orange wash is close to FND red, but it isn't in the palette, and the brand doesn't wash photos.",
+   frec="Use FND red, #EA1722, as the action color on white and black, with no color wash over photos.", head_box=[7, 3, 86, 15], img_box=[1, 27, 98, 72],
+   ftext="\"Elevate Every Room\" is a generic line. It names no product or material, so it isn't approved NatureMatch messaging.",
+   frec2="Start from the approved positioning and name the product and material.",
+   alt="A fictional AI-generated LinkedIn graphic: posed store associates, a coral-orange color wash and a generic headline"),
+ 'cvshealth': dict(name='CVS Health', product='Joyward', short='Joyward', eyebrow='New: Joyward',
+   card='Seasonal decor and gifts, made joyful.', voice='Caring, clear and everyday-optimistic', colors='CVS red on white and warm gray',
+   onbrand="Joyward is our brand for seasonal decor and gifts, in stores now. Find something joyful for everyone on your list.",
+   positioning="Joyward is CVS Pharmacy's brand for seasonal decor and gifts.",
+   claims=["Seasonal decor and gifts in one brand", "In about 9,000 CVS Pharmacy stores"], prule="Write Joyward as one word, with a capital J.",
+   brule="CVS red leads. Warm gray and white carry the layout.",
+   event='Holiday campaign', etitle='Holiday campaign toolkit', elabel='Campaign',
+   partners='Suppliers and agency partners', ptype='supplier', existing=['Joyward launch', 'Pain relief refresh', 'Well Market snacks', 'Holiday gifting'],
+   img='cvshealth', found='#D04E9A', fcolor="The magenta-pink wash reads close to CVS red at a glance, but it isn't in the palette, and the brand doesn't wash photos.",
+   frec="Use CVS red, #CC0000, on white and warm gray, with no color wash over photos.", head_box=[7, 3, 86, 15], img_box=[1, 27, 98, 72],
+   ftext="\"Wellness Starts Here\" is a generic line. It doesn't name Joyward or use approved messaging.",
+   frec2="Start from the approved Joyward positioning and write in the caring, clear voice.",
+   alt="A fictional AI-generated LinkedIn graphic: posed pharmacy staff, a magenta-pink color wash and a generic headline"),
 }
 
 # Use case 6 (retail context): how the promotion looks in each spot in store, plus a Retail tab in use case 2.
@@ -177,6 +203,125 @@ RETAIL = {
      rule='Windows carry art and the headline only. Prices go inside the store.',
      ask='Where does the holiday sign go at the register?', answer='The **counter card** goes **left of the register**, angled toward the guest. Queue fixtures get price strips only.'),
    idea=dict(id='retail', title='Promotions in store: windows, shelves and the register', summary='Mockups in the portal show how each promotion should look in the window, on the gifting table, on the shelf and at the register, with the size and rules for every sign.'),
+ ),
+}
+
+# Packaging use case: a library of sample packages (search + metadata filters), a packaging guideline per product,
+# and for some companies a guided decision tree. Also adds a Packaging tab to use case 2. Used where packaging
+# came up with the customer. Every package is a sample; band colors are invented, never real pack designs.
+def _a(i, brand, name, short, line, type_, fmt, size, color, claim=None, status='Approved', logo='Current logo', updated='Oct 28, 2026', market='US', **kw):
+    m = {'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
+    mo, rest = updated.split(' ', 1); dd, yy = rest.replace(',', '').split()
+    return dict(id=i, brand=brand, name=name, short=short, line=line, type=type_, format=fmt, size=size, color=color, claim=claim,
+                status=status, logo=logo, updated=updated, updatedSort=int(yy) * 10000 + m[mo] * 100 + int(dd), market=market, **kw)
+
+FILES = ['Dieline (.ai)', 'Print-ready (.pdf)', '3D mockup (.png)']
+PACKAGING = {
+ 'flooranddecor': dict(
+   eyebrow='Use case 4 · Packaging', title='Find every package, and the rules behind it',
+   sub="{name}'s exclusive-brand packaging lives in one library instead of scattered folders. Search or filter by brand, product line, format, size or logo version, then open any product to see its packaging guideline: every zone on the carton, the rule behind it and the source files.",
+   note="Sample packages, products, sizes and rules built for this page. Not {name}'s own packaging or guidelines.",
+   wordmark='Floor & Decor', placeholder='Search packaging, e.g. NuCore or laminate', askLabel='A packaging designer asks the brand assistant', files=FILES,
+   facets=[dict(id='brand', label='Brand'), dict(id='line', label='Product line'), dict(id='format', label='Format'), dict(id='size', label='Size'), dict(id='logo', label='Logo version'), dict(id='status', label='Status')],
+   assets=[
+     _a('fd1', 'NuCore', 'NuCore Performance Oak Plank', 'Performance Oak Plank', 'Vinyl plank', 'plank', 'Plank carton', '17.9 sq ft', '#1F3A5F', 'Waterproof vinyl plank', updated='Oct 28, 2026'),
+     _a('fd2', 'NuCore', 'NuCore Stone Look Tile', 'Stone Look Tile', 'Vinyl plank', 'plank', 'Plank carton', '20 sq ft', '#1F3A5F', 'Waterproof vinyl tile', logo='Previous logo', updated='Mar 14, 2025'),
+     _a('fd3', 'AquaGuard', 'AquaGuard Performance Laminate', 'Performance Laminate', 'Laminate', 'plank', 'Plank carton', '21.3 sq ft', '#0E6E8C', 'Water-resistant laminate', logo='Previous logo', updated='Jun 2, 2025'),
+     _a('fd4', 'AquaGuard', 'AquaGuard Wood Hickory', 'Wood Hickory', 'Wood', 'plank', 'Plank carton', '22.5 sq ft', '#0E6E8C', 'Water-resistant wood', updated='Sep 30, 2026'),
+     _a('fd5', 'DuraLux', 'DuraLux Performance Ash Plank', 'Performance Ash Plank', 'Vinyl plank', 'plank', 'Plank carton', '19.4 sq ft', '#5B3A29', 'Rigid core vinyl plank', status='In review', logo='Previous logo', updated='Oct 15, 2026'),
+     _a('fd6', 'NatureMatch', 'NatureMatch Marble Porcelain Tile', 'Marble Porcelain Tile', 'Tile', 'box', 'Tile carton', '15.5 sq ft', '#5E6F52', 'Porcelain tile', updated='Jun 9, 2026'),
+     _a('fd7', 'NatureMatch', 'NatureMatch Travertine Vinyl Plank', 'Travertine Vinyl Plank', 'Vinyl plank', 'plank', 'Plank carton', '18.6 sq ft', '#5E6F52', 'Waterproof vinyl plank', updated='Jun 9, 2026'),
+     _a('fd8', 'NatureMatch', 'NatureMatch Oak Laminate', 'Oak Laminate', 'Laminate', 'plank', 'Plank carton', '20.8 sq ft', '#5E6F52', 'Waterproof laminate', status='In review', updated='Nov 3, 2026'),
+     _a('fd9', 'Hampstead', 'Hampstead Classic Laminate', 'Classic Laminate', 'Laminate', 'plank', 'Plank carton', '19.2 sq ft', '#7A6A58', 'Laminate', logo='Previous logo', updated='Feb 20, 2025'),
+     _a('fd10', 'Eco Forest', 'Eco Forest Bamboo Plank', 'Bamboo Plank', 'Wood', 'plank', 'Plank carton', '20 sq ft', '#4C6B3C', 'Bamboo flooring', status='Expired', logo='Previous logo', updated='Nov 12, 2024'),
+   ],
+   quick=[dict(label='Every package with the previous logo', filter={'logo': ['Previous logo']}), dict(label='NatureMatch', q='NatureMatch'), dict(label='In review', filter={'status': ['In review']})],
+   typeRules=dict(
+     plank=dict(logo='Brand band on the left third of the long face. Current logo only: replace previous-logo cartons at the next print run.',
+                name='Collection and color name, two lines at most, in the brand typeface.',
+                claim='One claim, and it names the material, for example waterproof vinyl plank.',
+                size='Square feet per carton and plank count, bottom right, readable on a pallet.',
+                info='End panel: SKU, barcode, install and care icons, and compliance marks such as CARB where they apply.'),
+     box=dict(logo='Brand band across the top of the face. Current logo only.',
+              name='Collection and color name, centered, two lines at most.',
+              claim='One claim, and it names the material, for example porcelain tile.',
+              size='Square feet per carton and piece count, bottom center.',
+              info='Side panel: SKU, barcode, tile size, shade and lot, and care icons.')),
+   rules={},
+   libraryQa=dict(ask='Which packages still use the previous logo?', answer='**5 packages** across NuCore, AquaGuard, DuraLux, Hampstead and Eco Forest. I filtered Packaging by **Logo version: Previous logo**. Open any of them for its dieline and print files.', sources='packaging library metadata'),
+   detailQa=dict(ask='What has to be on the {name} carton?', answer='**Brand band, collection name, one material claim and square feet per carton** on the face, with SKU, barcode and care icons on the end panel.', sources='2 sources: Packaging - Carton layout; the product guideline'),
+   context=dict(id='packaging', label='Packaging', desc='Carton rules for every product', kind='packaging', chapter='Packaging', section='Carton layout',
+     title='Every carton, the same way', lead='The zones every exclusive-brand carton follows.', pack='fd1',
+     rules=[['Brand band', 'left third, current logo only'], ['Claim', 'one, and it names the material'], ['End panel', 'SKU, barcode, care icons and compliance marks']],
+     rule='Replace previous-logo cartons at the next print run.',
+     ask='What goes on the end panel of a flooring carton?', answer='**SKU, barcode, install and care icons**, plus compliance marks such as CARB where they apply.'),
+   idea=dict(id='packaging', title='Packaging: find every package and its rules', summary='One library for exclusive-brand packaging, searchable by brand, line, format, size and logo version, with a packaging guideline for every product.'),
+ ),
+ 'cvshealth': dict(
+   eyebrow='Use case 4 · Packaging', title='The right packaging rules in three questions',
+   sub="{name}'s store-brand packaging runs on pillars, with rules that change by category. A guided path takes anyone from a product's category to its pillar, template and rules. A searchable library holds every approved package with its metadata and its packaging guideline.",
+   note="Sample pillars, packages, sizes and rules built for this page. Not {name}'s own packaging system or guidelines.",
+   wordmark='CVS Health', placeholder='Search packaging, e.g. melatonin or 100 ct', askLabel='A packaging designer asks the brand assistant', files=FILES,
+   facets=[dict(id='brand', label='Brand'), dict(id='pillar', label='Pillar'), dict(id='category', label='Category'), dict(id='format', label='Format'), dict(id='logo', label='Design version'), dict(id='status', label='Status')],
+   assets=[
+     _a('cv1', 'CVS', 'Ibuprofen 200 mg Tablets', 'Ibuprofen 200 mg Tablets', 'Health · Pain relief', 'carton', 'Carton', '100 ct', '#CC0000', 'Pain reliever', pillar='Health', category='Pain relief', updated='Oct 21, 2026'),
+     _a('cv2', 'CVS', 'Acetaminophen Extra Strength Caplets', 'Acetaminophen Extra Strength', 'Health · Pain relief', 'carton', 'Carton', '100 ct', '#CC0000', 'Pain reliever', pillar='Health', category='Pain relief', status='In review', logo='Previous logo', updated='Jul 8, 2025'),
+     _a('cv3', 'CVS', "Children's Acetaminophen Liquid", "Children's Acetaminophen", 'Health · Pain relief', 'bottle', 'Bottle', '4 fl oz', '#CC0000', 'Ages 2 to 11', pillar='Health', category='Pain relief', logo='Previous logo', updated='May 19, 2025'),
+     _a('cv4', 'CVS', 'Loratadine 10 mg Tablets', 'Loratadine 10 mg', 'Health · Allergy', 'carton', 'Carton', '30 ct', '#CC0000', 'Allergy relief', pillar='Health', category='Allergy', updated='Sep 12, 2026'),
+     _a('cv5', 'CVS', 'Vitamin D3 Softgels', 'Vitamin D3 Softgels', 'Wellness · Vitamins', 'bottle', 'Bottle', '250 ct', '#0B315E', 'Bone health support', pillar='Wellness', category='Vitamins', updated='Aug 4, 2026'),
+     _a('cv6', 'CVS', 'Melatonin Gummies', 'Melatonin Gummies', 'Wellness · Sleep', 'bottle', 'Bottle', '60 ct', '#0B315E', 'Sleep support', pillar='Wellness', category='Sleep', logo='Previous logo', updated='Apr 2, 2025'),
+     _a('cv7', 'CVS Beauty', 'Daily Moisturizing Lotion', 'Daily Moisturizing Lotion', 'Beauty · Skin care', 'tube', 'Tube', '8 fl oz', '#9C5B6E', 'For dry skin', pillar='Beauty', category='Skin care', updated='Oct 2, 2026'),
+     _a('cv8', 'CVS Beauty', 'Micellar Cleansing Water', 'Micellar Cleansing Water', 'Beauty · Skin care', 'bottle', 'Bottle', '13.5 fl oz', '#9C5B6E', 'All skin types', pillar='Beauty', category='Skin care', updated='Sep 25, 2026'),
+     _a('cv9', 'Well Market', 'Sea Salt Kettle Chips', 'Sea Salt Kettle Chips', 'Food · Snacks', 'bag', 'Bag', '7 oz', '#C9631C', 'Kettle cooked', pillar='Food', category='Snacks', updated='Oct 9, 2026'),
+     _a('cv10', 'Well Market', 'Sweet and Salty Trail Mix', 'Sweet and Salty Trail Mix', 'Food · Snacks', 'bag', 'Bag', '10 oz', '#C9631C', 'Resealable bag', pillar='Food', category='Snacks', status='In review', updated='Nov 2, 2026'),
+     _a('cv11', 'Joyward', 'Holiday Mug Gift Set', 'Holiday Mug Gift Set', 'Seasonal · Gifts', 'box', 'Gift box', '1 set', '#2E6B4F', 'Ready to gift', pillar='Seasonal', category='Gifts', updated='Oct 30, 2026'),
+   ],
+   quick=[dict(label='Health pillar', filter={'pillar': ['Health']}), dict(label='Still on the previous design', filter={'logo': ['Previous logo']}), dict(label='Well Market', q='Well Market')],
+   typeRules=dict(
+     carton=dict(logo='Brand band across the top. Fixed on every pillar; current design only.', name='Active ingredient and strength first, then the product name.',
+                 claim='One claim from the approved claims library. Anything else moves to the back.', size='Count and dosage form, bottom center.',
+                 info='Back and side panels: Drug Facts, barcode and the How2Recycle label. Design never touches Drug Facts.'),
+     bottle=dict(logo='Brand band at the top of the label. Fixed on every pillar.', name='What it is first, then strength or formula.',
+                 claim='One claim from the approved claims library.', size='Count or volume, bottom of the front label.',
+                 info='Back label: Drug, Supplement or Nutrition Facts as the category requires, barcode and How2Recycle label.'),
+     tube=dict(logo='Brand band at the top of the tube. Fixed on every pillar.', name='Product type and finish first.',
+               claim='One claim. Ingredient callouts stay on the back unless approved.', size='Volume in fl oz and mL, above the cap.',
+               info='Back: ingredients, directions, barcode and How2Recycle label.'),
+     bag=dict(logo='Brand band at the top of the bag. Fixed on every pillar.', name='Food name first, flavor second.',
+              claim='One claim, for example kettle cooked.', size='Net weight bottom left, in oz and g.',
+              info='Back: Nutrition Facts, ingredients and allergen statement, barcode.'),
+     box=dict(logo='Brand band across the top. Fixed on every pillar.', name='What is in the set, in the seasonal voice.',
+              claim='One giftable claim, for example ready to gift.', size='Piece count, bottom center.',
+              info='Back: contents, care, gift tag space and barcode.')),
+   rules={},
+   tree=dict(label='Find my packaging rules', intro='Answer three questions. The path leads to the pillar, the template and the rules that apply, plus approved packages that already follow them.',
+     steps=[
+       dict(id='category', q='What category is the product in?', options=[
+         dict(label='Pain relief', note='Health pillar', set={'pillar': 'Health'}), dict(label='Vitamins and supplements', note='Wellness pillar', set={'pillar': 'Wellness'}),
+         dict(label='Skin care', note='Beauty pillar', set={'pillar': 'Beauty'}), dict(label='Snacks', note='Food pillar', set={'pillar': 'Food'}),
+         dict(label='Seasonal gifts', note='Seasonal pillar', set={'pillar': 'Seasonal'})]),
+       dict(id='art', q='Does the front of pack use photography?', options=[
+         dict(label='Yes, product or food photography', set={'art': 'Photography'}), dict(label='No, illustration and icons', set={'art': 'Illustration'})]),
+       dict(id='format', q='What is the package?', options=[
+         dict(label='Carton', set={'format': 'Carton'}), dict(label='Bottle', set={'format': 'Bottle'}), dict(label='Tube', set={'format': 'Tube'}),
+         dict(label='Bag', set={'format': 'Bag'}), dict(label='Gift box', set={'format': 'Gift box'})]),
+     ],
+     pillars=dict(
+       Health=dict(name='Health', blurb='Clarity first: the active ingredient and what it treats lead the front.', rules=['Lead with the active ingredient and strength, then what it treats.', 'The compare-to callout sits top right, never over the product name.', 'Drug Facts stay on the back panel, untouched by design.', 'Flat colors only, no gradients.']),
+       Wellness=dict(name='Wellness', blurb='Calm and clear: the benefit leads, then count and dose.', rules=['Lead with the benefit, then count and dose.', 'Supplement Facts on the side or back panel.', 'One benefit icon, from the approved set.', 'Flat colors only, no gradients.']),
+       Beauty=dict(name='Beauty', blurb='Product-led: the product type and finish lead.', rules=['Name the product type and finish first.', 'Ingredient callouts stay on the back unless approved.', 'Size in fl oz and mL.', 'Flat colors only, no gradients.']),
+       Food=dict(name='Food', blurb='Crave-worthy: the food leads.', rules=['Show the real product, never a styled substitute.', 'Net weight bottom left, in oz and g.', 'Nutrition Facts and allergen statement on the back.', 'Flat colors only, no gradients.']),
+       Seasonal=dict(name='Seasonal', blurb='Joyful and giftable: the season leads.', rules=['Seasonal art from the current toolkit only.', 'Leave gift tag space on every gift box.', 'Retire seasonal art when the season ends.'])),
+     artRules=dict(Photography=['Use approved photography from the library. No AI-generated product shots.'], Illustration=['Use icons and illustrations from the approved set only.']),
+     qa=dict(ask="I'm packaging a new pain reliever. Which rules apply?", answer='Start in the **Health pillar** with the **Health carton template**. Lead with the active ingredient and strength, keep the compare-to callout top right, and leave **Drug Facts** untouched.', sources='3 sources: Packaging - Pillars - Health; Health carton template; Category rules - Pain relief')),
+   libraryQa=dict(ask='Which Health packages are still on the previous design?', answer="**2 packages**: Acetaminophen Extra Strength Caplets and Children's Acetaminophen Liquid. I filtered Packaging by **Pillar: Health** and **Design version: Previous logo**.", sources='packaging library metadata'),
+   detailQa=dict(ask='What has to stay fixed on the {name} pack?', answer='**The brand band, the name hierarchy and the facts panel stay fixed.** Color, art and icons flex by pillar and category.', sources='2 sources: Packaging - Pillar architecture; the product guideline'),
+   context=dict(id='packaging', label='Packaging', desc='Pillars, categories and pack rules', kind='packaging', chapter='Packaging', section='Pillar architecture',
+     title='Fixed and flex, by pillar', lead='What stays the same on every store-brand pack, and what changes by pillar.', pack='cv1',
+     rules=[['Fixed', 'brand band, name hierarchy, facts panel'], ['Flex', 'color, art and icons, by pillar'], ['Category', 'extra rules, like Drug Facts for health']],
+     rule='Flat colors only. No gradients on any pillar.',
+     ask='Which pillar does a new vitamin go in?', answer='The **Wellness** pillar. Lead with the benefit, then count and dose, and put Supplement Facts on the side or back panel.'),
+   idea=dict(id='packaging', title='Packaging: the right rules for every SKU', summary='A guided path from category to pillar, template and rules, plus a searchable library of every approved package with its packaging guideline.'),
  ),
 }
 
@@ -250,6 +395,27 @@ def build(slug, s):
     pf['tags'] = [s['short'], 'Cleared for external use']
     pf['ask'] = f"Tag these {s['short']} and Cleared for external use, and set them to expire Dec 31, 2026."
     pf['plan'] = f"I'll add the tags {s['short']} and Cleared for external use, and set Available until to Dec 31, 2026, on the 2 selected assets. Say yes and I'll apply it."
+    # Packaging (use case 4 where present): library + per-product guideline, a Packaging tab in use case 2,
+    # the rotating word, and supplier packaging files in the partner use case.
+    k = PACKAGING.get(slug)
+    if k:
+        k = copy.deepcopy(k)
+        idea = k.pop('idea'); ctx = k.pop('context')
+        ctx['pack'] = next(x for x in k['assets'] if x['id'] == ctx['pack'])
+        its = d['contexts']['items']
+        its.insert(next(i for i, x in enumerate(its) if x['id'] == 'event') + 1, ctx)
+        d['contexts']['sub'] = "Brand, creative, product, campaign and packaging guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them."
+        rot = d['hero']['rotate']; rot.insert(rot.index('event') + 1, 'packaging')
+        d['packaging'] = k
+        d['everyday']['eyebrow'] = d['everyday']['eyebrow'].replace('Use case 4', 'Use case 5')
+        d['partners']['eyebrow'] = d['partners']['eyebrow'].replace('Use case 5', 'Use case 6')
+        pf = d['partners']; key = s['short'].lower()
+        pf['files'] = [{'name': f'{key}-carton-dieline.pdf', 'size': '3.4 MB', 'title': 'Carton dieline'}, {'name': f'{key}-front-panel.png', 'size': '1.2 MB', 'title': 'Front panel art'}]
+        pf['tags'] = [s['short'], 'Packaging artwork']
+        pf['ask'] = f"Tag these {s['short']} and Packaging artwork, and set them to expire Dec 31, 2026."
+        pf['plan'] = f"I'll add the tags {s['short']} and Packaging artwork, and set Available until to Dec 31, 2026, on the 2 selected assets. Say yes and I'll apply it."
+        pf['sub'] = f"{s['partners']} submit packaging artwork straight into {{name}}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence."
+        d['ideas'].insert(next(i for i, x in enumerate(d['ideas']) if x['id'] == 'check') + 1, idea)
     # Use case 6: retail context (retailers only), plus a Retail tab in use case 2 and the rotating word
     r = RETAIL.get(slug)
     if r:

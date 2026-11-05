@@ -70,7 +70,7 @@
     "headline2": "That doesn't mean they're good at it.",
     "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
     "badTag": "Fictional AI-generated work content",
-    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed enterprise team, a green-blue wash and a misspelled headline",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed enterprise team, a green-blue wash and a generic headline",
     "voiceSource": {
       "label": "See the voice guideline",
       "to": "everyday"
@@ -85,7 +85,7 @@
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
       "image": "/ai/servicenow-offbrand.jpg",
-      "alt": "A fictional AI-generated LinkedIn graphic: a posed enterprise team, a green-blue wash and a misspelled headline"
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed enterprise team, a green-blue wash and a generic headline"
     },
     "categories": [
       {
@@ -143,8 +143,8 @@
           80,
           18
         ],
-        "text": "The headline has a typo (\"Make Work Flw Better\") and a generic AI claim.",
-        "recommendation": "Fix the typo and lead with proven value, not hype.",
+        "text": "\"Make Work Flow Better With AI\" is a generic AI claim, not proven value.",
+        "recommendation": "Lead with proven value, not hype, and name Autonomous Workforce.",
         "sources": [
           {
             "label": "Product - Autonomous Workforce positioning",

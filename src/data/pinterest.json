@@ -70,7 +70,7 @@
     "headline2": "That doesn't mean they're good at it.",
     "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
     "badTag": "Fictional AI-generated work content",
-    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed creative team, a pink wash and a missing space in the headline",
+    "badAlt": "A fictional AI-generated LinkedIn graphic: a posed creative team, a pink wash and a generic headline",
     "voiceSource": {
       "label": "See the voice guideline",
       "to": "everyday"
@@ -85,7 +85,7 @@
       "kind": "AI-generated LinkedIn image",
       "by": "fictional, made with a generic AI image tool",
       "image": "/ai/pinterest-offbrand.jpg",
-      "alt": "A fictional AI-generated LinkedIn graphic: a posed creative team, a pink wash and a missing space in the headline"
+      "alt": "A fictional AI-generated LinkedIn graphic: a posed creative team, a pink wash and a generic headline"
     },
     "categories": [
       {
@@ -143,8 +143,8 @@
           84,
           20
         ],
-        "text": "The headline is missing a space (\"Like NeverBefore\") and leans on attention, not intention.",
-        "recommendation": "Fix the spacing and lead with what people came to do, in a short, conversational line.",
+        "text": "\"Inspire Your Audience Like Never Before\" leans on attention, not intention, and doesn't name Performance+.",
+        "recommendation": "Lead with what people came to do, in a short, conversational line.",
         "sources": [
           {
             "label": "Product - Performance+ positioning",

@@ -7,7 +7,7 @@
     {
       "id": "context",
       "title": "A system of context for every AI tool",
-      "summary": "Frontify gives Copilot the brand, creative, product and event context they need, so answers come out on brand."
+      "summary": "Frontify gives ChatGPT, Claude, Copilot and Gemini the brand, creative, product and event context they need, so answers come out on brand."
     },
     {
       "id": "contexts",
@@ -22,7 +22,7 @@
     {
       "id": "everyday",
       "title": "Everyday guidelines inside emails and presentations",
-      "summary": "Copilot, connected to Frontify, checks emails and presentations against short Everyday guidelines before they go out."
+      "summary": "Your AI assistant, connected to Frontify, checks emails and presentations against short Everyday guidelines before they go out."
     },
     {
       "id": "partners",
@@ -312,7 +312,7 @@
         ],
         "do": "Can you review the launch plan by Thursday?",
         "dont": "Just circling back on the below!!",
-        "askLabel": "Before sending, with Copilot",
+        "askLabel": "Before sending, with your AI assistant",
         "ask": "Check this email against our writing guidelines.",
         "answer": "Two fixes before you send: **put the ask in the first line**, and **use the standard signature**.",
         "from": "Condensed from Brand › Tone of voice",
@@ -371,8 +371,8 @@
   "everyday": {
     "eyebrow": "Use case 4 · Everyday guidelines, inside your office applications",
     "title": "The right tone in every email and deck",
-    "sub": "Most of {name} will never open a brand portal. With Frontify connected, Copilot inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
-    "note": "Copilot, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines.",
+    "sub": "Most of {name} will never open a brand portal. With Frontify connected, your AI assistant inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
+    "note": "Your agent embedded in your enterprise apps, usually ChatGPT, Claude, Copilot or Gemini, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines.",
     "tabs": [
       {
         "id": "outlook",
@@ -507,7 +507,5 @@
     "you": "You're the partner. Then see what the brand team gets.",
     "tryLabel": "Try it: submit 2 partner files"
   },
-  "ai": [
-    "Copilot"
-  ]
+  "ai": null
 }

@@ -404,13 +404,11 @@ WORD = {'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'F
 def rotate_words(items):
     return [WORD.get(i['label'], i['label'].lower()) for i in items]
 
-# AI tools each company uses, only where our call notes or research say so clearly. Pages name only these;
+# AI tools each company uses, only where a customer call validated it (never from research alone). Pages name only these;
 # everywhere else they name every major tool (alphabetically) or a generic assistant.
 AI = {
  'flooranddecor': ['Claude', 'Copilot'],          # Oct 23 call: Claude is the enterprise standard; some employees have Copilot
  'cvshealth': ['ChatGPT', 'Copilot', 'Gemini'],   # Sep 10 demo: "Copilot slash ChatGPT and Gemini... Gemini Enterprise"
- 'servicenow': ['Claude'],                        # account research: Claude rolled out to ~29K employees (Jan 2026)
- 'autodesk': ['Copilot'],                         # account research: Microsoft 365 Copilot to ~5,000 employees (Fortune, Aug 2024)
 }
 ALL_AI = ['ChatGPT', 'Claude', 'Copilot', 'Gemini']
 

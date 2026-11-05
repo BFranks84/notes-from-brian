@@ -552,5 +552,47 @@
   ],
   "source": "cvshealth.com (observed site colors)",
   "url": "https://www.cvshealth.com/"
+ },
+ "cibc": {
+  "label": "CIBC",
+  "evidence": "observed (us.cibc.com CSS, Nov 5, 2026); no public brand palette",
+  "bg": "#FFFFFF",
+  "surface": "#F5F5F5",
+  "ink": "#383B3E",
+  "ink2": "#606366",
+  "accent": "#C41F3E",
+  "accentInk": "#FFFFFF",
+  "accentText": "#AF0B1C",
+  "hl": "#FBE9EC",
+  "heroBg": "#FFFFFF",
+  "heroInk": "#383B3E",
+  "font": "figtree",
+  "displayWeight": 600,
+  "displayTracking": "-0.01em",
+  "displayItalic": false,
+  "radiusBtn": "4px",
+  "radiusCard": "4px",
+  "btnCase": "none",
+  "eyebrowCase": "uppercase",
+  "palette": [
+   [
+    "CIBC red",
+    "#C41F3E"
+   ],
+   [
+    "Burgundy",
+    "#8B1D41"
+   ],
+   [
+    "Charcoal",
+    "#383B3E"
+   ],
+   [
+    "Light gray",
+    "#F5F5F5"
+   ]
+  ],
+  "source": "us.cibc.com (observed site colors)",
+  "url": "https://us.cibc.com/"
  }
 }

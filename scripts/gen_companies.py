@@ -163,6 +163,28 @@ S = {
    ftext="\"Wellness Starts Here\" is a generic line. It doesn't name Joyward or use approved messaging.",
    frec2="Start from the approved Joyward positioning and write in the caring, clear voice.",
    alt="A fictional AI-generated LinkedIn graphic: posed pharmacy staff, a magenta-pink color wash and a generic headline"),
+ 'cibc': dict(name='CIBC', product='CIBC Private Wealth', short='Private Wealth', eyebrow='CIBC Private Wealth',
+   card='Your ambitions, planned with care.', voice='Clear, confident and client-first', colors='CIBC red on white and charcoal',
+   prompt='Make a LinkedIn post and image for CIBC Private Wealth.',
+   onbrand="Lending, trust and asset management, planned together by one team of experienced advisors. Talk with a CIBC Private Wealth advisor about what you want to achieve next.",
+   positioning="CIBC Private Wealth brings customized lending, trust and asset management solutions from a team of experienced advisors.",
+   claims=["Customized lending, trust and asset management", "Delivered by a team of experienced advisors"], prule="Every client-facing piece carries the approved disclosures. Never promise returns.",
+   brule="CIBC red leads. Burgundy and charcoal support it, and white keeps it open.",
+   banswer="Lead with **CIBC red, #C41F3E**, on white. Burgundy and charcoal support it.",
+   event='Advisor toolkit', etitle='Advisor toolkit', elabel='Advisors',
+   eitem=dict(desc='Pre-packaged materials for advisors', chapter='Advisor toolkit', section='Client materials', title='Advisor toolkit',
+     lead='Ready-to-use client materials, with very little room to drift.',
+     facts=[['Audience', 'Advisors and their client teams'], ['Locked', 'Layout, logo, colors and disclosures']],
+     templates=[{'name': 'Client sell sheet', 'note': "Add the advisor's name and contact; the rest is locked"}, {'name': 'Client event invitation', 'note': 'Add date and venue; disclosures stay put'}],
+     ask='I need a sell sheet for a client meeting tomorrow.',
+     answer="I opened the **Client sell sheet** template. Add your name and contact details; **the layout, logo and disclosures stay locked**."),
+   topic='the Private Wealth brand refresh', plan='brand refresh plan',
+   partners='Vendors and agencies', ptype='creative vendor', existing=['Private Wealth refresh', 'Advisor sell sheet', 'Client event invite', 'Market outlook'],
+   img='cibc', found='#2A7A8C', fcolor="The teal-to-navy wash isn't in the palette. CIBC red leads, on white.",
+   frec="Lead with CIBC red, #C41F3E, on white, with burgundy and charcoal in support and no color wash over photos.", head_box=[7, 3, 86, 15], img_box=[1, 27, 98, 72],
+   ftext="\"Your Wealth, Our Expertise\" is a generic line, and a wealth headline needs the approved disclosures before it goes out.",
+   frec2="Start from the approved Private Wealth positioning, and add the required disclosures from the template.",
+   alt="A fictional AI-generated LinkedIn graphic: posed advisors in suits, a teal-to-navy color wash and a generic headline"),
 }
 
 # Use case 6 (retail context): how the promotion looks in each spot in store, plus a Retail tab in use case 2.
@@ -368,9 +390,10 @@ AUD = {
  'agency': dict(tab='Agencies', word='agency', who='Agency', files='Agency files', title='Agency files land in the right place', area='Agencies', lib='Agency submissions', you="You're the agency. Then see what the brand team gets.", asker='An agency asks the brand assistant'),
  'supplier': dict(tab='Suppliers', word='supplier', who='Supplier', files='Supplier and agency files', title='Supplier and agency files land in the right place', area='Suppliers', lib='Supplier submissions', you="You're the packaging supplier. Then see what the brand team gets.", asker='A packaging supplier asks the brand assistant'),
  'franchisee': dict(tab='Franchisees', word='franchisee', who='Franchisee', files='Franchisee files', title='Franchisee files land in the right place', area='Franchisees', lib='Franchisee submissions', you="You're the franchisee. Then see what the brand team gets.", asker='A franchisee asks the brand assistant'),
+ 'vendor': dict(tab='Vendors', word='vendor', who='Vendor', files='Vendor and agency files', title='Vendor files land in the right place', area='Vendors', lib='Vendor submissions', you="You're the vendor. Then see what the brand team gets.", asker='A vendor asks the brand assistant'),
  'retailer': dict(tab='Retailers', word='retailer', who='Retailer', files='Retailer files', title='Retailer files land in the right place', area='Retailers', lib='Retailer submissions', you="You're the retailer. Then see what the brand team gets.", asker='A retail partner asks the brand assistant'),
 }
-AUD_FOR = {'gap': 'agency', 'sephora': 'agency', 'pinterest': 'agency', 'twitch': 'agency', 'flooranddecor': 'supplier', 'cvshealth': 'supplier'}
+AUD_FOR = {'cibc': 'vendor', 'gap': 'agency', 'sephora': 'agency', 'pinterest': 'agency', 'twitch': 'agency', 'flooranddecor': 'supplier', 'cvshealth': 'supplier'}
 
 def apply_aud(d, key, partners_label, ptype):
     """Use the right word for who sends files in, everywhere it shows: use case, tab, idea chip, rotating word."""
@@ -392,7 +415,7 @@ def apply_aud(d, key, partners_label, ptype):
         if it['id'] == 'partners':
             it['label'] = A['tab']; it['askLabel'] = A['asker']; it['chapter'] = A['area']
             it['steps'][1][1] = it['steps'][1][1].replace('-partner-', f"-{A['word']}-")
-            it['steps'][0][1] = f"Through {A['area']} › Submit an asset in the portal, never by email."
+            it['steps'][0][1] = f"Through {A['area']} › Submit an asset in the portal, {'not over FTP or email' if key == 'vendor' else 'never by email'}."
             it['answer'] = it['answer'].replace('Partners › Submit an asset', f"{A['area']} › Submit an asset").replace('Partner submissions', A['lib'])
             if key != 'supplier':
                 it['desc'] = f"What {_lc(partners_label)} send, and how"
@@ -400,7 +423,7 @@ def apply_aud(d, key, partners_label, ptype):
 AUD_WORDS = {a['word'] for a in AUD.values()}
 
 # The rotating word in use case 1 ("The ___ context platform") cycles through exactly the context tabs on the page.
-WORD = {'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'Franchisees': 'franchisee', 'Retailers': 'retailer'}
+WORD = {'Advisors': 'advisor', 'Vendors': 'vendor', 'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'Franchisees': 'franchisee', 'Retailers': 'retailer'}
 def rotate_words(items):
     return [WORD.get(i['label'], i['label'].lower()) for i in items]
 
@@ -456,7 +479,7 @@ def partners_tab(name, partners_label, key, packaging=False):
 
 def contexts_intro(items):
     lab = {'brand': 'brand', 'creative': 'creative', 'product': 'product'}
-    sing = {'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'Franchisees': 'franchisee', 'Retailers': 'retailer'}
+    sing = {'Advisors': 'advisor', 'Vendors': 'vendor', 'Partners': 'partner', 'Agencies': 'agency', 'Suppliers': 'supplier', 'Franchisees': 'franchisee', 'Retailers': 'retailer'}
     ws = [lab.get(i['id'], sing.get(i['label'], i['label'].lower())) for i in items if i['id'] != 'everyday']
     lst = ', '.join(ws[:-1]) + ' and ' + ws[-1]
     return f"{lst[0].upper() + lst[1:]} guidance live in {{name}}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them."
@@ -475,7 +498,7 @@ def build(slug, s):
     h['badImage'] = img
     h['badAlt'] = s['alt']
     h['badCaption'] = "Looks fine at a glance. Look again: the copy, the posed group, the colors."
-    h['prompt'] = f"Make a LinkedIn post and image for our next {prod} launch." if slug not in ('gap', 'sephora') else f"Make a LinkedIn post and image for our {prod}."
+    h['prompt'] = s.get('prompt') or (f"Make a LinkedIn post and image for our next {prod} launch." if slug not in ('gap', 'sephora') else f"Make a LinkedIn post and image for our {prod}.")
     h['onbrand'] = s['onbrand']
     h['context'] = [{'label': 'Tone of voice', 'value': s['voice']}, {'label': 'Messaging', 'value': f"Approved {prod} messaging"},
                     {'label': 'Colors', 'value': s['colors']}, {'label': 'Image', 'value': 'Approved launch visual'}]
@@ -495,6 +518,8 @@ def build(slug, s):
     e = items['event']; e['label'] = s['elabel']; e['chapter'] = 'Event toolkits' if s['elabel'] == 'Event' else 'Campaign toolkits'
     e['section'] = s['event']; e['title'] = s['etitle']
     e['desc'] = 'Toolkits, booths and speaker kits' if s['elabel'] == 'Event' else 'Toolkits for every campaign'
+    if s.get('eitem'):
+        e.update(copy.deepcopy(s['eitem']))
     if s['elabel'] == 'Campaign':
         e['facts'] = [['Audience', 'Every brand and region team'], ['Assets', 'Locked templates and approved photos']]
         e['templates'] = [{'name': 'Social post', 'note': 'Headline and image, layout locked'}, {'name': 'In-store sign', 'note': 'Add the offer, the rest stays on brand'}]
@@ -515,9 +540,9 @@ def build(slug, s):
     # Use case 4: Everyday in Microsoft 365
     tabs = d['everyday']['tabs']
     em, dk = tabs[0], tabs[1]
-    em['before']['body'][1] = f"We've been heads-down on the {prod} launch and there's a lot going on, so I wanted to share where things stand." if slug not in ('gap', 'sephora') else f"We've been heads-down on {'the ' if slug == 'gap' else ''}{prod} and there's a lot going on, so I wanted to share where things stand."
-    em['after']['subject'] = f"Review the {s['short']} launch plan by Thursday" if slug not in ('gap', 'sephora') else f"Review the {s['short'].lower() if slug == 'gap' else s['short']} plan by Thursday"
-    em['after']['body'][0] = f"Hi team, can you review the {s['short']} launch plan by Thursday?" if slug not in ('gap', 'sephora') else f"Hi team, can you review the {s['short'].lower() if slug == 'gap' else s['short']} plan by Thursday?"
+    em['before']['body'][1] = (f"We've been heads-down on {s['topic']} and there's a lot going on, so I wanted to share where things stand." if s.get('topic') else f"We've been heads-down on the {prod} launch and there's a lot going on, so I wanted to share where things stand." if slug not in ('gap', 'sephora') else f"We've been heads-down on {'the ' if slug == 'gap' else ''}{prod} and there's a lot going on, so I wanted to share where things stand.")
+    em['after']['subject'] = (f"Review the {s['plan']} by Thursday" if s.get('plan') else f"Review the {s['short']} launch plan by Thursday" if slug not in ('gap', 'sephora') else f"Review the {s['short'].lower() if slug == 'gap' else s['short']} plan by Thursday")
+    em['after']['body'][0] = (f"Hi team, can you review the {s['plan']} by Thursday?" if s.get('plan') else f"Hi team, can you review the {s['short']} launch plan by Thursday?" if slug not in ('gap', 'sephora') else f"Hi team, can you review the {s['short'].lower() if slug == 'gap' else s['short']} plan by Thursday?")
     em['after']['sig'] = 'Sam Lee · Marketing'
     dk['before']['title'] = f"Q3 results and some thoughts on where we go next with {prod}"
     dk['after']['title'] = f"{s['short']}: Q3 results"

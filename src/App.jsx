@@ -139,7 +139,7 @@ function Portal({ company: c }) {
 
           <section className="wrap block uc1-demo" aria-labelledby="uc1-demo-title">
             <div className="block-head">
-              <h2 id="uc1-demo-title"><span className="rot-line">The <RotatingWord words={c.hero.rotate} /></span> context platform for {poss(c.name)} teams and their AI</h2>
+              <h2 id="uc1-demo-title"><span className="rot-line">The <RotatingWord words={c.hero.rotate} /> context platform</span> <span className="rot-line">for {poss(c.name)} employees and their AI</span></h2>
               <p>Most people at {c.name} will never open Frontify. They'll ask Claude, ChatGPT or Copilot, and Frontify makes sure the answer already knows the brand.</p>
             </div>
             <ChatDemo hero={c.hero} company={c.name} theme={ct} />

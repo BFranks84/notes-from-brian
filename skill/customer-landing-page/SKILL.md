@@ -1,6 +1,6 @@
 ---
 name: customer-landing-page
-description: Build or update a Frontify sample landing page for one of Brian's accounts on notesfrombrian.com, from the account folder and call notes. Use when Brian asks for a page, landing page or postcard page for a company, or to change one.
+description: Build or update a Frontify sample landing page for one of Brian's accounts on notesfrombrian.com from the account folder and call notes, and make its print-ready postcard. Use when Brian asks for a landing page, a postcard, or a change to either for a company.
 ---
 
 # Customer landing page (notesfrombrian.com)
@@ -31,6 +31,8 @@ Make a task list with these steps and tick them off.
 7. **Show Brian.** Push the branch (`git push -u origin <slug>`). Send him the desktop full-page screenshot and 3–5 lines: what the page features, which calls it came from, the audience word, which AI tools are named (or "generic") and where the colors came from. Ask for go-live. **Never merge to main without his OK.**
 8. **Go live** once he approves: `git checkout main && git merge --ff-only <slug> && git push`. Wait about a minute, then check `https://notesfrombrian.com/<slug>` returns 200 and shows the company. A 404 in the first 30 seconds is the cache; try again.
 9. **Update the account files.** Add a new top entry under `# Latest Activity` in `ACCOUNT_NOW.md` and append an entry to `Log.md`, in the formats in `references/account-files.md`. Do this both when the page is built (preview) and when it goes live.
+
+10. **Postcard (optional).** If Brian asks for one, or after go-live, make the print-ready postcard: `node scripts/postcard.mjs <slug>`. See `references/postcard.md`.
 
 ## Changing an existing page
 

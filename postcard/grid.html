@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- Postcard option 1 (Grid), 6 x 4 in. Filled in by scripts/postcard.mjs; {{...}} are replaced there. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Postcard · {{NAME}}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap">
+<style>
+@page { size: 6in 4in; margin: 0; }
+html, body { margin: 0; padding: 0; }
+* { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.card { width: 576px; height: 384px; box-sizing: border-box; background: #F0F0EB; color: #111110; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; }
+.top { height: 56px; display: flex; border-bottom: 1px solid #111110; flex-shrink: 0; }
+.logo { width: 148px; flex-shrink: 0; box-sizing: border-box; padding: 0 28px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 3px; }
+.logo img { height: 20px; width: auto; display: block; }
+.small { font-size: 10px; line-height: 1.2; }
+.gridcells { width: 252px; flex-shrink: 0; background-image: linear-gradient(transparent 27px, #111110 27px, #111110 28px, transparent 28px), linear-gradient(90deg, #111110 1px, transparent 1px); background-size: 100% 56px, 28px 100%; background-repeat: no-repeat, repeat-x; }
+.pair { width: 176px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-left: 1px solid #111110; font-size: 14px; font-weight: 500; }
+.mid { flex-grow: 1; display: flex; min-height: 0; }
+.note { flex-grow: 1; padding: 20px 28px 14px; display: flex; flex-direction: column; gap: 10px; }
+.lines { flex-grow: 1; background-image: {{LINES}}; }
+.side { width: 176px; flex-shrink: 0; border-left: 1px solid #111110; display: flex; flex-direction: column; }
+.qr { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-bottom: 1px solid #111110; }
+.qr svg { width: 128px; height: 128px; display: block; }
+.tap { height: 128px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.tap span { display: flex; align-items: center; gap: 5px; font-size: 12px; }
+.ring { width: 104px; height: 104px; box-sizing: border-box; border: 1px solid #111110; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.guide { width: 95px; height: 95px; box-sizing: border-box; border: 1.5px dashed #767676; border-radius: 50%; display: {{GUIDE}}; }
+.bottom { height: 28px; flex-shrink: 0; border-top: 1px solid #111110; background-image: linear-gradient(90deg, #111110 1px, transparent 1px); background-size: 28px 100%; background-position: 8px 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="top">
+    <div class="logo"><img src="frontify-lockup-black.svg" alt="Frontify"><span class="small">www.frontify.com</span></div>
+    <div class="gridcells"></div>
+    <div class="pair">Frontify × {{NAME}}</div>
+  </div>
+  <div class="mid">
+    <div class="note">
+      <div class="lines" aria-label="Space for a handwritten note"></div>
+      <span class="small">{{SENDER_NAME}} · {{SENDER_ROLE}} · {{SENDER_EMAIL}}</span>
+    </div>
+    <div class="side">
+      <div class="qr">{{QR_SVG}}<span class="small" style="white-space: nowrap">notesfrombrian.com/{{SLUG}}</span></div>
+      <div class="tap">
+        <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 5.2a2.6 2.6 0 0 1 0 3.6M6.5 3.4a5.2 5.2 0 0 1 0 7.2M9.5 1.6a7.8 7.8 0 0 1 0 10.8" stroke="#111110" stroke-width="1.3" stroke-linecap="round"/></svg>Or tap your phone here</span>
+        <div class="ring"><div class="guide"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom"></div>
+</div>
+</body>
+</html>

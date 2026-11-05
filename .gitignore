@@ -5,3 +5,5 @@ dist-preview
 .vercel
 qa
 .claude/worktrees
+postcards
+postcard/.*.html

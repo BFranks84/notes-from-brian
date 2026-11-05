@@ -411,6 +411,11 @@ def apply_aud(d, key, partners_label, ptype):
             i['title'] = f"{A['files']}, in the right place"
             i['summary'] = f"{partners_label} submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
     rot = d['hero']['rotate']; d['hero']['rotate'] = [A['word'] if w in AUD_WORDS else w for w in rot]
+    # The event toolkit's audience line names partners; use the page's word instead
+    if key != 'partner':
+        for it in d['contexts']['items']:
+            for f in it.get('facts', []):
+                if f[0] == 'Audience': f[1] = f[1].replace('partners', A['tab'].lower())
     # The Everyday deck mentions who sends work in; use the same word there
     dk = d['everyday']['tabs'][1]
     for side in ('before', 'after'):

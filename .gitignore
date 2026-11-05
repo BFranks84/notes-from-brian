@@ -4,3 +4,4 @@ dist-preview
 .netlify
 .vercel
 qa
+.claude/worktrees

@@ -139,51 +139,44 @@ S = {
    alt="A fictional AI-generated LinkedIn graphic: a posed surgical team, a purple wash and a misspelled headline"),
 }
 
-# Use case 6 (retail context): a store guide with the floor plan, promotions and signage. Retailers only.
-# Plan coordinates are in a 100 x 68 box; the bottom wall is at y=61 with the entrance gap at entrance[0]..+entrance[1].
+# Use case 6 (retail context): how the promotion looks in each spot in store, plus a Retail tab in use case 2.
+# Retailers only. Each promotion with `copy` has the sign copy for every placement; one without is the recently ended one.
 ASK = 'A store manager asks the brand assistant'
 RETAIL = {
  'sephora': dict(
    eyebrow='Use case 6 · Retail context',
-   title="Every store knows what's running and where it goes",
-   sub="{name}'s store guide sits in the portal next to the campaign toolkit: the floor layout, the promotions running now and next, and where every sign goes. Store teams look it up, or ask the brand assistant.",
-   note="Sample store guide, promotions, sizes and dates built for this page. Not {name}'s own store standards.",
-   chapter='Retail', store='Sephora stores', entrance=[42, 16], layoutDefault='gifting',
-   zones=[
-     dict(id='windows', label='Window', rects=[[3, 57.6, 36, 2.6], [61, 57.6, 36, 2.6]], lx=79, ly=58.9, rule='Both windows carry the same campaign art. No prices in the windows.'),
-     dict(id='gifting', label='Gifting table', x=34, y=44, w=30, h=10, rule='The first thing guests see. Only the current promotion, refreshed every Monday.'),
-     dict(id='makeup', label='Makeup', x=20, y=19, w=47, h=21, rule='Gondolas run front to back. Each end cap tells one product story, never two.'),
-     dict(id='fragrance', label='Fragrance', x=3, y=3, w=15, h=38, rot=True, rule='Testers at hand height. Gift sets go on the top shelf, facing out.'),
-     dict(id='studio', label='Beauty Studio', x=20, y=3, w=35, h=13, rule='The service menu board stands at the studio entrance. No product promotions inside.'),
-     dict(id='skincare', label='Skincare', x=57, y=3, w=40, h=13, rule='Shelve by routine step: cleanse, treat, moisturize.'),
-     dict(id='hair', label='Hair & body', x=69, y=19, w=28, h=21),
-     dict(id='checkout', label='Checkout', x=69, y=43, w=28, h=12, rule='Queue fixtures hold minis and gift cards. Price strips only, no posters.'),
-   ],
+   title='Every store shows the promotion the same way',
+   sub="{name}'s portal shows how each promotion should look in store: the window, the gifting table, the shelves and the register. Store teams see the mockup, the size and the rules, then print from the template. Or they ask the brand assistant.",
+   note="Sample mockups, promotions, sizes and dates built for this page. Not {name}'s own store standards.",
+   chapter='Retail', section='In-store promotion', template='In-store sign', askLabel=ASK,
    promos=[
-     dict(status='Now', name='Holiday gifting', dates='Nov 1 – Dec 24', zones=['windows', 'gifting', 'fragrance'], note='Gift sets lead the gifting table, both windows and the top shelf in Fragrance.'),
-     dict(status='Next', name='New year, new routine', dates='Dec 26 – Jan 31', zones=['windows', 'gifting', 'skincare'], note='Goes up after close on Dec 24. Skincare takes over the gifting table.'),
-     dict(status='Ended', name='Fall fragrance edit', dates='Sep 15 – Oct 31', zones=['windows', 'fragrance'], note='Came down Nov 1. Its signs expired in the library, so no one reprints them.'),
+     dict(status='Now', name='Holiday gifting', dates='Nov 1 – Dec 24', note='Signs come down after close on Dec 24.',
+          copy=dict(window=['Holiday gifting', 'Gifts for everyone'], table=["Gifts they'll love", 'Sets for every budget'],
+                    shelf=['Holiday sets', 'Ready to give, no wrapping needed'], register=['Add a gift card', 'Any amount'])),
+     dict(status='Next', name='New year, new routine', dates='Dec 26 – Jan 31', note='Goes up for opening on Dec 26.',
+          copy=dict(window=['New year, new routine', 'Start with skincare'], table=['Your new routine', 'Cleanse, treat, moisturize'],
+                    shelf=['Skincare sets', 'Build your routine in three steps'], register=['Try the minis', 'Travel sizes, from $12'])),
+     dict(status='Ended', name='Fall fragrance edit', dates='Sep 15 – Oct 31', note='Its signs expired in the library, so no one reprints them.'),
    ],
-   signs=[
-     dict(id='window', name='Window graphic', zone='windows', pin=[11, 58.9], size='48 × 72 in', where='Both windows, centered at eye level. Campaign art only, no prices.'),
-     dict(id='table', name='Gifting table header', zone='gifting', pin=[49, 44], size='11 × 17 in', where='Front edge of the gifting table, facing the entrance.'),
-     dict(id='endcap', name='End cap card', zone='makeup', pin=[20, 29.5], size='8.5 × 11 in', where='One per makeup end cap, at eye level. One product story per card.'),
-     dict(id='queue', name='Queue price strip', zone='checkout', pin=[93, 46.5], size='2 × 11 in', where='Along the checkout queue fixtures. Product name and price only.'),
-     dict(id='studio', name='Service menu board', zone='studio', pin=[52.5, 16], size='24 × 36 in', where='At the Beauty Studio entrance, on the right as guests walk in.'),
+   placements=[
+     dict(id='window', label='Window', sign='Window graphic', size='48 × 72 in', where='Both windows, centered at eye level.',
+          content='Campaign art and the headline. No prices in the window.',
+          ask='Can I put the price on the holiday window?', answer='No. **Windows carry campaign art and the headline only.** Prices go on the gifting table header or the shelf.'),
+     dict(id='table', label='Gifting table', sign='Gifting table header', size='11 × 17 in', where='Front edge of the gifting table, facing the entrance.',
+          content='Headline and one line of copy. Gift sets only on the table, refreshed every Monday.',
+          ask='What goes on the gifting table this week?', answer='**Holiday gifting** sets, with the **header facing the entrance**. Refresh the table every Monday.'),
+     dict(id='shelf', label='Shelf', sign='End cap card', size='8.5 × 11 in', where='Top of each end cap, at eye level.',
+          content='One product story per card, never two.',
+          ask='Can one end cap card cover two brands?', answer='**No. One product story per card.** Give the second brand its own end cap.'),
+     dict(id='register', label='Register', sign='Counter card', size='5 × 7 in', where='Left of the register, angled toward the guest.',
+          content='One add-on offer. The queue fixtures get price strips only, no posters.',
+          ask='What sign goes at the register this month?', answer='One **counter card, left of the register**, angled toward the guest. For Holiday gifting it is Add a gift card. Queue fixtures get **price strips only**.'),
    ],
-   tabs=[
-     dict(id='layout', label='Store layout', title='Floor plan', lead='Where everything lives, and the one rule for each area.',
-          caption='Tap an area to see its rule.', askLabel=ASK, ask='What goes on the gifting table this week?',
-          answer='**Holiday gifting** sets, with the **gifting table header** facing the entrance. Refresh the table every Monday.', source='Retail - Store layout - Gifting table'),
-     dict(id='promos', label='Promotions', title='Now, next and recent', lead='What runs in store, when it changes, and which areas it takes over.',
-          caption='Highlighted: the areas this promotion takes over.', askLabel=ASK, ask='When does the holiday window come down?',
-          answer='**After close on Dec 24.** New year, new routine goes up for opening on **Dec 26**, and its signs are in the campaign toolkit.', source='Retail - Promotions - Holiday gifting'),
-     dict(id='signage', label='Signage', title='Where every sign goes', lead='Each sign, its spot on the floor and its size. Every sign starts from a template.',
-          caption='Tap a number to find the sign.', askLabel=ASK, ask='Where does the end cap card go, and what size is it?',
-          answer='**One per makeup end cap, at eye level.** It is **8.5 × 11 in**. Start from the In-store sign template and add only the product story.', source='Retail - Signage - End cap card'),
-   ],
-   template='In-store sign',
-   idea=dict(id='retail', title='Store layouts, promotions and signage', summary='A store guide in the portal shows the floor layout, the promotions running now and next, and where every sign goes. Store teams look it up or ask the brand assistant.'),
+   context=dict(id='retail', label='Retail', desc='Windows, shelves and the register', kind='retail', chapter='Retail', section='In-store promotion',
+     title='Holiday gifting in store', lead='How the current promotion shows up in every store.',
+     rule='Windows carry art and the headline only. Prices go inside the store.',
+     ask='Where does the holiday sign go at the register?', answer='The **counter card** goes **left of the register**, angled toward the guest. Queue fixtures get price strips only.'),
+   idea=dict(id='retail', title='Promotions in store: windows, shelves and the register', summary='Mockups in the portal show how each promotion should look in the window, on the gifting table, on the shelf and at the register, with the size and rules for every sign.'),
  ),
 }
 
@@ -257,12 +250,18 @@ def build(slug, s):
     pf['tags'] = [s['short'], 'Cleared for external use']
     pf['ask'] = f"Tag these {s['short']} and Cleared for external use, and set them to expire Dec 31, 2026."
     pf['plan'] = f"I'll add the tags {s['short']} and Cleared for external use, and set Available until to Dec 31, 2026, on the 2 selected assets. Say yes and I'll apply it."
-    # Use case 6: retail context (retailers only)
+    # Use case 6: retail context (retailers only), plus a Retail tab in use case 2 and the rotating word
     r = RETAIL.get(slug)
     if r:
         r = copy.deepcopy(r)
-        idea = r.pop('idea'); tpl_name = r.pop('template')
-        for sg in r['signs']: sg['template'] = tpl_name
+        idea = r.pop('idea'); ctx = r.pop('context')
+        now = next(p for p in r['promos'] if p['status'] == 'Now')
+        names = {'window': 'Window', 'shelf': 'Shelf', 'register': 'Register'}
+        ctx['thumbs'] = [{'kind': k, 'label': v, 'copy': now['copy'][k]} for k, v in names.items()]
+        its = d['contexts']['items']
+        its.insert(next(i for i, x in enumerate(its) if x['id'] == 'event') + 1, ctx)
+        d['contexts']['sub'] = "Brand, creative, product, campaign and retail guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them."
+        rot = d['hero']['rotate']; rot.insert(rot.index('event') + 1, 'retail')
         d['retail'] = r
         d['ideas'].append(idea)
     return d

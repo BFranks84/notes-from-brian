@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { IconCheck, IconCross, IconSparkle, IconDocumentText } from './icons.jsx';
+import { Scene } from './RetailScenes.jsx';
 
 // In-page links ("Brand - Color - Primary colors") open the matching mini guideline instead of an outside site.
 export const openContext = (id) => window.dispatchEvent(new CustomEvent('nfb:context', { detail: id }));
@@ -131,6 +132,21 @@ function Preview({ it }) {
           {it.claims.map((c, i) => <li key={c} className="s" style={{ '--i': 5 + i }}>{c}</li>)}
         </ul>
         <p className="mini-rule s" style={{ '--i': 5 + it.claims.length }}>{it.rule}</p>
+      </div>
+    );
+  }
+  if (it.kind === 'retail') {
+    return (
+      <div className="mini-retail">
+        <div className="mini-rthumbs">
+          {it.thumbs.map((th, i) => (
+            <figure key={th.kind} className="s" style={{ '--i': 3 + i }}>
+              <Scene kind={th.kind} copy={th.copy} small />
+              <figcaption>{th.label}</figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="mini-rule s" style={{ '--i': 3 + it.thumbs.length }}>{it.rule}</p>
       </div>
     );
   }

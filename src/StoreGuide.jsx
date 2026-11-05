@@ -1,26 +1,21 @@
 import { useState } from 'react';
 import { IconSparkle, IconDocumentText } from './icons.jsx';
 import { openContext } from './ContextTypes.jsx';
+import { Scene } from './RetailScenes.jsx';
 
-// Use case 6: retail context. A store guide page in the company's brand: a floor plan, the promotions
-// running now, next and recently ended, and where every sign goes. Each tab highlights its part of the plan.
+// Use case 6: retail context. A guideline page in the company's brand that mocks up how the current promotion
+// looks in each spot in store (window, gifting table, shelf, register), with the placement rules beside it.
+// The Now / Next switch swaps the campaign creative across every placement.
 const rich = (t) => t.split(/(\*\*[^*]+\*\*)/).map((p, i) => (p.startsWith('**') ? <strong key={i}>{p.slice(2, -2)}</strong> : p));
 
 export function StoreGuide({ demo, theme, company }) {
-  const tabs = demo.tabs;
+  const places = demo.placements;
+  const promos = demo.promos.filter((p) => p.copy);
+  const ended = demo.promos.find((p) => !p.copy);
   const [k, setK] = useState(0);
-  const tab = tabs[k];
-  const firstSel = (id) => (id === 'layout' ? demo.layoutDefault : id === 'promos' ? 0 : demo.signs[0].id);
-  const [sel, setSel] = useState(firstSel(tabs[0].id));
-  const pickTab = (i) => { setK(i); setSel(firstSel(tabs[i].id)); };
-
-  // Which zones light up, and which sign pin is active.
-  const lit = new Set(
-    tab.id === 'layout' ? [sel]
-      : tab.id === 'promos' ? demo.promos[sel]?.zones || []
-        : [demo.signs.find((s) => s.id === sel)?.zone],
-  );
-  const qa = tab;
+  const [pi, setPi] = useState(0);
+  const pl = places[k];
+  const promo = promos[pi];
 
   const t = theme || {};
   const vars = {
@@ -32,7 +27,7 @@ export function StoreGuide({ demo, theme, company }) {
 
   return (
     <div className="sg">
-      <div className="mini" style={vars} aria-label={`Sample store guide for ${company}`}>
+      <div className="mini" style={vars} aria-label={`Sample in-store promotion guide for ${company}`}>
         <div className="mini-bar">
           <span className="mini-dots" aria-hidden="true"><i /><i /><i /></span>
           <span className="mini-url">{company} brand portal</span>
@@ -40,135 +35,53 @@ export function StoreGuide({ demo, theme, company }) {
         <div className="mini-body">
           <nav className="mini-nav" aria-hidden="true">
             <span className="sg-navh">{demo.chapter}</span>
-            {tabs.map((x, i) => <span key={x.id} className={i === k ? 'is-on' : ''}>{x.label}</span>)}
+            {places.map((x, i) => <span key={x.id} className={i === k ? 'is-on' : ''}>{x.label}</span>)}
           </nav>
           <div className="mini-page sg-page">
-            <p className="mini-crumb">{demo.chapter} › {demo.store} › {tab.label}</p>
-            <div className="sg-tabs" role="tablist" aria-label="Store guide sections">
-              {tabs.map((x, i) => (
-                <button key={x.id} role="tab" aria-selected={i === k} className={`sg-tab ${i === k ? 'is-on' : ''}`} onClick={() => pickTab(i)}>{x.label}</button>
-              ))}
-            </div>
-            <div className="sg-grid" key={tab.id}>
-              <div className="sg-plan-wrap s" style={{ '--i': 0 }}>
-                <Plan demo={demo} lit={lit} pins={tab.id === 'signage'} sel={sel} onPin={setSel} />
-                <p className="sg-cap">{tab.caption}</p>
+            <p className="mini-crumb">{demo.chapter} › {demo.section} › {pl.label}</p>
+            <div className="sg-bar">
+              <div className="sg-tabs" role="tablist" aria-label="Where in the store">
+                {places.map((x, i) => (
+                  <button key={x.id} role="tab" aria-selected={i === k} className={`sg-tab ${i === k ? 'is-on' : ''}`} onClick={() => setK(i)}>{x.label}</button>
+                ))}
               </div>
+              <div className="sg-promo-switch" role="radiogroup" aria-label="Promotion">
+                {promos.map((p, i) => (
+                  <button key={p.name} role="radio" aria-checked={i === pi} className={`sg-pswitch ${i === pi ? 'is-on' : ''}`} onClick={() => setPi(i)}>
+                    <b>{p.status}</b> {p.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="sg-grid" key={`${pl.id}-${pi}`}>
+              <figure className="sg-mock s" style={{ '--i': 0 }}>
+                <Scene kind={pl.id} copy={promo.copy[pl.id]} label={`${pl.sign} · ${pl.size}`} />
+                <figcaption>{promo.name} · {promo.dates}. {promo.note}</figcaption>
+              </figure>
               <div className="sg-side">
-                <h3 className="mini-h sg-h s" style={{ '--i': 1 }}>{tab.title}</h3>
-                <p className="mini-lead s" style={{ '--i': 2 }}>{tab.lead}</p>
-                {tab.id === 'layout' && <Zones demo={demo} sel={sel} onPick={setSel} />}
-                {tab.id === 'promos' && <Promos demo={demo} sel={sel} onPick={setSel} />}
-                {tab.id === 'signage' && <Signs demo={demo} sel={sel} onPick={setSel} />}
+                <h3 className="mini-h sg-h s" style={{ '--i': 1 }}>{pl.sign}</h3>
+                <dl className="sg-spec">
+                  {[['Where', pl.where], ['Size', pl.size], ['On the sign', pl.content]].map(([a, b], i) => (
+                    <div key={a} className="s" style={{ '--i': 2 + i }}><dt>{a}</dt><dd>{b}</dd></div>
+                  ))}
+                </dl>
+                <button className="sg-tpl s" style={{ '--i': 5 }} onClick={() => openContext('event')}>
+                  <IconDocumentText size={14} /> Template: {demo.template}
+                </button>
               </div>
             </div>
+            {ended && <p className="sg-ended"><b>{ended.status}</b> {ended.name}, {ended.dates}. {ended.note}</p>}
           </div>
         </div>
       </div>
-      <div className="ct-ai" key={`ai-${tab.id}`}>
-        <p className="ct-q"><span>{qa.askLabel}</span>{qa.ask}</p>
+      <div className="ct-ai" key={`ai-${pl.id}`}>
+        <p className="ct-q"><span>{demo.askLabel}</span>{pl.ask}</p>
         <div className="ct-a">
-          <p><IconSparkle size={14} /><span>{rich(qa.answer)}</span></p>
-          <p className="ct-src">Based on 1 source: <span>{qa.source}</span></p>
+          <p><IconSparkle size={14} /><span>{rich(pl.answer)}</span></p>
+          <p className="ct-src">Based on 1 source: <button className="ct-link" onClick={() => openContext('retail')}>{demo.chapter} - {demo.section} - {pl.label}</button></p>
         </div>
       </div>
     </div>
-  );
-}
-
-function Plan({ demo, lit, pins, sel, onPin }) {
-  const [ex, ew] = demo.entrance;
-  return (
-    <svg className="sg-plan" viewBox="0 0 100 68" role="img" aria-label="Sample store floor plan">
-      <path className="sg-wall" d={`M${ex} 61 H1 V1 H99 V61 H${ex + ew}`} />
-      <g className="sg-door">
-        <path d={`M${ex + ew / 2} 66.5 V62.4 M${ex + ew / 2 - 1.4} 63.8 L${ex + ew / 2} 62.4 L${ex + ew / 2 + 1.4} 63.8`} />
-        <text x={ex + ew / 2 + 2.4} y="66.2">Entrance</text>
-      </g>
-      {demo.zones.map((z) => (
-        <g key={z.id} className={`sg-zone ${lit.has(z.id) ? 'is-lit' : ''} ${z.id === 'windows' ? 'is-window' : ''}`}>
-          {(z.rects || [[z.x, z.y, z.w, z.h]]).map(([x, y, w, h], i) => <rect key={i} x={x} y={y} width={w} height={h} rx="0.8" />)}
-          {(() => {
-            const x = z.lx ?? z.x + z.w / 2; const y = z.ly ?? z.y + z.h / 2;
-            return <text x={x} y={y} transform={z.rot ? `rotate(-90 ${x} ${y})` : undefined} textAnchor="middle" dominantBaseline="middle">{z.label}</text>;
-          })()}
-        </g>
-      ))}
-      {pins && demo.signs.map((s, i) => (
-        <g
-          key={s.id}
-          className={`sg-pin ${s.id === sel ? 'is-on' : ''}`}
-          transform={`translate(${s.pin[0]} ${s.pin[1]})`}
-          role="button"
-          tabIndex={0}
-          aria-label={`Sign ${i + 1}: ${s.name}`}
-          onClick={() => onPin(s.id)}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onPin(s.id); } }}
-        >
-          {s.id === sel && <circle className="sg-pulse" r="3.4" />}
-          <circle r="2.6" />
-          <text textAnchor="middle" dominantBaseline="central">{i + 1}</text>
-        </g>
-      ))}
-    </svg>
-  );
-}
-
-function Zones({ demo, sel, onPick }) {
-  const rows = demo.zones.filter((z) => z.rule);
-  return (
-    <ul className="sg-list">
-      {rows.map((z, i) => (
-        <li key={z.id} className="s" style={{ '--i': 3 + i }}>
-          <button className={`sg-row ${z.id === sel ? 'is-on' : ''}`} aria-pressed={z.id === sel} onClick={() => onPick(z.id)}>
-            <strong>{z.label}</strong>
-            {z.id === sel && <span>{z.rule}</span>}
-          </button>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function Promos({ demo, sel, onPick }) {
-  return (
-    <ul className="sg-list">
-      {demo.promos.map((p, i) => (
-        <li key={p.name} className="s" style={{ '--i': 3 + i }}>
-          <button className={`sg-row sg-promo is-${p.status.toLowerCase()} ${i === sel ? 'is-on' : ''}`} aria-pressed={i === sel} onClick={() => onPick(i)}>
-            <span className="sg-status">{p.status}</span>
-            <strong>{p.name}</strong>
-            <em>{p.dates}</em>
-            {i === sel && <span>{p.note}</span>}
-          </button>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function Signs({ demo, sel, onPick }) {
-  return (
-    <ul className="sg-list">
-      {demo.signs.map((s, i) => (
-        <li key={s.id} className="s" style={{ '--i': 3 + i }}>
-          <button className={`sg-row sg-sign ${s.id === sel ? 'is-on' : ''}`} aria-pressed={s.id === sel} onClick={() => onPick(s.id)}>
-            <span className="sg-n">{i + 1}</span>
-            <strong>{s.name}</strong>
-            {s.id === sel && (
-              <span className="sg-spec">
-                <span>{s.where}</span>
-                <span className="sg-meta"><b>Size</b> {s.size}</span>
-              </span>
-            )}
-          </button>
-          {s.id === sel && (
-            <button className="sg-tpl" onClick={() => openContext('event')}>
-              <IconDocumentText size={14} /> Template: {s.template}
-            </button>
-          )}
-        </li>
-      ))}
-    </ul>
   );
 }

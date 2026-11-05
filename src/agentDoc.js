@@ -54,10 +54,8 @@ export function agentDoc(c, { origin, booking, sender }) {
     const r = c.retail;
     lines.push(`### 6. ${uc(r.eyebrow)}`);
     lines.push(r.sub.replace('{name}', c.name));
-    const now = r.promos.find((p) => p.status === 'Now');
-    if (now) lines.push(`- promotion now: ${now.name} (${now.dates}). ${now.note}`);
-    r.signs.forEach((s) => lines.push(`- sign: ${s.name}, ${s.size}. ${s.where}`));
-    r.tabs.forEach((x) => lines.push(`- example: "${x.ask}" → ${x.answer.replace(/\*\*/g, '')} (source: ${x.source})`));
+    r.promos.forEach((p) => lines.push(`- promotion (${p.status.toLowerCase()}): ${p.name}, ${p.dates}. ${p.note}`));
+    r.placements.forEach((x) => lines.push(`- ${x.label}: ${x.sign}, ${x.size}. ${x.where} ${x.content} Example: "${x.ask}" → ${x.answer.replace(/\*\*/g, '')}`));
     lines.push(`- note: ${r.note.replace('{name}', c.name)}`);
     lines.push('');
   }

@@ -933,63 +933,78 @@ button { font: inherit; color: inherit; }
 .ev-try p:not(.bc-try) { color: var(--ink-2); font-size: 14px; }
 .pf-try { gap: 12px; }
 
-/* ---------- Use case 6: Retail store guide ---------- */
+/* ---------- Use case 6: Retail context (in-store promotion mockups) ---------- */
 .sg { display: grid; gap: 12px; }
 .sg .mini-body { min-height: 0; }
 .sg-navh { font-weight: 600; color: var(--m-ink) !important; border-bottom: 0 !important; padding-bottom: 2px !important; }
 .sg-page { gap: 10px; }
+.sg-bar { display: grid; gap: 8px; }
+@media (min-width: 900px) { .sg-bar { grid-template-columns: 1fr auto; align-items: center; } }
 .sg-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
 .sg-tab { font: inherit; font-size: 13px; font-weight: 500; min-height: 36px; padding: 6px 14px; border-radius: var(--m-rb); border: 1px solid color-mix(in srgb, var(--m-ink) 18%, transparent); background: var(--m-bg); color: var(--m-ink); cursor: pointer; transition: background-color 200ms, color 200ms, border-color 200ms; }
 .sg-tab:hover { border-color: var(--m-ink); }
 .sg-tab.is-on { background: var(--m-ink); color: var(--m-bg); border-color: var(--m-ink); }
+.sg-promo-switch { display: inline-flex; justify-self: start; padding: 3px; gap: 2px; border-radius: var(--m-rb); background: color-mix(in srgb, var(--m-ink) 6%, var(--m-bg)); max-width: 100%; }
+.sg-pswitch { font: inherit; font-size: 12px; min-height: 32px; padding: 4px 12px; border: 0; border-radius: var(--m-rb); background: none; color: color-mix(in srgb, var(--m-ink) 65%, transparent); cursor: pointer; white-space: nowrap; }
+.sg-pswitch b { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; margin-right: 3px; }
+.sg-pswitch.is-on { background: var(--m-bg); color: var(--m-ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+@media (max-width: 420px) { .sg-pswitch { padding: 4px 9px; font-size: 11px; } }
 .sg-grid { display: grid; gap: 14px; margin-top: 4px; }
-@media (min-width: 760px) { .sg-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 20px; align-items: start; } }
-.sg-plan-wrap { display: grid; gap: 6px; }
-.sg-plan { width: 100%; height: auto; display: block; background: var(--m-surface); border: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); border-radius: 6px; font-family: var(--m-body); }
-.sg-cap { font-size: 11px; color: color-mix(in srgb, var(--m-ink) 55%, transparent); }
-.sg-wall { fill: none; stroke: var(--m-ink); stroke-width: 0.9; stroke-linejoin: round; }
-.sg-door path { fill: none; stroke: color-mix(in srgb, var(--m-ink) 60%, transparent); stroke-width: 0.5; stroke-linecap: round; }
-.sg-door text { font-size: 2.6px; fill: color-mix(in srgb, var(--m-ink) 60%, transparent); }
-.sg-zone rect { fill: color-mix(in srgb, var(--m-ink) 4%, var(--m-surface)); stroke: color-mix(in srgb, var(--m-ink) 22%, transparent); stroke-width: 0.35; transition: fill 300ms var(--ease), stroke 300ms var(--ease); }
-.sg-zone text { font-size: 2.7px; font-weight: 600; fill: color-mix(in srgb, var(--m-ink) 72%, transparent); pointer-events: none; }
-.sg-zone.is-window text { font-size: 2.2px; font-weight: 500; }
-.sg-zone.is-lit rect { fill: var(--m-accent); stroke: var(--m-accent); stroke-width: 0.5; }
-.sg-zone.is-lit text { fill: var(--m-accent-ink); }
-.sg-pin { cursor: pointer; outline: none; }
-.sg-pin circle { fill: var(--m-bg); stroke: var(--m-ink); stroke-width: 0.5; transition: fill 200ms; }
-.sg-pin text { font-size: 2.8px; font-weight: 700; fill: var(--m-ink); pointer-events: none; }
-.sg-pin.is-on circle:not(.sg-pulse) { fill: var(--m-ink); }
-.sg-pin.is-on text { fill: var(--m-bg); }
-.sg-pin:focus-visible circle:not(.sg-pulse) { stroke: var(--m-accent); stroke-width: 0.9; }
-.sg-pulse { fill: none !important; stroke: var(--m-ink); stroke-width: 0.4; opacity: 0; }
-@media (prefers-reduced-motion: no-preference) {
-  .sg-pulse { animation: sgPulse 1.6s var(--ease-out) infinite; transform-box: fill-box; transform-origin: center; }
-}
-@keyframes sgPulse { from { opacity: .7; transform: scale(.8); } to { opacity: 0; transform: scale(1.8); } }
-.sg-side { display: grid; gap: 6px; align-content: start; min-width: 0; }
+@media (min-width: 760px) { .sg-grid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 20px; align-items: start; } }
+.sg-mock { margin: 0; display: grid; gap: 6px; }
+.sg-mock figcaption { font-size: 11px; color: color-mix(in srgb, var(--m-ink) 58%, transparent); }
+.sg-side { display: grid; gap: 8px; align-content: start; min-width: 0; }
 .sg-h { font-size: 22px; }
-.sg-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.sg-row { width: 100%; text-align: left; font: inherit; font-size: 13px; color: var(--m-ink); background: var(--m-surface); border: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); border-radius: 6px; padding: 9px 12px; min-height: 44px; display: grid; gap: 3px; cursor: pointer; transition: border-color 200ms, background-color 200ms; }
-.sg-row:hover { border-color: color-mix(in srgb, var(--m-ink) 40%, transparent); }
-.sg-row.is-on { border-color: var(--m-ink); background: var(--m-bg); }
-.sg-row strong { font-size: 13px; }
-.sg-row > span, .sg-spec > span { color: var(--m-ink2); font-size: 12px; line-height: 1.45; }
-.sg-row em { font-style: normal; font-size: 12px; color: color-mix(in srgb, var(--m-ink) 60%, transparent); }
-.sg-promo { grid-template-columns: auto 1fr; column-gap: 8px; align-items: baseline; }
-.sg-promo > em, .sg-promo > span:last-child:not(.sg-status) { grid-column: 2; }
-.sg-status { justify-self: start; font-size: 10px !important; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; color: var(--m-ink) !important; border: 1px solid color-mix(in srgb, var(--m-ink) 25%, transparent); }
-.sg-promo.is-now .sg-status { background: var(--m-accent); color: var(--m-accent-ink) !important; border-color: var(--m-accent); }
-.sg-promo.is-ended { color: color-mix(in srgb, var(--m-ink) 65%, transparent); }
-.sg-promo.is-ended .sg-status { color: color-mix(in srgb, var(--m-ink) 55%, transparent) !important; }
-.sg-sign { grid-template-columns: auto 1fr; column-gap: 10px; align-items: center; }
-.sg-sign .sg-spec { grid-column: 2; display: grid; gap: 3px; }
-.sg-n { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11px !important; font-weight: 700; border: 1px solid var(--m-ink); color: var(--m-ink) !important; }
-.sg-sign.is-on .sg-n { background: var(--m-ink); color: var(--m-bg) !important; }
-.sg-meta b { font-weight: 600; color: var(--m-ink); margin-right: 4px; }
-.sg-tpl { margin-top: 6px; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 12px; font-weight: 600; color: var(--m-ink); background: none; border: 1px solid var(--m-ink); border-radius: var(--m-rb); padding: 6px 12px; min-height: 36px; cursor: pointer; }
+.sg-spec { margin: 0; display: grid; border-top: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); font-size: 12px; }
+.sg-spec div { display: grid; grid-template-columns: 84px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); }
+.sg-spec dt { font-weight: 600; } .sg-spec dd { margin: 0; color: var(--m-ink2); }
+.sg-tpl { justify-self: start; margin-top: 2px; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 12px; font-weight: 600; color: var(--m-ink); background: none; border: 1px solid var(--m-ink); border-radius: var(--m-rb); padding: 6px 12px; min-height: 36px; cursor: pointer; }
 .sg-tpl:hover { background: var(--m-ink); color: var(--m-bg); }
-@media (max-width: 559px) {
-  .sg-zone text { font-size: 3.5px; }
-  .sg-zone.is-window text, .sg-door text { font-size: 3px; }
-  .sg-pin text { font-size: 3.2px; }
-}
+.sg-ended { margin-top: 4px; padding: 8px 12px; border-radius: 6px; font-size: 12px; color: color-mix(in srgb, var(--m-ink) 65%, transparent); background: color-mix(in srgb, var(--m-ink) 4%, var(--m-bg)); }
+.sg-ended b { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; margin-right: 4px; color: var(--m-ink); }
+.ct-link { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+
+/* The illustrated scenes (shared by use case 6 and the Retail context tab) */
+.rs { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid color-mix(in srgb, var(--m-ink) 10%, transparent); font-family: var(--m-body); }
+.rs-wall { fill: color-mix(in srgb, var(--m-ink) 3%, var(--m-surface)); }
+.rs-fascia { fill: var(--m-ink); }
+.rs-glass { fill: color-mix(in srgb, var(--m-ink) 7%, var(--m-bg)); stroke: var(--m-ink); stroke-width: 4; }
+.rs-door { fill: color-mix(in srgb, var(--m-ink) 4%, var(--m-bg)); stroke: var(--m-ink); stroke-width: 3; }
+.rs-line { stroke: var(--m-ink); stroke-width: 3; stroke-linecap: round; }
+.rs-ground, .rs-floor { fill: color-mix(in srgb, var(--m-ink) 10%, var(--m-surface)); }
+.rs-eye { stroke: color-mix(in srgb, var(--m-ink) 35%, transparent); stroke-width: 1; stroke-dasharray: 3 4; }
+.rs-note { font-size: 9px; fill: color-mix(in srgb, var(--m-ink) 55%, transparent); }
+.rs-sign rect { fill: var(--m-accent); }
+.rs-sign text { fill: var(--m-accent-ink); }
+.rs-head { font-family: var(--m-font); font-weight: var(--m-weight); letter-spacing: -0.01em; }
+.rs-sub { opacity: .85; }
+.rs-top { fill: color-mix(in srgb, var(--m-ink) 80%, var(--m-bg)); }
+.rs-skirt { fill: color-mix(in srgb, var(--m-ink) 90%, var(--m-bg)); }
+.rs-stand { fill: color-mix(in srgb, var(--m-ink) 55%, var(--m-bg)); }
+.rs-gift rect { stroke: var(--m-ink); stroke-width: 1.4; }
+.rs-gift.is-a rect { fill: var(--m-bg); } .rs-gift.is-b rect { fill: color-mix(in srgb, var(--m-ink) 14%, var(--m-bg)); }
+.rs-gift path { fill: none; stroke: var(--m-ink); stroke-width: 1.4; }
+.rs-run { fill: color-mix(in srgb, var(--m-ink) 6%, var(--m-surface)); stroke: color-mix(in srgb, var(--m-ink) 18%, transparent); }
+.rs-unit { fill: var(--m-bg); stroke: var(--m-ink); stroke-width: 2.5; }
+.rs-shelf { fill: var(--m-ink); } .rs-shelf.is-run { fill: color-mix(in srgb, var(--m-ink) 25%, transparent); }
+.rs-bottle rect { stroke: var(--m-ink); stroke-width: 1; }
+.rs-bottle.t0 rect { fill: color-mix(in srgb, var(--m-ink) 12%, var(--m-bg)); }
+.rs-bottle.t1 rect { fill: var(--m-bg); }
+.rs-bottle.t2 rect { fill: color-mix(in srgb, var(--m-ink) 30%, var(--m-bg)); }
+.rs-bottle .rs-cap { fill: var(--m-ink); }
+.rs-screen { fill: color-mix(in srgb, var(--m-ink) 85%, var(--m-bg)); }
+.rs-tent { fill: color-mix(in srgb, var(--m-ink) 20%, var(--m-bg)); }
+.rs-strip rect { fill: var(--m-bg); }
+.rs-strip text { font-size: 7.5px; font-weight: 600; fill: var(--m-ink); }
+.rs-outline { fill: none; stroke: #C9372C; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.rs-tag text { font-size: 10px; font-weight: 600; fill: #C9372C; }
+@media (prefers-reduced-motion: no-preference) { .rs-outline { animation: rsDash 1.4s linear infinite; } }
+@keyframes rsDash { to { stroke-dashoffset: -18; } }
+
+/* Retail tab inside use case 2 */
+@media (max-width: 559px) { .rs-tag text { font-size: 13px; } }
+.mini-retail { display: grid; gap: 8px; }
+.mini-rthumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mini-rthumbs figure { margin: 0; display: grid; gap: 4px; }
+.mini-rthumbs figcaption { font-size: 11px; font-weight: 600; }
+.mini-rthumbs .rs-tag, .mini-rthumbs .rs-note { display: none; }

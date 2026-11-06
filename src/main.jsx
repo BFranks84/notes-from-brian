@@ -12,7 +12,7 @@ import { App } from './App.jsx';
 import { inject } from '@vercel/analytics';
 
 // Vercel Web Analytics: counts page views per page (and utm_source, e.g. postcard vs. share).
-// Brian's own visits: open any page once with ?notrack on each browser/device to stop counting
+// The owner's own visits: open any page once with ?notrack on each browser/device to stop counting
 // that browser (stored in localStorage); ?track turns counting back on.
 const OPT_OUT_KEY = 'nfb-notrack';
 const optedOut = (() => {

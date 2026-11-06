@@ -1,8 +1,8 @@
 // Makes the print-ready postcard (Grid design, 6 x 4 in) for one company page.
-//   node scripts/postcard.mjs <slug> [--name "Brian Franke"] [--role "Senior Enterprise AE, Frontify"]
-//        [--email brian.franke@frontify.com] [--guides] [--no-lines] [--text] [--out postcards]
+//   node scripts/postcard.mjs <slug> [--name "..."] [--role "..."] [--email ...]   (defaults: the owner in site.config.json)
+//        [--guides] [--no-lines] [--text] [--out postcards]
 // Writes <out>/<slug>.pdf and <slug>.png (print-ready, with a 1/8 in bleed: 6.25 x 4.25 in page that trims to 6 x 4 in; PNG 1875 x 1275 px = 300 dpi; --no-bleed for a 6 x 4 in file) and <slug>-qr.svg / .png.
-// The QR code points at https://notesfrombrian.com/<slug> (tagged utm_source=postcard); the page must be live before printing.
+// The QR code points at https://<domain>/<slug> (domain from site.config.json) (tagged utm_source=postcard); the page must be live before printing.
 // --guides shows the dashed sticker-placement circle (leave it off for the print file).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -23,7 +23,8 @@ const bleed = !flag('no-bleed'); // print files get a 1/8 in bleed (6.25 x 4.25 
 const dataFile = `src/data/${slug}.json`;
 if (!fs.existsSync(dataFile)) { console.error(`No page data for "${slug}" (${dataFile}). Build the page first.`); process.exit(2); }
 const { name } = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
-const url = `https://notesfrombrian.com/${slug}?utm_source=postcard`; // tagged so card scans show up separately in Vercel Analytics
+const CFG = JSON.parse(fs.readFileSync('site.config.json', 'utf8'));
+const url = `https://${CFG.domain}/${slug}?utm_source=postcard`; // tagged so card scans show up separately in Vercel Analytics
 const out = opt('out', 'postcards');
 fs.mkdirSync(out, { recursive: true });
 
@@ -36,7 +37,7 @@ await QRCode.toFile(path.join(out, `${slug}-qr.png`), url, { ...qrOpts, width: 1
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const tpl = fs.readFileSync('postcard/grid.html', 'utf8');
-// Top-right cell: the company's logo (Brian has permission to use prospect logos). --text keeps the typed name instead.
+// Top-right cell: the company's logo (the owner has permission to use prospect logos). --text keeps the typed name instead.
 const ASPECT = JSON.parse(fs.readFileSync('src/logos.json', 'utf8'));
 const pair = (() => {
   const a = ASPECT[slug];
@@ -50,9 +51,10 @@ const html = tpl
   .replace('{{PAIR}}', pair)
   .replaceAll('{{NAME}}', esc(name))
   .replaceAll('{{SLUG}}', esc(slug))
-  .replaceAll('{{SENDER_NAME}}', esc(opt('name', 'Brian Franke')))
-  .replaceAll('{{SENDER_ROLE}}', esc(opt('role', 'Senior Enterprise AE, Frontify')))
-  .replaceAll('{{SENDER_EMAIL}}', esc(opt('email', 'brian.franke@frontify.com')))
+  .replaceAll('{{DOMAIN}}', esc(CFG.domain))
+  .replaceAll('{{SENDER_NAME}}', esc(opt('name', CFG.owner.name)))
+  .replaceAll('{{SENDER_ROLE}}', esc(opt('role', `${CFG.owner.shortTitle || CFG.owner.title}, ${CFG.owner.company}`)))
+  .replaceAll('{{SENDER_EMAIL}}', esc(opt('email', CFG.owner.email)))
   .replaceAll('{{LINES}}', flag('no-lines') ? 'none' : 'repeating-linear-gradient(to bottom, transparent 0 33px, #B8B8B0 33px 34px)')
   .replaceAll('{{PAGE_W}}', bleed ? '6.25in' : '6in')
   .replaceAll('{{PAGE_H}}', bleed ? '4.25in' : '4in')

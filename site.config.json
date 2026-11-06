@@ -1,0 +1,22 @@
+{
+  "_help": "The owner of this site. Every page, the page titles, the agent-readable copies and the postcards read these values. Set them with: python3 scripts/new_owner.py. 'publish' is \"all\" or a list of slugs; 'hide' lists slugs that are never built or shown.",
+  "domain": "notesfrombrian.com",
+  "siteName": "Notes from Brian Franke",
+  "owner": {
+    "name": "Brian Franke",
+    "firstName": "Brian",
+    "lastName": "Franke",
+    "title": "Senior Enterprise Account Executive",
+    "shortTitle": "Senior Enterprise AE",
+    "company": "Frontify",
+    "email": "brian.franke@frontify.com",
+    "phone": "630.666.8201",
+    "tel": "+16306668201",
+    "photo": "/brian-franke-2.jpg",
+    "booking": "https://frontify.chilipiper.com/personal-page/brian-franke"
+  },
+  "accountsFolder": "_Franke - Sales/01_Rep_Workspace/01_Accounts",
+  "imageTool": "higgsfield",
+  "publish": "all",
+  "hide": []
+}

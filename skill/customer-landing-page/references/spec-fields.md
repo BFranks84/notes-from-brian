@@ -2,7 +2,7 @@
 
 A page is built from three things: a theme in `src/themes.json`, a company spec in `S` in `scripts/gen_companies.py`, and the shared template (`src/data/atlassian.json`). Use cases 1–3 (the AI post demo, the context tabs, Brand Check) are on every page. The rest is set by the spec.
 
-The slug is the lowercase company name with no spaces or punctuation (`cvshealth`, `flooranddecor`). It is the URL (`notesfrombrian.com/<slug>`), the key in every dict and the image file name.
+The slug is the lowercase company name with no spaces or punctuation (`cvshealth`, `flooranddecor`). It is the URL (`<domain>/<slug>`), the key in every dict and the image file name.
 
 ## Theme (`src/themes.json`)
 

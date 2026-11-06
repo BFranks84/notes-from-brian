@@ -1,6 +1,6 @@
 # Content rules
 
-These come from Brian's reviews. Follow every one.
+These come from the owner's reviews. Follow every one.
 
 ## Facts and sources
 
@@ -29,7 +29,7 @@ The wording carries through the tab name, the rotating word in the hero and the 
 
 ## "Pick an idea" talk points
 
-Each idea chip has its own "I'll bring" list (`BRING` in `scripts/gen_companies.py`, by idea id), and every list ends with the honest-fit line. If you add a new kind of use case, add its three lines. Keep them to what Brian can actually bring to a meeting: walkthroughs, questions, and a fit read. No customer names and no results we can't back up.
+Each idea chip has its own "I'll bring" list (`BRING` in `scripts/gen_companies.py`, by idea id), and every list ends with the honest-fit line. If you add a new kind of use case, add its three lines. Keep them to what the owner can actually bring to a meeting: walkthroughs, questions, and a fit read. No customer names and no results we can't back up.
 
 ## Retail use case
 

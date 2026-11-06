@@ -36,14 +36,14 @@ function Home() {
   return (
     <main className="home">
       <div className="home-card">
-        <p className="home-from">Notes from Brian Franke</p>
+        <p className="home-from">{SITE.name}</p>
         <h1>I write to people instead of their inboxes</h1>
         <p>
-          I'm a Senior Enterprise Account Executive at Frontify, the brand platform built for people and the AI tools they
+          I'm {/^[AEIOU]/.test(SITE.sender.title) ? 'an' : 'a'} {SITE.sender.title} at Frontify, the brand platform built for people and the AI tools they
           work with. If I sent you a link, it opens a page made for your team.
         </p>
         <a className="btn-link is-strong" href={SITE.booking} target="_blank" rel="noopener">
-          <IconCalendar size={16} /> Find a time with Brian
+          <IconCalendar size={16} /> Find a time with {SITE.sender.first}
         </a>
       </div>
     </main>
@@ -161,12 +161,12 @@ function Portal({ company: c }) {
           <section className="hero" aria-labelledby="hero-title">
             <div className="hero-copy">
               <CoBrand slug={c.slug} label={c.name} className="hero-logo" />
-              <p className="hero-kicker">A sample Brian at Frontify set up for {c.name}</p>
+              <p className="hero-kicker">A sample {SITE.sender.first} at Frontify set up for {c.name}</p>
               <h1 id="hero-title">{c.hero.headline} <span className="hero-h2"><span>{c.hero.headline2}</span></span></h1>
               <p className="hero-sub">{c.hero.sub.replace('{name}', c.name)}</p>
               <div className="hero-ctas">
                 <a className="btn-link is-strong press" href="#what"><IconArrowDown size={16} /> See how we fix it</a>
-                <a className="btn-link press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Talk to Brian</a>
+                <a className="btn-link press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Talk to {SITE.sender.first}</a>
               </div>
             </div>
             {c.hero.badImage && (
@@ -314,7 +314,7 @@ function Portal({ company: c }) {
                   {(pick?.bring || ['How teams like yours have set it up, and what they\'d do differently', 'The questions worth answering before you change anything', 'An honest read on fit, even if the answer is "not yet"']).map((x, k) => <li key={x} className="pop" style={{ animationDelay: `${k * 60}ms` }}>{x}</li>)}
                 </ul>
                 <div className="bring-ctas">
-                  <a className="btn-link is-accent press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Find a time with Brian</a>
+                  <a className="btn-link is-accent press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Find a time with {SITE.sender.first}</a>
                   <a className="btn-link press" href="https://www.frontify.com/en" target="_blank" rel="noopener">Explore frontify.com <IconArrowOutExternal size={14} /></a>
                 </div>
               </div>
@@ -325,7 +325,7 @@ function Portal({ company: c }) {
           <footer className="foot">
             <div className="foot-logo"><FrontifyLogo height={20} /></div>
             {c.mcpNote && <p className="foot-mcp"><IconSparks size={14} /><span><b>Built using the Frontify MCP.</b> Claude pulled the fonts, colors, logo rules, writing style, and photos straight from Frontify's brand portal, so this page stays on brand.</span></p>}
-            <p><IconLockClosed size={12} /> An independent sample by Brian Franke at Frontify. Not affiliated with, sponsored by, or endorsed by {endDot(c.name)} {c.name} and related names are trademarks of their owners. Built on Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
+            <p><IconLockClosed size={12} /> An independent sample by {SITE.sender.name} at Frontify. Not affiliated with, sponsored by, or endorsed by {endDot(c.name)} {c.name} and related names are trademarks of their owners. Built on Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
           </footer>
         </main>
       )}
@@ -364,7 +364,7 @@ function WhatIsFrontify({ name, tools }) {
 
 // Who the visitor is talking to: photo, title, direct lines, and a contact card they can save on their phone.
 function ContactCard({ s }) {
-  const vcf = ['BEGIN:VCARD', 'VERSION:3.0', `N:Franke;Brian;;;`, `FN:${s.name}`, `ORG:${s.company}`, `TITLE:${s.title}`, `EMAIL;TYPE=WORK:${s.email}`, `TEL;TYPE=CELL:${s.tel}`, 'URL:https://www.frontify.com/en', 'END:VCARD'].join('\r\n');
+  const vcf = ['BEGIN:VCARD', 'VERSION:3.0', `N:${s.last};${s.first};;;`, `FN:${s.name}`, `ORG:${s.company}`, `TITLE:${s.title}`, `EMAIL;TYPE=WORK:${s.email}`, s.tel && `TEL;TYPE=CELL:${s.tel}`, 'URL:https://www.frontify.com/en', 'END:VCARD'].filter(Boolean).join('\r\n');
   const initials = s.name.split(' ').map((w) => w[0]).join('');
   return (
     <div className="contact">
@@ -380,9 +380,9 @@ function ContactCard({ s }) {
         <li><span>Web</span><a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></li>
       </ul>
       <div className="contact-ctas">
-        <a className="btn-link press" href={`mailto:${s.email}`}>Email Brian</a>
-        <a className="btn-link press" href={`sms:${s.tel}`}>Text Brian</a>
-        <a className="btn-link press" href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcf)}`} download="Brian-Franke.vcf">Save contact</a>
+        <a className="btn-link press" href={`mailto:${s.email}`}>Email {s.first}</a>
+        {s.tel && <a className="btn-link press" href={`sms:${s.tel}`}>Text {s.first}</a>}
+        <a className="btn-link press" href={`data:text/vcard;charset=utf-8,${encodeURIComponent(vcf)}`} download={`${s.name.replace(/\s+/g, '-')}.vcf`}>Save contact</a>
       </div>
     </div>
   );

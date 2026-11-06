@@ -4,6 +4,10 @@ The source for [notesfrombrian.com](https://notesfrombrian.com): sample pages th
 
 A push to `main` deploys the site through Vercel.
 
+## Run your own copy
+
+Coworkers can run the same site under their own name and domain: see [`SETUP.md`](SETUP.md). Every name, contact detail and the domain come from one file, `site.config.json`, set by `python3 scripts/new_owner.py`.
+
 ## Make a new page
 
 The whole workflow is a Claude skill in [`skill/customer-landing-page/`](skill/customer-landing-page/SKILL.md). To start a page from a new chat, paste the prompt in [`NEW-PAGE-PROMPT.md`](skill/customer-landing-page/NEW-PAGE-PROMPT.md).
@@ -38,7 +42,8 @@ Needs Python 3 (with Pillow), Node 18+ and Playwright with Chromium.
 | `src/styles.css`, `src/ds.css`, `src/web.css`, `src/phone.css` | Base styles, the Frontify Default design system, the Website Design System layer, phone rules (loaded in that order) |
 | `src/themes.json`, `src/logos.json`, `src/stock.json` | Company colors and stand-in fonts, logo ratios, stock photo titles |
 | `src/data/` | Generated page data. Don't edit; change the spec instead. |
-| `scripts/` | Generator, logo tool, checks, postcard maker |
+| `site.config.json` | The site owner: name, title, contact details, booking link, domain, account folder, which pages are published |
+| `scripts/` | Generator, logo tool, checks, postcard maker, new-owner setup |
 | `public/logos/`, `public/ai/`, `public/stock/`, `public/brand/`, `public/fonts/` | Company logo masks, off-brand images, licensed stock, Frontify logos, Frontify fonts |
 | `postcard/` | Postcard template and print logos |
 | `skill/customer-landing-page/` | The skill: steps, rules, references and the new-page prompt |

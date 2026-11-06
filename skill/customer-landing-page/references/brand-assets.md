@@ -2,13 +2,13 @@
 
 ## Company logos
 
-Brian has permission to show prospect logos on these pages. The page shows them in three places: the co-brand in the top bar, the co-brand above the hero on phones, and the theme switch.
+The owner has permission to show prospect logos on these pages. The page shows them in three places: the co-brand in the top bar, the co-brand above the hero on phones, and the theme switch.
 
 1. **Get the current logo.** In order:
-   - The official file from Brian. Ask him first; he can drop it in Downloads or attach it. His file wins over anything found online (the HPE logo on Wikimedia was out of date, for example).
+   - The official file from the owner. Ask first; they can drop it in Downloads or attach it. Their file wins over anything found online (the HPE logo on Wikimedia was out of date, for example).
    - Wikidata's "logo image" property (P154) for the company, which points to a file on Wikimedia Commons. Prefer the entry marked preferred or with no end date.
    - A direct file link from the company's press kit or brand page, if a normal request works.
-   Check the file is the logo the company uses today, not a retired one. **Never get around a bot check or block** (no fake browser headers, proxies, caches or mirrors). If a download is blocked, rate-limited (HTTP 429) or comes back as an HTML error page, ask Brian for the file.
+   Check the file is the logo the company uses today, not a retired one. **Never get around a bot check or block** (no fake browser headers, proxies, caches or mirrors). If a download is blocked, rate-limited (HTTP 429) or comes back as an HTML error page, ask the owner for the file.
 2. **Make the logos.** `python3 scripts/logo_mask.py <slug> <file>` (SVG, PNG or JPG). In one run it writes:
    - `public/logos/<slug>.png`: the page mask (white shape on transparent, trimmed)
    - `postcard/logos/<slug>.png`: the postcard logo (Base black with clear space around it)

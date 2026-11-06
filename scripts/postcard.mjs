@@ -2,7 +2,7 @@
 //   node scripts/postcard.mjs <slug> [--name "Brian Franke"] [--role "Senior Enterprise AE, Frontify"]
 //        [--email brian.franke@frontify.com] [--guides] [--no-lines] [--out postcards]
 // Writes <out>/<slug>.pdf and <slug>.png (both print-ready: PNG is 1800 x 1200 px = 300 dpi) and <slug>-qr.svg / .png.
-// The QR code points at https://notesfrombrian.com/<slug>; the page must be live before printing.
+// The QR code points at https://notesfrombrian.com/<slug> (tagged utm_source=postcard); the page must be live before printing.
 // --guides shows the dashed sticker-placement circle (leave it off for the print file).
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,7 +22,7 @@ const flag = (k) => args.includes(`--${k}`);
 const dataFile = `src/data/${slug}.json`;
 if (!fs.existsSync(dataFile)) { console.error(`No page data for "${slug}" (${dataFile}). Build the page first.`); process.exit(2); }
 const { name } = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
-const url = `https://notesfrombrian.com/${slug}`;
+const url = `https://notesfrombrian.com/${slug}?utm_source=postcard`; // tagged so card scans show up separately in Vercel Analytics
 const out = opt('out', 'postcards');
 fs.mkdirSync(out, { recursive: true });
 

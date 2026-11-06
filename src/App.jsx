@@ -54,7 +54,7 @@ function Portal({ company: c }) {
   const [hinted, setHinted] = useState(false);
   const [pickId, setPickId] = useState(c.ideas[0]?.id);
   const pageUrl = `${SITE.origin}/${c.slug}`;
-  const shareUrl = `${pageUrl}?src=share`;
+  const shareUrl = `${pageUrl}?utm_source=share`;
   const doc = useMemo(() => agentDoc(c, SITE), [c]);
 
   const ct = useMemo(() => companyTheme(c.slug), [c.slug]);

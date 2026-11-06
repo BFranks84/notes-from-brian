@@ -289,3 +289,16 @@
   .sm-era { font-variant-numeric: normal; white-space: nowrap; }
   .sm-row.is-agency .sm-num { background: color-mix(in srgb, var(--ink) 8%, var(--bg)); }
 }
+
+/* Phones: option chips wrap onto rows so every choice is visible (no hidden side scroll) */
+@media (max-width: 600px) {
+  .ct-tabs { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; gap: 6px; }
+  .ct-tab { min-height: 36px; padding: 6px 14px; }
+  .ct-tab-name { font-size: 14px; }
+  .sg-tabs { flex-wrap: wrap; overflow: visible; margin: 0; padding: 0; gap: 6px; }
+  .sg-tab { min-height: 34px; padding: 4px 12px; }
+}
+@media (max-width: 600px) and (max-height: 620px) {
+  .ctx-types .mini { max-height: 150px; }
+}
+@media (max-width: 600px) { .sg-tab { padding: 4px 10px; font-size: 13px; } .sg-tabs { gap: 5px; } }

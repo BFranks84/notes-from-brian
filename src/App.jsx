@@ -305,7 +305,7 @@ function Portal({ company: c }) {
 
           <footer className="foot">
             <div className="foot-logo"><FrontifyLogo height={20} /></div>
-            <p className="foot-mcp"><IconSparks size={14} /><span><b>Built using the Frontify MCP.</b> Claude pulled the fonts, colors, logo rules, writing style, and photos straight from Frontify's brand portal, so this page stays on brand.</span></p>
+            {c.mcpNote && <p className="foot-mcp"><IconSparks size={14} /><span><b>Built using the Frontify MCP.</b> Claude pulled the fonts, colors, logo rules, writing style, and photos straight from Frontify's brand portal, so this page stays on brand.</span></p>}
             <p><IconLockClosed size={12} /> An independent sample by Brian Franke at Frontify. Not affiliated with, sponsored by, or endorsed by {endDot(c.name)} {c.name} and related names are trademarks of their owners. Built with Fondue, Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
           </footer>
         </main>

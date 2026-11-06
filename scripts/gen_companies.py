@@ -711,6 +711,8 @@ PHOTO_COPY = {
     'home': dict(lead='Real materials and real light, never staged.', do={'label': 'Texture and light', 'note': 'Close-ups that show the material and finish.'}, dont={'label': 'Posed for the camera', 'note': 'No staged showrooms or stock smiles.'},
                  ask='Can I use a stock photo of a family posing in a showroom?', answer='Better not. The photography guidelines ask for **real texture and light**, and **no staged showrooms or stock smiles**.'),
 }
+# Pages that show the "Built using the Frontify MCP" footer note (URBN first, per Brian Nov 6)
+MCP_NOTE = {'urbn'}
 def photo_copy(d, slug):
     c = PHOTO_COPY.get(STOCK_FOR.get(slug, 'tech'))
     if not c: return
@@ -753,5 +755,6 @@ if __name__ == '__main__':
     TPL = _tpl
     for slug, s in S.items():
         _d = oxford(build(slug, s)); _d['stock'] = stock_for(slug); photo_copy(_d, slug)
+        if slug in MCP_NOTE: _d['mcpNote'] = True
         json.dump(_d, open(f'{ROOT}/src/data/{slug}.json', 'w'), indent=2, ensure_ascii=False)
         print('wrote', slug)

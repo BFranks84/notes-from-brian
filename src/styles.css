@@ -1324,3 +1324,7 @@ img.mini-img.is-photo { width: 100%; height: auto; aspect-ratio: 4 / 3; object-f
 .foot p.foot-mcp { display: flex; gap: 8px; align-items: flex-start; margin: 0 auto 14px; font-size: 14px; color: var(--ink-2); }
 .foot p.foot-mcp svg { flex: none; margin-top: 3px; vertical-align: 0; color: #B60AE3; }
 .foot p.foot-mcp b { color: var(--ink); font-weight: 500; }
+
+/* The wordmark's box includes the descender of the y, so center it on the letters instead (cap height 2–80 of 105) */
+.seg-item .fy-logo, .cobrand .fy-logo { transform: translateY(11%); }
+@media (max-width: 600px) { .seg-theme .fy-logo { transform: translateY(11%) scale(0.85); } }

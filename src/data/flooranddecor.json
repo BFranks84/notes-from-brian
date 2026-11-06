@@ -7,22 +7,22 @@
     {
       "id": "context",
       "title": "A system of context for every AI tool",
-      "summary": "Frontify gives Claude and Copilot the brand, creative, product and event context they need, so answers come out on brand."
+      "summary": "Frontify gives Claude and Copilot the brand, creative, product, and event context they need, so answers come out on brand."
     },
     {
       "id": "contexts",
       "title": "What context lives in Frontify",
-      "summary": "Brand, creative, product, event and Everyday guidance live as guideline pages that people read and AI tools answer from."
+      "summary": "Brand, creative, product, event, and Everyday guidance live as guideline pages that people read and AI tools answer from."
     },
     {
       "id": "check",
       "title": "Brand Check before anything goes live",
-      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues, and shows the guideline behind each finding."
     },
     {
       "id": "packaging",
       "title": "Packaging: find every package and its rules",
-      "summary": "One library for exclusive-brand packaging, searchable by brand, line, format, size and logo version, with a packaging guideline for every product."
+      "summary": "One library for exclusive-brand packaging, searchable by brand, line, format, size, and logo version, with a packaging guideline for every product."
     },
     {
       "id": "everyday",
@@ -45,14 +45,14 @@
       "everyday",
       "supplier"
     ],
-    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
+    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice, and claims nobody approved.",
     "prompt": "Make a LinkedIn post and image for our next NatureMatch launch.",
     "generic": "Excited to announce an amazing new feature! Our innovative AI solution will revolutionize the way your team works. Don't miss out! #Innovation #AI #Teamwork",
-    "onbrand": "Meet NatureMatch: authentic stone- and wood-look tile, vinyl plank and laminate, built on our 2026 design trends. See the collection in store and online.",
+    "onbrand": "Meet NatureMatch: authentic stone- and wood-look tile, vinyl plank, and laminate, built on our 2026 design trends. See the collection in store and online.",
     "context": [
       {
         "label": "Tone of voice",
-        "value": "Confident, practical and value-driven"
+        "value": "Confident, practical, and value-driven"
       },
       {
         "label": "Messaging",
@@ -185,13 +185,13 @@
   "contexts": {
     "eyebrow": "Use case 2 · What context lives in Frontify",
     "title": "Every kind of context, in one place",
-    "sub": "Brand, creative, product, campaign, packaging and supplier guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "sub": "Brand, creative, product, campaign, packaging, and supplier guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from Floor & Decor's public brand information. Not Floor & Decor's own guidelines.",
     "items": [
       {
         "id": "brand",
         "label": "Brand",
-        "desc": "Colors, type, logo and voice",
+        "desc": "Colors, type, logo, and voice",
         "kind": "color",
         "chapter": "Color",
         "section": "Primary colors",
@@ -222,7 +222,7 @@
       {
         "id": "creative",
         "label": "Creative",
-        "desc": "Photography, illustration and motion",
+        "desc": "Photography, illustration, and motion",
         "kind": "photo",
         "chapter": "Photography",
         "section": "Do and don't",
@@ -242,20 +242,20 @@
       {
         "id": "product",
         "label": "Product",
-        "desc": "Launches, positioning and claims",
+        "desc": "Launches, positioning, and claims",
         "kind": "launch",
         "chapter": "Product launch",
         "section": "NatureMatch",
         "title": "NatureMatch positioning",
         "lead": "Start every launch brief from this page.",
-        "positioning": "NatureMatch brings authentic stone- and wood-look materials to tile, vinyl plank and waterproof laminate.",
+        "positioning": "NatureMatch brings authentic stone- and wood-look materials to tile, vinyl plank, and waterproof laminate.",
         "claims": [
-          "99 products across tile, vinyl plank and laminate",
+          "99 products across tile, vinyl plank, and laminate",
           "Built on the 2026 Design Trends forecast"
         ],
-        "rule": "Every NatureMatch claim names the material: tile, vinyl plank or laminate.",
+        "rule": "Every NatureMatch claim names the material: tile, vinyl plank, or laminate.",
         "ask": "Write a one-line pitch for NatureMatch.",
-        "answer": "**NatureMatch brings authentic stone- and wood-look materials to tile, vinyl plank and waterproof laminate.** Drafted from the approved positioning."
+        "answer": "**NatureMatch brings authentic stone- and wood-look materials to tile, vinyl plank, and waterproof laminate.** Drafted from the approved positioning."
       },
       {
         "id": "event",
@@ -326,17 +326,17 @@
           ],
           [
             "End panel",
-            "SKU, barcode, care icons and compliance marks"
+            "SKU, barcode, care icons, and compliance marks"
           ]
         ],
         "rule": "Replace previous-logo cartons at the next print run.",
         "ask": "What goes on the end panel of a flooring carton?",
-        "answer": "**SKU, barcode, install and care icons**, plus compliance marks such as CARB where they apply."
+        "answer": "**SKU, barcode, install, and care icons**, plus compliance marks such as CARB where they apply."
       },
       {
         "id": "everyday",
         "label": "Everyday",
-        "desc": "Short rules for email, decks and docs",
+        "desc": "Short rules for email, decks, and docs",
         "kind": "writing",
         "chapter": "Everyday",
         "section": "Email tone of voice",
@@ -353,7 +353,7 @@
           ],
           [
             "Voice",
-            "Confident, practical and value-driven."
+            "Confident, practical, and value-driven."
           ],
           [
             "Sign-off",
@@ -404,7 +404,7 @@
           ],
           [
             "Fill in",
-            "Product, SKU, format and dieline version."
+            "Product, SKU, format, and dieline version."
           ],
           [
             "Start from",
@@ -414,7 +414,7 @@
         "rule": "Every packaging file needs the SKU and the dieline version.",
         "askLabel": "A packaging supplier asks the brand assistant",
         "ask": "How do we send updated packaging artwork?",
-        "answer": "**Submit it in the portal** under Suppliers › Submit an asset, with the **product, SKU and dieline version**. It lands in the Supplier submissions library."
+        "answer": "**Submit it in the portal** under Suppliers › Submit an asset, with the **product, SKU, and dieline version**. It lands in the Supplier submissions library."
       }
     ]
   },
@@ -422,7 +422,7 @@
     "eyebrow": "Use case 5 · Everyday guidelines, inside your office applications",
     "title": "The right tone in every email and deck",
     "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude or Copilot inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
-    "note": "Claude and Copilot, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines.",
+    "note": "Claude and Copilot, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation, and guidelines.",
     "tabs": [
       {
         "id": "outlook",
@@ -445,7 +445,7 @@
           "subject": "Review the NatureMatch launch plan by Thursday",
           "body": [
             "Hi team, can you review the NatureMatch launch plan by Thursday?",
-            "It covers the messaging, launch assets and timeline. Comments in the doc are perfect."
+            "It covers the messaging, launch assets, and timeline. Comments in the doc are perfect."
           ],
           "sig": "Sam Lee · Marketing"
         },
@@ -520,7 +520,7 @@
     "eyebrow": "Use case 6 · Supplier and agency files",
     "title": "Supplier and agency files land in the right place",
     "sub": "Suppliers and agencies submit packaging artwork straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
-    "note": "Sample files, supplier and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "note": "Sample files, supplier, and library. The assistant acts on the assets you select: workflow status, metadata, tags, and expiry dates.",
     "page": "Suppliers › Submit an asset",
     "submitter": "Northwind Packaging · packaging supplier",
     "library": "Supplier submissions",
@@ -564,10 +564,10 @@
   "packaging": {
     "eyebrow": "Use case 4 · Packaging",
     "title": "Find every package, and the rules behind it",
-    "sub": "{name}'s exclusive-brand packaging lives in one library instead of scattered folders. Search or filter by brand, product line, format, size or logo version, then open any product to see its packaging guideline: every zone on the carton, the rule behind it and the source files.",
-    "note": "Sample packages, products, sizes and rules built for this page. Not {name}'s own packaging or guidelines.",
+    "sub": "{name}'s exclusive-brand packaging lives in one library instead of scattered folders. Search or filter by brand, product line, format, size, or logo version, then open any product to see its packaging guideline: every zone on the carton, the rule behind it and the source files.",
+    "note": "Sample packages, products, sizes, and rules built for this page. Not {name}'s own packaging or guidelines.",
     "wordmark": "Floor & Decor",
-    "placeholder": "Search packaging, e.g. NuCore or laminate",
+    "placeholder": "Search packaging, e.g., NuCore or laminate",
     "askLabel": "A packaging designer asks the brand assistant",
     "files": [
       "Dieline (.ai)",
@@ -800,25 +800,25 @@
         "name": "Collection and color name, two lines at most, in the brand typeface.",
         "claim": "One claim, and it names the material, for example waterproof vinyl plank.",
         "size": "Square feet per carton and plank count, bottom right, readable on a pallet.",
-        "info": "End panel: SKU, barcode, install and care icons, and compliance marks such as CARB where they apply."
+        "info": "End panel: SKU, barcode, install, and care icons, and compliance marks such as CARB where they apply."
       },
       "box": {
         "logo": "Brand band across the top of the face. Current logo only.",
         "name": "Collection and color name, centered, two lines at most.",
         "claim": "One claim, and it names the material, for example porcelain tile.",
         "size": "Square feet per carton and piece count, bottom center.",
-        "info": "Side panel: SKU, barcode, tile size, shade and lot, and care icons."
+        "info": "Side panel: SKU, barcode, tile size, shade, and lot, and care icons."
       }
     },
     "rules": {},
     "libraryQa": {
       "ask": "Which packages still use the previous logo?",
-      "answer": "**5 packages** across NuCore, AquaGuard, DuraLux, Hampstead and Eco Forest. I filtered Packaging by **Logo version: Previous logo**. Open any of them for its dieline and print files.",
+      "answer": "**5 packages** across NuCore, AquaGuard, DuraLux, Hampstead, and Eco Forest. I filtered Packaging by **Logo version: Previous logo**. Open any of them for its dieline and print files.",
       "sources": "packaging library metadata"
     },
     "detailQa": {
       "ask": "What has to be on the {name} carton?",
-      "answer": "**Brand band, collection name, one material claim and square feet per carton** on the face, with SKU, barcode and care icons on the end panel.",
+      "answer": "**Brand band, collection name, one material claim, and square feet per carton** on the face, with SKU, barcode, and care icons on the end panel.",
       "sources": "2 sources: Packaging - Carton layout; the product guideline"
     }
   }

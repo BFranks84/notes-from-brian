@@ -1,16 +1,18 @@
 import THEMES from './themes.json';
 
-// Frontify's own look: Base White, Base Black, Marker Purple, serif display.
+// Frontify's own look (Brand Portal 2026): Base white, Base black, Marker purple; Cranny headlines, ABC Diatype text.
 export const FRONTIFY = {
   label: 'Frontify',
   bg: '#F0F0EB', surface: '#FFFFFF', ink: '#111110', ink2: null,
   accent: '#B60AE3', accentInk: '#FFFFFF', accentText: '#B60AE3', hl: null,
   heroBg: '#F0F0EB', heroInk: '#111110', heroAccentText: '#B60AE3',
-  family: "'Newsreader Variable', 'Palatino Linotype', Georgia, serif",
-  body: "'Geist Variable', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-  displayWeight: 340, displayTracking: '-0.03em', displayItalic: true,
+  family: "'Cranny', 'Palatino Linotype', Georgia, serif",
+  body: "'ABC Diatype', Verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+  displayWeight: 300, displayTracking: '0', displayItalic: false,
   radiusBtn: '999px', radiusCard: '16px', btnCase: 'none', eyebrowCase: 'none',
 };
+
+const NEUTRAL_SANS = "'Geist Variable', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
 
 // Free stand-in fonts, loaded only when a visitor switches to that company's theme.
 const FONTS = {
@@ -30,8 +32,8 @@ export function companyTheme(slug) {
   const t = THEMES[slug];
   if (!t) return null;
   const f = FONTS[t.font] || FONTS.inter;
-  // Serif stand-ins keep the page's sans for body text; sans stand-ins carry the whole page.
-  const body = t.font === 'caslon' ? FRONTIFY.body : f.family;
+  // Serif stand-ins pair with a neutral free sans for body text (never Frontify's own Diatype); sans stand-ins carry the whole page.
+  const body = t.font === 'caslon' ? NEUTRAL_SANS : f.family;
   return { ...t, family: f.family, body, loadFont: f.load };
 }
 

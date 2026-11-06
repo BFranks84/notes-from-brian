@@ -7,17 +7,17 @@
     {
       "id": "context",
       "title": "A system of context for every AI tool",
-      "summary": "Frontify gives Claude and Gemini the brand, creative, product and event context they need, so answers come out on brand."
+      "summary": "Frontify gives Claude and Gemini the brand, creative, product, and event context they need, so answers come out on brand."
     },
     {
       "id": "contexts",
       "title": "What context lives in Frontify",
-      "summary": "Brand, creative, product, event and Everyday guidance live as guideline pages that people read and AI tools answer from."
+      "summary": "Brand, creative, product, event, and Everyday guidance live as guideline pages that people read and AI tools answer from."
     },
     {
       "id": "check",
       "title": "Brand Check before anything goes live",
-      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues, and shows the guideline behind each finding."
     },
     {
       "id": "everyday",
@@ -31,8 +31,8 @@
     },
     {
       "id": "retail",
-      "title": "Store signs from submitted copy: windows, shelves and the register",
-      "summary": "Store teams fill in the copy on locked sign templates, and mockups show how each campaign should look in the window, on the front table, on the shelf and at the register."
+      "title": "Store signs from submitted copy: windows, shelves, and the register",
+      "summary": "Store teams fill in the copy on locked sign templates, and mockups show how each campaign should look in the window, on the front table, on the shelf, and at the register."
     }
   ],
   "hero": {
@@ -45,14 +45,14 @@
       "everyday",
       "agency"
     ],
-    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
+    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice, and claims nobody approved.",
     "prompt": "Make a LinkedIn post and image for the Anthropologie holiday gift guide.",
     "generic": "Excited to announce an amazing new feature! Our innovative AI solution will revolutionize the way your team works. Don't miss out! #Innovation #AI #Teamwork",
-    "onbrand": "This season, give something uncommon. Hand-picked gifts, only-here finds and pieces made to be kept, for everyone on your list. Discover the holiday gift guide in stores and online.",
+    "onbrand": "This season, give something uncommon. Hand-picked gifts, only-here finds, and pieces made to be kept, for everyone on your list. Discover the holiday gift guide in stores and online.",
     "context": [
       {
         "label": "Tone of voice",
-        "value": "Warm, curious and uncommon"
+        "value": "Warm, curious, and uncommon"
       },
       {
         "label": "Messaging",
@@ -131,7 +131,7 @@
           22
         ],
         "text": "\"Shop The Season's Must-Have Styles\" is generic retail copy in title case. It doesn't sound like Anthropologie.",
-        "recommendation": "Start from the voice guide: warm, curious and specific, in sentence case.",
+        "recommendation": "Start from the voice guide: warm, curious, and specific, in sentence case.",
         "sources": [
           {
             "label": "Voice - Anthropologie voice principles",
@@ -185,19 +185,19 @@
   "contexts": {
     "eyebrow": "Use case 2 · What context lives in Frontify",
     "title": "Every kind of context, in one place",
-    "sub": "Voice, brand, creative, campaign, retail and agency guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "sub": "Voice, brand, creative, campaign, retail, and agency guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from URBN's public brand information. Not URBN's own guidelines.",
     "items": [
       {
         "id": "product",
         "label": "Voice",
-        "desc": "Voice principles, glossary and copy rules",
+        "desc": "Voice principles, glossary, and copy rules",
         "kind": "launch",
         "chapter": "Brand voice",
         "section": "Anthropologie",
         "title": "Anthropologie voice principles",
         "lead": "One voice for the master brand and every label. The tone shifts by channel.",
-        "positioning": "Anthropologie is unique, just like you. We write like a friend with great taste: warm, curious and specific.",
+        "positioning": "Anthropologie is unique, just like you. We write like a friend with great taste: warm, curious, and specific.",
         "claims": [
           "Warm: talk with people, not at them. Never pushy.",
           "Curious: tell the story behind the piece.",
@@ -211,7 +211,7 @@
       {
         "id": "brand",
         "label": "Brand",
-        "desc": "Colors, type, logo and voice",
+        "desc": "Colors, type, logo, and voice",
         "kind": "color",
         "chapter": "Color",
         "section": "Primary colors",
@@ -242,7 +242,7 @@
       {
         "id": "creative",
         "label": "Creative",
-        "desc": "Photography, illustration and motion",
+        "desc": "Photography, illustration, and motion",
         "kind": "photo",
         "chapter": "Photography",
         "section": "Do and don't",
@@ -294,13 +294,13 @@
       {
         "id": "retail",
         "label": "Retail",
-        "desc": "Windows, shelves and the register",
+        "desc": "Windows, shelves, and the register",
         "kind": "retail",
         "chapter": "Retail",
         "section": "In-store campaign",
         "title": "Holiday in store",
         "lead": "How the current campaign shows up in every Anthropologie store.",
-        "rule": "Store teams write the copy. The sign template keeps the layout, type and colors on brand.",
+        "rule": "Store teams write the copy. The sign template keeps the layout, type, and colors on brand.",
         "ask": "Where does the holiday sign go at the register?",
         "answer": "The **counter card** goes **left of the register**, angled toward the customer. Small gifts get price strips only.",
         "thumbs": [
@@ -317,7 +317,7 @@
             "label": "Shelf",
             "copy": [
               "Cozy knits",
-              "Soft, warm and made to be kept"
+              "Soft, warm, and made to be kept"
             ]
           },
           {
@@ -339,7 +339,7 @@
       {
         "id": "everyday",
         "label": "Everyday",
-        "desc": "Short rules for email, decks and docs",
+        "desc": "Short rules for email, decks, and docs",
         "kind": "writing",
         "chapter": "Everyday",
         "section": "Email tone of voice",
@@ -356,7 +356,7 @@
           ],
           [
             "Voice",
-            "Warm, curious and uncommon."
+            "Warm, curious, and uncommon."
           ],
           [
             "Sign-off",
@@ -407,11 +407,11 @@
           ],
           [
             "Fill in",
-            "Campaign, usage rights and an expiry date."
+            "Campaign, usage rights, and an expiry date."
           ],
           [
             "Start from",
-            "Approved logos, photos and templates in the portal."
+            "Approved logos, photos, and templates in the portal."
           ]
         ],
         "rule": "Every submission needs usage rights and an expiry date.",
@@ -425,7 +425,7 @@
     "eyebrow": "Use case 4 · Everyday guidelines, inside your office applications",
     "title": "The right tone in every email and deck",
     "sub": "Most of {name} will never open a brand portal. With Frontify connected, Claude or Gemini inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
-    "note": "Claude and Gemini, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines.",
+    "note": "Claude and Gemini, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation, and guidelines.",
     "tabs": [
       {
         "id": "outlook",
@@ -448,7 +448,7 @@
           "subject": "Review the holiday campaign plan by Thursday",
           "body": [
             "Hi team, can you review the holiday campaign plan by Thursday?",
-            "It covers the messaging, launch assets and timeline. Comments in the doc are perfect."
+            "It covers the messaging, launch assets, and timeline. Comments in the doc are perfect."
           ],
           "sig": "Sam Lee · Marketing"
         },
@@ -523,7 +523,7 @@
     "eyebrow": "Use case 5 · Agency files",
     "title": "Agency files land in the right place",
     "sub": "Agencies and brand collaborators submit work straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
-    "note": "Sample files, agency and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "note": "Sample files, agency, and library. The assistant acts on the assets you select: workflow status, metadata, tags, and expiry dates.",
     "page": "Agencies › Submit an asset",
     "submitter": "Northwind Creative · creative agency",
     "library": "Agency submissions",
@@ -568,8 +568,8 @@
   "retail": {
     "eyebrow": "Use case 6 · Retail context",
     "title": "Store teams send the words. The signs come out on brand.",
-    "sub": "{name}'s portal shows how each Anthropologie campaign should look in store: the windows, the front table, the shelves and the register. Store teams fill in the copy on the sign template. The layout, type and colors stay locked, so every sign prints on brand. Or they ask the brand assistant.",
-    "note": "Sample mockups, campaigns, sizes and dates built for this page. Not {name}'s own store standards.",
+    "sub": "{name}'s portal shows how each Anthropologie campaign should look in store: the windows, the front table, the shelves, and the register. Store teams fill in the copy on the sign template. The layout, type, and colors stay locked, so every sign prints on brand. Or they ask the brand assistant.",
+    "note": "Sample mockups, campaigns, sizes, and dates built for this page. Not {name}'s own store standards.",
     "chapter": "Retail",
     "section": "In-store campaign",
     "template": "In-store sign",
@@ -597,7 +597,7 @@
           ],
           "shelf": [
             "Cozy knits",
-            "Soft, warm and made to be kept"
+            "Soft, warm, and made to be kept"
           ],
           "register": [
             "Add a gift card",

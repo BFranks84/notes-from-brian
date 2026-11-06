@@ -126,7 +126,7 @@ export function ChatDemo({ hero, company, theme, ai }) {
                   <span className="abc-art" aria-hidden="true"><i /><i /></span>
                   <span className="abc-eyebrow">{hero.brandCard.eyebrow}</span>
                   <strong>{hero.brandCard.headline}</strong>
-                  <em>Built from approved {company} colors, type and voice</em>
+                  <em>Built from approved {company} colors, type, and voice</em>
                 </div>
               ) : (
                 <div className="ai-attach pop">

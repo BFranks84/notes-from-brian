@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { Segmented, Btn as Button } from './ui.jsx';
+import { FrontifyLogo } from './FrontifyLogo.jsx';
 import { IconArrowOutExternal, IconCalendar, IconClipboard, IconLockClosed, IconArrowDown } from './icons.jsx';
 import { SITE, COMPANIES } from './config.js';
 import { poss, aiTools, listOf } from './names.js';
@@ -95,7 +96,7 @@ function Portal({ company: c }) {
     <div className={`portal view-${view} theme-${theme}`}>
       <header className="appbar">
         <div className="appbar-left">
-          <span className="fy-mark">Frontify</span>
+          <a className="fy-home" href="https://www.frontify.com/en" target="_blank" rel="noopener"><FrontifyLogo height={18} /></a>
           <span className="appbar-sep" aria-hidden="true" />
           <span className="appbar-crumb">Sample for {c.name}</span>
         </div>
@@ -124,8 +125,9 @@ function Portal({ company: c }) {
         <main className="person">
           <section className="hero" aria-labelledby="hero-title">
             <div className="hero-copy">
+              <FrontifyLogo height={20} className="hero-logo" />
               <p className="hero-kicker">A sample Brian at Frontify set up for {c.name}</p>
-              <h1 id="hero-title">{c.hero.headline} <span className="hero-h2">{c.hero.headline2}</span></h1>
+              <h1 id="hero-title">{c.hero.headline} <span className="hero-h2"><span>{c.hero.headline2}</span></span></h1>
               <p className="hero-sub">{c.hero.sub.replace('{name}', c.name)}</p>
               <div className="hero-ctas">
                 <a className="btn-link is-strong press" href="#what"><IconArrowDown size={16} /> See how Frontify fixes it</a>
@@ -231,7 +233,7 @@ function Portal({ company: c }) {
               <div>
                 <h2 id="theme-title">One portal, wearing your brand</h2>
                 <p>
-                  Every Frontify portal takes on the brand it serves: colors, type, shapes and tone. Try it. This page can switch into{' '}
+                  Every Frontify portal takes on the brand it serves: colors, type, shapes, and tone. Try it. This page can switch into{' '}
                   {opts.length > 1 ? `${listOf(opts.map((o) => poss(o.label)))} public brand systems` : `${poss(c.name)} public brand system`} and back.
                 </p>
                 <Button emphasis="strong" className="btn press" onPress={toggleTheme}>
@@ -283,7 +285,8 @@ function Portal({ company: c }) {
           </section>
 
           <footer className="foot">
-            <p><IconLockClosed size={12} /> An independent sample by Brian Franke at Frontify. Not affiliated with, sponsored by or endorsed by {endDot(c.name)} {c.name} and related names are trademarks of their owners. Built with Fondue, Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
+            <div className="foot-logo"><FrontifyLogo height={20} /></div>
+            <p><IconLockClosed size={12} /> An independent sample by Brian Franke at Frontify. Not affiliated with, sponsored by, or endorsed by {endDot(c.name)} {c.name} and related names are trademarks of their owners. Built with Fondue, Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
           </footer>
         </main>
       )}
@@ -294,7 +297,7 @@ function Portal({ company: c }) {
 
 // Plain-language primer before the use cases: what Frontify is, why it matters with AI, and the three steps.
 const STEPS = [
-  ['Store', 'Keep guidelines, logos, photos, templates and messaging in one current place, instead of scattered folders and old PDFs.'],
+  ['Store', 'Keep guidelines, logos, photos, templates, and messaging in one current place, instead of scattered folders and old PDFs.'],
   ['Connect', (tools) => `${listOf(tools)} ${tools.length === 1 ? 'reads' : 'read'} that brand context through the Frontify MCP server, so what ${tools.length === 1 ? 'it makes' : 'they make'} starts on brand.`],
   ['Check', 'Brand Check reviews work against your guidelines before it goes live, and points to the rule behind every finding.'],
 ];
@@ -304,11 +307,11 @@ function WhatIsFrontify({ name, tools }) {
       <div className="block-head">
         <p className="bc-eyebrow-tag">First, what is Frontify?</p>
         <h2 id="what-title">One home for your brand, built for people and AI</h2>
-        <p>Frontify is where brand and marketing teams keep everything that makes their brand theirs: guidelines, logos, photos, templates and product messaging. Everyone finds the current version in one place.</p>
+        <p>Frontify is where brand and marketing teams keep everything that makes their brand theirs: guidelines, logos, photos, templates, and product messaging. Everyone finds the current version in one place.</p>
       </div>
       <div className="what-why">
         <p className="what-k">Why it matters now</p>
-        <p>AI tools write and design in seconds, but they don't know your brand. Ask for a launch post and you get the wrong colors, the wrong voice and claims nobody approved. The more people use AI, the more off-brand work your team has to catch.</p>
+        <p>AI tools write and design in seconds, but they don't know your brand. Ask for a launch post and you get the wrong colors, the wrong voice, and claims nobody approved. The more people use AI, the more off-brand work your team has to catch.</p>
       </div>
       <ol className="what-steps">
         {STEPS.map(([t, d], i) => (
@@ -350,16 +353,16 @@ const LADDER = [
   ['record', 'What we know', 'DAM, ERP, CRM'],
   ['engagement', 'How people respond', 'Email, social, mobile'],
   ['intelligence', 'What the data means', 'BI, analytics, CDPs'],
-  ['context', 'What AI needs to know', 'Brand, creative, product and operational knowledge'],
-  ['agency', 'What AI can do', 'Agents plan, decide and act'],
+  ['context', 'What AI needs to know', 'Brand, creative, product, and operational knowledge'],
+  ['agency', 'What AI can do', 'Agents plan, decide, and act'],
 ];
 // The back of each card: when that wave of enterprise software arrived, and what it does in one sentence.
 const WAVES = {
-  record: ['Early 2000s', 'Store customer, financial, product and sales information, and give every employee access to it.'],
-  engagement: ['2011', 'Engage customers and prospects with personalized experiences across email, social and mobile.'],
+  record: ['Early 2000s', 'Store customer, financial, product, and sales information, and give every employee access to it.'],
+  engagement: ['2011', 'Engage customers and prospects with personalized experiences across email, social, and mobile.'],
   intelligence: ['2017', 'Visualize information so teams can choose the next best action.'],
   context: ['2025', 'Frontify started as a brand portal in 2013, the first system of context, and brings 13 years of context management and distribution.'],
-  agency: ['Now', 'AI agents plan, decide and act across your tools, and they act well only when they can read the context layer.'],
+  agency: ['Now', 'AI agents plan, decide, and act across your tools, and they act well only when they can read the context layer.'],
 };
 
 // Mobile: a scroll-driven stack that builds from the foundation up, so each layer visibly rests on the ones before it.
@@ -522,7 +525,7 @@ function AgentView({ doc, company, onBack }) {
         <div>
           <h1>The same page, as an agent reads it</h1>
           <p>
-            Structured, sourced and free of layout. That's the idea behind Frontify: one source of brand truth that works for people and
+            Structured, sourced, and free of layout. That's the idea behind Frontify: one source of brand truth that works for people and
             the AI tools they use. It's also served at <a href={`/${company.slug}/agent.md`}>/{company.slug}/agent.md</a>.
           </p>
         </div>

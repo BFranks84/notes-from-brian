@@ -1,10 +1,10 @@
 /* Fondue tokens load first. Theme vars (--bg, --ink, --accent, --accent-ink) are set on :root by the theme switch. */
 :root {
-  --typography-font-family-primary: 'Geist Variable', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --display: 'Newsreader Variable', 'Palatino Linotype', Georgia, serif;
-  --display-weight: 340;
-  --display-tracking: -0.03em;
-  --display-style: italic;
+  --typography-font-family-primary: 'ABC Diatype', Verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --display: 'Cranny', 'Palatino Linotype', Georgia, serif;
+  --display-weight: 300;
+  --display-tracking: 0;
+  --display-style: normal;
   --accent-text: var(--accent);
   --hero-bg: var(--bg);
   --hero-ink: var(--ink);
@@ -64,7 +64,9 @@ button { font: inherit; color: inherit; }
   border-bottom: 1px solid var(--line);
 }
 .appbar-left, .appbar-right { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.fy-mark { font-weight: 700; letter-spacing: -0.03em; font-size: 16px; }
+.fy-home { display: flex; align-items: center; color: var(--ink); padding: 4px 2px; }
+.hero-logo { display: none; color: var(--hero-ink); margin-bottom: 20px; }
+@media (max-width: 600px) { .hero-logo { display: block; } }
 .appbar-sep { width: 1px; height: 18px; background: var(--line-mid); }
 .appbar-crumb { font-size: 14px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .appbar-viewas { font-size: 13px; color: var(--ink-3); }
@@ -529,7 +531,6 @@ button { font: inherit; color: inherit; }
 @keyframes hintPulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); } 100% { box-shadow: 0 0 0 8px transparent; } }
 @media (max-width: 600px) {
   .appbar { padding: 0 12px; }
-  .fy-mark { display: none; }
   .appbar-left { display: none; }
   .appbar { justify-content: space-between; }
   .appbar-right { width: 100%; justify-content: space-between; }
@@ -1194,3 +1195,35 @@ button { font: inherit; color: inherit; }
 .ev-agents { display: inline-flex; gap: 4px; padding: 3px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 6%, var(--surface)); justify-self: start; }
 .ev-agent { font: inherit; font-size: 12px; font-weight: 500; min-height: 30px; padding: 4px 12px; border: 0; border-radius: 999px; background: none; color: var(--ink-2); cursor: pointer; }
 .ev-agent.is-on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+
+/* ---------- Official Frontify brand (Brand Portal 2026) ----------
+   Buttons match frontify.com: pill, 14px Diatype; dark = Base black with white text, light = white with a 1px black line;
+   both turn the accent (Marker purple in Frontify's look) on hover. Lines stay 1px. Marker purple is used sparingly. */
+.fy-logo { display: block; color: var(--ink); flex-shrink: 0; }
+.btn-link, .btn, .chat-send { font-family: var(--typography-font-family-primary); }
+.btn-link { height: auto; min-height: 44px; padding: 0.75rem 1rem; font-size: 14px; font-weight: 400; letter-spacing: 0; line-height: 1.2;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--ink); transition: background-color 200ms var(--ease), color 200ms var(--ease), border-color 200ms var(--ease), transform 160ms var(--ease-out); }
+.btn-link.is-strong { background: var(--ink); color: var(--surface); border-color: transparent; }
+.btn-link:hover, .btn-link.is-strong:hover { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+.hero .btn-link { background: var(--surface); color: var(--ink); border-color: var(--ink); }
+.hero .btn-link.is-strong { background: var(--hero-ink); color: var(--hero-bg); border-color: transparent; }
+.hero .btn-link:hover, .hero .btn-link.is-strong:hover { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+/* The primary call to action is the dark button; on the dark contact card the buttons are light outlines */
+.btn-link.is-accent { background: var(--ink); color: var(--surface); border-color: transparent; }
+.btn-link.is-accent:hover { background: var(--accent); color: var(--accent-ink); }
+.contact .btn-link { background: transparent; color: var(--bg); border: 1px solid var(--bg); }
+.contact .btn-link:hover { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+.btn { border-radius: var(--r-btn); padding: 0.75rem 1rem; height: auto; min-height: 44px; font-size: 14px; font-weight: 400; }
+.btn[data-emphasis='strong']:hover { background: var(--accent); color: var(--accent-ink); }
+.chat-send { font-size: 14px; font-weight: 500; }
+.chat-send:hover { background: var(--accent); color: var(--accent-ink); }
+/* Footer sign-off with the lockup */
+.foot-logo { max-width: 1180px; margin: 0 auto 14px; }
+.fy-logo.hero-logo { display: none; color: var(--hero-ink); margin-bottom: 20px; }
+@media (max-width: 600px) { .fy-logo.hero-logo { display: block; } }
+/* Frontify's look: the marker. Black text with a light Marker purple highlight, as in the brand's type samples.
+   Company themes keep their accent-colored second line. */
+.theme-frontify .hero-h2 { color: var(--hero-ink); }
+.theme-frontify .hero-h2 > span { background: linear-gradient(transparent 12%, #F5CCFF 12%, #F5CCFF 92%, transparent 92%); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 0.06em; }
+/* Marker purple is a highlight, not a fill: in Frontify's look the ladder takeaway uses the light marker tint */
+.theme-frontify .ladder-bar { background: #FAE8FF; color: var(--ink); }

@@ -38,6 +38,14 @@ Make a task list with these steps and tick them off.
 
 Edit that company's spec (or `src/themes.json`), not `src/data/<slug>.json`. The data file is regenerated and your edits there are lost. A change to `src/App.jsx`, `src/styles.css` or a component changes **every** page. Only make one to fix a clear bug (a missing space, a cut-off box), keep it as small as possible, run `qa.mjs` on every slug (`ls src/data`), and tell Brian that the fix touches every live page.
 
+## Frontify's own look (fixed, never per company)
+
+The page's Frontify look comes from Brand Portal 2026 and is the same on every page. Don't change it for a company:
+- **Logo:** the official lockup (`src/FrontifyLogo.jsx`, files in `public/brand/`) in the top bar, the footer and, on phones, above the hero. Never type "Frontify" as a logo or rebuild it from the Nook and type. No customer logos, and no co-branded lockups (those need the Brand Team).
+- **Type:** Cranny for headlines, ABC Diatype for everything else (`src/fonts.css`, files in `public/fonts/`). Company themes use a free stand-in, never Frontify's fonts.
+- **Color:** Base white #F0F0EB, Base black #111110, Marker purple #B60AE3 used sparingly (the hero's highlighted line, the active switch).
+- **Buttons:** pill, 14px Diatype, black or white with a 1px black line, the accent on hover.
+
 ## Rules that never bend
 
 - Pages are public. No customer quotes, no names of customer employees, nothing marked confidential on a call.

@@ -7,17 +7,17 @@
     {
       "id": "context",
       "title": "A system of context for every AI tool",
-      "summary": "Frontify gives ChatGPT, Claude, Copilot and Gemini the brand, creative, product and event context they need, so answers come out on brand."
+      "summary": "Frontify gives ChatGPT, Claude, Copilot, and Gemini the brand, creative, product, and event context they need, so answers come out on brand."
     },
     {
       "id": "contexts",
       "title": "What context lives in Frontify",
-      "summary": "Brand, creative, product, event and Everyday guidance live as guideline pages that people read and AI tools answer from."
+      "summary": "Brand, creative, product, event, and Everyday guidance live as guideline pages that people read and AI tools answer from."
     },
     {
       "id": "check",
       "title": "Brand Check before anything goes live",
-      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues, and shows the guideline behind each finding."
     },
     {
       "id": "everyday",
@@ -39,14 +39,14 @@
       "everyday",
       "partner"
     ],
-    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
+    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice, and claims nobody approved.",
     "prompt": "Make a LinkedIn post and image for our next HPE GreenLake launch.",
     "generic": "Excited to announce an amazing new feature! Our innovative AI solution will revolutionize the way your team works. Don't miss out! #Innovation #AI #Teamwork",
     "onbrand": "HPE GreenLake now brings agentic operations to your whole hybrid estate, with an agent registry and governance built in. See it running in your environment.",
     "context": [
       {
         "label": "Tone of voice",
-        "value": "Open, courageous and inspired"
+        "value": "Open, courageous, and inspired"
       },
       {
         "label": "Messaging",
@@ -179,13 +179,13 @@
   "contexts": {
     "eyebrow": "Use case 2 · What context lives in Frontify",
     "title": "Every kind of context, in one place",
-    "sub": "Brand, creative, product, event and partner guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "sub": "Brand, creative, product, event, and partner guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from HPE's public brand information. Not HPE's own guidelines.",
     "items": [
       {
         "id": "brand",
         "label": "Brand",
-        "desc": "Colors, type, logo and voice",
+        "desc": "Colors, type, logo, and voice",
         "kind": "color",
         "chapter": "Color",
         "section": "Primary colors",
@@ -216,7 +216,7 @@
       {
         "id": "creative",
         "label": "Creative",
-        "desc": "Photography, illustration and motion",
+        "desc": "Photography, illustration, and motion",
         "kind": "photo",
         "chapter": "Photography",
         "section": "Do and don't",
@@ -236,25 +236,25 @@
       {
         "id": "product",
         "label": "Product",
-        "desc": "Launches, positioning and claims",
+        "desc": "Launches, positioning, and claims",
         "kind": "launch",
         "chapter": "Product launch",
         "section": "HPE GreenLake",
         "title": "HPE GreenLake positioning",
         "lead": "Start every launch brief from this page.",
-        "positioning": "HPE GreenLake is a unified path for agentic hybrid operations, with agents, orchestration and governance in one place.",
+        "positioning": "HPE GreenLake is a unified path for agentic hybrid operations, with agents, orchestration, and governance in one place.",
         "claims": [
-          "One platform across edge, cloud and data center",
-          "Agent registry, orchestration and governance"
+          "One platform across edge, cloud, and data center",
+          "Agent registry, orchestration, and governance"
         ],
         "rule": "Write HPE GreenLake in full on first mention.",
         "ask": "Write a one-line pitch for HPE GreenLake.",
-        "answer": "**HPE GreenLake is a unified path for agentic hybrid operations, with agents, orchestration and governance in one place.** Drafted from the approved positioning."
+        "answer": "**HPE GreenLake is a unified path for agentic hybrid operations, with agents, orchestration, and governance in one place.** Drafted from the approved positioning."
       },
       {
         "id": "event",
         "label": "Event",
-        "desc": "Toolkits, booths and speaker kits",
+        "desc": "Toolkits, booths, and speaker kits",
         "kind": "event",
         "chapter": "Event toolkits",
         "section": "HPE Discover",
@@ -263,7 +263,7 @@
         "facts": [
           [
             "Audience",
-            "Customers, partners and press"
+            "Customers, partners, and press"
           ],
           [
             "Booth files",
@@ -273,7 +273,7 @@
         "templates": [
           {
             "name": "Speaker slide",
-            "note": "Add talk title, name and session"
+            "note": "Add talk title, name, and session"
           },
           {
             "name": "Event banner",
@@ -281,12 +281,12 @@
           }
         ],
         "ask": "I need a speaker slide for our session.",
-        "answer": "I opened the **Speaker slide** template. Add your talk title, name and session; **the layout and logo stay locked**."
+        "answer": "I opened the **Speaker slide** template. Add your talk title, name, and session; **the layout and logo stay locked**."
       },
       {
         "id": "everyday",
         "label": "Everyday",
-        "desc": "Short rules for email, decks and docs",
+        "desc": "Short rules for email, decks, and docs",
         "kind": "writing",
         "chapter": "Everyday",
         "section": "Email tone of voice",
@@ -303,7 +303,7 @@
           ],
           [
             "Voice",
-            "Open, courageous and inspired."
+            "Open, courageous, and inspired."
           ],
           [
             "Sign-off",
@@ -354,11 +354,11 @@
           ],
           [
             "Fill in",
-            "Campaign, usage rights and an expiry date."
+            "Campaign, usage rights, and an expiry date."
           ],
           [
             "Start from",
-            "Approved logos, photos and templates in the portal."
+            "Approved logos, photos, and templates in the portal."
           ]
         ],
         "rule": "Every submission needs usage rights and an expiry date.",
@@ -372,7 +372,7 @@
     "eyebrow": "Use case 4 · Everyday guidelines, inside your office applications",
     "title": "The right tone in every email and deck",
     "sub": "Most of {name} will never open a brand portal. With Frontify connected, your AI assistant inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
-    "note": "Your agent embedded in your enterprise apps, usually ChatGPT, Claude, Copilot or Gemini, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines.",
+    "note": "Your agent embedded in your enterprise apps, usually ChatGPT, Claude, Copilot, or Gemini, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation, and guidelines.",
     "tabs": [
       {
         "id": "outlook",
@@ -395,7 +395,7 @@
           "subject": "Review the GreenLake launch plan by Thursday",
           "body": [
             "Hi team, can you review the GreenLake launch plan by Thursday?",
-            "It covers the messaging, launch assets and timeline. Comments in the doc are perfect."
+            "It covers the messaging, launch assets, and timeline. Comments in the doc are perfect."
           ],
           "sig": "Sam Lee · Marketing"
         },
@@ -470,7 +470,7 @@
     "eyebrow": "Use case 5 · Partner and agency files",
     "title": "Partner files land in the right place",
     "sub": "Channel partners submit work straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
-    "note": "Sample files, partner and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "note": "Sample files, partner, and library. The assistant acts on the assets you select: workflow status, metadata, tags, and expiry dates.",
     "page": "Partners › Submit an asset",
     "submitter": "Northwind Creative · channel partner",
     "library": "Partner submissions",

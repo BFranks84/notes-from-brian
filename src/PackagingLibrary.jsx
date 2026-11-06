@@ -193,7 +193,7 @@ export function PackagingLibrary({ demo, theme, company }) {
   );
 }
 
-// A guided path to the right packaging rules: each answer narrows the pillar, art style and format, then shows
+// A guided path to the right packaging rules: each answer narrows the pillar, art style, and format, then shows
 // the template, the rules that apply and the matching packages.
 function TreeFinder({ tree, assets, onOpen }) {
   const [ans, setAns] = useState([]);

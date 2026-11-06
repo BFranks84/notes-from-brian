@@ -1,6 +1,6 @@
 """Generate company page data from the Atlassian template plus a compact per-company spec.
 Use cases 1-3 are fixed for every company; 4-5 are tailored via the spec. Run: python3 scripts/gen_companies.py"""
-import json, copy, os, re
+import json, re, copy, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 THEMES = json.load(open(f'{ROOT}/src/themes.json'))
 TPL = json.load(open(f'{ROOT}/src/data/atlassian.json'))
@@ -338,7 +338,7 @@ PACKAGING = {
    eyebrow='Use case 4 · Packaging', title='Find every package, and the rules behind it',
    sub="{name}'s exclusive-brand packaging lives in one library instead of scattered folders. Search or filter by brand, product line, format, size or logo version, then open any product to see its packaging guideline: every zone on the carton, the rule behind it and the source files.",
    note="Sample packages, products, sizes and rules built for this page. Not {name}'s own packaging or guidelines.",
-   wordmark='Floor & Decor', placeholder='Search packaging, e.g. NuCore or laminate', askLabel='A packaging designer asks the brand assistant', files=FILES,
+   wordmark='Floor & Decor', placeholder='Search packaging, e.g., NuCore or laminate', askLabel='A packaging designer asks the brand assistant', files=FILES,
    facets=[dict(id='brand', label='Brand'), dict(id='line', label='Product line'), dict(id='format', label='Format'), dict(id='size', label='Size'), dict(id='logo', label='Logo version'), dict(id='status', label='Status')],
    assets=[
      _a('fd1', 'NuCore', 'NuCore Performance Oak Plank', 'Performance Oak Plank', 'Vinyl plank', 'plank', 'Plank carton', '17.9 sq ft', '#1F3A5F', 'Waterproof vinyl plank', updated='Oct 28, 2026'),
@@ -378,7 +378,7 @@ PACKAGING = {
    eyebrow='Use case 4 · Packaging', title='The right packaging rules in three questions',
    sub="{name}'s store-brand packaging runs on pillars, with rules that change by category. A guided path takes anyone from a product's category to its pillar, template and rules. A searchable library holds every approved package with its metadata and its packaging guideline.",
    note="Sample pillars, packages, sizes and rules built for this page. Not {name}'s own packaging system or guidelines.",
-   wordmark='CVS Health', placeholder='Search packaging, e.g. melatonin or 100 ct', askLabel='A packaging designer asks the brand assistant', files=FILES,
+   wordmark='CVS Health', placeholder='Search packaging, e.g., melatonin or 100 ct', askLabel='A packaging designer asks the brand assistant', files=FILES,
    facets=[dict(id='brand', label='Brand'), dict(id='pillar', label='Pillar'), dict(id='category', label='Category'), dict(id='format', label='Format'), dict(id='logo', label='Design version'), dict(id='status', label='Status')],
    assets=[
      _a('cv1', 'CVS', 'Ibuprofen 200 mg Tablets', 'Ibuprofen 200 mg Tablets', 'Health · Pain relief', 'carton', 'Carton', '100 ct', '#CC0000', 'Pain reliever', pillar='Health', category='Pain relief', updated='Oct 21, 2026'),
@@ -680,12 +680,31 @@ def build(slug, s):
     apply_ai(d, AI.get(slug))
     return d
 
+# Frontify writing style (Brand Portal 2026 › Frontify style) uses the Oxford comma: "brand, creative, and product".
+# Lists of three or more short items get the comma before "and"/"or". Phrases that look like lists but aren't are skipped.
+_OX = re.compile(r"((?:[\w'’&./-]+(?: [\w'’&./-]+){0,2}, ){1,})([\w'’&./-]+(?: [\w'’&./-]+){0,2}) (and|or) ")
+OX_SKIP = ['connected to Frontify, checks', 'bottom left, in oz', 'Frontify, available in', 'on white,', 'brand by brand, with',
+           'not over FTP', 'then count', 'then strength', 'Yes, product', 'No, illustration', 'Before sending, with Claude',
+           'Frontify connected, Claude', 'with the size', 'e.g.', '#']
+def _ox_str(t):
+    def rep(m):
+        # Skip phrases that aren't lists, and color specs like "red, #CC0000, on white and gray"
+        if any(k in m.group(0) for k in OX_SKIP) or t[max(0, m.start() - 1)] == '#': return m.group(0)
+        return f"{m.group(1)}{m.group(2)}, {m.group(3)} "
+    return _OX.sub(rep, t)
+def oxford(x):
+    if isinstance(x, str): return _ox_str(x)
+    if isinstance(x, list): return [oxford(v) for v in x]
+    if isinstance(x, dict): return {k: oxford(v) for k, v in x.items()}
+    return x
+
 if __name__ == '__main__':
     # The template page (Atlassian) gets the same treatment; it has no known tools, so it uses the defaults.
     _tpl = json.load(open(f'{ROOT}/src/data/atlassian.json'))
     apply_ai(_tpl, AI.get('atlassian'))
+    _tpl = oxford(_tpl)
     json.dump(_tpl, open(f'{ROOT}/src/data/atlassian.json', 'w'), indent=2, ensure_ascii=False)
     TPL = _tpl
     for slug, s in S.items():
-        json.dump(build(slug, s), open(f'{ROOT}/src/data/{slug}.json', 'w'), indent=2, ensure_ascii=False)
+        json.dump(oxford(build(slug, s)), open(f'{ROOT}/src/data/{slug}.json', 'w'), indent=2, ensure_ascii=False)
         print('wrote', slug)

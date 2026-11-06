@@ -7,22 +7,22 @@
     {
       "id": "context",
       "title": "A system of context for every AI tool",
-      "summary": "Frontify gives ChatGPT, Copilot and Gemini the brand, creative, product and event context they need, so answers come out on brand."
+      "summary": "Frontify gives ChatGPT, Copilot, and Gemini the brand, creative, product, and event context they need, so answers come out on brand."
     },
     {
       "id": "contexts",
       "title": "What context lives in Frontify",
-      "summary": "Brand, creative, product, event and Everyday guidance live as guideline pages that people read and AI tools answer from."
+      "summary": "Brand, creative, product, event, and Everyday guidance live as guideline pages that people read and AI tools answer from."
     },
     {
       "id": "check",
       "title": "Brand Check before anything goes live",
-      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues and shows the guideline behind each finding."
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues, and shows the guideline behind each finding."
     },
     {
       "id": "packaging",
       "title": "Packaging: the right rules for every SKU",
-      "summary": "A guided path from category to pillar, template and rules, plus a searchable library of every approved package with its packaging guideline."
+      "summary": "A guided path from category to pillar, template, and rules, plus a searchable library of every approved package with its packaging guideline."
     },
     {
       "id": "everyday",
@@ -45,14 +45,14 @@
       "everyday",
       "supplier"
     ],
-    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice and claims nobody approved.",
+    "sub": "Anyone at {name} can make a launch post or image in seconds now. Without the brand's context, AI guesses: the wrong colors, the wrong voice, and claims nobody approved.",
     "prompt": "Make a LinkedIn post and image for our next Joyward launch.",
     "generic": "Excited to announce an amazing new feature! Our innovative AI solution will revolutionize the way your team works. Don't miss out! #Innovation #AI #Teamwork",
     "onbrand": "Joyward is our brand for seasonal decor and gifts, in stores now. Find something joyful for everyone on your list.",
     "context": [
       {
         "label": "Tone of voice",
-        "value": "Caring, clear and everyday-optimistic"
+        "value": "Caring, clear, and everyday-optimistic"
       },
       {
         "label": "Messaging",
@@ -185,13 +185,13 @@
   "contexts": {
     "eyebrow": "Use case 2 · What context lives in Frontify",
     "title": "Every kind of context, in one place",
-    "sub": "Brand, creative, product, campaign, packaging and supplier guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
+    "sub": "Brand, creative, product, campaign, packaging, and supplier guidance live in {name}'s portal, plus an Everyday section with short versions for every employee. People read them, and AI tools answer from them.",
     "note": "Sample pages built from CVS Health's public brand information. Not CVS Health's own guidelines.",
     "items": [
       {
         "id": "brand",
         "label": "Brand",
-        "desc": "Colors, type, logo and voice",
+        "desc": "Colors, type, logo, and voice",
         "kind": "color",
         "chapter": "Color",
         "section": "Primary colors",
@@ -222,7 +222,7 @@
       {
         "id": "creative",
         "label": "Creative",
-        "desc": "Photography, illustration and motion",
+        "desc": "Photography, illustration, and motion",
         "kind": "photo",
         "chapter": "Photography",
         "section": "Do and don't",
@@ -242,7 +242,7 @@
       {
         "id": "product",
         "label": "Product",
-        "desc": "Launches, positioning and claims",
+        "desc": "Launches, positioning, and claims",
         "kind": "launch",
         "chapter": "Product launch",
         "section": "Joyward",
@@ -292,7 +292,7 @@
       {
         "id": "packaging",
         "label": "Packaging",
-        "desc": "Pillars, categories and pack rules",
+        "desc": "Pillars, categories, and pack rules",
         "kind": "packaging",
         "chapter": "Packaging",
         "section": "Pillar architecture",
@@ -324,7 +324,7 @@
           ],
           [
             "Flex",
-            "color, art and icons, by pillar"
+            "color, art, and icons, by pillar"
           ],
           [
             "Category",
@@ -338,7 +338,7 @@
       {
         "id": "everyday",
         "label": "Everyday",
-        "desc": "Short rules for email, decks and docs",
+        "desc": "Short rules for email, decks, and docs",
         "kind": "writing",
         "chapter": "Everyday",
         "section": "Email tone of voice",
@@ -355,7 +355,7 @@
           ],
           [
             "Voice",
-            "Caring, clear and everyday-optimistic."
+            "Caring, clear, and everyday-optimistic."
           ],
           [
             "Sign-off",
@@ -364,7 +364,7 @@
         ],
         "do": "Can you review the launch plan by Thursday?",
         "dont": "Just circling back on the below!!",
-        "askLabel": "Before sending, with ChatGPT, Copilot or Gemini",
+        "askLabel": "Before sending, with ChatGPT, Copilot, or Gemini",
         "ask": "Check this email against our writing guidelines.",
         "answer": "Two fixes before you send: **put the ask in the first line**, and **use the standard signature**.",
         "from": "Condensed from Brand › Tone of voice",
@@ -406,7 +406,7 @@
           ],
           [
             "Fill in",
-            "Product, SKU, format and dieline version."
+            "Product, SKU, format, and dieline version."
           ],
           [
             "Start from",
@@ -416,15 +416,15 @@
         "rule": "Every packaging file needs the SKU and the dieline version.",
         "askLabel": "A packaging supplier asks the brand assistant",
         "ask": "How do we send updated packaging artwork?",
-        "answer": "**Submit it in the portal** under Suppliers › Submit an asset, with the **product, SKU and dieline version**. It lands in the Supplier submissions library."
+        "answer": "**Submit it in the portal** under Suppliers › Submit an asset, with the **product, SKU, and dieline version**. It lands in the Supplier submissions library."
       }
     ]
   },
   "everyday": {
     "eyebrow": "Use case 5 · Everyday guidelines, inside your office applications",
     "title": "The right tone in every email and deck",
-    "sub": "Most of {name} will never open a brand portal. With Frontify connected, ChatGPT, Copilot or Gemini inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
-    "note": "ChatGPT, Copilot and Gemini, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation and guidelines.",
+    "sub": "Most of {name} will never open a brand portal. With Frontify connected, ChatGPT, Copilot, or Gemini inside your email and presentation apps reads the Everyday guidelines and checks the work before it goes out.",
+    "note": "ChatGPT, Copilot, and Gemini, embedded in your enterprise apps, can read Frontify guidelines and use them as a reference and rule set for any suggested changes. Sample email, presentation, and guidelines.",
     "tabs": [
       {
         "id": "outlook",
@@ -447,7 +447,7 @@
           "subject": "Review the Joyward launch plan by Thursday",
           "body": [
             "Hi team, can you review the Joyward launch plan by Thursday?",
-            "It covers the messaging, launch assets and timeline. Comments in the doc are perfect."
+            "It covers the messaging, launch assets, and timeline. Comments in the doc are perfect."
           ],
           "sig": "Sam Lee · Marketing"
         },
@@ -522,7 +522,7 @@
     "eyebrow": "Use case 6 · Supplier and agency files",
     "title": "Supplier and agency files land in the right place",
     "sub": "Suppliers and agencies submit packaging artwork straight into {name}'s portal. Files land in the right library, and the assistant tags them and sets an expiry date in one sentence.",
-    "note": "Sample files, supplier and library. The assistant acts on the assets you select: workflow status, metadata, tags and expiry dates.",
+    "note": "Sample files, supplier, and library. The assistant acts on the assets you select: workflow status, metadata, tags, and expiry dates.",
     "page": "Suppliers › Submit an asset",
     "submitter": "Northwind Packaging · packaging supplier",
     "library": "Supplier submissions",
@@ -567,10 +567,10 @@
   "packaging": {
     "eyebrow": "Use case 4 · Packaging",
     "title": "The right packaging rules in three questions",
-    "sub": "{name}'s store-brand packaging runs on pillars, with rules that change by category. A guided path takes anyone from a product's category to its pillar, template and rules. A searchable library holds every approved package with its metadata and its packaging guideline.",
-    "note": "Sample pillars, packages, sizes and rules built for this page. Not {name}'s own packaging system or guidelines.",
+    "sub": "{name}'s store-brand packaging runs on pillars, with rules that change by category. A guided path takes anyone from a product's category to its pillar, template, and rules. A searchable library holds every approved package with its metadata and its packaging guideline.",
+    "note": "Sample pillars, packages, sizes, and rules built for this page. Not {name}'s own packaging system or guidelines.",
     "wordmark": "CVS Health",
-    "placeholder": "Search packaging, e.g. melatonin or 100 ct",
+    "placeholder": "Search packaging, e.g., melatonin or 100 ct",
     "askLabel": "A packaging designer asks the brand assistant",
     "files": [
       "Dieline (.ai)",
@@ -842,41 +842,41 @@
         "name": "Active ingredient and strength first, then the product name.",
         "claim": "One claim from the approved claims library. Anything else moves to the back.",
         "size": "Count and dosage form, bottom center.",
-        "info": "Back and side panels: Drug Facts, barcode and the How2Recycle label. Design never touches Drug Facts."
+        "info": "Back and side panels: Drug Facts, barcode, and the How2Recycle label. Design never touches Drug Facts."
       },
       "bottle": {
         "logo": "Brand band at the top of the label. Fixed on every pillar.",
         "name": "What it is first, then strength or formula.",
         "claim": "One claim from the approved claims library.",
         "size": "Count or volume, bottom of the front label.",
-        "info": "Back label: Drug, Supplement or Nutrition Facts as the category requires, barcode and How2Recycle label."
+        "info": "Back label: Drug, Supplement, or Nutrition Facts as the category requires, barcode, and How2Recycle label."
       },
       "tube": {
         "logo": "Brand band at the top of the tube. Fixed on every pillar.",
         "name": "Product type and finish first.",
         "claim": "One claim. Ingredient callouts stay on the back unless approved.",
         "size": "Volume in fl oz and mL, above the cap.",
-        "info": "Back: ingredients, directions, barcode and How2Recycle label."
+        "info": "Back: ingredients, directions, barcode, and How2Recycle label."
       },
       "bag": {
         "logo": "Brand band at the top of the bag. Fixed on every pillar.",
         "name": "Food name first, flavor second.",
         "claim": "One claim, for example kettle cooked.",
         "size": "Net weight bottom left, in oz and g.",
-        "info": "Back: Nutrition Facts, ingredients and allergen statement, barcode."
+        "info": "Back: Nutrition Facts, ingredients, and allergen statement, barcode."
       },
       "box": {
         "logo": "Brand band across the top. Fixed on every pillar.",
         "name": "What is in the set, in the seasonal voice.",
         "claim": "One giftable claim, for example ready to gift.",
         "size": "Piece count, bottom center.",
-        "info": "Back: contents, care, gift tag space and barcode."
+        "info": "Back: contents, care, gift tag space, and barcode."
       }
     },
     "rules": {},
     "tree": {
       "label": "Find my packaging rules",
-      "intro": "Answer three questions. The path leads to the pillar, the template and the rules that apply, plus approved packages that already follow them.",
+      "intro": "Answer three questions. The path leads to the pillar, the template, and the rules that apply, plus approved packages that already follow them.",
       "steps": [
         {
           "id": "category",
@@ -1046,7 +1046,7 @@
     },
     "detailQa": {
       "ask": "What has to stay fixed on the {name} pack?",
-      "answer": "**The brand band, the name hierarchy and the facts panel stay fixed.** Color, art and icons flex by pillar and category.",
+      "answer": "**The brand band, the name hierarchy, and the facts panel stay fixed.** Color, art, and icons flex by pillar and category.",
       "sources": "2 sources: Packaging - Pillar architecture; the product guideline"
     }
   }

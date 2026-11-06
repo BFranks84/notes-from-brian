@@ -1,0 +1,10 @@
+/* Frontify's official typefaces (Brand Portal 2026 › Typography), self-hosted with permission.
+   Cranny: display, reserved for headlines; snug line height, neutral letter spacing.
+   ABC Diatype: the workhorse for everything else; line height at least 120%. */
+@font-face { font-family: 'Cranny'; src: url('/fonts/Cranny-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cranny'; src: url('/fonts/Cranny-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Cranny'; src: url('/fonts/Cranny-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'ABC Diatype'; src: url('/fonts/ABCDiatype-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'ABC Diatype'; src: url('/fonts/ABCDiatype-RegularItalic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'ABC Diatype'; src: url('/fonts/ABCDiatype-Medium.woff2') format('woff2'); font-weight: 500 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'ABC Diatype'; src: url('/fonts/ABCDiatype-Bold.woff2') format('woff2'); font-weight: 700 800; font-style: normal; font-display: swap; }

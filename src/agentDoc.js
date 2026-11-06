@@ -8,7 +8,7 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push('');
   lines.push(`source: ${url}`);
   lines.push(`author: ${sender.name}, ${sender.title}, ${sender.company}`);
-  lines.push(`audience: brand, creative and marketing teams at ${c.name}`);
+  lines.push(`audience: brand, creative, and marketing teams at ${c.name}`);
   lines.push(`status: independent sample, not affiliated with or endorsed by ${c.name}`);
   lines.push('');
   lines.push('## Summary');
@@ -20,7 +20,7 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push('## Use cases');
   lines.push('');
   lines.push('### 1. A system of context');
-  lines.push(`Effective AI depends on an effective context layer. Frontify holds ${poss(c.name)} brand, creative, product and event knowledge so AI tools stop guessing.`);
+  lines.push(`Effective AI depends on an effective context layer. Frontify holds ${poss(c.name)} brand, creative, product, and event knowledge so AI tools stop guessing.`);
   lines.push('');
   if (c.contexts) {
     lines.push(`### 2. ${uc(c.contexts.eyebrow)}`);
@@ -74,6 +74,6 @@ export function agentDoc(c, { origin, booking, sender }) {
   lines.push('## Next step');
   lines.push(`Pick any idea above and book time with ${sender.name.split(' ')[0]}: ${booking}`);
   if (sender.email) lines.push(`Contact: ${sender.email}. Frontify: https://www.frontify.com/en`);
-  lines.push('No fixed agenda. Expect peer examples, setup patterns and an honest read on fit.');
+  lines.push('No fixed agenda. Expect peer examples, setup patterns, and an honest read on fit.');
   return lines.join('\n');
 }

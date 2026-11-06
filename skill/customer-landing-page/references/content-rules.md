@@ -32,5 +32,7 @@ The wording carries through the tab name, the rotating word in the hero and the 
 - Short, plain sentences. No buzzwords, no exclamation marks.
 - Sentence case for headings.
 - No double periods: write "Gap Inc." and let the page add or skip the final period.
-- Copy the brand's own rules when they're public, such as product-name casing (e.g. "watsonx" is lowercase).
-- Commas: Oxford comma is not used ("brand, creative and product").
+- Copy the brand's own rules when they're public, such as product-name casing (e.g., "watsonx" is lowercase).
+- Follow Frontify's writing style (Brand Portal 2026 › Frontify style): American English, sentence case for headlines and buttons, contractions, and numerals for money, percentages, and dates.
+- Use the Oxford comma for three or more items ("brand, creative, and product"); two items get none ("Claude or Copilot"). The generator adds it to lists automatically, but write it yourself so the copy is right in the spec.
+- Write "e.g.," and "i.e.," with periods and a comma after.

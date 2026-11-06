@@ -4,12 +4,14 @@
 <head>
 <meta charset="utf-8">
 <title>Postcard · {{NAME}}</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap">
 <style>
+/* Frontify's official text font (ABC Diatype), served from the site's own font files */
+@font-face { font-family: 'ABC Diatype'; src: url('../public/fonts/ABCDiatype-Regular.woff2') format('woff2'); font-weight: 400; }
+@font-face { font-family: 'ABC Diatype'; src: url('../public/fonts/ABCDiatype-Medium.woff2') format('woff2'); font-weight: 500; }
 @page { size: 6in 4in; margin: 0; }
 html, body { margin: 0; padding: 0; }
 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-.card { width: 576px; height: 384px; box-sizing: border-box; background: #F0F0EB; color: #111110; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; overflow: hidden; }
+.card { width: 576px; height: 384px; box-sizing: border-box; background: #F0F0EB; color: #111110; font-family: 'ABC Diatype', Verdana, sans-serif; display: flex; flex-direction: column; overflow: hidden; }
 .top { height: 56px; box-sizing: border-box; display: flex; border-bottom: 1px solid #111110; flex-shrink: 0; }
 .logo { width: 148px; flex-shrink: 0; box-sizing: border-box; padding: 0 28px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 3px; }
 .logo img { height: 20px; width: auto; display: block; }
@@ -32,7 +34,7 @@ html, body { margin: 0; padding: 0; }
 <body>
 <div class="card">
   <div class="top">
-    <div class="logo"><img src="frontify-lockup-black.svg" alt="Frontify"><span class="small">www.frontify.com</span></div>
+    <div class="logo"><img src="frontify-lockup-dark.svg" alt="Frontify"><span class="small">www.frontify.com</span></div>
     <div class="gridcells"></div>
     <div class="pair">Frontify × {{NAME}}</div>
   </div>

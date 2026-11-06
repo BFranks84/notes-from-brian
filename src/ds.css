@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Frontify Default design system (the "Frontify x Claude" package, 2026)
+   Loaded after styles.css. Shapes, sizes, and motion apply on every theme,
+   because the page is Frontify's product. Colors are exact Frontify values
+   on the Frontify theme; company themes keep their own colors.
+   ========================================================================== */
+
+:root {
+  /* Core and scales */
+  --base-white: #f0f0eb; --base-black: #111110; --marker-purple: #b60ae3;
+  --base-00: #ffffff; --base-05: #f8f8f5; --base-20: #eaeae4; --base-25: #e1e1db; --base-35: #cbcbc5;
+  --base-40: #bfbfb8; --base-50: #a4a49e; --base-60: #878781; --base-70: #676763; --base-75: #575753;
+  --base-80: #464643; --base-85: #353533; --base-90: #242422;
+  --mp-10: #fcf2ff; --mp-15: #fae8ff; --mp-20: #f5ccff; --mp-30: #eca1fe; --mp-70: #880aab; --mp-80: #650a7f;
+  --error-30: #f9b1ae; --error-60: #de2417; --error-90: #460a00;
+  --success-30: #a5eb99; --success-60: #168500; --success-90: #032c10;
+
+  /* Radius, elevation, motion */
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 16px; --radius-xl: 20px; --radius-2xl: 32px; --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(17,17,16,.04), 0 1px 1px rgba(17,17,16,.03);
+  --shadow-md: 0 4px 12px rgba(17,17,16,.06), 0 1px 2px rgba(17,17,16,.04);
+  --shadow-lg: 0 20px 40px rgba(17,17,16,.10), 0 4px 10px rgba(17,17,16,.05);
+  --ease-out: cubic-bezier(.2,.7,.2,1);
+  --ease: cubic-bezier(.6,0,.2,1);
+  --dur-fast: 150ms; --dur-med: 280ms; --dur-slow: 480ms;
+
+  /* The site's own tokens, mapped onto the system */
+  --r-card: var(--radius-xl);
+  --r-l: var(--radius-lg);
+  --hard: var(--shadow-md);
+  --soft: var(--shadow-lg);
+}
+
+/* ---------- Frontify theme: exact colors ---------- */
+.portal.theme-frontify {
+  --line: var(--base-25);
+  --line-mid: var(--base-35);
+  --ink-2: var(--base-75);
+  --ink-3: var(--base-70);
+  letter-spacing: .02em;                  /* body tracking */
+}
+.portal.theme-frontify :is(h1, h2, .mini-h, .ct-tab-name, .hero-h2) { letter-spacing: 0; }
+
+/* ---------- Focus and press ---------- */
+.portal :focus-visible { outline: 2px solid var(--marker-purple); outline-offset: 2px; }
+.press:hover { transform: none; }
+.press:active { transform: scale(.98); transition-duration: 80ms; }
+
+/* ---------- Buttons: pill, 48px (md) / 36px (sm), 15px / 14px, medium ---------- */
+.btn-link { min-height: 48px; padding: 0 22px; font-size: 15px; font-weight: 500; border-radius: var(--radius-pill);
+  transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out); }
+.btn-link:not(.is-strong):not(.is-accent) { border-width: 1.5px; }
+/* Hover: filled buttons go one shade darker; outline buttons get a light fill. No accent swap, no lift. */
+.btn-link.is-strong:hover, .btn-link.is-accent:hover { background: color-mix(in srgb, var(--ink) 80%, var(--bg)); color: var(--surface); }
+.btn-link:not(.is-strong):not(.is-accent):hover { background: color-mix(in srgb, var(--ink) 8%, transparent); color: var(--ink); }
+.portal.theme-frontify .btn-link.is-strong:hover, .portal.theme-frontify .btn-link.is-accent:hover { background: var(--base-80); color: var(--base-white); }
+.portal.theme-frontify .btn-link:not(.is-strong):not(.is-accent):hover { background: var(--base-20); }
+.btn { min-height: 36px; padding: 0 16px; font-size: 14px; font-weight: 500; border-radius: var(--radius-pill); }
+.btn[data-emphasis='strong']:hover { background: color-mix(in srgb, var(--ink) 80%, var(--bg)); color: var(--surface); }
+
+/* ---------- Segmented tabs: gray pill track, 4px inset, white selected tab ---------- */
+.seg { height: 44px; padding: 4px; border: 0; border-radius: var(--radius-pill); background: color-mix(in srgb, var(--ink) 9%, var(--bg)); }
+.seg-item { padding: 0 18px; font-size: 14px; font-weight: 500; color: var(--ink); border-radius: var(--radius-pill); }
+.seg-item[aria-checked='false'] { color: var(--ink); }
+.seg-item[aria-checked='false']:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.seg-indicator { top: 4px; height: calc(100% - 8px); }
+.seg-indicator::before { background: var(--surface); box-shadow: var(--shadow-sm); border-radius: var(--radius-pill); }
+.seg-item[aria-checked='true'],
+.portal.theme-frontify .seg-theme .seg-item[aria-checked='true'] { color: var(--ink); }
+.seg-theme .seg-indicator::before { background: var(--surface); }
+.portal.theme-frontify .seg { background: var(--base-25); }
+.portal.theme-frontify .seg-indicator::before { background: var(--base-00); }
+/* Company themes: the theme switch shows the company accent, so the selected brand stays obvious */
+.portal:not(.theme-frontify) .seg-theme .seg-indicator::before { background: var(--accent); }
+.portal:not(.theme-frontify) .seg-theme .seg-item[aria-checked='true'] { color: var(--accent-ink); }
+/* Dark variant: on dark sections the track is base-85 and the selected tab is base-black */
+.on-dark .seg, .seg.is-dark { background: var(--base-85); }
+.on-dark .seg-item, .seg.is-dark .seg-item { color: var(--base-white); }
+.on-dark .seg-indicator::before, .seg.is-dark .seg-indicator::before { background: var(--base-black); box-shadow: none; }
+@media (max-width: 600px) { .seg { height: 40px; } }
+
+/* ---------- Section labels (eyebrows): small, tracked, uppercase, muted ---------- */
+.portal.theme-frontify .bc-eyebrow-tag { font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--base-70); }
+
+/* ---------- Cards: 20px corners, flat, 1px low-contrast line ---------- */
+.ct-tab, .pl-card { border-radius: var(--radius-xl); }
+.pl-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+/* Card titles are sub-headings: Diatype medium, never Cranny (Cranny is for h1 and h2 only) */
+@media (min-width: 900px) {
+  .portal.theme-frontify .ct-tab-name { font-family: var(--typography-font-family-primary); font-weight: 500; font-style: normal; font-size: 20px; }
+}
+
+/* ---------- Badges: 24px pill, 12px medium, sentence case ---------- */
+.pl-status { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; font-size: 12px; font-weight: 500; letter-spacing: 0; text-transform: none; border-radius: var(--radius-pill);
+  background: var(--success-30); color: var(--success-90); }
+.pl-status.is-in-review { background: var(--base-white); color: var(--base-black); box-shadow: inset 0 0 0 1px var(--base-35); }
+.pl-status.is-expired { background: var(--error-30); color: var(--error-90); }
+
+/* ---------- Search and chips (product UI): gray pill, round black button ---------- */
+.portal.theme-frontify .pl-search, .portal.theme-frontify .pl-chip { background: var(--base-25); }
+
+/* ---------- Links: underline in the text color, fade on hover ---------- */
+.foot a, .note-link { border-bottom: 1px solid currentColor; text-decoration: none; transition: opacity var(--dur-fast) var(--ease-out); }
+.foot a:hover { opacity: .6; }
+
+/* Hero buttons: same hover rules (one shade darker on filled, light fill on outline) */
+.portal .hero .btn-link.is-strong:hover { background: color-mix(in srgb, var(--hero-ink) 80%, var(--hero-bg)); color: var(--hero-bg); border-color: transparent; }
+.portal .hero .btn-link:not(.is-strong):hover { background: color-mix(in srgb, var(--ink) 8%, var(--surface)); color: var(--ink); border-color: var(--ink); }
+.portal.theme-frontify .hero .btn-link.is-strong:hover { background: var(--base-80); color: var(--base-white); }
+
+/* Phones: tighter tabs so the top bar fits at 375px */
+@media (max-width: 600px) {
+  .seg { padding: 3px; }
+  .seg-indicator { top: 3px; height: calc(100% - 6px); }
+  .seg-item { padding: 0 9px; font-size: 13px; }
+  .seg-theme.is-multi .seg-item { padding: 0 7px; }
+}
+@media (max-width: 380px) { .seg-item { padding: 0 7px; font-size: 12px; } }

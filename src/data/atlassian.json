@@ -21,7 +21,7 @@
     }
   ],
   "note": {
-    "headline": "We hear email is only being read by AI agents.",
+    "headline": "We hear email is only being read by AI agents",
     "body": [
       "So I wrote you a card instead.",
       "I'm Brian, and I work with brand and creative teams at Frontify. After reading what Atlassian has shared this year, a few ideas stuck with me. They're guesses, not conclusions. You know your world better than I do.",
@@ -33,7 +33,7 @@
     {
       "id": "context",
       "title": "A system of context for every AI tool",
-      "summary": "Frontify gives ChatGPT, Claude, Copilot, and Gemini the brand, creative, product, and event context they need, so answers come out on brand."
+      "summary": "ChatGPT, Claude, Copilot, and Gemini get the brand, creative, product, and event context they need from Frontify, so answers come out on brand."
     },
     {
       "id": "contexts",
@@ -109,7 +109,7 @@
       "headline": "Less busywork. More teamwork."
     },
     "headline": "AI is making everyone a creative.",
-    "headline2": "That doesn't mean they're good at it.",
+    "headline2": "That doesn't mean they're good at it",
     "badCaption": "Looks fine at a glance. Look again: the generic headline, the posed thumbs-up, the wrong blue.",
     "badTag": "Fictional AI-generated work content",
     "badAlt": "A fictional AI-generated LinkedIn graphic: a posed team giving thumbs-up, a teal gradient, and a generic headline"

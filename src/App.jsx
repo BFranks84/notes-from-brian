@@ -37,7 +37,7 @@ function Home() {
     <main className="home">
       <div className="home-card">
         <p className="home-from">Notes from Brian Franke</p>
-        <h1>I write to people instead of their inboxes.</h1>
+        <h1>I write to people instead of their inboxes</h1>
         <p>
           I'm a Senior Enterprise Account Executive at Frontify, the brand platform built for people and the AI tools they
           work with. If I sent you a link, it opens a page made for your team.
@@ -144,7 +144,7 @@ function Portal({ company: c }) {
               <h1 id="hero-title">{c.hero.headline} <span className="hero-h2"><span>{c.hero.headline2}</span></span></h1>
               <p className="hero-sub">{c.hero.sub.replace('{name}', c.name)}</p>
               <div className="hero-ctas">
-                <a className="btn-link is-strong press" href="#what"><IconArrowDown size={16} /> See how Frontify fixes it</a>
+                <a className="btn-link is-strong press" href="#what"><IconArrowDown size={16} /> See how we fix it</a>
                 <a className="btn-link press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Talk to Brian</a>
               </div>
             </div>
@@ -164,7 +164,7 @@ function Portal({ company: c }) {
           <section className="wrap block uc1-demo" aria-labelledby="uc1-demo-title">
             <div className="block-head">
               <h2 id="uc1-demo-title"><span className="rot-line">The <RotatingWord words={c.hero.rotate} /> context platform</span> <span className="rot-line">for {poss(c.name)} employees and their AI</span></h2>
-              <p>Most people at {c.name} will never open Frontify. They'll ask {listOf(aiTools(c), 'or')}, and Frontify makes sure the answer already knows the brand.</p>
+              <p>Most people at {c.name} will never open Frontify. They'll ask {listOf(aiTools(c), 'or')}, and we make sure the answer already knows the brand.</p>
             </div>
             <ChatDemo hero={c.hero} company={c.name} theme={dt} ai={c.ai} />
           </section>
@@ -279,7 +279,7 @@ function Portal({ company: c }) {
 
           <section className="talk" aria-labelledby="talk-title">
             <div className="wrap">
-              <h2 id="talk-title">Pick an idea. I'll bring the insights.</h2>
+              <h2 id="talk-title">Pick an idea. I'll bring the insights</h2>
               <p className="talk-sub">No fixed agenda and no demo you didn't ask for. Choose what's interesting and I'll come ready.</p>
               <TryHint className="on-dark">tap an idea to see what I'll bring.</TryHint>
               <div className="picker" role="radiogroup" aria-label="Idea to discuss">
@@ -327,7 +327,7 @@ function WhatIsFrontify({ name, tools }) {
       <div className="block-head">
         <p className="bc-eyebrow-tag">First, what is Frontify?</p>
         <h2 id="what-title">One home for your brand, built for people and AI</h2>
-        <p>Frontify is where brand and marketing teams keep everything that makes their brand theirs: guidelines, logos, photos, templates, and product messaging. Everyone finds the current version in one place.</p>
+        <p>We built Frontify as the place where brand and marketing teams keep everything that makes their brand theirs: guidelines, logos, photos, templates, and product messaging. Everyone finds the current version in one place.</p>
       </div>
       <div className="what-why">
         <p className="what-k">Why it matters now</p>

@@ -22,7 +22,7 @@ The wording carries through the tab name, the rotating word in the hero and the 
 
 ## Fixed page structure (don't change per company)
 
-- Hero: "AI is making everyone a creative. That doesn't mean they're good at it."
+- Hero: "AI is making everyone a creative. That doesn't mean they're good at it" (no period at the end: headlines never end in one)
 - The use case 1 headline is always two lines: "The ___ context platform" / "for {Company}'s employees and their AI". The blank rotates through one word per context tab.
 - The context tabs cover every use case on the page, and the rotating words match the tabs.
 - The Everyday use case is "Everyday guidelines, inside your office applications", with the tabs "Email" and "Presentation".
@@ -37,7 +37,8 @@ The wording carries through the tab name, the rotating word in the hero and the 
 
 ## Writing
 
-- Short, plain sentences. No buzzwords, no exclamation marks.
+- Short, plain sentences. No buzzwords, no exclamation marks, no em dashes.
+- No period at the end of a headline or section title. Speak as Frontify ("we"), not about it ("Frontify makes…"). Full list: `design-system.md` → Writing rules.
 - Sentence case for headings.
 - No double periods: write "Gap Inc." and let the page add or skip the final period.
 - Copy the brand's own rules when they're public, such as product-name casing (e.g., "watsonx" is lowercase).

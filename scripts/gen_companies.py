@@ -514,7 +514,7 @@ def apply_ai(d, tools):
     who = _list(tools, 'or') if tools else None          # in the Everyday demo
     for i in d['ideas']:
         if i['id'] == 'context':
-            i['summary'] = f"Frontify gives {_list(every)} the brand, creative, product and event context they need, so answers come out on brand."
+            i['summary'] = f"{_list(every)} get the brand, creative, product and event context they need from Frontify, so answers come out on brand."
         if i['id'] == 'everyday':
             i['summary'] = f"{who or 'Your AI assistant'}, connected to Frontify, checks emails and presentations against short Everyday guidelines before they go out."
     ev = d['everyday']

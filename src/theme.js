@@ -9,7 +9,7 @@ export const FRONTIFY = {
   family: "'Cranny', 'Palatino Linotype', Georgia, serif",
   body: "'ABC Diatype', Verdana, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
   displayWeight: 300, displayTracking: '0', displayItalic: false,
-  radiusBtn: '999px', radiusCard: '16px', btnCase: 'none', eyebrowCase: 'none',
+  radiusBtn: '999px', radiusCard: '20px', btnCase: 'none', eyebrowCase: 'none',
 };
 
 const NEUTRAL_SANS = "'Geist Variable', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";

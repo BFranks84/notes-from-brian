@@ -7,7 +7,7 @@
     {
       "id": "context",
       "title": "A system of context for every AI tool",
-      "summary": "Frontify gives ChatGPT, Claude, Copilot, and Gemini the brand, creative, product, and event context they need, so answers come out on brand."
+      "summary": "ChatGPT, Claude, Copilot, and Gemini get the brand, creative, product, and event context they need from Frontify, so answers come out on brand."
     },
     {
       "id": "contexts",
@@ -68,7 +68,7 @@
       "headline": "Build agents. Govern them in one place."
     },
     "headline": "AI is making everyone a creative.",
-    "headline2": "That doesn't mean they're good at it.",
+    "headline2": "That doesn't mean they're good at it",
     "badCaption": "Looks fine at a glance. Look again: the copy, the posed group, the colors.",
     "badTag": "Fictional AI-generated work content",
     "badAlt": "A fictional AI-generated LinkedIn graphic: a posed data team, a coral-to-purple gradient, and a generic headline",

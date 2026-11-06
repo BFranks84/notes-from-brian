@@ -27,6 +27,14 @@ The wording carries through the tab name, the rotating word in the hero and the 
 - The context tabs cover every use case on the page, and the rotating words match the tabs.
 - The Everyday use case is "Everyday guidelines, inside your office applications", with the tabs "Email" and "Presentation".
 
+## Retail use case
+
+`RETAIL['urbn']` is the model for every retail section. The point is that everyone in the store knows how the store should look, not that store teams make signs:
+- Signs arrive by mail, finished. The portal shows where each one goes: which window, which table, where the counter card sits at the register.
+- Mockups show how the floor, the front table, and each display should be laid out and styled. Store teams check them before they set up, or ask the brand assistant.
+- Never say store teams write copy, fill in a sign template, add an offer, or print signs. Keep `template=None` so the "Template" button stays hidden.
+- Title: "Store teams know exactly how the store should look". The idea card is about in-store layout and sign placement.
+
 ## Writing
 
 - Short, plain sentences. No buzzwords, no exclamation marks.

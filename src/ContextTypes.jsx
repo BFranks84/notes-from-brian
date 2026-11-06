@@ -10,7 +10,7 @@ const reduce = () => typeof window !== 'undefined' && window.matchMedia('(prefer
 
 // Use case 1: the system of context. Each context type shows a tiny guideline page in the company's
 // brand (layout patterns borrowed from Frontify guideline pages), plus what an AI tool gets from it.
-export function ContextTypes({ items, theme, company }) {
+export function ContextTypes({ items, theme, company, stock = [], badImage }) {
   const [k, setK] = useState(0);
   const [auto, setAuto] = useState(true);
   const [seen, setSeen] = useState(false);
@@ -75,7 +75,7 @@ export function ContextTypes({ items, theme, company }) {
               <p className="mini-crumb s" style={{ '--i': 0 }}>{it.chapter} › {it.section}</p>
               <h3 className="mini-h s" style={{ '--i': 1 }}>{it.title}</h3>
               <p className="mini-lead s" style={{ '--i': 2 }}>{it.lead}</p>
-              <Preview it={it} />
+              <Preview it={it} stock={stock} badImage={badImage} />
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ export function ContextTypes({ items, theme, company }) {
 // **bold** spans, the way the Brand assistant emphasizes key details in its answers.
 const rich = (t) => t.split(/(\*\*[^*]+\*\*)/).map((p, i) => (p.startsWith('**') ? <strong key={i}>{p.slice(2, -2)}</strong> : p));
 
-function Preview({ it }) {
+function Preview({ it, stock = [], badImage }) {
   if (it.kind === 'color') {
     return (
       <div className="mini-swatches">
@@ -114,9 +114,15 @@ function Preview({ it }) {
       <div className="mini-dd">
         {[['do', it.do], ['dont', it.dont]].map(([kind, d], i) => (
           <div key={kind} className={`mini-ddc is-${kind} s`} style={{ '--i': 3 + i }}>
-            <span className="mini-img" aria-hidden="true">
-              {kind === 'do' ? (<><b style={{ left: '18%' }} /><b style={{ left: '42%', top: '30%' }} /><b style={{ left: '66%' }} /></>) : (<b className="solo" />)}
-            </span>
+            {kind === 'do' && stock[0] ? (
+              <img className="mini-img is-photo" src={stock[0].src} alt={stock[0].alt} loading="lazy" style={{ objectPosition: stock[0].pos }} />
+            ) : kind === 'dont' && badImage ? (
+              <img className="mini-img is-photo" src={badImage} alt="A posed, generic AI-generated image" loading="lazy" />
+            ) : (
+              <span className="mini-img" aria-hidden="true">
+                {kind === 'do' ? (<><b style={{ left: '18%' }} /><b style={{ left: '42%', top: '30%' }} /><b style={{ left: '66%' }} /></>) : (<b className="solo" />)}
+              </span>
+            )}
             <strong>{kind === 'do' ? <IconCheck size={13} /> : <IconCross size={11} />}{d.label}</strong>
             <span>{d.note}</span>
           </div>

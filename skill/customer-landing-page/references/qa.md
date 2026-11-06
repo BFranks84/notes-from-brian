@@ -23,6 +23,8 @@ Open each image in `qa/<slug>/` and check:
 - **Mockups** (packaging, retail): no labels on top of each other, no text spilling out of signs or packages.
 - **Phone:** nothing cut off, buttons fit, tabs scroll instead of squeezing.
 - **Theme band:** switch to the company theme. Text stays readable on its colors.
+- **Logos:** the co-brand in the top bar and the logos in the theme switch are sharp, readable, and not cut off, including on the black selected pill.
+- **Photos and prompts:** the photography "do" photo matches its caption, and every interactive part shows a "Try it" line or button.
 
 ## 3. Fix and repeat
 

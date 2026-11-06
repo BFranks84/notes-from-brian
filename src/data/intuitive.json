@@ -221,17 +221,17 @@
         "chapter": "Photography",
         "section": "Do and don't",
         "title": "Photography",
-        "lead": "Real teams doing real work, never staged.",
+        "lead": "Real care, shown with respect, never staged.",
         "do": {
-          "label": "Teams at work",
-          "note": "Candid moments of people working together."
+          "label": "Care up close",
+          "note": "Hands-on moments of care, in natural light."
         },
         "dont": {
           "label": "Posed for the camera",
-          "note": "No staged handshakes or stock smiles."
+          "note": "No forced smiles or stock poses."
         },
-        "ask": "Can I use a stock photo of a handshake?",
-        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+        "ask": "Can I use a stock photo of people smiling at the camera?",
+        "answer": "Better not. The photography guidelines ask for **real, hands-on moments of care**, and **no forced smiles or stock poses**."
       },
       {
         "id": "product",
@@ -507,5 +507,37 @@
     "you": "You're the partner. Then see what the brand team gets.",
     "tryLabel": "Try it: submit 2 partner files"
   },
-  "ai": null
+  "ai": null,
+  "stock": [
+    {
+      "src": "/stock/bandage.jpg",
+      "alt": "Medical professional applying a bandage",
+      "pos": "center 40%"
+    },
+    {
+      "src": "/stock/stretch.jpg",
+      "alt": "Woman stretching",
+      "pos": "center 30%"
+    },
+    {
+      "src": "/stock/park.jpg",
+      "alt": "Women walking in a park",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/grass.jpg",
+      "alt": "Woman sitting under a tree",
+      "pos": "center 55%"
+    },
+    {
+      "src": "/stock/skincare.jpg",
+      "alt": "Applying skincare serum",
+      "pos": "center 45%"
+    },
+    {
+      "src": "/stock/curly.jpg",
+      "alt": "Person with curly hair",
+      "pos": "center 40%"
+    }
+  ]
 }

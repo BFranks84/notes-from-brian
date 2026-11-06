@@ -221,17 +221,17 @@
         "chapter": "Photography",
         "section": "Do and don't",
         "title": "Photography",
-        "lead": "Real teams doing real work, never staged.",
+        "lead": "Real people with personality, never posed.",
         "do": {
-          "label": "Teams at work",
-          "note": "Candid moments of people working together."
+          "label": "Natural and expressive",
+          "note": "People moving freely, in clean, simple settings."
         },
         "dont": {
           "label": "Posed for the camera",
-          "note": "No staged handshakes or stock smiles."
+          "note": "No forced smiles or stock poses."
         },
-        "ask": "Can I use a stock photo of a handshake?",
-        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+        "ask": "Can I use a stock photo of shoppers smiling at the camera?",
+        "answer": "Better not. The photography guidelines ask for **natural, expressive people**, and **no forced smiles or stock poses**."
       },
       {
         "id": "product",
@@ -507,5 +507,47 @@
     "you": "You're the agency. Then see what the brand team gets.",
     "tryLabel": "Try it: submit 2 agency files"
   },
-  "ai": null
+  "ai": null,
+  "stock": [
+    {
+      "src": "/stock/model.jpg",
+      "alt": "Fashion model in studio",
+      "pos": "center 55%"
+    },
+    {
+      "src": "/stock/trench.jpg",
+      "alt": "Woman in trench coat",
+      "pos": "center 35%"
+    },
+    {
+      "src": "/stock/shopping.jpg",
+      "alt": "Person reaching into a shopping bag",
+      "pos": "center 45%"
+    },
+    {
+      "src": "/stock/hat-coat.jpg",
+      "alt": "Person in hat and coat",
+      "pos": "center 30%"
+    },
+    {
+      "src": "/stock/park.jpg",
+      "alt": "Women walking in a park",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/sunglasses.jpg",
+      "alt": "Green-tinted sunglasses",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/earrings.jpg",
+      "alt": "Gold hoop earrings",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/backlit.jpg",
+      "alt": "Backlit group in jackets",
+      "pos": "center 40%"
+    }
+  ]
 }

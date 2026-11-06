@@ -66,9 +66,9 @@ export function StoreGuide({ demo, theme, company }) {
                     <div key={a} className="s" style={{ '--i': 2 + i }}><dt>{a}</dt><dd>{b}</dd></div>
                   ))}
                 </dl>
-                <button className="sg-tpl s" style={{ '--i': 5 }} onClick={() => openContext('event')}>
+                {demo.template && <button className="sg-tpl s" style={{ '--i': 5 }} onClick={() => openContext('event')}>
                   <IconDocumentText size={14} /> Template: {demo.template}
-                </button>
+                </button>}
               </div>
             </div>
             {ended && <p className="sg-ended"><b>{ended.status}</b> {ended.name}, {ended.dates}. {ended.note}</p>}

@@ -31,8 +31,8 @@
     },
     {
       "id": "retail",
-      "title": "Campaigns in store: windows, shelves, and the register",
-      "summary": "Mockups in the portal show how each campaign should look in the window, on the front table, on the shelf, and at the register, brand by brand, with the size and rules for every sign."
+      "title": "In-store layout: where every sign goes and how each display looks",
+      "summary": "Mockups in the portal show each store how the floor, the front table, the windows, and the register should look for every campaign, brand by brand, and where each sign that arrives by mail goes."
     }
   ],
   "hero": {
@@ -227,17 +227,17 @@
         "chapter": "Photography",
         "section": "Do and don't",
         "title": "Photography",
-        "lead": "Real teams doing real work, never staged.",
+        "lead": "Real people with personality, never posed.",
         "do": {
-          "label": "Teams at work",
-          "note": "Candid moments of people working together."
+          "label": "Natural and expressive",
+          "note": "People moving freely, in clean, simple settings."
         },
         "dont": {
           "label": "Posed for the camera",
-          "note": "No staged handshakes or stock smiles."
+          "note": "No forced smiles or stock poses."
         },
-        "ask": "Can I use a stock photo of a handshake?",
-        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+        "ask": "Can I use a stock photo of shoppers smiling at the camera?",
+        "answer": "Better not. The photography guidelines ask for **natural, expressive people**, and **no forced smiles or stock poses**."
       },
       {
         "id": "product",
@@ -282,8 +282,8 @@
             "note": "Headline and image, layout locked"
           },
           {
-            "name": "In-store sign",
-            "note": "Add the offer, the rest stays on brand"
+            "name": "Store layout mockups",
+            "note": "Floor, windows, front table, and register"
           }
         ],
         "ask": "I need a social post for the campaign.",
@@ -292,12 +292,12 @@
       {
         "id": "retail",
         "label": "Retail",
-        "desc": "Windows, shelves, and the register",
+        "desc": "Store layout, signs, and displays",
         "kind": "retail",
         "chapter": "Retail",
         "section": "In-store campaign",
         "title": "Holiday in store",
-        "lead": "How the current campaign shows up in every store, brand by brand.",
+        "lead": "How the current campaign is laid out in every store, brand by brand.",
         "rule": "Each brand dresses its own windows. Never mix two brands in one window.",
         "ask": "Where does the holiday sign go at the register?",
         "answer": "The **counter card** goes **left of the register**, angled toward the customer. Impulse items get price strips only.",
@@ -559,14 +559,56 @@
     "tryLabel": "Try it: submit 2 agency files"
   },
   "ai": null,
+  "stock": [
+    {
+      "src": "/stock/model.jpg",
+      "alt": "Fashion model in studio",
+      "pos": "center 55%"
+    },
+    {
+      "src": "/stock/trench.jpg",
+      "alt": "Woman in trench coat",
+      "pos": "center 35%"
+    },
+    {
+      "src": "/stock/shopping.jpg",
+      "alt": "Person reaching into a shopping bag",
+      "pos": "center 45%"
+    },
+    {
+      "src": "/stock/hat-coat.jpg",
+      "alt": "Person in hat and coat",
+      "pos": "center 30%"
+    },
+    {
+      "src": "/stock/park.jpg",
+      "alt": "Women walking in a park",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/sunglasses.jpg",
+      "alt": "Green-tinted sunglasses",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/earrings.jpg",
+      "alt": "Gold hoop earrings",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/backlit.jpg",
+      "alt": "Backlit group in jackets",
+      "pos": "center 40%"
+    }
+  ],
   "retail": {
     "eyebrow": "Use case 6 · Retail context",
-    "title": "Every store shows the campaign the same way",
-    "sub": "{name}'s portal shows how each campaign should look in store, brand by brand: the windows, the front table, the shelves, and the register. Store teams see the mockup, the size, and the rules, then print from the template. Or they ask the brand assistant.",
+    "title": "Store teams know exactly how the store should look",
+    "sub": "{name}'s portal shows each store how every campaign comes together, brand by brand: how the floor and front table are laid out, which window each mailed sign goes in, where the counter card sits at the register, and how each display should be styled. Store teams check the mockups before they set up, or ask the brand assistant.",
     "note": "Sample mockups, campaigns, sizes, and dates built for this page. Not {name}'s own store standards.",
     "chapter": "Retail",
     "section": "In-store campaign",
-    "template": "In-store sign",
+    "template": null,
     "askLabel": "A store manager asks the brand assistant",
     "goods": "folded",
     "strips": [
@@ -639,7 +681,7 @@
         "where": "Both windows, centered at eye level. Each brand dresses its own windows.",
         "content": "Campaign art and the headline in that brand's look. Never mix two brands in one window.",
         "ask": "Can the Old Navy and Gap windows share one graphic?",
-        "answer": "No. **Each brand dresses its own windows** in its own look. Pull each brand's window graphic from the campaign toolkit."
+        "answer": "No. **Each brand dresses its own windows** in its own look. Each brand's window graphic arrives in its own mailer: hang it in that brand's windows as it arrives."
       },
       {
         "id": "table",

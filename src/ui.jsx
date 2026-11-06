@@ -26,6 +26,7 @@ export function Segmented({ value, onChange, options, labelledBy, className = ''
           type="button"
           role="radio"
           aria-checked={o.value === value}
+          aria-label={o.aria}
           className="seg-item"
           onClick={(e) => onChange(o.value, e)}
           onKeyDown={(e) => {
@@ -56,4 +57,14 @@ export function Btn({ emphasis = 'default', onPress, children, ...rest }) {
 
 export function Badge({ children }) {
   return <span className="badge">{children}</span>;
+}
+
+// A clear prompt above anything the visitor can use, so it's obvious what to click.
+export function TryHint({ children, className = '' }) {
+  return (
+    <p className={`try-hint ${className}`}>
+      <span className="try-dot" aria-hidden="true" />
+      <span><b>Try it:</b> {children}</span>
+    </p>
+  );
 }

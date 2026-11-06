@@ -31,8 +31,8 @@
     },
     {
       "id": "retail",
-      "title": "Store signs from submitted copy: windows, shelves, and the register",
-      "summary": "Store teams fill in the copy on locked sign templates, and mockups show how each campaign should look in the window, on the front table, on the shelf, and at the register."
+      "title": "In-store layout: where every sign goes and how each display looks",
+      "summary": "Mockups in the portal show each store how the floor, the front table, the windows, and the register should look for every campaign, and where each sign that arrives by mail goes."
     }
   ],
   "hero": {
@@ -247,17 +247,17 @@
         "chapter": "Photography",
         "section": "Do and don't",
         "title": "Photography",
-        "lead": "Real teams doing real work, never staged.",
+        "lead": "Real people with personality, never posed.",
         "do": {
-          "label": "Teams at work",
-          "note": "Candid moments of people working together."
+          "label": "Natural and expressive",
+          "note": "People moving freely, in clean, simple settings."
         },
         "dont": {
           "label": "Posed for the camera",
-          "note": "No staged handshakes or stock smiles."
+          "note": "No forced smiles or stock poses."
         },
-        "ask": "Can I use a stock photo of a handshake?",
-        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+        "ask": "Can I use a stock photo of shoppers smiling at the camera?",
+        "answer": "Better not. The photography guidelines ask for **natural, expressive people**, and **no forced smiles or stock poses**."
       },
       {
         "id": "event",
@@ -284,8 +284,8 @@
             "note": "Headline and image, layout locked"
           },
           {
-            "name": "In-store sign",
-            "note": "Add the offer, the rest stays on brand"
+            "name": "Store layout mockups",
+            "note": "Floor, windows, front table, and register"
           }
         ],
         "ask": "I need a social post for the campaign.",
@@ -294,13 +294,13 @@
       {
         "id": "retail",
         "label": "Retail",
-        "desc": "Windows, shelves, and the register",
+        "desc": "Store layout, signs, and displays",
         "kind": "retail",
         "chapter": "Retail",
         "section": "In-store campaign",
         "title": "Holiday in store",
-        "lead": "How the current campaign shows up in every Anthropologie store.",
-        "rule": "Store teams write the copy. The sign template keeps the layout, type, and colors on brand.",
+        "lead": "How the current campaign is laid out in every Anthropologie store.",
+        "rule": "Every sign that arrives by mail has a spot. The mockups show where it goes and how the display around it should look.",
         "ask": "Where does the holiday sign go at the register?",
         "answer": "The **counter card** goes **left of the register**, angled toward the customer. Small gifts get price strips only.",
         "thumbs": [
@@ -564,15 +564,57 @@
     "Claude",
     "Gemini"
   ],
+  "stock": [
+    {
+      "src": "/stock/model.jpg",
+      "alt": "Fashion model in studio",
+      "pos": "center 55%"
+    },
+    {
+      "src": "/stock/trench.jpg",
+      "alt": "Woman in trench coat",
+      "pos": "center 35%"
+    },
+    {
+      "src": "/stock/shopping.jpg",
+      "alt": "Person reaching into a shopping bag",
+      "pos": "center 45%"
+    },
+    {
+      "src": "/stock/hat-coat.jpg",
+      "alt": "Person in hat and coat",
+      "pos": "center 30%"
+    },
+    {
+      "src": "/stock/park.jpg",
+      "alt": "Women walking in a park",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/sunglasses.jpg",
+      "alt": "Green-tinted sunglasses",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/earrings.jpg",
+      "alt": "Gold hoop earrings",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/backlit.jpg",
+      "alt": "Backlit group in jackets",
+      "pos": "center 40%"
+    }
+  ],
   "contentTheme": "urbn-anthropologie",
   "retail": {
     "eyebrow": "Use case 6 · Retail context",
-    "title": "Store teams send the words. The signs come out on brand.",
-    "sub": "{name}'s portal shows how each Anthropologie campaign should look in store: the windows, the front table, the shelves, and the register. Store teams fill in the copy on the sign template. The layout, type, and colors stay locked, so every sign prints on brand. Or they ask the brand assistant.",
+    "title": "Store teams know exactly how the store should look",
+    "sub": "{name}'s portal shows each store how every Anthropologie campaign comes together: how the floor and front table are laid out, which window each mailed sign goes in, where the counter card sits at the register, and how each display should be styled. Store teams check the mockups before they set up, or ask the brand assistant.",
     "note": "Sample mockups, campaigns, sizes, and dates built for this page. Not {name}'s own store standards.",
     "chapter": "Retail",
     "section": "In-store campaign",
-    "template": "In-store sign",
+    "template": null,
     "askLabel": "A store manager asks the brand assistant",
     "goods": "folded",
     "strips": [
@@ -643,9 +685,9 @@
         "sign": "Window graphic",
         "size": "48 × 72 in",
         "where": "Both windows, centered at eye level, above the display.",
-        "content": "One campaign story per window: the headline and one line, in sentence case.",
-        "ask": "Can I write the window headline in all caps?",
-        "answer": "No. **Headlines are in sentence case**, like the rest of the voice guide. Fill in the copy on the window template and the type stays on brand."
+        "content": "One campaign story per window. Hang the graphic as it arrives, with the display styled below it.",
+        "ask": "Which window does the holiday graphic from the mailer go in?",
+        "answer": "**Both windows**, centered at eye level, **above the display**. Hang it as it arrives: the headline is already in sentence case, so nothing gets added or rewritten in store."
       },
       {
         "id": "table",

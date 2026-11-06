@@ -227,17 +227,17 @@
         "chapter": "Photography",
         "section": "Do and don't",
         "title": "Photography",
-        "lead": "Real teams doing real work, never staged.",
+        "lead": "Real materials and real light, never staged.",
         "do": {
-          "label": "Teams at work",
-          "note": "Candid moments of people working together."
+          "label": "Texture and light",
+          "note": "Close-ups that show the material and finish."
         },
         "dont": {
           "label": "Posed for the camera",
-          "note": "No staged handshakes or stock smiles."
+          "note": "No staged showrooms or stock smiles."
         },
-        "ask": "Can I use a stock photo of a handshake?",
-        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+        "ask": "Can I use a stock photo of a family posing in a showroom?",
+        "answer": "Better not. The photography guidelines ask for **real texture and light**, and **no staged showrooms or stock smiles**."
       },
       {
         "id": "product",
@@ -560,6 +560,38 @@
   "ai": [
     "Claude",
     "Copilot"
+  ],
+  "stock": [
+    {
+      "src": "/stock/wood.jpg",
+      "alt": "Hand on a wooden surface",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/couch.jpg",
+      "alt": "Green velvet couch",
+      "pos": "center 55%"
+    },
+    {
+      "src": "/stock/vase.jpg",
+      "alt": "White ceramic vase",
+      "pos": "center 45%"
+    },
+    {
+      "src": "/stock/leather.jpg",
+      "alt": "Lounge with leather seats",
+      "pos": "center 60%"
+    },
+    {
+      "src": "/stock/lounge.jpg",
+      "alt": "Lounge with orange seating",
+      "pos": "center 55%"
+    },
+    {
+      "src": "/stock/grass.jpg",
+      "alt": "Woman sitting under a tree",
+      "pos": "center 55%"
+    }
   ],
   "packaging": {
     "eyebrow": "Use case 4 · Packaging",

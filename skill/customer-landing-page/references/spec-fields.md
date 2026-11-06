@@ -29,7 +29,7 @@ Copy an existing entry and change every value.
 
 ## Company spec (`S['<slug>']`)
 
-Copy the closest existing company (B2B tech: `ibm`, `servicenow`; retail: `gap`; regulated: `cibc`, `cvshealth`) and replace every value.
+Copy the closest existing company (B2B tech: `ibm`, `servicenow`; retail: `urbn` or `gap`; regulated: `cibc`, `cvshealth`) and replace every value.
 
 **Hero and use case 1 (the AI post demo)**
 
@@ -94,7 +94,7 @@ Copy the closest existing company (B2B tech: `ibm`, `servicenow`; retail: `gap`;
 | `AUD_FOR['<slug>']` | The people who send files are not "partners" | `'agency'`, `'supplier'`, `'vendor'`, `'franchisee'` or `'retailer'`. Leave the slug out for partners. |
 | `AI['<slug>']` | The customer said on a call which AI tools they use | List from `ChatGPT`, `Claude`, `Copilot`, `Gemini`, alphabetical, with a comment naming the call |
 | `PACKAGING['<slug>']` | Packaging came up on a call | Copy `flooranddecor` (one product family) or `cvshealth` (many brands + decision tree) |
-| `RETAIL['<slug>']` | A retailer, and in-store came up | Copy `gap` (apparel, `goods='folded'`) or `sephora` (bottles) |
+| `RETAIL['<slug>']` | A retailer, and in-store came up | Copy `urbn` (the model for every retail section; `goods='folded'`), or `sephora` for bottles. See content-rules.md → Retail use case |
 
 Do not edit `src/data/<slug>.json` by hand. It is regenerated on every build.
 

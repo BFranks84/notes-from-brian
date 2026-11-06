@@ -31,8 +31,8 @@
     },
     {
       "id": "retail",
-      "title": "Promotions in store: windows, shelves, and the register",
-      "summary": "Mockups in the portal show how each promotion should look in the window, on the gifting table, on the shelf, and at the register, with the size and rules for every sign."
+      "title": "In-store layout: where every sign goes and how each display looks",
+      "summary": "Mockups in the portal show each store how the floor, the gifting table, the windows, and the register should look for every promotion, and where each sign that arrives by mail goes."
     }
   ],
   "hero": {
@@ -227,17 +227,17 @@
         "chapter": "Photography",
         "section": "Do and don't",
         "title": "Photography",
-        "lead": "Real teams doing real work, never staged.",
+        "lead": "Real skin and real product, never over-retouched.",
         "do": {
-          "label": "Teams at work",
-          "note": "Candid moments of people working together."
+          "label": "Real texture",
+          "note": "Close-ups that show real skin and product."
         },
         "dont": {
           "label": "Posed for the camera",
-          "note": "No staged handshakes or stock smiles."
+          "note": "No forced smiles or stock poses."
         },
-        "ask": "Can I use a stock photo of a handshake?",
-        "answer": "Better not. The photography guidelines ask for **candid teamwork**, and **no staged handshakes or stock smiles**."
+        "ask": "Can I use a stock photo of models smiling at the camera?",
+        "answer": "Better not. The photography guidelines ask for **real skin and texture**, and **no forced smiles or stock poses**."
       },
       {
         "id": "product",
@@ -282,8 +282,8 @@
             "note": "Headline and image, layout locked"
           },
           {
-            "name": "In-store sign",
-            "note": "Add the offer, the rest stays on brand"
+            "name": "Store layout mockups",
+            "note": "Floor, windows, front table, and register"
           }
         ],
         "ask": "I need a social post for the campaign.",
@@ -292,12 +292,12 @@
       {
         "id": "retail",
         "label": "Retail",
-        "desc": "Windows, shelves, and the register",
+        "desc": "Store layout, signs, and displays",
         "kind": "retail",
         "chapter": "Retail",
         "section": "In-store promotion",
         "title": "Holiday gifting in store",
-        "lead": "How the current promotion shows up in every store.",
+        "lead": "How the current promotion is laid out in every store.",
         "rule": "Windows carry art and the headline only. Prices go inside the store.",
         "ask": "Where does the holiday sign go at the register?",
         "answer": "The **counter card** goes **left of the register**, angled toward the guest. Queue fixtures get price strips only.",
@@ -553,14 +553,46 @@
     "tryLabel": "Try it: submit 2 agency files"
   },
   "ai": null,
+  "stock": [
+    {
+      "src": "/stock/skincare.jpg",
+      "alt": "Applying skincare serum",
+      "pos": "center 45%"
+    },
+    {
+      "src": "/stock/petal.jpg",
+      "alt": "Pink petal close-up",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/curly.jpg",
+      "alt": "Person with curly hair",
+      "pos": "center 40%"
+    },
+    {
+      "src": "/stock/earrings.jpg",
+      "alt": "Gold hoop earrings",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/stretch.jpg",
+      "alt": "Woman stretching",
+      "pos": "center 30%"
+    },
+    {
+      "src": "/stock/model.jpg",
+      "alt": "Fashion model in studio",
+      "pos": "center 55%"
+    }
+  ],
   "retail": {
     "eyebrow": "Use case 6 · Retail context",
-    "title": "Every store shows the promotion the same way",
-    "sub": "{name}'s portal shows how each promotion should look in store: the window, the gifting table, the shelves, and the register. Store teams see the mockup, the size, and the rules, then print from the template. Or they ask the brand assistant.",
+    "title": "Store teams know exactly how the store should look",
+    "sub": "{name}'s portal shows each store how every promotion comes together: how the floor and gifting table are laid out, which window each mailed sign goes in, where the counter card sits at the register, and how each display should be styled. Store teams check the mockups before they set up, or ask the brand assistant.",
     "note": "Sample mockups, promotions, sizes, and dates built for this page. Not {name}'s own store standards.",
     "chapter": "Retail",
     "section": "In-store promotion",
-    "template": "In-store sign",
+    "template": null,
     "askLabel": "A store manager asks the brand assistant",
     "promos": [
       {
@@ -626,8 +658,8 @@
         "size": "48 × 72 in",
         "where": "Both windows, centered at eye level.",
         "content": "Campaign art and the headline. No prices in the window.",
-        "ask": "Can I put the price on the holiday window?",
-        "answer": "No. **Windows carry campaign art and the headline only.** Prices go on the gifting table header or the shelf."
+        "ask": "Where do the holiday price cards go?",
+        "answer": "Inside the store, never in the window. **Windows carry the campaign art and headline only.** The price cards from the mailer go on the gifting table and the end caps."
       },
       {
         "id": "table",

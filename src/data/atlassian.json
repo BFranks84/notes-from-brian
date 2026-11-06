@@ -541,5 +541,47 @@
       "Set expiry date"
     ]
   },
-  "ai": null
+  "ai": null,
+  "stock": [
+    {
+      "src": "/stock/meeting.jpg",
+      "alt": "Business meeting with laptops",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/headphones.jpg",
+      "alt": "Woman wearing headphones",
+      "pos": "center 30%"
+    },
+    {
+      "src": "/stock/walking-office.jpg",
+      "alt": "Businesspeople walking",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/group.jpg",
+      "alt": "Group of four young adults",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/speaker-blue.jpg",
+      "alt": "Blue mesh speaker",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/backlit.jpg",
+      "alt": "Backlit group in jackets",
+      "pos": "center 40%"
+    },
+    {
+      "src": "/stock/mesh.jpg",
+      "alt": "Abstract digital mesh",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/speaker-red.jpg",
+      "alt": "Red smart speaker",
+      "pos": "center 55%"
+    }
+  ]
 }

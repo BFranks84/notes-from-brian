@@ -216,10 +216,10 @@ ASK = 'A store manager asks the brand assistant'
 RETAIL = {
  'gap': dict(
    eyebrow='Use case 6 · Retail context',
-   title='Every store shows the campaign the same way',
-   sub="{name}'s portal shows how each campaign should look in store, brand by brand: the windows, the front table, the shelves and the register. Store teams see the mockup, the size and the rules, then print from the template. Or they ask the brand assistant.",
+   title='Store teams know exactly how the store should look',
+   sub="{name}'s portal shows each store how every campaign comes together, brand by brand: how the floor and front table are laid out, which window each mailed sign goes in, where the counter card sits at the register, and how each display should be styled. Store teams check the mockups before they set up, or ask the brand assistant.",
    note="Sample mockups, campaigns, sizes and dates built for this page. Not {name}'s own store standards.",
-   chapter='Retail', section='In-store campaign', template='In-store sign', askLabel=ASK, goods='folded',
+   chapter='Retail', section='In-store campaign', template=None, askLabel=ASK, goods='folded',
    strips=['Socks · $12', 'Beanie · $15', 'Gift card'],
    promos=[
      dict(status='Now', name='Holiday', dates='Nov 1 – Dec 24', note='Signs come down after close on Dec 24.',
@@ -233,7 +233,7 @@ RETAIL = {
    placements=[
      dict(id='window', label='Window', sign='Window graphic', size='48 × 72 in', where='Both windows, centered at eye level. Each brand dresses its own windows.',
           content='Campaign art and the headline in that brand\'s look. Never mix two brands in one window.',
-          ask='Can the Old Navy and Gap windows share one graphic?', answer='No. **Each brand dresses its own windows** in its own look. Pull each brand\'s window graphic from the campaign toolkit.'),
+          ask='Can the Old Navy and Gap windows share one graphic?', answer='No. **Each brand dresses its own windows** in its own look. Each brand\'s window graphic arrives in its own mailer: hang it in that brand\'s windows as it arrives.'),
      dict(id='table', label='Front table', sign='Table header', size='11 × 17 in', where='Front edge of the first table inside the door, facing the entrance.',
           content='Headline and one line of copy. Folded stacks by size, smallest on top.',
           ask='What goes on the front table this week?', answer='The **Holiday gifts under $30** edit, with the **table header facing the entrance**. Fold stacks by size, smallest on top.'),
@@ -244,18 +244,18 @@ RETAIL = {
           content='One add-on offer. Impulse items get price strips only.',
           ask='What sign goes at the register this month?', answer='One **counter card, left of the register**, angled toward the customer. For Holiday it is Add a gift card. Impulse items get **price strips only**.'),
    ],
-   context=dict(id='retail', label='Retail', desc='Windows, shelves and the register', kind='retail', chapter='Retail', section='In-store campaign',
-     title='Holiday in store', lead='How the current campaign shows up in every store, brand by brand.',
+   context=dict(id='retail', label='Retail', desc='Store layout, signs, and displays', kind='retail', chapter='Retail', section='In-store campaign',
+     title='Holiday in store', lead='How the current campaign is laid out in every store, brand by brand.',
      rule='Each brand dresses its own windows. Never mix two brands in one window.',
      ask='Where does the holiday sign go at the register?', answer='The **counter card** goes **left of the register**, angled toward the customer. Impulse items get price strips only.'),
-   idea=dict(id='retail', title='Campaigns in store: windows, shelves and the register', summary='Mockups in the portal show how each campaign should look in the window, on the front table, on the shelf and at the register, brand by brand, with the size and rules for every sign.'),
+   idea=dict(id='retail', title='In-store layout: where every sign goes and how each display looks', summary='Mockups in the portal show each store how the floor, the front table, the windows, and the register should look for every campaign, brand by brand, and where each sign that arrives by mail goes.'),
  ),
  'sephora': dict(
    eyebrow='Use case 6 · Retail context',
-   title='Every store shows the promotion the same way',
-   sub="{name}'s portal shows how each promotion should look in store: the window, the gifting table, the shelves and the register. Store teams see the mockup, the size and the rules, then print from the template. Or they ask the brand assistant.",
+   title='Store teams know exactly how the store should look',
+   sub="{name}'s portal shows each store how every promotion comes together: how the floor and gifting table are laid out, which window each mailed sign goes in, where the counter card sits at the register, and how each display should be styled. Store teams check the mockups before they set up, or ask the brand assistant.",
    note="Sample mockups, promotions, sizes and dates built for this page. Not {name}'s own store standards.",
-   chapter='Retail', section='In-store promotion', template='In-store sign', askLabel=ASK,
+   chapter='Retail', section='In-store promotion', template=None, askLabel=ASK,
    promos=[
      dict(status='Now', name='Holiday gifting', dates='Nov 1 – Dec 24', note='Signs come down after close on Dec 24.',
           copy=dict(window=['Holiday gifting', 'Gifts for everyone'], table=["Gifts they'll love", 'Sets for every budget'],
@@ -268,7 +268,7 @@ RETAIL = {
    placements=[
      dict(id='window', label='Window', sign='Window graphic', size='48 × 72 in', where='Both windows, centered at eye level.',
           content='Campaign art and the headline. No prices in the window.',
-          ask='Can I put the price on the holiday window?', answer='No. **Windows carry campaign art and the headline only.** Prices go on the gifting table header or the shelf.'),
+          ask='Where do the holiday price cards go?', answer='Inside the store, never in the window. **Windows carry the campaign art and headline only.** The price cards from the mailer go on the gifting table and the end caps.'),
      dict(id='table', label='Gifting table', sign='Gifting table header', size='11 × 17 in', where='Front edge of the gifting table, facing the entrance.',
           content='Headline and one line of copy. Gift sets only on the table, refreshed every Monday.',
           ask='What goes on the gifting table this week?', answer='**Holiday gifting** sets, with the **header facing the entrance**. Refresh the table every Monday.'),
@@ -279,18 +279,18 @@ RETAIL = {
           content='One add-on offer. The queue fixtures get price strips only, no posters.',
           ask='What sign goes at the register this month?', answer='One **counter card, left of the register**, angled toward the guest. For Holiday gifting it is Add a gift card. Queue fixtures get **price strips only**.'),
    ],
-   context=dict(id='retail', label='Retail', desc='Windows, shelves and the register', kind='retail', chapter='Retail', section='In-store promotion',
-     title='Holiday gifting in store', lead='How the current promotion shows up in every store.',
+   context=dict(id='retail', label='Retail', desc='Store layout, signs, and displays', kind='retail', chapter='Retail', section='In-store promotion',
+     title='Holiday gifting in store', lead='How the current promotion is laid out in every store.',
      rule='Windows carry art and the headline only. Prices go inside the store.',
      ask='Where does the holiday sign go at the register?', answer='The **counter card** goes **left of the register**, angled toward the guest. Queue fixtures get price strips only.'),
-   idea=dict(id='retail', title='Promotions in store: windows, shelves and the register', summary='Mockups in the portal show how each promotion should look in the window, on the gifting table, on the shelf and at the register, with the size and rules for every sign.'),
+   idea=dict(id='retail', title='In-store layout: where every sign goes and how each display looks', summary='Mockups in the portal show each store how the floor, the gifting table, the windows, and the register should look for every promotion, and where each sign that arrives by mail goes.'),
  ),
  'urbn': dict(
    eyebrow='Use case 6 · Retail context',
-   title='Store teams send the words. The signs come out on brand.',
-   sub="{name}'s portal shows how each Anthropologie campaign should look in store: the windows, the front table, the shelves and the register. Store teams fill in the copy on the sign template. The layout, type and colors stay locked, so every sign prints on brand. Or they ask the brand assistant.",
+   title='Store teams know exactly how the store should look',
+   sub="{name}'s portal shows each store how every Anthropologie campaign comes together: how the floor and front table are laid out, which window each mailed sign goes in, where the counter card sits at the register, and how each display should be styled. Store teams check the mockups before they set up, or ask the brand assistant.",
    note="Sample mockups, campaigns, sizes and dates built for this page. Not {name}'s own store standards.",
-   chapter='Retail', section='In-store campaign', template='In-store sign', askLabel=ASK, goods='folded',
+   chapter='Retail', section='In-store campaign', template=None, askLabel=ASK, goods='folded',
    strips=['Candle · $28', 'Ornament · $14', 'Gift card'],
    promos=[
      dict(status='Now', name='Holiday', dates='Nov 1 – Dec 24', note='Signs come down after close on Dec 24.',
@@ -303,8 +303,8 @@ RETAIL = {
    ],
    placements=[
      dict(id='window', label='Window', sign='Window graphic', size='48 × 72 in', where='Both windows, centered at eye level, above the display.',
-          content='One campaign story per window: the headline and one line, in sentence case.',
-          ask='Can I write the window headline in all caps?', answer='No. **Headlines are in sentence case**, like the rest of the voice guide. Fill in the copy on the window template and the type stays on brand.'),
+          content='One campaign story per window. Hang the graphic as it arrives, with the display styled below it.',
+          ask='Which window does the holiday graphic from the mailer go in?', answer='**Both windows**, centered at eye level, **above the display**. Hang it as it arrives: the headline is already in sentence case, so nothing gets added or rewritten in store.'),
      dict(id='table', label='Front table', sign='Table header', size='11 × 17 in', where='Front edge of the first table inside the door, facing the entrance.',
           content='Headline and one line of copy. Gifts styled in small groups, not stacks.',
           ask='What goes on the front table this week?', answer='The **Gifts under $50** edit, with the **table header facing the entrance**. Style gifts in small groups, not stacks.'),
@@ -315,11 +315,11 @@ RETAIL = {
           content='One add-on offer. Small gifts get price strips only.',
           ask='What sign goes at the register this month?', answer='One **counter card, left of the register**, angled toward the customer. For Holiday it is Add a gift card. Small gifts get **price strips only**.'),
    ],
-   context=dict(id='retail', label='Retail', desc='Windows, shelves and the register', kind='retail', chapter='Retail', section='In-store campaign',
-     title='Holiday in store', lead='How the current campaign shows up in every Anthropologie store.',
-     rule='Store teams write the copy. The sign template keeps the layout, type and colors on brand.',
+   context=dict(id='retail', label='Retail', desc='Store layout, signs, and displays', kind='retail', chapter='Retail', section='In-store campaign',
+     title='Holiday in store', lead='How the current campaign is laid out in every Anthropologie store.',
+     rule='Every sign that arrives by mail has a spot. The mockups show where it goes and how the display around it should look.',
      ask='Where does the holiday sign go at the register?', answer='The **counter card** goes **left of the register**, angled toward the customer. Small gifts get price strips only.'),
-   idea=dict(id='retail', title='Store signs from submitted copy: windows, shelves and the register', summary='Store teams fill in the copy on locked sign templates, and mockups show how each campaign should look in the window, on the front table, on the shelf and at the register.'),
+   idea=dict(id='retail', title='In-store layout: where every sign goes and how each display looks', summary='Mockups in the portal show each store how the floor, the front table, the windows, and the register should look for every campaign, and where each sign that arrives by mail goes.'),
  ),
 }
 
@@ -668,6 +668,10 @@ def build(slug, s):
         rot = d['hero']['rotate']; rot.insert(rot.index('event') + 1, 'retail')
         d['retail'] = r
         d['ideas'].append(idea)
+        # Retail pages: store teams set up from mailed signs and layout mockups; they don't make signs
+        ev = next(x for x in its if x['id'] == 'event')
+        if ev.get('templates'):
+            ev['templates'] = [t if t['name'] != 'In-store sign' else {'name': 'Store layout mockups', 'note': 'Floor, windows, front table, and register'} for t in ev['templates']]
     # Partners tab (every page), then the use case 2 intro from whatever tabs this page has
     its = d['contexts']['items']
     pt = partners_tab(name, s['partners'], s['short'].lower().replace(' ', '-').replace('+', 'plus'), packaging=bool(PACKAGING.get(slug)))
@@ -679,6 +683,47 @@ def build(slug, s):
     d['hero']['rotate'] = rotate_words(its)
     apply_ai(d, AI.get(slug))
     return d
+
+# Licensed stock photography (Frontify media library › Stock › Licensed), picked by industry for asset tiles and photo examples.
+STOCK_POOLS = {
+    'tech': ['meeting', 'headphones', 'walking-office', 'group', 'speaker-blue', 'backlit', 'mesh', 'speaker-red'],
+    'retail': ['model', 'trench', 'shopping', 'hat-coat', 'park', 'sunglasses', 'earrings', 'backlit'],
+    'beauty': ['skincare', 'petal', 'curly', 'earrings', 'stretch', 'model'],
+    'health': ['stretch', 'bandage', 'park', 'skincare', 'grass', 'curly'],
+    'finance': ['walking-office', 'meeting', 'grass', 'lounge', 'group', 'leather'],
+    'home': ['wood', 'couch', 'vase', 'leather', 'lounge', 'grass'],
+    'medical': ['bandage', 'stretch', 'park', 'grass', 'skincare', 'curly'],
+}
+STOCK_FOR = {'gap': 'retail', 'urbn': 'retail', 'pinterest': 'retail', 'sephora': 'beauty', 'cvshealth': 'health', 'intuitive': 'medical',
+             'cibc': 'finance', 'flooranddecor': 'home'}
+_STOCK_ALT = json.load(open(f'{ROOT}/src/stock.json'))
+# The photography do/don't caption has to describe the "do" photo (stock[0]). Tech and finance keep the template's "Teams at work".
+_POSE = {'label': 'Posed for the camera', 'note': 'No forced smiles or stock poses.'}
+PHOTO_COPY = {
+    'retail': dict(lead='Real people with personality, never posed.', do={'label': 'Natural and expressive', 'note': 'People moving freely, in clean, simple settings.'}, dont=_POSE,
+                   ask='Can I use a stock photo of shoppers smiling at the camera?', answer='Better not. The photography guidelines ask for **natural, expressive people**, and **no forced smiles or stock poses**.'),
+    'beauty': dict(lead='Real skin and real product, never over-retouched.', do={'label': 'Real texture', 'note': 'Close-ups that show real skin and product.'}, dont=_POSE,
+                   ask='Can I use a stock photo of models smiling at the camera?', answer='Better not. The photography guidelines ask for **real skin and texture**, and **no forced smiles or stock poses**.'),
+    'health': dict(lead='Real people taking care of themselves, never staged.', do={'label': 'Everyday care', 'note': 'Natural moments, in soft daylight.'}, dont=_POSE,
+                   ask='Can I use a stock photo of people smiling at the camera?', answer='Better not. The photography guidelines ask for **natural, everyday moments**, and **no forced smiles or stock poses**.'),
+    'medical': dict(lead='Real care, shown with respect, never staged.', do={'label': 'Care up close', 'note': 'Hands-on moments of care, in natural light.'}, dont=_POSE,
+                    ask='Can I use a stock photo of people smiling at the camera?', answer='Better not. The photography guidelines ask for **real, hands-on moments of care**, and **no forced smiles or stock poses**.'),
+    'home': dict(lead='Real materials and real light, never staged.', do={'label': 'Texture and light', 'note': 'Close-ups that show the material and finish.'}, dont={'label': 'Posed for the camera', 'note': 'No staged showrooms or stock smiles.'},
+                 ask='Can I use a stock photo of a family posing in a showroom?', answer='Better not. The photography guidelines ask for **real texture and light**, and **no staged showrooms or stock smiles**.'),
+}
+def photo_copy(d, slug):
+    c = PHOTO_COPY.get(STOCK_FOR.get(slug, 'tech'))
+    if not c: return
+    for it in d['contexts']['items']:
+        if isinstance(it.get('do'), dict) and isinstance(it.get('dont'), dict):
+            it['lead'] = c['lead']; it['do'] = dict(it['do'], **c['do']); it['dont'] = dict(it['dont'], **c['dont'])
+            it['ask'] = c['ask']; it['answer'] = c['answer']
+# Where the subject sits in each tall photo, so landscape crops keep it (CSS background/object-position)
+STOCK_POS = {'headphones': 'center 30%', 'speaker-red': 'center 55%', 'model': 'center 55%', 'trench': 'center 35%', 'hat-coat': 'center 30%',
+             'shopping': 'center 45%', 'backlit': 'center 40%', 'skincare': 'center 45%', 'curly': 'center 40%', 'bandage': 'center 40%',
+             'stretch': 'center 30%', 'lounge': 'center 55%', 'grass': 'center 55%', 'vase': 'center 45%', 'couch': 'center 55%', 'leather': 'center 60%'}
+def stock_for(slug):
+    return [{'src': f'/stock/{k}.jpg', 'alt': _STOCK_ALT[k], 'pos': STOCK_POS.get(k, 'center')} for k in STOCK_POOLS[STOCK_FOR.get(slug, 'tech')]]
 
 # Frontify writing style (Brand Portal 2026 › Frontify style) uses the Oxford comma: "brand, creative, and product".
 # Lists of three or more short items get the comma before "and"/"or". Phrases that look like lists but aren't are skipped.
@@ -703,8 +748,10 @@ if __name__ == '__main__':
     _tpl = json.load(open(f'{ROOT}/src/data/atlassian.json'))
     apply_ai(_tpl, AI.get('atlassian'))
     _tpl = oxford(_tpl)
+    _tpl['stock'] = stock_for('atlassian')
     json.dump(_tpl, open(f'{ROOT}/src/data/atlassian.json', 'w'), indent=2, ensure_ascii=False)
     TPL = _tpl
     for slug, s in S.items():
-        json.dump(oxford(build(slug, s)), open(f'{ROOT}/src/data/{slug}.json', 'w'), indent=2, ensure_ascii=False)
+        _d = oxford(build(slug, s)); _d['stock'] = stock_for(slug); photo_copy(_d, slug)
+        json.dump(_d, open(f'{ROOT}/src/data/{slug}.json', 'w'), indent=2, ensure_ascii=False)
         print('wrote', slug)

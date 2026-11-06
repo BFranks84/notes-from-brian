@@ -6,7 +6,7 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Use case 5: a partner drops files into the portal's submission block; they land in the right library;
 // the DAM assistant tags them and sets an expiry date for the selected files in one sentence.
-export function PartnerFiles({ demo, theme, company }) {
+export function PartnerFiles({ demo, theme, company, stock = [] }) {
   const [st, setSt] = useState(reduce() ? 9 : 0);
   const [pct, setPct] = useState(reduce() ? 100 : 0);
   const ref = useRef(null); const run = useRef(0);
@@ -79,7 +79,7 @@ export function PartnerFiles({ demo, theme, company }) {
             <div className="pf-grid" style={vars}>
               {files.map((f, i) => (
                 <div key={f.name} className={`pf-tile is-new ${st >= 5 ? 'is-sel' : ''}`} style={{ '--i': i }}>
-                  <span className="pf-thumb"><b>{f.title}</b></span>
+                  <span className={`pf-thumb ${stock[i] ? 'has-photo' : ''}`} style={stock[i] ? { backgroundImage: `url(${stock[i].src})`, '--pos': stock[i].pos } : undefined}><b>{f.title}</b></span>
                   <span className="pf-name">{st >= 5 && <span className="pf-chk"><IconCheck size={11} /></span>}{f.name}</span>
                   {tagged ? (
                     <span className="pf-meta pop">{demo.tags.map((tg) => <i key={tg}>{tg}</i>)}<em>Until {demo.expires}</em></span>
@@ -88,8 +88,8 @@ export function PartnerFiles({ demo, theme, company }) {
                   )}
                 </div>
               ))}
-              {demo.existing.map((x) => (
-                <div key={x} className="pf-tile is-old"><span className="pf-thumb"><b>{x}</b></span><span className="pf-name">{x.toLowerCase().replace(/\s+/g, '-')}.png</span></div>
+              {demo.existing.map((x, j) => (
+                <div key={x} className="pf-tile is-old"><span className={`pf-thumb ${stock[j + 2] ? 'has-photo' : ''}`} style={stock[j + 2] ? { backgroundImage: `url(${stock[j + 2].src})`, '--pos': stock[j + 2].pos } : undefined}><b>{x}</b></span><span className="pf-name">{x.toLowerCase().replace(/\s+/g, '-')}.png</span></div>
               ))}
             </div>
           </div>

@@ -507,5 +507,37 @@
     "you": "You're the vendor. Then see what the brand team gets.",
     "tryLabel": "Try it: submit 2 vendor files"
   },
-  "ai": null
+  "ai": null,
+  "stock": [
+    {
+      "src": "/stock/walking-office.jpg",
+      "alt": "Businesspeople walking",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/meeting.jpg",
+      "alt": "Business meeting with laptops",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/grass.jpg",
+      "alt": "Woman sitting under a tree",
+      "pos": "center 55%"
+    },
+    {
+      "src": "/stock/lounge.jpg",
+      "alt": "Lounge with orange seating",
+      "pos": "center 55%"
+    },
+    {
+      "src": "/stock/group.jpg",
+      "alt": "Group of four young adults",
+      "pos": "center"
+    },
+    {
+      "src": "/stock/leather.jpg",
+      "alt": "Lounge with leather seats",
+      "pos": "center 60%"
+    }
+  ]
 }

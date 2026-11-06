@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { Segmented, Btn as Button } from './ui.jsx';
-import { FrontifyLogo } from './FrontifyLogo.jsx';
+import { Segmented, Btn as Button, TryHint } from './ui.jsx';
+import { FrontifyLogo, FrontifyWordmark } from './FrontifyLogo.jsx';
+import { BrandMark, CoBrand } from './BrandMark.jsx';
 import { IconArrowOutExternal, IconCalendar, IconClipboard, IconLockClosed, IconArrowDown } from './icons.jsx';
 import { SITE, COMPANIES } from './config.js';
 import { poss, aiTools, listOf } from './names.js';
@@ -53,6 +54,13 @@ function Portal({ company: c }) {
   const [view, setViewRaw] = useState('person');
   const [theme, setThemeRaw] = useState('frontify');
   const [hinted, setHinted] = useState(false);
+  // The theme callout only shows near the top of the page, so it never covers the content below
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 320);
+    on(); window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
+  }, []);
   const [pickId, setPickId] = useState(c.ideas[0]?.id);
   const pageUrl = `${SITE.origin}/${c.slug}`;
   const shareUrl = `${pageUrl}?src=share`;
@@ -96,12 +104,11 @@ function Portal({ company: c }) {
     <div className={`portal view-${view} theme-${theme}`}>
       <header className="appbar">
         <div className="appbar-left">
-          <a className="fy-home" href="https://www.frontify.com/en" target="_blank" rel="noopener"><FrontifyLogo height={18} /></a>
-          <span className="appbar-sep" aria-hidden="true" />
-          <span className="appbar-crumb">Sample for {c.name}</span>
+          <a className="fy-home" href="https://www.frontify.com/en" target="_blank" rel="noopener" aria-label={`Frontify and ${c.name}`}><CoBrand slug={c.slug} label={c.name} /></a>
         </div>
         <div className="appbar-right">
           {ct && (
+            <span className="theme-wrap">
             <Segmented
               className={`seg-theme ${opts.length > 1 ? 'is-multi' : ''} ${hinted ? '' : 'is-hint'}`}
               ariaLabel="Theme"
@@ -111,8 +118,15 @@ function Portal({ company: c }) {
                 const r = e?.currentTarget?.getBoundingClientRect?.();
                 setTheme(v, r ? { x: r.left + r.width / 2, y: r.top + r.height / 2 } : null);
               }}
-              options={[{ value: 'frontify', label: 'Frontify' }, ...opts.map((o) => ({ value: o.value, label: o.label }))]}
+              options={[{ value: 'frontify', label: <FrontifyWordmark height={15} />, aria: 'Frontify' },
+                ...opts.map((o) => ({ value: o.value, aria: o.label, label: <BrandMark slug={o.value === 'company' ? c.slug : o.value} label={o.label} area={opts.length > 1 ? 1000 : 1150} cap={18} /> }))]}
             />
+            {!hinted && !scrolled && (
+              <button className="theme-callout" onClick={() => { setHinted(true); setTheme(opts[0].value, null); }}>
+                <span className="try-dot" aria-hidden="true" /><span><b>Try it:</b> see this page in {listOf(opts.map((o) => poss(o.label)), 'or')} brand</span>
+              </button>
+            )}
+            </span>
           )}
           <span className="appbar-viewas" id="viewas">View as</span>
           <Segmented className="seg-view" labelledBy="viewas" value={view} onChange={setView} options={[{ value: 'person', label: 'Person' }, { value: 'agent', label: 'Agent' }]} />
@@ -125,7 +139,7 @@ function Portal({ company: c }) {
         <main className="person">
           <section className="hero" aria-labelledby="hero-title">
             <div className="hero-copy">
-              <FrontifyLogo height={20} className="hero-logo" />
+              <CoBrand slug={c.slug} label={c.name} className="hero-logo" />
               <p className="hero-kicker">A sample Brian at Frontify set up for {c.name}</p>
               <h1 id="hero-title">{c.hero.headline} <span className="hero-h2"><span>{c.hero.headline2}</span></span></h1>
               <p className="hero-sub">{c.hero.sub.replace('{name}', c.name)}</p>
@@ -162,7 +176,8 @@ function Portal({ company: c }) {
                 <h2 id="ctx-title">{c.contexts.title}</h2>
                 <p>{c.contexts.sub.replace('{name}', c.name)}</p>
               </div>
-              <ContextTypes items={c.contexts.items} theme={dt || FRONTIFY} company={c.name} />
+              <TryHint>pick a type of context to open its page and see what the AI answers.</TryHint>
+              <ContextTypes items={c.contexts.items} theme={dt || FRONTIFY} company={c.name} stock={c.stock} badImage={c.hero.badImage} />
               <p className="bc-note">{c.contexts.note}</p>
             </section>
           )}
@@ -186,6 +201,7 @@ function Portal({ company: c }) {
                 <h2 id="pl-title">{c.packaging.title}</h2>
                 <p>{c.packaging.sub.replace('{name}', c.name)}</p>
               </div>
+              <TryHint>search, filter, or open any package to see its guideline.</TryHint>
               <PackagingLibrary demo={c.packaging} theme={dt || FRONTIFY} company={c.name} />
               <p className="bc-note">{c.packaging.note.replace('{name}', c.name)}</p>
             </section>
@@ -211,7 +227,7 @@ function Portal({ company: c }) {
                 <h2 id="pf-title">{c.partners.title}</h2>
                 <p>{c.partners.sub.replace('{name}', c.name)}</p>
               </div>
-              <PartnerFiles demo={c.partners} theme={dt || FRONTIFY} company={c.name} />
+              <PartnerFiles demo={c.partners} theme={dt || FRONTIFY} company={c.name} stock={c.stock} />
               <p className="bc-note">{c.partners.note}</p>
             </section>
           )}
@@ -223,6 +239,7 @@ function Portal({ company: c }) {
                 <h2 id="sg-title">{c.retail.title}</h2>
                 <p>{c.retail.sub.replace('{name}', c.name)}</p>
               </div>
+              <TryHint>switch the spot in store and the promotion.</TryHint>
               <StoreGuide demo={c.retail} theme={dt || FRONTIFY} company={c.name} />
               <p className="bc-note">{c.retail.note.replace('{name}', c.name)}</p>
             </section>
@@ -240,7 +257,7 @@ function Portal({ company: c }) {
                   {nextLabel}
                 </Button>
                 <p className="theme-src">
-                  Colors and layout cues from {shown?.theme.source}. Type is a free stand-in, not {poss(shown?.label || c.name)} own typeface. No logos, and not affiliated with {endDot(c.name)}
+                  Colors and layout cues from {shown?.theme.source}. Type is a free stand-in, not {poss(shown?.label || c.name)} own typeface. Logos used with permission. Not affiliated with {endDot(c.name)}
                 </p>
               </div>
               <ul className="swatches">
@@ -256,6 +273,7 @@ function Portal({ company: c }) {
               <h2 id="share-title">Tell a colleague</h2>
               <p>This works like a Frontify template. The brand parts are locked, and you fill in the rest.</p>
             </div>
+            <TryHint>fill in the blanks, then copy or send it.</TryHint>
             <ShareTemplate company={c} shareUrl={shareUrl} />
           </section>
 
@@ -263,6 +281,7 @@ function Portal({ company: c }) {
             <div className="wrap">
               <h2 id="talk-title">Pick an idea. I'll bring the insights.</h2>
               <p className="talk-sub">No fixed agenda and no demo you didn't ask for. Choose what's interesting and I'll come ready.</p>
+              <TryHint className="on-dark">tap an idea to see what I'll bring.</TryHint>
               <div className="picker" role="radiogroup" aria-label="Idea to discuss">
                 {c.ideas.map((i) => (
                   <button key={i.id} role="radio" aria-checked={pickId === i.id} className="chip" onClick={() => setPickId(i.id)}>{i.title}</button>
@@ -408,6 +427,7 @@ function Ladder({ company }) {
           <p className="ladder-sub">
             Each system builds on the one before it. {company} already has the first three. Agents need the fourth before they can act well.
           </p>
+          <TryHint>tap any card to flip it.</TryHint>
           <ol className="rungs">
             {LADDER.map(([t, k, d], i) => {
               // We're selling the context layer: once it's placed it stays open; the other layers collapse.

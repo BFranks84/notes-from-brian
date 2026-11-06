@@ -1,0 +1,4 @@
+interface:
+  display_name: "Customer Landing Page"
+  short_description: "Build a notesfrombrian.com sample page and postcard for an account"
+  default_prompt: "Build a new notesfrombrian.com sample landing page for the account I name, following the customer-landing-page skill, and push it live when every check passes."

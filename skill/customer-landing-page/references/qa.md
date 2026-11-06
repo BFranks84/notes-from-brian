@@ -12,6 +12,14 @@ The check clicks every tab and runs Brand Check before the screenshots. It cover
 
 If the preview server stops (it can be killed after a while), start it again.
 
+Then the phone fit check:
+
+```bash
+node scripts/fit.mjs <slug>          # screenshots land in qa/<slug>/fit/
+```
+
+It arrives at each demo with it half on screen, taps it like a visitor, and checks that the demo snapped under the top bar and that the assistant's answer is visible. iPhone (390 × 664) must pass for every demo. SE (375 × 553) should pass; if one can't, say which in your summary. Fix layouts in `src/phone.css`.
+
 ## 2. Look at every screenshot
 
 Open each image in `qa/<slug>/` and check:

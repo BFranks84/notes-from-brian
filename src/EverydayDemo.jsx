@@ -50,7 +50,7 @@ export function EverydayDemo({ demo, theme, company, ai }) {
   const vars = { '--d-accent': th.accent, '--d-ink': th.ink, '--d-font': th.family, '--d-weight': th.displayWeight, '--d-hl': th.hl || '#eee' };
 
   return (
-    <div ref={ref} className="ev">
+    <div ref={ref} className={`ev is-st${st}`}>
       <div className="ev-tabs" role="tablist" aria-label="App">
         {tabs.map((x, i) => (
           <button key={x.id} role="tab" aria-selected={i === tab} className={`ev-tab ${i === tab ? 'is-on' : ''}`} onClick={() => setTab(i)}>{x.label}</button>

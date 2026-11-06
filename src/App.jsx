@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
-import { Segmented, Btn as Button, TryHint } from './ui.jsx';
+import { Segmented, Btn as Button, TryHint, phoneFocus, phoneReveal } from './ui.jsx';
 import { FrontifyLogo, FrontifyWordmark } from './FrontifyLogo.jsx';
 import { BrandMark, CoBrand } from './BrandMark.jsx';
-import { IconArrowOutExternal, IconCalendar, IconClipboard, IconLockClosed, IconArrowDown, IconSparks } from './icons.jsx';
+import { IconArrowOutExternal, IconCalendar, IconClipboard, IconLockClosed, IconArrowDown, IconSparks, IconCheckMark } from './icons.jsx';
 import { SITE, COMPANIES } from './config.js';
 import { poss, aiTools, listOf } from './names.js';
 import { agentDoc } from './agentDoc.js';
@@ -74,6 +74,27 @@ function Portal({ company: c }) {
   const cur = opts.find((o) => o.value === theme);
   const shown = cur || opts[0];
   useEffect(() => { applyTheme(cur ? cur.theme : FRONTIFY); }, [cur]);
+  // Phones: tapping anything inside a demo snaps the whole demo into view under the top bar, so the
+  // assistant's side of it is on screen. Links that jump to another section (openContext) win.
+  useEffect(() => {
+    const DEMO = '.chat, .ctx-types, .bc, .ev, .pf, .sg, .pl';
+    const onTap = (e) => {
+      const btn = e.target.closest('button, [role=tab], [role=radio]');
+      const root = btn && btn.closest(DEMO);
+      if (!root) return;
+      const t0 = Date.now();
+      setTimeout(() => { if ((window.__nfbJump || 0) < t0) phoneFocus(root); }, 0);
+      // As the demo plays, keep its newest answer on screen
+      const watch = new MutationObserver(() => {
+        const live = root.querySelector('[aria-live] > :last-child, .bubble:last-of-type, .pf-ai, .ct-a, .bc-fcard');
+        if (live) phoneReveal(live, root);
+      });
+      watch.observe(root, { childList: true, subtree: true });
+      setTimeout(() => watch.disconnect(), 16000);
+    };
+    document.addEventListener('click', onTap, true);
+    return () => document.removeEventListener('click', onTap, true);
+  }, []);
   useEffect(() => {
     const idle = window.requestIdleCallback || ((f) => setTimeout(f, 1500));
     idle(() => opts.forEach((o) => preloadFont(o.theme)));
@@ -289,10 +310,8 @@ function Portal({ company: c }) {
               </div>
               <div className="bring">
                 <p className="bring-title">For "{pick?.title}," I'll bring</p>
-                <ul>
-                  <li>How teams like yours have set it up, and what they'd do differently</li>
-                  <li>The questions worth answering before you change anything</li>
-                  <li>An honest read on fit, even if the answer is "not yet"</li>
+                <ul key={pickId}>
+                  {(pick?.bring || ['How teams like yours have set it up, and what they\'d do differently', 'The questions worth answering before you change anything', 'An honest read on fit, even if the answer is "not yet"']).map((x, k) => <li key={x} className="pop" style={{ animationDelay: `${k * 60}ms` }}>{x}</li>)}
                 </ul>
                 <div className="bring-ctas">
                   <a className="btn-link is-accent press" href={SITE.booking} target="_blank" rel="noopener"><IconCalendar size={16} /> Find a time with Brian</a>
@@ -306,7 +325,7 @@ function Portal({ company: c }) {
           <footer className="foot">
             <div className="foot-logo"><FrontifyLogo height={20} /></div>
             {c.mcpNote && <p className="foot-mcp"><IconSparks size={14} /><span><b>Built using the Frontify MCP.</b> Claude pulled the fonts, colors, logo rules, writing style, and photos straight from Frontify's brand portal, so this page stays on brand.</span></p>}
-            <p><IconLockClosed size={12} /> An independent sample by Brian Franke at Frontify. Not affiliated with, sponsored by, or endorsed by {endDot(c.name)} {c.name} and related names are trademarks of their owners. Built with Fondue, Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
+            <p><IconLockClosed size={12} /> An independent sample by Brian Franke at Frontify. Not affiliated with, sponsored by, or endorsed by {endDot(c.name)} {c.name} and related names are trademarks of their owners. Built on Frontify's design system. <a href="https://www.frontify.com/en" target="_blank" rel="noopener">frontify.com</a></p>
           </footer>
         </main>
       )}
@@ -428,7 +447,7 @@ function Ladder({ company }) {
           <p className="ladder-sub">
             Each system builds on the one before it. {company} already has the first three. Agents need the fourth before they can act well.
           </p>
-          <TryHint>tap any card to flip it.</TryHint>
+          <TryHint className="ladder-try">tap any card to flip it.</TryHint>
           <ol className="rungs">
             {LADDER.map(([t, k, d], i) => {
               // We're selling the context layer: once it's placed it stays open; the other layers collapse.
@@ -466,6 +485,26 @@ function Ladder({ company }) {
                       <p>{what}</p>
                       <span className="rung-hint" aria-hidden="true">↻ Back</span>
                     </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+          {/* Phones: one static sequence that plays once. The first three layers are in place, the fourth is Frontify, and agents sit on top of it. */}
+          <ol className="stack-m" aria-label="The five systems, oldest first">
+            {LADDER.map(([t, k, d], i) => {
+              const [era, what] = WAVES[t];
+              return (
+                <li key={t} className={`sm-row is-${t}`} style={{ '--i': i }}>
+                  {t === 'agency' && <span className="sm-link" aria-hidden="true">Agents read this layer before they act</span>}
+                  <div className="sm-card">
+                    <span className="sm-top"><span className="sm-num">{i + 1}</span><span className="sm-era">{era}</span>
+                      {i < 3 && <span className="sm-have"><IconCheckMark size={12} /> {company} has this</span>}
+                      {t === 'context' && <span className="sm-fy">This is Frontify</span>}
+                    </span>
+                    <strong>Systems of {t}</strong>
+                    <span className="sm-desc">{t === 'context' || t === 'agency' ? `${k}: ${d.toLowerCase()}` : d}</span>
+                    {t === 'context' && <span className="sm-what">{what}</span>}
                   </div>
                 </li>
               );

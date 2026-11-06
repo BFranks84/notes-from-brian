@@ -1,0 +1,291 @@
+/* ==========================================================================
+   Phones: every demo fits on one screen while it runs, assistant included.
+   Target: 100svh minus the sticky top bar (about 600px on a 390 × 844 iPhone
+   in Safari). Loaded last. Measured with scripts/fit.mjs.
+   ========================================================================== */
+@media (max-width: 600px) {
+  /* Demos land just under the sticky top bar when they snap into view */
+  .chat, .ctx-types, .bc, .ev, .pf, .sg, .pl { scroll-margin-top: 64px; }
+
+  /* ---------- Use case 1 chat ---------- */
+  .chat-bar { padding: 8px 10px; }
+  .chat-body { min-height: 0; gap: 10px; padding: 12px; }
+  .chat-body .bubble { padding: 10px 12px; font-size: 14px; line-height: 1.4; }
+  .chat .ai-bad { width: 112px; height: 112px; object-fit: cover; border-radius: 10px; margin-top: 8px; }
+  .chat .ctx { padding: 10px 12px; }
+  .chat .ctx-status { font-size: 13px; margin: 0 0 8px; }
+  .chat .ctx-cards { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -12px; padding: 0 12px 2px; }
+  .chat .ctx-cards::-webkit-scrollbar { display: none; }
+  .chat .ctx-cards li { flex: 0 0 auto; min-width: 0; max-width: 200px; padding: 8px 10px; }
+  .chat .ctx-cards li span { font-size: 11px; }
+  .chat .ctx-cards li strong { font-size: 13px; line-height: 1.3; }
+  .chat .ai-brandcard { min-height: 0; padding: 14px; }
+  .chat .ai-brandcard strong { font-size: 20px; }
+  .chat .ai-brandcard .abc-art { display: none; }
+
+  /* ---------- Use case 2 context types ---------- */
+  .ct-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 8px; margin: 0 -16px; padding: 0 16px 4px; scroll-padding: 0 16px; }
+  .ct-tabs::-webkit-scrollbar { display: none; }
+  .ct-tab { flex: 0 0 auto; min-height: 40px; padding: 8px 16px; border-radius: 999px; }
+  .ct-tab-timer { display: none; }
+  .ctx-types .mini { max-height: 300px; overflow: hidden; position: relative; }
+  .ctx-types .mini::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 48px; background: linear-gradient(transparent, var(--m-bg, var(--surface))); pointer-events: none; }
+  .ctx-types .mini-h { font-size: 22px; }
+  .ctx-types .ct-ai { margin-top: 10px; gap: 8px; }
+  .ctx-types .ct-q, .ctx-types .ct-a { font-size: 14px; padding: 10px 12px; }
+
+  /* ---------- Brand Check ---------- */
+  .bc-head { padding: 10px 14px; }
+  .bc-grid { gap: 10px; }
+  .bc-stage { padding: 10px 12px 0; }
+  .bc-asset.is-image { width: min(100%, 210px); margin: 0 auto; }
+  .bc-cap { font-size: 12px; margin-top: 6px; text-align: center; }
+  .bc-panel { padding: 0 12px 12px; }
+  .bc-fcard { padding: 12px; font-size: 14px; }
+  .bc-fcard p, .bc-fcard li { font-size: 14px; line-height: 1.4; }
+
+  /* ---------- Everyday ---------- */
+  .ev-tabs { padding: 8px 10px; }
+  .ev-doc { padding: 10px 12px; }
+  .ev-mail .ev-field:first-of-type { display: none; } /* "New message" + To line: keep the subject and body */
+  .ev-mail-h { display: none; }
+  .ev-mail, .ev-body p { font-size: 13.5px; line-height: 1.4; }
+  .ev-body p { margin: 0 0 6px; }
+  .ev-claude { padding: 10px 12px 12px; }
+  .ev-claude p, .ev-ans li { font-size: 14px; line-height: 1.4; }
+  .ev-ans ol { margin: 6px 0; gap: 4px; }
+
+  /* ---------- Agency, supplier, and partner files ---------- */
+  .pf-tabs { padding: 8px 10px; }
+  .pf-grid > .pf-tile:nth-child(n+3) { display: none; }   /* brand team view: the 2 new files, then the assistant */
+  .pf-thumb { aspect-ratio: 16 / 9; }
+
+  /* ---------- Retail store guide ---------- */
+  .sg .sg-ended { display: none; }
+  .sg .sg-spec > div:nth-child(2) { display: none; }      /* size is already on the mockup label */
+  .sg .sg-spec dt, .sg .sg-spec dd { font-size: 13.5px; }
+  .sg .sg-h { font-size: 22px; margin: 4px 0; }
+  .sg figcaption { font-size: 12px; }
+}
+
+@media (max-width: 600px) {
+  /* Chat: the on-brand result as a short card next to its text */
+  .chat .ai-brandcard { aspect-ratio: auto; max-width: none; min-height: 0; padding: 12px 14px; margin-top: 8px; }
+  .chat .ai-brandcard strong, .chat .ai-brandcard.is-long strong { font-size: 18px; }
+  .chat .ai-brandcard em { margin-top: 2px; }
+  .chat .bubble.is-ai.is-gone { display: none; }
+
+  /* Brand Check: a smaller asset, a tighter finding */
+  .bc-asset.is-image { width: 160px; }
+  .bc-cap { display: none; }
+  .bc-fcard { padding: 10px 12px; gap: 2px; }
+  .bc-ftext { font-size: 14px; line-height: 1.35; margin-bottom: 4px; }
+  .bc-k { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; margin-top: 6px; }
+  .bc-v { font-size: 13.5px; line-height: 1.4; }
+  .bc-sources { display: flex; flex-wrap: wrap; gap: 2px 12px; }
+  .bc-nav { min-height: 32px; }
+
+  /* Store guide: spots in one swipeable row, a shorter mockup, and only where the sign goes */
+  .sg .mini-crumb { display: none; }
+  .sg-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -12px; padding: 0 12px; }
+  .sg-tabs::-webkit-scrollbar { display: none; }
+  .sg-tab { flex: 0 0 auto; }
+  .sg-mock svg { max-height: 170px; width: 100%; }
+  .sg-mock figcaption { display: none; }
+  .sg-grid { gap: 8px; }
+  .sg .sg-spec > div:nth-child(n+2) { display: none; }
+  .sg-spec div { grid-template-columns: 56px 1fr; padding: 6px 0; }
+  .sg .sg-h { font-family: var(--typography-font-family-primary); font-size: 16px; font-weight: 500; }
+  .sg .ct-ai .ct-q, .sg .ct-ai .ct-a { font-size: 14px; padding: 8px 12px; }
+  .ct-src { font-size: 12px; }
+}
+
+@media (max-width: 600px) {
+  .bc-head { padding: 6px 12px; min-height: 0; }
+  .bc-stage { padding-top: 8px; }
+  .bc-asset.is-image { width: 150px; }
+  .bc-panel { padding-bottom: 10px; }
+  .sg-mock svg { max-height: 140px; }
+  .sg .mini-bar { padding-top: 6px; padding-bottom: 6px; }
+  .sg .sg-page { padding-top: 10px; padding-bottom: 10px; }
+  .sg-bar { gap: 6px; }
+  .sg .ct-q span { font-size: 10px; margin-bottom: 0; }
+}
+
+/* Short phones (iPhone SE and similar): trim the extras so the answer still shows */
+@media (max-width: 600px) and (max-height: 620px) {
+  .chat .ctx-cards li:nth-child(n+3) { display: none; }
+  .chat .ai-brandcard em { display: none; }
+  .bc-asset.is-image { width: 120px; }
+  .bc-swatches { display: none; }
+  .bc-k { display: none; }
+  .sg-mock svg { max-height: 110px; }
+  .sg .sg-side { display: none; }
+  .ctx-types .mini { max-height: 220px; }
+  .ev-doc { max-height: 150px; overflow: hidden; }
+}
+
+@media (max-width: 600px) {
+  /* Brand Check while it runs: the six categories in two columns */
+  .bc-cats { grid-template-columns: 1fr 1fr; gap: 8px 14px; }
+  .bc-cats li { grid-template-columns: 14px 1fr; font-size: 13px; gap: 6px; }
+  .bc-cats li .bc-mini, .bc-cats li > :last-child:not(:nth-child(2)) { display: none; }
+}
+@media (max-width: 600px) and (max-height: 620px) {
+  .ctx-types .ct-q span { display: none; }
+  .ctx-types .ct-q, .ctx-types .ct-a { font-size: 13.5px; padding: 8px 10px; }
+}
+
+@media (max-width: 600px) {
+  .bc-head { height: 44px; }
+  .bc-replay { width: 32px; height: 32px; }
+  /* Everyday: once the assistant starts, the draft shrinks to its subject and first lines (fixes stay pinned there) */
+  .ev:not(.is-st0) .ev-doc { max-height: 168px; overflow: hidden; -webkit-mask-image: linear-gradient(#000 75%, transparent); mask-image: linear-gradient(#000 75%, transparent); }
+  .ev-tabs { min-height: 0; }
+  .ev-ch { margin-bottom: 6px; }
+  .ev-me { padding: 8px 12px; }
+  .ev-ans > p:first-child { margin-bottom: 4px; }
+}
+@media (max-width: 600px) and (max-height: 620px) {
+  .ev:not(.is-st0) .ev-doc { max-height: 112px; }
+  .ev-ans li { font-size: 13px; }
+  .pf-thumb { aspect-ratio: 2 / 1; }
+  .pf .pf-ai p, .pf .pf-side p { font-size: 13px; }
+  .bc-asset.is-image { width: 104px; }
+  .bc-fcard .bc-v { display: none; } /* SE: the finding and its sources; the recommendation shows on bigger phones */
+}
+
+@media (max-width: 600px) {
+  .ev-mail > p:nth-of-type(2) { display: none; } /* the To line */
+  .bc-stage { padding-bottom: 0; }
+  .bc-stage .bc-asset { margin-bottom: 0; }
+  .bc-nav { margin: 0; }
+  .bc-panel > :last-child { margin-top: 6px; font-size: 12px; }
+  .bc-sources li { font-size: 13px; }
+}
+
+@media (max-width: 600px) {
+  .ev-tabs { padding: 6px 10px; }
+  .ev-tab { min-height: 34px; padding: 4px 14px; }
+  .ev-claude p, .ev-ans li { font-size: 13.5px; line-height: 1.35; }
+  .ev-ans ol { gap: 2px; }
+  .bc-asset.is-image { width: 136px; }
+  .bc-ftext { font-size: 13.5px; }
+}
+@media (max-width: 600px) and (max-height: 620px) {
+  .ev:not(.is-st0) .ev-doc { max-height: 84px; }
+  .bc-asset.is-image { width: 92px; }
+  .pf-thumb { aspect-ratio: 3 / 1; }
+  .pf-name { font-size: 11px; }
+}
+@media (max-width: 600px) and (max-height: 620px) { .bc-ai { display: none; } .bc-head { height: 40px; } }
+
+/* ==========================================================================
+   "Context is the missing layer" on phones and small tablets:
+   a static sequence, oldest first, that plays once when it scrolls in.
+   ========================================================================== */
+.stack-m { display: none; }
+@media (max-width: 899px) {
+  .ladder { height: auto; padding: 56px 0; }
+  .ladder-pin { position: static; height: auto; overflow: visible; padding: 0; }
+  .ladder-pin .wrap { height: auto; }
+  .rungs, .ladder-try { display: none; }
+  .stack-m { display: grid; gap: 8px; list-style: none; margin: 20px 0 0; padding: 0; }
+  .sm-row { display: grid; gap: 8px; opacity: 0; transform: translateY(14px); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out); transition-delay: calc(var(--i) * 220ms); }
+  .ladder.is-on .sm-row { opacity: 1; transform: none; }
+  .sm-card { display: grid; gap: 2px; padding: 10px 14px; border-radius: var(--radius-lg); background: color-mix(in srgb, var(--ink) 6%, var(--bg)); color: var(--ink); }
+  .sm-top { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3); }
+  .sm-num { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--surface); color: var(--ink); font-size: 11px; font-weight: 500; }
+  .sm-era { font-variant-numeric: tabular-nums; }
+  .sm-have { margin-left: auto; display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 8px; border-radius: var(--radius-pill); background: var(--surface); color: var(--ink-2); font-size: 11px; font-weight: 500; }
+  .sm-card strong { font-size: 16px; font-weight: 500; text-transform: none; }
+  .sm-desc { font-size: 13px; color: var(--ink-3); }
+  /* The context layer: the one this page is about */
+  .sm-row.is-context .sm-card { padding: 16px; gap: 6px; background: var(--ink); color: var(--bg); box-shadow: 0 0 0 0 transparent; }
+  .ladder.is-on .sm-row.is-context .sm-card { animation: smPulse 1200ms var(--ease-out) calc(3 * 220ms + 500ms) 1 both; }
+  .sm-row.is-context .sm-top { color: color-mix(in srgb, var(--bg) 70%, transparent); }
+  .sm-row.is-context .sm-num { background: var(--accent); color: var(--accent-ink); }
+  .sm-fy { margin-left: auto; height: 22px; display: inline-flex; align-items: center; padding: 0 10px; border-radius: var(--radius-pill); background: var(--mp-20); color: var(--mp-80); font-size: 11px; font-weight: 500; }
+  .portal:not(.theme-frontify) .sm-fy { background: var(--accent); color: var(--accent-ink); }
+  .sm-row.is-context strong { font-size: 22px; font-family: var(--display); font-weight: var(--display-weight); font-style: var(--display-style); letter-spacing: var(--display-tracking); }
+  .sm-row.is-context .sm-desc { color: color-mix(in srgb, var(--bg) 80%, transparent); font-size: 14px; }
+  .sm-what { font-size: 13px; line-height: 1.4; color: color-mix(in srgb, var(--bg) 70%, transparent); padding-top: 8px; border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); margin-top: 4px; }
+  /* Agents sit on top of it, connected by a short line */
+  .sm-link { position: relative; justify-self: center; font-size: 12px; font-weight: 500; color: var(--ink-2); padding: 18px 0 2px; }
+  .sm-link::before { content: ''; position: absolute; left: 50%; top: 0; width: 1px; height: 14px; background: var(--ink-2); transform-origin: top; transform: scaleY(0); transition: transform var(--dur-med) var(--ease-out) calc(4 * 220ms); }
+  .ladder.is-on .sm-link::before { transform: scaleY(1); }
+  .sm-row.is-agency .sm-card { background: var(--surface); box-shadow: inset 0 0 0 1px var(--line-mid); }
+  .ladder-bar { opacity: 0; transform: translateY(10px); }
+  .ladder.is-on .ladder-bar { opacity: 1; transform: none; transition-delay: 1500ms; }
+}
+@keyframes smPulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); } 100% { box-shadow: 0 0 0 14px transparent; } }
+@media (max-width: 899px) and (prefers-reduced-motion: reduce) {
+  .sm-row, .ladder-bar { opacity: 1; transform: none; transition: none; }
+  .ladder.is-on .sm-row.is-context .sm-card { animation: none; }
+  .sm-link::before { transform: none; }
+}
+
+@media (max-width: 600px) {
+  /* Context types: a shorter page preview so the answer always shows */
+  .ctx-types .mini { max-height: 250px; }
+  .ctx-types .ct-q span { display: none; }
+  .ctx-types .ct-q, .ctx-types .ct-a { font-size: 14px; padding: 8px 12px; line-height: 1.4; }
+
+  /* Brand Check with a built (non-image) asset: shown smaller */
+  .bc-asset:not(.is-image) { zoom: .72; }
+
+  /* Packaging detail: the package, the rule for the zone you tapped, then the assistant */
+  .pl-detail .mini-crumb, .pl-kicker, .pl-data, .pl-files { display: none; }
+  .pl-crumbrow { margin-bottom: 4px; }
+  .pl-back { min-height: 32px; padding: 4px 10px; font-size: 13px; }
+  .pl-stage { padding: 8px; }
+  .pl-stage svg { max-height: 150px; }
+  .pl-stage figcaption { font-size: 11px; margin-top: 2px; }
+  .pl-side .mini-h { font-family: var(--typography-font-family-primary); font-size: 18px; font-weight: 600; }
+  .pl-rules li:not(:has(.is-on)) { display: none; }
+  .pl-rule { padding: 10px 12px; }
+  .pl .ct-ai .ct-q span { display: none; }
+  .pl .ct-ai .ct-q, .pl .ct-ai .ct-a { font-size: 14px; padding: 8px 12px; }
+}
+@media (max-width: 600px) and (max-height: 620px) {
+  .chat-body:has(.is-brand) .ctx-cards { display: none; }
+  .ctx-types .mini { max-height: 190px; }
+  .pl-stage svg { max-height: 110px; }
+  .pl-stage figcaption { display: none; }
+}
+
+@media (max-width: 600px) {
+  .pl-frame:has(.pl-detail) .pl-top { display: none; }
+  .pl-detail .pl-side .mini-h { display: none; }   /* the package name is on the package and in the question */
+  .pl-stage { padding: 4px 8px; margin: 0; }
+  .pl-dgrid { gap: 8px; }
+  .pl-detail { padding-top: 8px; padding-bottom: 10px; }
+  .bc-swatches { gap: 4px 12px; font-size: 12px; }
+  .bc-swatches i { width: 14px; height: 14px; }
+  .bc-fcard { gap: 0; }
+}
+@media (max-width: 600px) {
+  .bc-k { margin-top: 4px; }
+  .bc-panel > :last-child { margin-top: 2px; font-size: 11px; }
+  .pl-stage svg { max-height: 128px; }
+  .pl-rule { padding: 8px 10px; }
+  .pl .mini-bar { padding-top: 6px; padding-bottom: 6px; }
+}
+@media (max-width: 600px) and (max-height: 620px) {
+  .pl-stage svg { max-height: 96px; }
+  .pl-rule span:last-child { font-size: 13px; line-height: 1.35; }
+  .pl .ct-a .ct-src { display: none; }
+}
+@media (max-width: 600px) {
+  .pl-crumbrow { margin: 0; }
+  .pl-back { min-height: 28px; padding: 2px 10px; }
+  .pl-detail { padding-top: 4px; }
+}
+@media (max-width: 600px) and (max-height: 620px) {
+  .pl-frame:has(.pl-detail) .mini-bar { display: none; }
+  .pl .ct-ai .ct-q, .pl .ct-ai .ct-a { padding: 6px 10px; font-size: 13px; }
+}
+@media (max-width: 899px) {
+  .sm-era { font-variant-numeric: normal; white-space: nowrap; }
+  .sm-row.is-agency .sm-num { background: color-mix(in srgb, var(--ink) 8%, var(--bg)); }
+}

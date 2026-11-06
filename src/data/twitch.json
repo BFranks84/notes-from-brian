@@ -7,27 +7,57 @@
     {
       "id": "context",
       "title": "A system of context for every AI tool",
-      "summary": "ChatGPT, Claude, Copilot, and Gemini get the brand, creative, product, and event context they need from Frontify, so answers come out on brand."
+      "summary": "ChatGPT, Claude, Copilot, and Gemini get the brand, creative, product, and event context they need from Frontify, so answers come out on brand.",
+      "bring": [
+        "A map of where Twitch's brand knowledge lives today, and what your AI tools can't see yet",
+        "How Frontify connects that context to the AI tools your teams already use",
+        "A short first set of guidelines to connect, and what can wait",
+        "An honest read on fit, even if the answer is \"not yet\""
+      ]
     },
     {
       "id": "contexts",
       "title": "What context lives in Frontify",
-      "summary": "Brand, creative, product, event, and Everyday guidance live as guideline pages that people read and AI tools answer from."
+      "summary": "Brand, creative, product, event, and Everyday guidance live as guideline pages that people read and AI tools answer from.",
+      "bring": [
+        "A walk through each type of context on this page in a working portal",
+        "Which guidelines your teams ask about most, and where to start",
+        "How teams keep guidance current when more than one team owns it",
+        "An honest read on fit, even if the answer is \"not yet\""
+      ]
     },
     {
       "id": "check",
       "title": "Brand Check before anything goes live",
-      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues, and shows the guideline behind each finding."
+      "summary": "Brand Check reviews an asset against the guidelines, flags potential issues, and shows the guideline behind each finding.",
+      "bring": [
+        "A Brand Check run on a sample asset, or on one of yours if you'd like",
+        "How the checker reads the guidelines you already have, and what it needs to work well",
+        "Where a check fits in your review today: before agencies send work, before legal, or both",
+        "An honest read on fit, even if the answer is \"not yet\""
+      ]
     },
     {
       "id": "everyday",
       "title": "Everyday guidelines inside emails and presentations",
-      "summary": "Your AI assistant, connected to Frontify, checks emails and presentations against short Everyday guidelines before they go out."
+      "summary": "Your AI assistant, connected to Frontify, checks emails and presentations against short Everyday guidelines before they go out.",
+      "bring": [
+        "How Everyday guidelines show up inside the email and presentation tools your teams use",
+        "A short set of rules to start with: tone of voice, email, and slides",
+        "How to roll it out without retraining everyone",
+        "An honest read on fit, even if the answer is \"not yet\""
+      ]
     },
     {
       "id": "partners",
       "title": "Agency files, in the right place",
-      "summary": "Agencies and creators submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates."
+      "summary": "Agencies and creators submit files into the portal; they land in the right library, and the assistant tags them and sets expiry dates.",
+      "bring": [
+        "How agencies submit work straight into the right library, without email",
+        "The tags, expiry dates, and approvals the assistant can set for your team",
+        "What changes in the brand team's week, step by step",
+        "An honest read on fit, even if the answer is \"not yet\""
+      ]
     }
   ],
   "hero": {

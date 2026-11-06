@@ -713,6 +713,36 @@ PHOTO_COPY = {
 }
 # Pages that show the "Built using the Frontify MCP" footer note (URBN first, per Brian Nov 6)
 MCP_NOTE = {'urbn'}
+# "Pick an idea. I'll bring the insights": what Brian brings for each topic. The honest-fit line closes every list.
+BRING = {
+ 'context': ["A map of where {name}'s brand knowledge lives today, and what your AI tools can't see yet",
+             "How Frontify connects that context to the AI tools your teams already use",
+             "A short first set of guidelines to connect, and what can wait"],
+ 'contexts': ["A walk through each type of context on this page in a working portal",
+              "Which guidelines your teams ask about most, and where to start",
+              "How teams keep guidance current when more than one team owns it"],
+ 'check': ["A Brand Check run on a sample asset, or on one of yours if you'd like",
+           "How the checker reads the guidelines you already have, and what it needs to work well",
+           "Where a check fits in your review today: before agencies send work, before legal, or both"],
+ 'everyday': ["How Everyday guidelines show up inside the email and presentation tools your teams use",
+              "A short set of rules to start with: tone of voice, email, and slides",
+              "How to roll it out without retraining everyone"],
+ 'partners': ["How {aud} submit work straight into the right library, without email",
+              "The tags, expiry dates, and approvals the assistant can set for your team",
+              "What changes in the brand team's week, step by step"],
+ 'retail': ["How each store sees the floor, window, and register layout before it sets up",
+            "Where every mailed sign goes, and how last season's signs stay out of the store",
+            "What it takes to keep store guides current for every campaign"],
+ 'packaging': ["How suppliers find the current artwork rules for every package",
+               "How expired artwork stays out of print",
+               "Where packaging approvals slow down today, and how other teams handle it"],
+}
+BRING_CLOSE = 'An honest read on fit, even if the answer is "not yet"'
+def bring(d, slug):
+    aud = AUD[AUD_FOR.get(slug, 'partner')]['tab'].lower()
+    for i in d['ideas']:
+        i['bring'] = [x.format(name=d['name'], aud=aud) for x in BRING.get(i['id'], [])] + [BRING_CLOSE]
+
 def photo_copy(d, slug):
     c = PHOTO_COPY.get(STOCK_FOR.get(slug, 'tech'))
     if not c: return
@@ -751,10 +781,11 @@ if __name__ == '__main__':
     apply_ai(_tpl, AI.get('atlassian'))
     _tpl = oxford(_tpl)
     _tpl['stock'] = stock_for('atlassian')
+    bring(_tpl, 'atlassian')
     json.dump(_tpl, open(f'{ROOT}/src/data/atlassian.json', 'w'), indent=2, ensure_ascii=False)
     TPL = _tpl
     for slug, s in S.items():
-        _d = oxford(build(slug, s)); _d['stock'] = stock_for(slug); photo_copy(_d, slug)
+        _d = oxford(build(slug, s)); _d['stock'] = stock_for(slug); photo_copy(_d, slug); bring(_d, slug)
         if slug in MCP_NOTE: _d['mcpNote'] = True
         json.dump(_d, open(f'{ROOT}/src/data/{slug}.json', 'w'), indent=2, ensure_ascii=False)
         print('wrote', slug)

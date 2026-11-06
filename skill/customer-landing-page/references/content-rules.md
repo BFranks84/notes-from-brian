@@ -27,6 +27,10 @@ The wording carries through the tab name, the rotating word in the hero and the 
 - The context tabs cover every use case on the page, and the rotating words match the tabs.
 - The Everyday use case is "Everyday guidelines, inside your office applications", with the tabs "Email" and "Presentation".
 
+## "Pick an idea" talk points
+
+Each idea chip has its own "I'll bring" list (`BRING` in `scripts/gen_companies.py`, by idea id), and every list ends with the honest-fit line. If you add a new kind of use case, add its three lines. Keep them to what Brian can actually bring to a meeting: walkthroughs, questions, and a fit read. No customer names and no results we can't back up.
+
 ## Retail use case
 
 `RETAIL['urbn']` is the model for every retail section. The point is that everyone in the store knows how the store should look, not that store teams make signs:

@@ -1,3 +1,4 @@
+import { phoneFocus } from './ui.jsx';
 import { useEffect, useRef, useState } from 'react';
 import { IconCheck, IconCross, IconSparkle, IconDocumentText } from './icons.jsx';
 import { Scene } from './RetailScenes.jsx';
@@ -33,7 +34,9 @@ export function ContextTypes({ items, theme, company, stock = [], badImage }) {
       const i = items.findIndex((x) => x.id === e.detail);
       if (i < 0) return;
       pick(i);
-      ref.current?.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth', block: 'center' });
+      window.__nfbJump = Date.now();
+      if (window.matchMedia('(max-width: 600px)').matches) phoneFocus(ref.current);
+      else ref.current?.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth', block: 'center' });
     };
     window.addEventListener('nfb:context', on);
     return () => window.removeEventListener('nfb:context', on);

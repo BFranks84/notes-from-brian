@@ -1,16 +1,26 @@
-# Frontify design system (Frontify Default)
+# Frontify design systems
 
-The page follows Frontify's current design system, the "Frontify Default" package from Brand Portal 2026 › Claude › Design system. Fondue is the old system: don't use it as the reference. The site's version lives in `src/ds.css`, which loads after `styles.css`. Change shared look there, never per company.
+The page follows two layers, in this order:
+1. **Frontify Default** (Brand Portal 2026 › Claude › Design system): brand tokens, badges, cards, motion, writing rules. In `src/ds.css`.
+2. **Website Design System** (Figma, Creative Studio): what the web team designs frontify.com and the product with. It wins wherever the two differ. In `src/web.css`.
 
-## Fixed values
+Fondue is the old system: don't use it as the reference. Change shared look in these two files, never per company. If you can read Figma, check changes against the Website Design System file's Atoms and web components pages.
+
+## Website Design System (wins over Frontify Default)
+
+- **Buttons:** 14px Diatype regular, 12 × 16px padding, 1px line, 32px radius. Black filled or 1px black outline. Hover on both: Marker purple fill with a white label.
+- **Toggle switch (segmented tabs):** `#e1e1db` track, 32px radius, black selected tab with a white label, `#f0f0eb` hover. Company themes keep their accent on the theme switch.
+- **Section label:** a 1px rule in the text color, then "● Section label" in Diatype 18px, sentence case. Lead text under headlines: Diatype 18px, line height 1.35, 2% tracking.
+- **Card and section titles:** Cranny ("title expression"), Light 300 for regular, Medium 500 for accent.
+- **Filters:** 12px, 4 × 12px padding, 1px black outline, purple on hover, black when on.
+
+## Frontify Default values (where the website system doesn't say otherwise)
 
 - **Colors:** Base white `#f0f0eb`, Base black `#111110`, Marker purple `#b60ae3` (accent only, never a large fill). Neutral scale `--base-00…90`, purple tints `--mp-10…95`, and success/error only inside product UI.
-- **Type:** Cranny for h1 and h2 only. ABC Diatype for everything else, including card titles and sub-headings (medium, 500). Body tracking 0.02em, line height at least 1.2.
-- **Buttons:** pill. Medium 48px high, 15px medium text, 0 22px padding; small 36px, 14px. Outline buttons use a 1.5px line. Hover: filled buttons go one shade darker (`--base-80` on black), outline buttons get a light fill. Press: scale 0.98. Focus: 2px Marker purple ring, 2px offset.
-- **Tabs (segmented):** gray pill track (`--base-25`), 4px inset, white selected tab, 14px medium. On dark sections: `--base-85` track, black selected tab.
+- **Type:** Cranny for headlines and titles, ABC Diatype for body, labels, and UI. Body tracking 0.02em, line height at least 1.2.
+- **Focus:** 2px Marker purple ring, 2px offset.
 - **Badges:** 24px pill, 12px medium, sentence case. Approved = `--success-30` on `--success-90`; in review = white with a 1px `--base-35` line; new = `--mp-15` on `--mp-80`.
 - **Cards:** 20px corners, 1px low-contrast line, flat. Shadows only on hover or floating panels (`--shadow-md`, `--shadow-lg`).
-- **Section labels:** 12px, medium, uppercase, 0.08em tracking, `--base-70`.
 - **Links:** underlined in the text color, fade to 60% on hover.
 - **Motion:** ease `cubic-bezier(.2,.7,.2,1)`, 150 / 280 / 480ms. Gentle fades and slides only.
 

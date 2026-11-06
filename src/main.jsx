@@ -6,6 +6,7 @@ import './fonts.css';
 import '@frontify/fondue-tokens/styles';
 import './styles.css';
 import './ds.css';
+import './web.css';
 import './phone.css';
 import { App } from './App.jsx';
 import { inject } from '@vercel/analytics';

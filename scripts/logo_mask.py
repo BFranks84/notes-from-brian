@@ -50,7 +50,12 @@ def main():
     d = json.load(open(jp)) if os.path.exists(jp) else {}
     d[key] = round(w / h, 3)
     json.dump(dict(sorted(d.items())), open(jp, 'w'), indent=1)
-    print(f'public/logos/{key}.png  {w}x{h}  ratio {d[key]}')
+    # Postcards use a plain Base black copy with clear space around it (PDFs can wrap a mask's edge into a hairline)
+    os.makedirs(f'{ROOT}/postcard/logos', exist_ok=True)
+    pad = 8; pc = Image.new('RGBA', (w + pad * 2, h + pad * 2), (17, 17, 16, 0))
+    ink = Image.new('RGBA', (w, h), (17, 17, 16, 255)); ink.putalpha(alpha); pc.paste(ink, (pad, pad), ink)
+    pc.save(f'{ROOT}/postcard/logos/{key}.png', optimize=True)
+    print(f'public/logos/{key}.png  {w}x{h}  ratio {d[key]}  (+ postcard/logos/{key}.png)')
 
 if __name__ == '__main__':
     main()

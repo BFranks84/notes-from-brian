@@ -6,13 +6,13 @@
  "databricks": 2.377,
  "flooranddecor": 2.798,
  "gap": 1.113,
- "hpe": 5.795,
+ "hpe": 3.5,
  "ibm": 2.68,
  "intuitive": 2.527,
  "pinterest": 3.953,
  "sephora": 7.693,
  "servicenow": 6.843,
  "twitch": 3.0,
- "urbn-anthropologie": 16.809,
- "urbn": 1.143
+ "urbn": 1.143,
+ "urbn-anthropologie": 16.809
 }

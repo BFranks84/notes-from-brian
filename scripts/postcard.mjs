@@ -40,9 +40,11 @@ const tpl = fs.readFileSync('postcard/grid.html', 'utf8');
 const ASPECT = JSON.parse(fs.readFileSync('src/logos.json', 'utf8'));
 const pair = (() => {
   const a = ASPECT[slug];
-  if (flag('text') || !a || !fs.existsSync(`public/logos/${slug}.png`)) return esc(name);
+  if (flag('text') || !a || !fs.existsSync(`postcard/logos/${slug}.png`)) return esc(name);
   const h = Math.min(32, Math.sqrt(2100 / a)); const w = Math.min(144, h * a);
-  return `<span class="plogo" role="img" aria-label="${esc(name)}" style="--w:${w.toFixed(1)}px;--h:${(w / a).toFixed(1)}px;--m:url(data:image/png;base64,${fs.readFileSync(`public/logos/${slug}.png`).toString('base64')})"></span>`;
+  // A plain Base black image (postcard/logos/, padded), not a CSS mask: PDF output can wrap a mask's edge into a hairline
+  const img = fs.readFileSync(`postcard/logos/${slug}.png`).toString('base64');
+  return `<img class="plogo" alt="${esc(name)}" src="data:image/png;base64,${img}" style="width:${(w * (1 + 16 / (160 * a))).toFixed(1)}px;height:${((w / a) * (1 + 16 / 160)).toFixed(1)}px">`;
 })();
 const html = tpl
   .replace('{{PAIR}}', pair)

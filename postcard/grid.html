@@ -31,7 +31,7 @@ html, body { margin: 0; padding: 0; }
 .gridcells { width: 252px; flex-shrink: 0; background-image: linear-gradient(transparent 35px, #111110 35px, #111110 36px, transparent 36px), linear-gradient(90deg, #111110 1px, transparent 1px); background-size: 100% 72px, 28px 100%; background-repeat: no-repeat, repeat-x; }
 .pair { width: 184px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-left: 1px solid #111110; font-size: 14px; font-weight: 400; }
 /* The company's own logo, one color (Base black), sized by area so wide and square logos look balanced */
-.plogo { display: block; width: var(--w); height: var(--h); background: #111110; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+.plogo { display: block; }
 .mid { flex-grow: 1; display: flex; min-height: 0; }
 .note { flex-grow: 1; padding: 20px 28px 14px; display: flex; flex-direction: column; gap: 10px; }
 .lines { flex-grow: 1; background-image: {{LINES}}; }

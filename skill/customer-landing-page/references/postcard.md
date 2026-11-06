@@ -35,3 +35,8 @@ The page is on notesfrombrian.com, not frontify.com, so the card has to show it'
 - his handwritten note should say what's on the page
 
 Don't remove any of these.
+
+## Brand rules on the card
+
+- Top right shows the company's own logo in Base black (from `public/logos/`), sized by area so wide and square logos balance. That follows the Brand Portal co-branding rule: Frontify's logo, a line, then the partner's logo, never typed text. `--text` falls back to the typed company name only if there's no logo.
+- The QR code is drawn on Base white (#F0F0EB), never pure white, and still scans. Check every exported QR decodes to `notesfrombrian.com/<slug>?utm_source=postcard`.

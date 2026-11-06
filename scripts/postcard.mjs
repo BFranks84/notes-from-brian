@@ -1,6 +1,6 @@
 // Makes the print-ready postcard (Grid design, 6 x 4 in) for one company page.
 //   node scripts/postcard.mjs <slug> [--name "Brian Franke"] [--role "Senior Enterprise AE, Frontify"]
-//        [--email brian.franke@frontify.com] [--guides] [--no-lines] [--out postcards]
+//        [--email brian.franke@frontify.com] [--guides] [--no-lines] [--text] [--out postcards]
 // Writes <out>/<slug>.pdf and <slug>.png (print-ready, with a 1/8 in bleed: 6.25 x 4.25 in page that trims to 6 x 4 in; PNG 1875 x 1275 px = 300 dpi; --no-bleed for a 6 x 4 in file) and <slug>-qr.svg / .png.
 // The QR code points at https://notesfrombrian.com/<slug> (tagged utm_source=postcard); the page must be live before printing.
 // --guides shows the dashed sticker-placement circle (leave it off for the print file).
@@ -28,14 +28,24 @@ const out = opt('out', 'postcards');
 fs.mkdirSync(out, { recursive: true });
 
 // QR: dark on light, error correction M, 4-module quiet zone
-const qrOpts = { errorCorrectionLevel: 'M', margin: 4, color: { dark: '#111110', light: '#FFFFFF' } };
+// Base white, not pure white (Brand Portal: never #FFFFFF as a brand background); still high contrast for scanners
+const qrOpts = { errorCorrectionLevel: 'M', margin: 4, color: { dark: '#111110', light: '#F0F0EB' } };
 const qrSvg = await QRCode.toString(url, { ...qrOpts, type: 'svg' });
 fs.writeFileSync(path.join(out, `${slug}-qr.svg`), qrSvg);
 await QRCode.toFile(path.join(out, `${slug}-qr.png`), url, { ...qrOpts, width: 1200 });
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const tpl = fs.readFileSync('postcard/grid.html', 'utf8');
+// Top-right cell: the company's logo (Brian has permission to use prospect logos). --text keeps the typed name instead.
+const ASPECT = JSON.parse(fs.readFileSync('src/logos.json', 'utf8'));
+const pair = (() => {
+  const a = ASPECT[slug];
+  if (flag('text') || !a || !fs.existsSync(`public/logos/${slug}.png`)) return esc(name);
+  const h = Math.min(32, Math.sqrt(2100 / a)); const w = Math.min(144, h * a);
+  return `<span class="plogo" role="img" aria-label="${esc(name)}" style="--w:${w.toFixed(1)}px;--h:${(w / a).toFixed(1)}px;--m:url(data:image/png;base64,${fs.readFileSync(`public/logos/${slug}.png`).toString('base64')})"></span>`;
+})();
 const html = tpl
+  .replace('{{PAIR}}', pair)
   .replaceAll('{{NAME}}', esc(name))
   .replaceAll('{{SLUG}}', esc(slug))
   .replaceAll('{{SENDER_NAME}}', esc(opt('name', 'Brian Franke')))

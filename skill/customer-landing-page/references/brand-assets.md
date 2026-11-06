@@ -4,12 +4,17 @@
 
 Brian has permission to show prospect logos on these pages. The page shows them in three places: the co-brand in the top bar, the co-brand above the hero on phones, and the theme switch.
 
-1. **Find the current logo.** In order:
+1. **Get the current logo.** In order:
+   - The official file from Brian. Ask him first; he can drop it in Downloads or attach it. His file wins over anything found online (the HPE logo on Wikimedia was out of date, for example).
    - Wikidata's "logo image" property (P154) for the company, which points to a file on Wikimedia Commons. Prefer the entry marked preferred or with no end date.
-   - The company's own site, press kit, or investor relations page (often an SVG in the header).
-   Check the file is the logo the company uses today, not a retired one. Wikimedia can rate-limit automated downloads (HTTP 429, or an HTML error page saved as `.svg`/`.png`); wait and retry, or ask Brian to download the file.
-2. **Make the mask.** `python3 scripts/logo_mask.py <slug> <file>`. It writes `public/logos/<slug>.png` and adds the logo's width/height ratio to `src/logos.json`. Use a dark-on-light version: the dark parts become the shape. For an extra theme (e.g., Anthropologie on the URBN page), add `--key <slug>-<theme>`.
-3. **Check it.** In the QA screenshots, the logo should read clearly at small size in the top bar and the theme switch, with nothing cut off. Wide logos are sized by area so they don't dwarf square ones; you don't need to tune sizes.
+   - A direct file link from the company's press kit or brand page, if a normal request works.
+   Check the file is the logo the company uses today, not a retired one. **Never get around a bot check or block** (no fake browser headers, proxies, caches or mirrors). If a download is blocked, rate-limited (HTTP 429) or comes back as an HTML error page, ask Brian for the file.
+2. **Make the logos.** `python3 scripts/logo_mask.py <slug> <file>` (SVG, PNG or JPG). In one run it writes:
+   - `public/logos/<slug>.png`: the page mask (white shape on transparent, trimmed)
+   - `postcard/logos/<slug>.png`: the postcard logo (Base black with clear space around it)
+   - the logo's width/height ratio in `src/logos.json`
+   Use a dark-on-light version: the dark parts become the shape. For an extra theme (e.g., Anthropologie on the URBN page), add `--key <slug>-<theme>`. Don't hand-edit the PNGs (filling holes or trimming rows broke the Twitch and Autodesk logos); if a logo comes out wrong, get a better source file.
+3. **Check it.** In the QA screenshots, the logo should read clearly at small size in the top bar and the theme switch, with nothing cut off. Wide logos are sized by area so they don't dwarf square ones; you don't need to tune sizes. Check the ratio in `src/logos.json` matches the file (a wrong ratio squashes the logo on the postcard).
 
 The page colors the mask itself (ink on light, white on the black selected pill), so never upload a colored logo file to the page. The co-brand layout (Frontify wordmark | thin line | company logo) is fixed in `src/BrandMark.jsx` and follows Brand Portal 2026's co-branding rule. Don't change it per company.
 

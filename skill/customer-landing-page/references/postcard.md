@@ -40,3 +40,12 @@ Don't remove any of these.
 
 - Top right shows the company's own logo in Base black (from `public/logos/`), sized by area so wide and square logos balance. That follows the Brand Portal co-branding rule: Frontify's logo, a line, then the partner's logo, never typed text. `--text` falls back to the typed company name only if there's no logo.
 - The QR code is drawn on Base white (#F0F0EB), never pure white, and still scans. Check every exported QR decodes to `notesfrombrian.com/<slug>?utm_source=postcard`.
+
+## Sending cards to print
+
+For a batch, combine the PDFs into one file (one design per page) and put it with the single PDFs and a specs note in a Downloads folder (the SF batch is in `~/Downloads/sf-postcards-brand`). The specs Brian sends to the print shop:
+
+- Trim size 6 × 4 in, landscape. The files are 6.25 × 4.25 in with a 1/8 in bleed on every side.
+- Single-sided, full color (4/0); the back stays blank.
+- 14 pt or 16 pt cardstock, matte or uncoated (people write on the cards by hand, so no gloss or UV coating).
+- Fonts are embedded. Print as supplied: no scaling, no color correction.

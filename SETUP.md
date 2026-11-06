@@ -91,11 +91,8 @@ Paste the prompt from `skill/customer-landing-page/NEW-PAGE-PROMPT.md` into a ne
 
 ## Copying a later fix from Brian's site
 
-When Brian improves the template, you can bring the change into your copy:
+A copy made from a template doesn't share Brian's git history, so `git merge` won't work. Ask Claude instead:
 
-```bash
-git remote add upstream https://github.com/BFranks84/notes-from-brian.git   # once
-git fetch upstream && git merge upstream/main
+```text
+Bring the latest template changes from BFranks84/notes-from-brian into my repo. Copy over the shared code, scripts, styles and skill, but keep my site.config.json, my company specs in scripts/gen_companies.py and my images and logos. Rebuild, check every page and push.
 ```
-
-If `site.config.json` conflicts, keep your version. Then rebuild, check and push.

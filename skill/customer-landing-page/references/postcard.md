@@ -15,8 +15,8 @@ node scripts/postcard.mjs <slug>
 ```
 
 It writes:
-- `<slug>.pdf`: the print file, exactly 6 × 4 in, no margins
-- `<slug>.png`: the same card as a 300 dpi PNG (1800 × 1200 px), which FedEx and most print shops accept
+- `<slug>.pdf`: the print file: a 6.25 × 4.25 in page with a 1/8 in bleed on every side, which trims to 6 × 4 in. All text stays at least 3/16 in inside the trim. Upload this one to FedEx Office or a print shop at 100% (actual size). Add `--no-bleed` for a plain 6 × 4 in file.
+- `<slug>.png`: the same card as a 300 dpi PNG (1875 × 1275 px with bleed), as a preview or backup
 - `<slug>-qr.svg` and `<slug>-qr.png`: the QR code alone, which points at `https://notesfrombrian.com/<slug>?utm_source=postcard` (the tag lets Vercel Analytics count card scans separately; the printed address stays plain)
 
 The name, role and email default to Brian's. Change them with the flags if someone else is sending the card.

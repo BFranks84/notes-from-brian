@@ -74,21 +74,24 @@ export function TryHint({ children, className = '' }) {
 const isPhone = () => typeof window !== 'undefined' && window.matchMedia('(max-width: 600px)').matches;
 const calm = () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const BAR = 64; // sticky top bar plus a little air
+// Where the demo's top should sit: centered in the space under the bar when it fits, otherwise right under the bar
+const vhNow = () => window.visualViewport?.height || window.innerHeight;
+const goalTop = (h) => { const room = vhNow() - BAR - 8; return h <= room ? BAR + Math.round((room - h) / 2) : BAR; };
 export function phoneFocus(el) {
   if (!el || !isPhone()) return;
-  const top = el.getBoundingClientRect().top + window.scrollY - BAR;
-  if (Math.abs(top - window.scrollY) > 4) window.scrollTo({ top, behavior: calm() ? 'auto' : 'smooth' });
+  const r = el.getBoundingClientRect();
+  const dy = r.top - goalTop(r.height);
+  if (Math.abs(dy) > 4) window.scrollBy({ top: dy, behavior: calm() ? 'auto' : 'smooth' });
 }
 export function phoneReveal(el, root) {
   if (!el || !isPhone()) return;
-  const vh = window.visualViewport?.height || window.innerHeight;
-  // If the whole demo fits, keep its top lined up under the bar (up or down) while it changes size
+  // If the whole demo fits, keep it centered (up or down) while it changes size
   if (root) {
     const R = root.getBoundingClientRect();
-    if (R.height <= vh - BAR - 8) { const dy = R.top - BAR; if (Math.abs(dy) > 4) window.scrollBy({ top: dy, behavior: calm() ? 'auto' : 'smooth' }); return; }
+    if (R.height <= vhNow() - BAR - 8) { const dy = R.top - goalTop(R.height); if (Math.abs(dy) > 4) window.scrollBy({ top: dy, behavior: calm() ? 'auto' : 'smooth' }); return; }
   }
   const r = el.getBoundingClientRect();
-  if (r.bottom <= vh - 8) return;
-  const dy = Math.min(r.bottom - (vh - 12), r.top - BAR); // show the answer, never past its first line
+  if (r.bottom <= vhNow() - 8) return;
+  const dy = Math.min(r.bottom - (vhNow() - 12), r.top - BAR); // show the answer, never past its first line
   if (dy > 4) window.scrollBy({ top: dy, behavior: calm() ? 'auto' : 'smooth' });
 }

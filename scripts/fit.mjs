@@ -48,7 +48,7 @@ for (const [screen, w, h] of SCREENS) {
       const ab = a ? a.getBoundingClientRect().bottom : r.bottom;
       return { top: Math.round(r.top), h: Math.round(r.height), ans: Math.round(ab), vh: window.innerHeight };
     }, [root, answer]);
-    const ok = m.top >= 40 && m.top <= 90 && m.ans <= m.vh + 2;
+    const ok = m.top >= 40 && m.ans <= m.vh + 2; // under the bar (centered when it fits) with the answer on screen
     if (!ok) fails++;
     console.log(`${screen.padEnd(6)} ${name.padEnd(12)} ${ok ? 'PASS' : 'FAIL'}  demo ${m.h}px, top ${m.top}, answer ends ${m.ans} of ${m.vh}`);
     await p.screenshot({ path: `${out}/${screen}-${name}.png` });

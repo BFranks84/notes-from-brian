@@ -15,9 +15,9 @@ node scripts/postcard.mjs <slug>
 ```
 
 It writes:
-- `<slug>.pdf`: the print file, exactly 6 × 4 in, no margins
-- `<slug>.png`: the same card as a 300 dpi PNG (1800 × 1200 px), which FedEx and most print shops accept
-- `<slug>-qr.svg` and `<slug>-qr.png`: the QR code alone, which points at `https://notesfrombrian.com/<slug>`
+- `<slug>.pdf`: the print file: a 6.25 × 4.25 in page with a 1/8 in bleed on every side, which trims to 6 × 4 in. All text stays at least 3/16 in inside the trim. Upload this one to FedEx Office or a print shop at 100% (actual size). Add `--no-bleed` for a plain 6 × 4 in file.
+- `<slug>.png`: the same card as a 300 dpi PNG (1875 × 1275 px with bleed), as a preview or backup
+- `<slug>-qr.svg` and `<slug>-qr.png`: the QR code alone, which points at `https://notesfrombrian.com/<slug>?utm_source=postcard` (the tag lets Vercel Analytics count card scans separately; the printed address stays plain)
 
 The name, role and email default to Brian's. Change them with the flags if someone else is sending the card.
 
@@ -25,7 +25,7 @@ The name, role and email default to Brian's. Change them with the flags if someo
 
 1. Open the PNG. All the grid lines should line up across the top, middle and bottom rows. The company name and the address under the QR code must fit on one line, and nothing can be cut off.
 2. Scan the QR code from the PNG with a phone, or decode it, and confirm it opens the live page.
-3. Send Brian the PDF and PNG. Tell him the tap stickers should point at the same address.
+3. Send Brian the PDF and PNG. Tell him the tap stickers should point at the same page, tagged `?utm_source=postcard&utm_medium=nfc`.
 
 ## Why the card looks the way it does
 
